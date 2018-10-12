@@ -1477,6 +1477,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+"basement@https://github.com/sanctuarycomputer/basement.git":
+  version "0.0.1"
+  resolved "https://github.com/sanctuarycomputer/basement.git#c5611be34518d79064e0479f0148180e7f4101ad"
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"

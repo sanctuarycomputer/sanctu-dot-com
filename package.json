@@ -6,7 +6,8 @@
     "node-sass": "^4.9.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-scripts": "2.0.4",
+    "basement": "https://github.com/sanctuarycomputer/basement.git"
   },
   "scripts": {
     "start": "react-scripts start",
