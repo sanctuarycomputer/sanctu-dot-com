@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import 'styles/app.scss';
 
+import MainContainer from 'containers/MainContainer';
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1 className="uppercase">Hello, Sanctuary!</h1>
-      </div>
+      <MainContainer />
     );
   }
 }
