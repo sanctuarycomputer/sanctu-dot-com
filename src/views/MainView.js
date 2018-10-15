@@ -5,7 +5,6 @@ import IntroSection from 'components/IntroSection';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
-  console.log(model)
   
   return (
     <Fragment>
