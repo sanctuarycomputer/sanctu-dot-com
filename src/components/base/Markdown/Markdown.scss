@@ -1,0 +1,14 @@
+@import "styles/app.scss";
+
+.Markdown {
+  p {
+    @extend .paragraph;
+    @extend .mb2;
+
+    > em {
+      position: relative;
+      font-size: 10px;
+      top: -10px;
+    }
+  }
+}
