@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'utils/get';
+import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
-import { Slider } from 'components/base';
+import { Slider, List } from 'components/base';
 
 class WorkSection extends PureComponent {
   constructor(props) {
@@ -43,19 +44,41 @@ class WorkSection extends PureComponent {
   }
 
   render() {
-    console.log(this.state)
+    const { activeIndex, slideCount } = this.state;
+    const activeProject = get(this, 'props.selectedWorks')[activeIndex];
+    console.log(activeProject)
+
     return (
       <div className="px1 py8">
         <div>
           <Slider activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map(work => (
               <div className="aspect-landscape">
-                <img style={{width: '100%'}} src={get(work, 'fields.media.fields.file.url')} />
+                <img className="col-12" alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
               </div>
             ))}
           </Slider>
         </div>
-        {get(this, 'props.selectedWorks')[this.state.activeIndex].fields.title}
+        <div>
+          <div>
+            <h2>{get(activeProject, 'fields.title', '')}</h2>
+            <a alt="project link" href={get(activeProject, 'fields.link')}>
+              {get(activeProject, 'fields.linkLabel')}
+            </a>
+            <span>{activeIndex + 1}/{slideCount}</span> 
+          </div>
+          <div>
+            <List 
+              title="Stack" 
+              listItems={simpleFragmentToListItems(get(activeProject, 'fields.stack.simpleFragments', {}))} 
+            />
+            <List 
+              title="Collaborators" 
+              listItems={simpleFragmentToListItems(get(activeProject, 'fields.collaborators.simpleFragments', {}))} 
+            />
+          </div>
+        </div>
+         
         <button onClick={this.setNextSlide}>LAST</button>
         <button onClick={this.setNextSlide}>NEXT</button>
       </div>
