@@ -1,1 +1,10 @@
+$colors: (
+  "black": #000000,
+  "gray": #b7b7b7
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
 $grid-columns: 8;

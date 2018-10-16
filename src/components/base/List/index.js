@@ -15,7 +15,7 @@ const List = ({ title, listItems }) => {
         {(hasListItems && listItems).map(listItem => (
           <li className="small">
             {listItem.hasLink ? (
-              <a href={listItem.url} target="_blank" rel="noopener noreferrer">{listItem.title}</a>
+              <a className="link" href={listItem.url} target="_blank" rel="noopener noreferrer">{listItem.title}</a>
             ) : (
               listItem.title
             )}

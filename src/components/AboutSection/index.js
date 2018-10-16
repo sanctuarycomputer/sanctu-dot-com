@@ -12,20 +12,20 @@ class AboutSection extends PureComponent {
   render() {
     return (
       <div className={cx('AboutSection p1 col-12 md:col-4')}>
-        <div className="mb2">
+        <div className="mb4">
           <List
             title={`What we do:`}
             listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}
           />
         </div>
         <div class="flex flex-wrap">
-          <div className="col-4 md:col-2">
+          <div className="mb4 col-4 md:mb0 md:col-2">
             <List
               title={`Selected Clients:`}
               listItems={simpleFragmentToListItems(get(this, 'props.selectedClients', {}))}
             />
           </div>
-          <div className="col-4 md:col-2">
+          <div className="mb4 col-4 md:mb0 md:col-2">
             <List
               title={`Technology Stack:`}
               listItems={simpleFragmentToListItems(get(this, 'props.technologyStack', {}))}
