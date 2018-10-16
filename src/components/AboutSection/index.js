@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
+
+import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
 
@@ -18,7 +19,7 @@ class AboutSection extends PureComponent {
             listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}
           />
         </div>
-        <div class="flex flex-wrap">
+        <div className="flex flex-wrap">
           <div className="mb4 col-4 md:mb0 md:col-2">
             <List
               title={`Selected Clients:`}
@@ -50,6 +51,11 @@ class AboutSection extends PureComponent {
 }
 
 AboutSection.propTypes = {
+  whatWeDo: SimpleFragment,
+  selectedClients: SimpleFragment,
+  technologyStack: SimpleFragment,
+  software: SimpleFragment,
+  collaborators: SimpleFragment,
 };
 
 export default AboutSection;

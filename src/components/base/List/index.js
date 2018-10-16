@@ -6,16 +6,21 @@ import './List.scss';
 
 const List = ({ title, listItems }) => {
   const hasListItems = !!(listItems && listItems.length);
-  console.log(listItems)
-
   return (
     <div className="List">
       <h3 className="small">{title}</h3>
       <ul>
         {(hasListItems && listItems).map(listItem => (
-          <li className="small">
+          <li key={get(listItem, 'uuid')} className="small">
             {listItem.hasLink ? (
-              <a className="link" href={listItem.url} target="_blank" rel="noopener noreferrer">{listItem.title}</a>
+              <a 
+                className="link" 
+                href={listItem.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                {get(listItem, 'title')}
+              </a>
             ) : (
               listItem.title
             )}
@@ -25,5 +30,21 @@ const List = ({ title, listItems }) => {
     </div>
   );
 }
+
+List.defaultProps = {
+  title: '',
+  listItems: [],
+};
+
+List.propTypes = {
+  title: PropTypes.string,
+  listItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      hasLink: PropTypes.bool,
+    })
+  )
+};
 
 export default List;

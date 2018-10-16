@@ -38,7 +38,7 @@ class IntroSection extends PureComponent {
 
 IntroSection.propTypes = {
   introParagraph: PropTypes.string,
-  images: PropTypes.arrayOf([
+  images: PropTypes.arrayOf(
     PropTypes.shape({
       fields: PropTypes.shape({
         file: PropTypes.shape({
@@ -46,7 +46,7 @@ IntroSection.propTypes = {
         })
       })
     })
-  ])
+  )
 };
 
 export default IntroSection;
