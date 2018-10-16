@@ -23,7 +23,7 @@ class IntroSection extends PureComponent {
       <div className={cx('IntroSection p1 flex flex-col md:flex-row')}>
         <div className="col-12 md:col-6">
           <div className="aspect-portrait">
-            <Image bg  style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} src={get(this, 'state.activeImage.fields.file.url')} />
+            <Image className="bg-cover bg-no-repeat" bg src={get(this, 'state.activeImage.fields.file.url')} />
           </div>
         </div>
         <div className="col-12 pl1 order-first md:col-6 md:order-last">
