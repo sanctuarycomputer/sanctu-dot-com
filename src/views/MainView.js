@@ -10,11 +10,15 @@ const MainView = ({ model }) => {
   return (
     <Fragment>
       <IntroSection 
-        images={get(model, 'fields.introImages', [])} 
+        images={get(model, 'fields.introImages', {})} 
         introParagraph={get(model, 'fields.introParagraph')}
       />
       <AboutSection 
-        whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', [])} 
+        whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})} 
+        selectedClients={get(model, 'fields.selectedClients.simpleFragments', {})}
+        technologyStack={get(model, 'fields.technologyStack.simpleFragments', {})}
+        software={get(model, 'fields.software.simpleFragments', {})}
+        collaborators={get(model, 'fields.collaborators.simpleFragments', {})}
       />
     </Fragment>
   )

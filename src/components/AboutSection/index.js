@@ -11,11 +11,39 @@ import './AboutSection.scss';
 class AboutSection extends PureComponent {
   render() {
     return (
-      <div className={cx('AboutSection p1')}>
-        <List
-          title={`What we do:`}
-          listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}
-        />
+      <div className={cx('AboutSection p1 col-12 md:col-4')}>
+        <div className="mb2">
+          <List
+            title={`What we do:`}
+            listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}
+          />
+        </div>
+        <div class="flex flex-wrap">
+          <div className="col-4 md:col-2">
+            <List
+              title={`Selected Clients:`}
+              listItems={simpleFragmentToListItems(get(this, 'props.selectedClients', {}))}
+            />
+          </div>
+          <div className="col-4 md:col-2">
+            <List
+              title={`Technology Stack:`}
+              listItems={simpleFragmentToListItems(get(this, 'props.technologyStack', {}))}
+            />
+          </div>
+          <div className="col-4 md:col-2">
+            <List
+              title={`Software:`}
+              listItems={simpleFragmentToListItems(get(this, 'props.software', {}))}
+            />
+          </div>
+          <div className="col-4 md:col-2">
+            <List
+              title={`Collaborators:`}
+              listItems={simpleFragmentToListItems(get(this, 'props.collaborators', {}))}
+            />
+          </div>
+        </div>
       </div>
     );
   }
