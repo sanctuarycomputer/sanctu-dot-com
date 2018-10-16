@@ -6,9 +6,14 @@
     @extend .mb2;
 
     > em {
+      @extend .tiny;
+      white-space: nowrap;
       position: relative;
-      font-size: 10px;
-      top: -10px;
+      top: -8px;
+
+      @include media("md") {
+        top: -12px;
+      }
     }
   }
 }
