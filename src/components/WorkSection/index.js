@@ -43,6 +43,14 @@ class WorkSection extends PureComponent {
     })
   }
 
+  resolveSlideIndex = (slideIndex) => {
+    const { activeIndex } = this.state;
+
+    if (slideIndex !== activeIndex) {
+      this.setState({ activeIndex: slideIndex});
+    }
+  }
+
   render() {
     const { activeIndex, slideCount } = this.state;
     const activeProject = get(this, 'props.selectedWorks')[activeIndex];
@@ -51,10 +59,10 @@ class WorkSection extends PureComponent {
     return (
       <div className="px1 py8">
         <div>
-          <Slider activeIndex={this.state.activeIndex} transitionMode="fade">
+          <Slider resolveSlideIndex={this.resolveSlideIndex} activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map(work => (
               <div className="aspect-landscape">
-                <img className="col-12" alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
+                <img style={{width: '100%'}} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
               </div>
             ))}
           </Slider>
