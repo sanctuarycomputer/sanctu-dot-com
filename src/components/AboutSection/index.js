@@ -11,7 +11,7 @@ import './AboutSection.scss';
 class AboutSection extends PureComponent {
   render() {
     return (
-      <div className={cx('AboutSection')}>
+      <div className={cx('AboutSection p1')}>
         <List
           title={`What we do:`}
           listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}

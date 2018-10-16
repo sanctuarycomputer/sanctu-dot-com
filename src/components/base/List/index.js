@@ -9,11 +9,11 @@ const List = ({ title, listItems }) => {
   console.log(listItems)
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="List">
+      <h3 className="small">{title}</h3>
       <ul>
         {(hasListItems && listItems).map(listItem => (
-          <li>
+          <li className="small">
             {listItem.hasLink ? (
               <a href={listItem.url}>{listItem.title}</a>
             ) : (
