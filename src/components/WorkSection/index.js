@@ -14,9 +14,9 @@ class WorkSection extends PureComponent {
     this.state = {
       slideCount: get(props, 'selectedWorks', []).length,
       activeIndex: 0,
-      containerDimensions: {
+      mediaDimensions: {
         width: 0,
-        height: 0
+        height: 0,
       }
     }
 
@@ -37,12 +37,13 @@ class WorkSection extends PureComponent {
     const mediaHeight = mediaWidth / aspectRatio;
     const moduleHeight = infoHeight + mediaHeight;
 
+
     if (moduleHeight < window.innerHeight) {
-      this.setState({ containerDimensions: { width: mediaWidth, height: mediaHeight } });
+      this.setState({ mediaDimensions: { width: mediaWidth, height: mediaHeight } });
     } else {
-      const newHeight = window.innerHeight - infoHeight;
-      const newWidth = newHeight * aspectRatio;
-      this.setState({ containerDimensions: { width: newWidth, height: newHeight } });
+      const height = window.innerHeight - infoHeight;
+      const width = height * aspectRatio;
+      this.setState({ mediaDimensions: { width, height } });
     }
   }
 
@@ -83,16 +84,20 @@ class WorkSection extends PureComponent {
   }
 
   render() {
-    const { activeIndex, slideCount, containerDimensions: { width, height } } = this.state;
+    const { activeIndex, slideCount, mediaDimensions } = this.state;
     const activeProject = get(this, 'props.selectedWorks')[activeIndex];
-    console.log(this.state.containerDimensions);
+    console.log(activeProject)
 
     return (
-      <div className="px1 py8" style={{maxHeight: '100vh'}}>
+      <div className="px1 py8">
         <div ref={this.mediaContainer}>
-          <div ref={ref => this.media[activeIndex] = ref}>
-            <img style={{width, height}} alt="project asset" src={get(activeProject, 'fields.media.fields.file.url')} />
-          </div>
+          <Slider resolveSlideIndex={this.resolveSlideIndex} activeIndex={this.state.activeIndex} transitionMode="fade">
+            {get(this, 'props.selectedWorks', []).map((work, index) => (
+              <div ref={ref => this.media[index] = ref}>
+                <img style={{ display: 'block', margin: '0 auto', width: mediaDimensions.width, height: mediaDimensions.height }} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
+              </div>
+            ))}
+          </Slider>
         </div>
         <div ref={this.infoContainer} className="col-8 flex">
           <div className="col-4">
