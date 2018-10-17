@@ -22,7 +22,8 @@ Slider.defaultProps = {
   withoutControls: true,
   transitionMode: 'fade',
   afterSlide: f => f,
-  wrapAround: true
+  wrapAround: true,
+  swiping: true,
 };
 
 Slider.propTypes = {
@@ -32,6 +33,7 @@ Slider.propTypes = {
   transitionMode: PropTypes.string,
   afterSlide: PropTypes.func,
   wrapAround: PropTypes.bool,
+  swiping: PropTypes.bool,
 };
 
 export default Slider;
