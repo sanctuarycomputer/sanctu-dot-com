@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import './WorkSection.scss';
+import { ContentfulMedia, SimpleFragment } from 'models';
 
 import { Slider, List } from 'components/base';
 
@@ -106,7 +107,7 @@ class WorkSection extends PureComponent {
       return (
         <Slider>
           {get(this, 'props.selectedWorks', []).map((work, index) => (
-            <Fragment>
+            <Fragment key={get(work, 'sys.id')}>
               <div className="MediaContainer" ref={this.mediaContainer}>
                 <img 
                   className="block mx-auto" 
@@ -149,6 +150,7 @@ class WorkSection extends PureComponent {
           <Slider swiping={false} activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map((work, index) => (
               <img 
+                key={get(work, 'sys.id')}
                 className="block mxauto" 
                 style={{ width: mediaDimensions.width, height: mediaDimensions.height }} 
                 alt="project asset" 
@@ -193,6 +195,21 @@ class WorkSection extends PureComponent {
     );
   }
 }
+
+WorkSection.propType = {
+  selectedWorks: PropTypes.arrayOf(
+    PropTypes.shape({
+      fields: PropTypes.shape({
+        media: ContentfulMedia,
+        title: PropTypes.string,
+        link: PropTypes.string,
+        linkLabel: PropTypes.string,
+        stack: SimpleFragment,
+        collaborators: SimpleFragment,
+      })
+    })
+  )
+};
 
 export default WorkSection;
  

@@ -24,11 +24,12 @@ Slider.defaultProps = {
   afterSlide: f => f,
   wrapAround: true,
   swiping: true,
+  slideIndex: 0,
 };
 
 Slider.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
-  slideIndex: PropTypes.number.isRequired,
+  slideIndex: PropTypes.number,
   withoutControls: PropTypes.bool,
   transitionMode: PropTypes.string,
   afterSlide: PropTypes.func,
