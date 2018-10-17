@@ -1,0 +1,19 @@
+@import "styles/app.scss";
+
+.Markdown {
+  p {
+    @extend .paragraph;
+    @extend .mb2;
+
+    > em {
+      @extend .tiny;
+      white-space: nowrap;
+      position: relative;
+      top: -8px;
+
+      @include media("md") {
+        top: -12px;
+      }
+    }
+  }
+}

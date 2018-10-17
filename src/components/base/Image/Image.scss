@@ -1,0 +1,8 @@
+.Image {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.Image--active {
+  opacity: 1;
+}
