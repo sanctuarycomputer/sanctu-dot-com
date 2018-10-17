@@ -108,19 +108,24 @@ class WorkSection extends PureComponent {
           {get(this, 'props.selectedWorks', []).map((work, index) => (
             <Fragment>
               <div className="MediaContainer" ref={this.mediaContainer}>
-                <img style={{ display: 'block', margin: '0 auto', width: mediaDimensions.width, height: mediaDimensions.height }} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
+                <img 
+                  className="block mx-auto" 
+                  style={{ width: mediaDimensions.width, height: mediaDimensions.height }} 
+                  alt="project asset" 
+                  src={get(work, 'fields.media.fields.file.url')} 
+                />
               </div>
-              <div ref={this.infoContainer} className="col-8 flex flex-col mt2 md:flex-row md:mt3">
-                <div className="col-8 flex flex-row justify-between md:flex-col md:col-4">
-                  <div className="md:mb2">
-                    <h2 className="paragraph">{get(work, 'fields.title', '')}</h2>
+              <div ref={this.infoContainer} className="col-8 flex flex-col mt2">
+                <div className="mb2 col-8 flex flex-row justify-between">
+                  <div>
+                    <h2 className="paragraph mb_5">{get(work, 'fields.title', '')}</h2>
                     <a className="small link underline" alt="project link" href={get(work, 'fields.link')}>
                       {get(work, 'fields.linkLabel')}
                     </a>
                   </div>
                   <span className="color-gray small block">{index + 1}/{slideCount}</span> 
                 </div>
-                <div className="col-8 flex justify-between md:col-4 md:justify-end">
+                <div className="col-8 flex justify-between">
                   <List 
                     title="Stack:" 
                     listItems={simpleFragmentToListItems(get(work, 'fields.stack.simpleFragments', {}))} 
@@ -143,23 +148,28 @@ class WorkSection extends PureComponent {
         <div className="MediaContainer" ref={this.mediaContainer}>
           <Slider swiping={false} activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map((work, index) => (
-              <img style={{ display: 'block', margin: '0 auto', width: mediaDimensions.width, height: mediaDimensions.height }} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
+              <img 
+                className="block mxauto" 
+                style={{ width: mediaDimensions.width, height: mediaDimensions.height }} 
+                alt="project asset" 
+                src={get(work, 'fields.media.fields.file.url')} 
+              />
             ))}
           </Slider>
           <div onClick={this.setPreviousSlide} className="MediaContainer__previous" />
           <div onClick={this.setNextSlide} className="MediaContainer__next" />
         </div>
-        <div ref={this.infoContainer} className="col-8 flex flex-col mt2 md:flex-row md:mt3">
-          <div className="col-8 flex flex-row justify-between md:flex-col md:col-4">
-            <div className="md:mb2">
-              <h2 className="paragraph">{get(activeProject, 'fields.title', '')}</h2>
+        <div ref={this.infoContainer} className="col-8 flex flex-row mt3">
+          <div className="col-4 flex flex-col justify-between">
+            <div className="mb2">
+              <h2 className="paragraph mb1">{get(activeProject, 'fields.title', '')}</h2>
               <a className="small link underline" alt="project link" href={get(activeProject, 'fields.link')}>
                 {get(activeProject, 'fields.linkLabel')}
               </a>
             </div>
             <span className="color-gray small block">{activeIndex + 1}/{slideCount}</span> 
           </div>
-          <div className="col-8 flex justify-between md:col-4 md:justify-end">
+          <div className="col-4 flex justify-end">
             <List 
               title="Stack:" 
               listItems={simpleFragmentToListItems(get(activeProject, 'fields.stack.simpleFragments', {}))} 
