@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'utils/get';
 
+import cx from 'classnames';
 import './List.scss';
 
-const List = ({ title, listItems }) => {
+const List = ({ title, listItems, className }) => {
   const hasListItems = !!(listItems && listItems.length);
   return (
-    <div className="List">
+    <div className={cx('List', {[className]: !!className})}>
       <h3 className="small">{title}</h3>
       <ul className="ml1_25">
         {(hasListItems && listItems).map(listItem => (
@@ -32,11 +33,13 @@ const List = ({ title, listItems }) => {
 }
 
 List.defaultProps = {
+  className: null,
   title: '',
   listItems: [],
 };
 
 List.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string,
   listItems: PropTypes.arrayOf(
     PropTypes.shape({

@@ -7,12 +7,14 @@ import './WorkSection.scss';
 import { Slider, List } from 'components/base';
 
 const aspectRatio = 16 / 9;
+const MEDIUM_BREAKPOINT = 832;
 
 class WorkSection extends PureComponent {
   constructor(props) {
     super(...arguments);
 
     this.state = {
+      isMobile: false,
       slideCount: get(props, 'selectedWorks', []).length,
       activeIndex: 0,
       mediaDimensions: {
@@ -23,16 +25,25 @@ class WorkSection extends PureComponent {
 
     this.mediaContainer = React.createRef();
     this.infoContainer = React.createRef();
-    this.media = {};
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.adjustSize)
+    window.addEventListener('resize', () =>  { 
+      this.checkDeviceWidth(); 
+      this.adjustSize(); 
+    })
+    this.checkDeviceWidth();
     this.adjustSize();
   }
 
+  checkDeviceWidth = () => {
+    if (window.innerWidth < MEDIUM_BREAKPOINT) {
+      return this.setState({ isMobile: true });
+    }
+    this.setState({ isMobile: false });
+  } 
+
   adjustSize = () => {
-    console.log('i ran')
     const infoHeight = this.infoContainer.current.offsetHeight;
     const mediaWidth = this.mediaContainer.current.offsetWidth;
     const mediaHeight = mediaWidth / aspectRatio;
@@ -70,64 +81,57 @@ class WorkSection extends PureComponent {
       const lastAvailableSlide = slideCount - 1;
     
       const previousSlideIndex = 
-        state.activeIndex > lastAvailableSlide ? potentialPreviousSlide : lastAvailableSlide;
+        potentialPreviousSlide >= 0 ? potentialPreviousSlide : lastAvailableSlide;
 
       return { activeIndex: previousSlideIndex };
     })
   }
 
-  resolveSlideIndex = (slideIndex) => {
-    const { activeIndex } = this.state;
-
-    if (slideIndex !== activeIndex) {
-      this.setState({ activeIndex: slideIndex});
-    }
-  }
+  renderWork = () => {}
 
   render() {
-    const { activeIndex, slideCount, mediaDimensions } = this.state;
+    const { activeIndex, slideCount, mediaDimensions, isMobile } = this.state;
     const activeProject = get(this, 'props.selectedWorks')[activeIndex];
-    console.log(activeProject)
+
+    console.log(isMobile)
 
     return (
       <div className="WorkSection px1 py8">
         <div className="MediaContainer" ref={this.mediaContainer}>
-          <Slider resolveSlideIndex={this.resolveSlideIndex} activeIndex={this.state.activeIndex} transitionMode="fade">
+          <Slider activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map((work, index) => (
-              <div ref={ref => this.media[index] = ref}>
-                <img style={{ display: 'block', margin: '0 auto', width: mediaDimensions.width, height: mediaDimensions.height }} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
-              </div>
+              <img style={{ display: 'block', margin: '0 auto', width: mediaDimensions.width, height: mediaDimensions.height }} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
             ))}
           </Slider>
-          <div className="MediaContainer__previous" />
-          <div className="MediaContainer__next" />
+          <div onClick={this.setPreviousSlide} className="MediaContainer__previous" />
+          <div onClick={this.setNextSlide} className="MediaContainer__next" />
         </div>
-        <div ref={this.infoContainer} className="col-8 flex">
-          <div className="col-4">
-            <h2 className="paragraph">{get(activeProject, 'fields.title', '')}</h2>
-            <a className="small link underline" alt="project link" href={get(activeProject, 'fields.link')}>
-              {get(activeProject, 'fields.linkLabel')}
-            </a>
+        <div ref={this.infoContainer} className="col-8 flex flex-col mt2 md:flex-row md:mt3">
+          <div className="col-8 flex flex-row justify-between md:flex-col md:col-4">
+            <div className="md:mb2">
+              <h2 className="paragraph">{get(activeProject, 'fields.title', '')}</h2>
+              <a className="small link underline" alt="project link" href={get(activeProject, 'fields.link')}>
+                {get(activeProject, 'fields.linkLabel')}
+              </a>
+            </div>
             <span className="color-gray small block">{activeIndex + 1}/{slideCount}</span> 
           </div>
-          <div className="col-4 flex justify-end">
+          <div className="col-8 flex justify-between md:col-4 md:justify-end">
             <List 
-              title="Stack" 
+              title="Stack:" 
               listItems={simpleFragmentToListItems(get(activeProject, 'fields.stack.simpleFragments', {}))} 
             />
             <List 
-              title="Collaborators" 
+              className="ml2"
+              title="Collaborators:" 
               listItems={simpleFragmentToListItems(get(activeProject, 'fields.collaborators.simpleFragments', {}))} 
             />
           </div>
         </div>
-         
-        <button onClick={this.setNextSlide}>LAST</button>
-        <button onClick={this.setNextSlide}>NEXT</button>
       </div>
     );
   }
- }
+}
 
 export default WorkSection;
  

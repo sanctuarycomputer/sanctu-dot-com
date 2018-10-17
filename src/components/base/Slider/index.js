@@ -11,7 +11,6 @@ class Slider extends PureComponent {
         withoutControls={this.props.withoutControls}
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
-        afterSlide={slideIndex => this.props.resolveSlideIndex(slideIndex)}
       >
         {React.Children.map(get(this, 'props.children'), child => child)}
       </NukaCarousel>
