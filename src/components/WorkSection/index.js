@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
+import './WorkSection.scss';
 
 import { Slider, List } from 'components/base';
 
@@ -89,8 +90,8 @@ class WorkSection extends PureComponent {
     console.log(activeProject)
 
     return (
-      <div className="px1 py8">
-        <div ref={this.mediaContainer}>
+      <div className="WorkSection px1 py8">
+        <div className="MediaContainer" ref={this.mediaContainer}>
           <Slider resolveSlideIndex={this.resolveSlideIndex} activeIndex={this.state.activeIndex} transitionMode="fade">
             {get(this, 'props.selectedWorks', []).map((work, index) => (
               <div ref={ref => this.media[index] = ref}>
@@ -98,6 +99,8 @@ class WorkSection extends PureComponent {
               </div>
             ))}
           </Slider>
+          <div className="MediaContainer__previous" />
+          <div className="MediaContainer__next" />
         </div>
         <div ref={this.infoContainer} className="col-8 flex">
           <div className="col-4">

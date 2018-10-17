@@ -7,7 +7,8 @@ class Slider extends PureComponent {
   render() {
     return (
       <NukaCarousel
-        withoutControls={true}
+        wrapAround={this.props.wrapAround}
+        withoutControls={this.props.withoutControls}
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
         afterSlide={slideIndex => this.props.resolveSlideIndex(slideIndex)}
@@ -17,5 +18,21 @@ class Slider extends PureComponent {
     );
   }
 }
+
+Slider.defaultProps = {
+  withoutControls: true,
+  transitionMode: 'fade',
+  afterSlide: f => f,
+  wrapAround: true
+};
+
+Slider.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  slideIndex: PropTypes.number.isRequired,
+  withoutControls: PropTypes.bool,
+  transitionMode: PropTypes.string,
+  afterSlide: PropTypes.func,
+  wrapAround: PropTypes.bool,
+};
 
 export default Slider;
