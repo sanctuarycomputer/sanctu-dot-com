@@ -5,13 +5,44 @@ import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
 import { Slider, List } from 'components/base';
 
+const aspectRatio = 16 / 9;
+
 class WorkSection extends PureComponent {
   constructor(props) {
     super(...arguments);
 
     this.state = {
       slideCount: get(props, 'selectedWorks', []).length,
-      activeIndex: 0
+      activeIndex: 0,
+      containerDimensions: {
+        width: 0,
+        height: 0
+      }
+    }
+
+    this.mediaContainer = React.createRef();
+    this.infoContainer = React.createRef();
+    this.media = {};
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.adjustSize)
+    this.adjustSize();
+  }
+
+  adjustSize = () => {
+    console.log('i ran')
+    const infoHeight = this.infoContainer.current.offsetHeight;
+    const mediaWidth = this.mediaContainer.current.offsetWidth;
+    const mediaHeight = mediaWidth / aspectRatio;
+    const moduleHeight = infoHeight + mediaHeight;
+
+    if (moduleHeight < window.innerHeight) {
+      this.setState({ containerDimensions: { width: mediaWidth, height: mediaHeight } });
+    } else {
+      const newHeight = window.innerHeight - infoHeight;
+      const newWidth = newHeight * aspectRatio;
+      this.setState({ containerDimensions: { width: newWidth, height: newHeight } });
     }
   }
 
@@ -52,22 +83,18 @@ class WorkSection extends PureComponent {
   }
 
   render() {
-    const { activeIndex, slideCount } = this.state;
+    const { activeIndex, slideCount, containerDimensions: { width, height } } = this.state;
     const activeProject = get(this, 'props.selectedWorks')[activeIndex];
-    console.log(activeProject)
+    console.log(this.state.containerDimensions);
 
     return (
-      <div className="px1 py8">
-        <div>
-          <Slider resolveSlideIndex={this.resolveSlideIndex} activeIndex={this.state.activeIndex} transitionMode="fade">
-            {get(this, 'props.selectedWorks', []).map(work => (
-              <div className="aspect-landscape">
-                <img style={{width: '100%'}} alt="project asset" src={get(work, 'fields.media.fields.file.url')} />
-              </div>
-            ))}
-          </Slider>
+      <div className="px1 py8" style={{maxHeight: '100vh'}}>
+        <div ref={this.mediaContainer}>
+          <div ref={ref => this.media[activeIndex] = ref}>
+            <img style={{width, height}} alt="project asset" src={get(activeProject, 'fields.media.fields.file.url')} />
+          </div>
         </div>
-        <div className="col-8 flex">
+        <div ref={this.infoContainer} className="col-8 flex">
           <div className="col-4">
             <h2 className="paragraph">{get(activeProject, 'fields.title', '')}</h2>
             <a className="small link underline" alt="project link" href={get(activeProject, 'fields.link')}>
