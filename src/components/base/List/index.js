@@ -14,7 +14,7 @@ const List = ({ title, listItems }) => {
           <li key={get(listItem, 'uuid')} className="small">
             {listItem.hasLink ? (
               <a 
-                className="link" 
+                className="link decoration-none" 
                 href={listItem.url} 
                 target="_blank" 
                 rel="noopener noreferrer"

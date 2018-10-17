@@ -67,15 +67,15 @@ class WorkSection extends PureComponent {
             ))}
           </Slider>
         </div>
-        <div>
-          <div>
-            <h2>{get(activeProject, 'fields.title', '')}</h2>
-            <a alt="project link" href={get(activeProject, 'fields.link')}>
+        <div className="col-8 flex">
+          <div className="col-4">
+            <h2 className="paragraph">{get(activeProject, 'fields.title', '')}</h2>
+            <a className="small link underline" alt="project link" href={get(activeProject, 'fields.link')}>
               {get(activeProject, 'fields.linkLabel')}
             </a>
-            <span>{activeIndex + 1}/{slideCount}</span> 
+            <span className="color-gray small block">{activeIndex + 1}/{slideCount}</span> 
           </div>
-          <div>
+          <div className="col-4 flex justify-end">
             <List 
               title="Stack" 
               listItems={simpleFragmentToListItems(get(activeProject, 'fields.stack.simpleFragments', {}))} 

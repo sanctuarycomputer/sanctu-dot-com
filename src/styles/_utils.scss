@@ -2,9 +2,12 @@
   background-repeat: no-repeat;
 }
 
+.decoration-none {
+  text-decoration: none;
+}
+
 .link {
   color: color("black");
-  text-decoration: none;
 
   &:hover {
     color: color("gray");

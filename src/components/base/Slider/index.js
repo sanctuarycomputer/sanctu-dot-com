@@ -7,6 +7,7 @@ class Slider extends PureComponent {
   render() {
     return (
       <NukaCarousel
+        withoutControls={true}
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
         afterSlide={slideIndex => this.props.resolveSlideIndex(slideIndex)}
