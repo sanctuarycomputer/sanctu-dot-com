@@ -9,7 +9,7 @@ const List = ({ title, listItems }) => {
   return (
     <div className="List">
       <h3 className="small">{title}</h3>
-      <ul>
+      <ul className="ml1_25">
         {(hasListItems && listItems).map(listItem => (
           <li key={get(listItem, 'uuid')} className="small">
             {listItem.hasLink ? (
