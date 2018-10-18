@@ -29,13 +29,19 @@ class WorkSection extends PureComponent {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () =>  { 
-      this.checkDeviceWidth(); 
-      this.adjustSize(); 
-    })
+    window.addEventListener('resize', this.handleResize);
     this.checkDeviceWidth();
     this.adjustSize();
   }
+
+  componentDidUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.checkDeviceWidth(); 
+    this.adjustSize(); 
+  };
 
   checkDeviceWidth = () => {
     if (window.innerWidth < MEDIUM_BREAKPOINT) {

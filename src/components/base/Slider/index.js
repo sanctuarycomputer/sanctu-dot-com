@@ -4,6 +4,12 @@ import NukaCarousel from 'nuka-carousel';
 import get from 'utils/get';
 
 class Slider extends PureComponent {
+  componentDidMount() {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 0);
+  }
+
   render() {
     return (
       <NukaCarousel
