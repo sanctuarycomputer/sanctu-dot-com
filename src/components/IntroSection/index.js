@@ -21,12 +21,12 @@ class IntroSection extends PureComponent {
   render() {
     return (
       <div className={cx('IntroSection p1 flex flex-col md:flex-row')}>
-        <div className="col-12 md:col-6">
+        <div className="col-8 md:col-4">
           <div className="aspect-portrait">
             <Image className="bg-cover bg-no-repeat" bg src={get(this, 'state.activeImage.fields.file.url')} />
           </div>
         </div>
-        <div className="col-12 pl1 order-first md:col-6 md:order-last">
+        <div className="col-8 pl1 order-first md:col-4 md:order-last">
           <div className="IntroSection__paragraph-column">
             <Markdown src={get(this, 'props.introParagraph')} />
           </div>
@@ -38,7 +38,7 @@ class IntroSection extends PureComponent {
 
 IntroSection.propTypes = {
   introParagraph: PropTypes.string,
-  images: PropTypes.arrayOf([
+  images: PropTypes.arrayOf(
     PropTypes.shape({
       fields: PropTypes.shape({
         file: PropTypes.shape({
@@ -46,7 +46,7 @@ IntroSection.propTypes = {
         })
       })
     })
-  ])
+  )
 };
 
 export default IntroSection;

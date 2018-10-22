@@ -13,6 +13,12 @@ $sans-serif-stack: "Atlas Grotesk Web", sans-serif;
   }
 }
 
+.small {
+  font-family: $sans-serif-stack;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
 .tiny {
   font-family: $sans-serif-stack;
   font-size: 0.625rem;
