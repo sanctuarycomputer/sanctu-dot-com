@@ -20,13 +20,13 @@ class AboutSection extends PureComponent {
           />
         </div>
         <div className="flex flex-wrap">
-          <div className="mb2 col-4 md:mb0 md:col-2">
+          <div className="col-4 md:col-2 mb2 md:mb0 ">
             <List
               title={`Selected Clients:`}
               listItems={simpleFragmentToListItems(get(this, 'props.selectedClients', {}))}
             />
           </div>
-          <div className="mb2 col-4 md:mb0 md:col-2">
+          <div className="col-4 md:col-2 mb2 md:mb0 ">
             <List
               title={`Technology Stack:`}
               listItems={simpleFragmentToListItems(get(this, 'props.technologyStack', {}))}
