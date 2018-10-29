@@ -4,6 +4,7 @@ import get from 'utils/get';
 import IntroSectionImages from 'components/IntroSectionImages';
 import IntroSectionParagraph from 'components/IntroSectionParagraph';
 import AboutSection from 'components/AboutSection';
+import StudioDetailsSection from 'components/StudioDetailsSection';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
@@ -28,6 +29,14 @@ const MainView = ({ model }) => {
             introParagraph={get(model, 'fields.introParagraph')}
           />
         </div>
+      </div>
+      <div>
+        <StudioDetailsSection
+          recentArticles={get(model, 'fields.recentArticles.simpleFragments', {})}
+          socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
+          workSpaces={get(model, 'fields.workSpaces.simpleFragments', {})}
+          availablePositions={get(model, 'fields.availablePositions.simpleFragments', {})}
+        />
       </div>
     </Fragment>
   )
