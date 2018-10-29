@@ -14,13 +14,13 @@ class StudioDetailsSection extends PureComponent {
     return (
       <div className={cx('StudioDetailsSection p1 col-8 md:col-4')}>
         <div className="flex mb4">
-          <div className="col-4">
+          <div className="col-4 md:col-6">
             <List
               title={`Recent Articles:`}
               listItems={simpleFragmentToListItems(get(this, 'props.recentArticles', {}))}
             />
           </div>
-          <div className="col-4">
+          <div className="col-4 md:col-2">
             <List
               title={`Social Media:`}
               listItems={simpleFragmentToListItems(get(this, 'props.socialMedia', {}))}
@@ -28,7 +28,7 @@ class StudioDetailsSection extends PureComponent {
           </div>
         </div>
         <div className="flex mb4">
-          <div className="col-4">
+          <div className="col-4 md:col-6">
             <List
               title={`Work Spaces for Rent:`}
               listItems={simpleFragmentToListItems(get(this, 'props.workSpaces', {}))}
@@ -36,7 +36,7 @@ class StudioDetailsSection extends PureComponent {
           </div>
         </div>
         <div className="flex">
-          <div className="col-4">
+          <div className="col-4 md:col-6">
             <List
               title={`Available Positions`}
               listItems={simpleFragmentToListItems(get(this, 'props.availablePositions', {}))}
