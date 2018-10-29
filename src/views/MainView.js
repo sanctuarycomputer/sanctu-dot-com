@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import get from 'utils/get';
 
-import IntroSection from 'components/IntroSection';
+import IntroSectionImages from 'components/IntroSectionImages';
+import IntroSectionMarkdown from 'components/IntroSectionMarkdown';
 import AboutSection from 'components/AboutSection';
 
 const MainView = ({ model }) => {
@@ -9,17 +10,25 @@ const MainView = ({ model }) => {
   
   return (
     <Fragment>
-      <IntroSection 
-        images={get(model, 'fields.introImages', {})} 
-        introParagraph={get(model, 'fields.introParagraph')}
-      />
-      <AboutSection 
-        whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})} 
-        selectedClients={get(model, 'fields.selectedClients.simpleFragments', {})}
-        technologyStack={get(model, 'fields.technologyStack.simpleFragments', {})}
-        software={get(model, 'fields.software.simpleFragments', {})}
-        collaborators={get(model, 'fields.collaborators.simpleFragments', {})}
-      />
+      <div className='flex md:flex-row flex-col'>
+        <div className='col-8 flex flex-col'> 
+          <IntroSectionImages 
+            images={get(model, 'fields.introImages', {})} 
+          />
+          <AboutSection
+            whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
+            selectedClients={get(model, 'fields.selectedClients.simpleFragments', {})}
+            technologyStack={get(model, 'fields.technologyStack.simpleFragments', {})}
+            software={get(model, 'fields.software.simpleFragments', {})}
+            collaborators={get(model, 'fields.collaborators.simpleFragments', {})}
+          />
+        </div>
+        <div className='col-8 flex order-first md:order-last'>
+          <IntroSectionMarkdown
+            introParagraph={get(model, 'fields.introParagraph')}
+          />
+        </div>
+      </div>
     </Fragment>
   )
 }

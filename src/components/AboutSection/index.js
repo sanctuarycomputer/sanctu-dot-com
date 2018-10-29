@@ -12,7 +12,7 @@ import './AboutSection.scss';
 class AboutSection extends PureComponent {
   render() {
     return (
-      <div className={cx('AboutSection p1 col-12 md:col-4')}>
+      <div className={cx('AboutSection p1 col-8')}>
         <div className="mb4">
           <List
             title={`What we do:`}
