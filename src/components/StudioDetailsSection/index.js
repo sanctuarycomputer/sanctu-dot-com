@@ -13,21 +13,21 @@ class StudioDetailsSection extends PureComponent {
   render() {
     return (
       <div className={cx('StudioDetailsSection p1 col-8 md:col-4')}>
-        <div className="flex mb4">
-          <div className="col-4 md:col-6">
+        <div className="flex flex-col lg:flex-row mb2">
+          <div className="col-8 md:col-6">
             <List
               title={`Recent Articles:`}
               listItems={simpleFragmentToListItems(get(this, 'props.recentArticles', {}))}
             />
           </div>
-          <div className="col-4 md:col-2">
+          <div className="col-8 md:col-2 order-first lg:order-last mb2 lg:mb0">
             <List
               title={`Social Media:`}
               listItems={simpleFragmentToListItems(get(this, 'props.socialMedia', {}))}
             />
           </div>
         </div>
-        <div className="flex mb4">
+        <div className="flex mb2">
           <div className="col-4 md:col-6">
             <List
               title={`Work Spaces for Rent:`}

@@ -4,7 +4,7 @@ import get from 'utils/get';
 import IntroSectionImages from 'components/IntroSectionImages';
 import IntroSectionParagraph from 'components/IntroSectionParagraph';
 import AboutSection from 'components/AboutSection';
-import StudioDetailsSection from '../components/StudioDetailsSection';
+import StudioDetailsSection from 'components/StudioDetailsSection';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
