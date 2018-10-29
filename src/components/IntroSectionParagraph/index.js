@@ -3,22 +3,16 @@ import PropTypes from 'prop-types';
 import get from 'utils/get';
 
 import cx from 'classnames';
-import './IntroSectionMarkdown.scss';
+import './IntroSectionParagraph.scss';
 
 import { Markdown } from 'components/base';
 
-class IntroSectionMarkdown extends PureComponent {
-  constructor(props) {
-    super(...arguments);
-
-    this.state = {};
-  }
-
+class IntroSectionParagraph extends PureComponent {
   render() {
     return (
-      <div className={cx('IntroSectionMarkdown p1 flex flex-col md:flex-row')}>
+      <div className={cx('IntroSectionParagraph p1 flex flex-col md:flex-row')}>
         <div className="col-8">
-          <div className="IntroSectionMarkdown__paragraph">
+          <div className="IntroSectionParagraph__content">
             <Markdown src={get(this, 'props.introParagraph')} />
           </div>
         </div>
@@ -27,8 +21,8 @@ class IntroSectionMarkdown extends PureComponent {
   }
 }
 
-IntroSectionMarkdown.propTypes = {
+IntroSectionParagraph.propTypes = {
   introParagraph: PropTypes.string
 };
 
-export default IntroSectionMarkdown;
+export default IntroSectionParagraph;

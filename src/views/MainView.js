@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import get from 'utils/get';
 
 import IntroSectionImages from 'components/IntroSectionImages';
-import IntroSectionMarkdown from 'components/IntroSectionMarkdown';
+import IntroSectionParagraph from 'components/IntroSectionParagraph';
 import AboutSection from 'components/AboutSection';
 
 const MainView = ({ model }) => {
@@ -24,7 +24,7 @@ const MainView = ({ model }) => {
           />
         </div>
         <div className='col-8 flex order-first md:order-last'>
-          <IntroSectionMarkdown
+          <IntroSectionParagraph
             introParagraph={get(model, 'fields.introParagraph')}
           />
         </div>
