@@ -42,6 +42,9 @@ const MainView = ({ model }) => {
         </div>
       </div>
       <div>
+        <WorkSection selectedWorks={get(model, "fields.selectedWorks", [])} />
+      </div>
+      <div>
         <StudioDetailsSection
           recentArticles={get(
             model,
@@ -57,7 +60,6 @@ const MainView = ({ model }) => {
           )}
         />
       </div>
-      <WorkSection selectedWorks={get(model, "fields.selectedWorks", [])} />
     </Fragment>
   );
 };
