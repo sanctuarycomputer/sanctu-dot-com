@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
-import SignUpForm from '../SignUpForm';
+import SignUpForm from 'components/SignUpForm';
 
 import { SimpleFragment } from 'models';
 
