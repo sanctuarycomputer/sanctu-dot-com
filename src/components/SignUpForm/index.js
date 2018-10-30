@@ -22,7 +22,7 @@ class SignUpForm extends PureComponent {
 
   render() {
     return (
-      <div className={cx('SignUpForm')}>
+      <div className={'SignUpForm'}>
         <form onSubmit={this.handleSubmit}>
           <label className="small">
             <h3>{this.props.title}</h3>

@@ -29,7 +29,7 @@ class StudioDetailsSection extends PureComponent {
             />
           </div>
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap mb2">
+        <div className="flex flex-col lg:flex-row flex-wrap mb2">
           <div className="col-8 md:col-6 mb2">
             <List
               title={`Work Spaces for Rent:`}
