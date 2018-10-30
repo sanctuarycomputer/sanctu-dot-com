@@ -6,10 +6,12 @@
   text-decoration: none;
 }
 
+input,
 .link {
   color: color("black");
 
   &:hover {
     color: color("gray");
+    cursor: pointer;
   }
 }
