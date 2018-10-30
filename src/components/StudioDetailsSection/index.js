@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
+import SignUpForm from '../SignUpForm';
+
 import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
@@ -27,19 +29,22 @@ class StudioDetailsSection extends PureComponent {
             />
           </div>
         </div>
-        <div className="flex mb2">
-          <div className="col-4 md:col-6">
+        <div class="flex flex-col lg:flex-row flex-wrap mb2">
+          <div className="col-8 md:col-6 mb2">
             <List
               title={`Work Spaces for Rent:`}
               listItems={simpleFragmentToListItems(get(this, 'props.workSpaces', {}))}
             />
           </div>
-        </div>
-        <div className="flex">
-          <div className="col-4 md:col-6">
+          <div className="col-8 md:col-6 md:order-last mb2">
             <List
               title={`Available Positions`}
               listItems={simpleFragmentToListItems(get(this, 'props.availablePositions', {}))}
+            />
+          </div>
+          <div className="col-8 md:col-2 mb2 lg:mb0">
+            <SignUpForm
+              title={`Email Updates`}
             />
           </div>
         </div>
