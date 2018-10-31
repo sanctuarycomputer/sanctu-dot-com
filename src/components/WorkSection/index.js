@@ -11,6 +11,8 @@ import { Aspects, Breakpoints } from "constants/Sizes";
 const { MEDIUM } = Breakpoints;
 const { LANDSCAPE } = Aspects;
 
+const VERTICAL_GUTTER = 32;
+
 class WorkSection extends PureComponent {
   constructor(props) {
     super(...arguments);
@@ -73,7 +75,7 @@ class WorkSection extends PureComponent {
         mediaDimensions: { width: mediaWidth, height: mediaHeight }
       });
     } else {
-      const height = window.innerHeight - infoHeight - 32;
+      const height = window.innerHeight - infoHeight - VERTICAL_GUTTER;
       const width = height * LANDSCAPE;
       this.setState({ mediaDimensions: { width, height } });
     }
