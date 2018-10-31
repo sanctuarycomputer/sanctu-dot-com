@@ -6,10 +6,16 @@
   text-decoration: none;
 }
 
+input,
 .link {
   color: color("black");
 
   &:hover {
     color: color("gray");
+    cursor: pointer;
   }
+}
+
+[data-whatintent="mouse"] input:focus {
+  outline: none;
 }
