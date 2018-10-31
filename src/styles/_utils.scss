@@ -15,3 +15,7 @@ input,
     cursor: pointer;
   }
 }
+
+[data-whatintent="mouse"] input:focus {
+  outline: none;
+}

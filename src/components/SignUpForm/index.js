@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 
-import cx from 'classnames';
+import 'what-input'
+
 import './SignUpForm.scss';
 
 class SignUpForm extends PureComponent {
@@ -27,8 +28,7 @@ class SignUpForm extends PureComponent {
           <label className="small">
             <h3>{this.props.title}</h3>
             <input 
-              data-whatintent="mouse"
-              className="SignUpForm__input ml1_25 p0 small w100 inline-block" 
+              className="SignUpForm__input small ml1_25 p0 w100 inline-block" 
               type="email" 
               placeholder="example@example.com"
               value={this.state.value}
@@ -36,7 +36,6 @@ class SignUpForm extends PureComponent {
           </label>
           <div>
             <input 
-              data-whatintent="mouse"
               className="SignUpForm__button ml1_25 p0 small" 
               type="submit" 
               value="Submit" />
