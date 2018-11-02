@@ -4,9 +4,10 @@ import get from "utils/get";
 import IntroSectionImages from "components/IntroSectionImages";
 import IntroSectionParagraph from "components/IntroSectionParagraph";
 import AboutSection from "components/AboutSection";
-import StudioDetailsSection from "components/StudioDetailsSection";
 import WorkSection from "components/WorkSection";
 import Gallery from "components/Gallery";
+import StudioDetailsSection from "components/StudioDetailsSection";
+import Footer from "components/Footer";
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
@@ -60,6 +61,7 @@ const MainView = ({ model }) => {
           availablePositions={get(model, "fields.availablePositions.simpleFragments", {})}
         />
       </div>
+      <Footer />
     </Fragment>
   );
 };

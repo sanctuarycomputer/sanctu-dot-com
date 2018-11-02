@@ -8,29 +8,39 @@ import './Gallery.scss';
 import { Image } from 'components/base';
 
 class Gallery extends PureComponent {
-  render() {        
+
+  renderGalleryRow = (imageGroup, index, imageMatrix) => {
+    if (imageGroup.length < 2) {
+      return (
+        <div className="flex col-8 pb_5 md:pb1 items-end">
+          <div className="col-4 pr_25 md:pr_5">
+            <Image src={get(imageGroup, '[0].fields.file.url')} />
+          </div>
+        </div>
+      )
+    }
+
     return (
-      <div className={cx('Gallery p1 flex flex-col')}>
-        {
-          get(this, 'props.images', []).map((image, index) => {
-            if (index === 0 || index % 2 === 0) {
-              return (
-                <div className="col-8 flex">
-                  <div className="col-4 flex flex-col justify-end mr_5 mb1 ">
-                    <div>
-                      <Image className="w100" src={get(image, 'fields.file.url', '')} />
-                    </div>
-                  </div>
-                  <div className="col-4 flex flex-col justify-end ml_5 mb1 ">
-                    <div>
-                      <Image className="w100" src={get(this.props.images[index + 1], 'fields.file.url', '')} />
-                    </div>
-                  </div>
-                </div>
-              )
-            }
-          })
-        }
+      <div className="flex col-8 pb_5 md:pb1 items-end">
+        <div className="col-4 pr_25 md:pr_5">
+          <Image src={get(imageGroup, '[0].fields.file.url')} />
+        </div>
+        <div className="col-4 pl_25 md:pl_5">
+          <Image src={get(imageGroup, '[1].fields.file.url')} />
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    const images = get(this, 'props.images', []);
+
+    const imageMatrix = images.reduce((rows, image, index) => (index % 2 === 0 ? rows.push([image]) 
+    : rows[rows.length - 1].push(image)) && rows, []);
+
+    return (
+      <div className="col-8 p1 flex flex-wrap">
+        {imageMatrix.map((imageGroup, index) => this.renderGalleryRow(imageGroup, index, imageMatrix))}
       </div>
     );
   }
