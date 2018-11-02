@@ -6,11 +6,12 @@ import IntroSectionParagraph from "components/IntroSectionParagraph";
 import AboutSection from "components/AboutSection";
 import StudioDetailsSection from "components/StudioDetailsSection";
 import WorkSection from "components/WorkSection";
+import Gallery from "components/Gallery";
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
 
-  return (
+  return (    
     <Fragment>
       <div className="flex md:flex-row flex-col">
         <div className="col-8 flex flex-col">
@@ -45,6 +46,9 @@ const MainView = ({ model }) => {
         <WorkSection selectedWorks={get(model, "fields.selectedWorks", [])} />
       </div>
       <div>
+        <Gallery images={get(model, "fields.gallery", {})} />
+      </div>
+      <div>
         <StudioDetailsSection
           recentArticles={get(
             model,
@@ -53,11 +57,7 @@ const MainView = ({ model }) => {
           )}
           socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
           workSpaces={get(model, "fields.workSpaces.simpleFragments", {})}
-          availablePositions={get(
-            model,
-            "fields.availablePositions.simpleFragments",
-            {}
-          )}
+          availablePositions={get(model, "fields.availablePositions.simpleFragments", {})}
         />
       </div>
     </Fragment>
