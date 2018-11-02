@@ -37,7 +37,7 @@ class WorkSection extends PureComponent {
     this.adjustSize();
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
   }
 

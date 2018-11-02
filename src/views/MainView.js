@@ -14,7 +14,7 @@ const MainView = ({ model }) => {
   return (    
     <Fragment>
       <div className="flex md:flex-row flex-col">
-        <div className="col-8 flex flex-col">
+        <div className="col-8 flex flex-col sticky-spacer">
           <IntroSectionImages images={get(model, "fields.introImages", {})} />
           <AboutSection
             whatWeDo={get(model, "fields.whatWeDo.simpleFragments", {})}

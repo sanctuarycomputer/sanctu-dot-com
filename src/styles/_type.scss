@@ -2,10 +2,11 @@ $serif-stack: "Austin News Deck Web", serif;
 $sans-serif-stack: "Atlas Grotesk Web", sans-serif;
 
 .paragraph {
-  font-family: $serif-stack;
+  font-family: $sans-serif-stack;
   font-weight: 200;
   font-size: 1.75rem;
   line-height: 2.1rem; // pt size + 20%
+  letter-spacing: -5;
 
   @include media("md") {
     font-size: 2.5rem;
@@ -21,5 +22,5 @@ $sans-serif-stack: "Atlas Grotesk Web", sans-serif;
 
 .tiny {
   font-family: $sans-serif-stack;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
 }
