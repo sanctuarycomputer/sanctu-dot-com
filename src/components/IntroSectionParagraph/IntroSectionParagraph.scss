@@ -2,5 +2,37 @@
   &__content {
     position: sticky;
     top: 0;
+
+    /*
+      First paragraph
+      containing acronym
+      should never wrap to the next line
+    */
+
+    & p:first-of-type {
+      display: inline;
+      white-space: nowrap;
+
+      /*
+        However, we want the adjacent paragraph
+        to act as if it were part of the same paragraph
+        above
+      */
+
+      & + p {
+        display: inline;
+      }
+    }
+
+    /*
+      Because the "second" paragraph
+      is now display inline, we need to add the margin
+      bottom it would naturally have
+      as the margin-top of the following paragraph
+    */
+
+    & p:nth-of-type(3) {
+      margin-top: 2rem;
+    }
   }
 }
