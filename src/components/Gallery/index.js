@@ -10,7 +10,7 @@ import { Image } from 'components/base';
 class Gallery extends PureComponent {
 
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
-    if (imageGroup.length < 2) {
+    if (index === imageMatrix.length -1) {
       return (
         <div className="flex col-8 pb_5 md:pb1 items-end">
           <div className="col-4 pr_25 md:pr_5">
