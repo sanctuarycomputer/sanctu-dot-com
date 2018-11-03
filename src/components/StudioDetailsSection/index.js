@@ -14,7 +14,11 @@ import "./StudioDetailsSection.scss";
 class StudioDetailsSection extends PureComponent {
   render() {
     return (
-      <div className={cx("StudioDetailsSection p1 col-8 md:col-4")}>
+      <div
+        className={cx("StudioDetailsSection p1 col-8 md:col-4", {
+          [this.props.className]: !!this.props.className
+        })}
+      >
         <div className="flex flex-col md:flex-row mb2">
           <div className="col-8 md:col-4 xl:col-6">
             <List

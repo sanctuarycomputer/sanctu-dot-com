@@ -20,10 +20,15 @@ input,
   outline: none;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
 .sticky-spacer {
   padding-bottom: 0;
 
   @include media("md") {
-    padding-bottom: 650px;
+    padding-bottom: 720px;
   }
 }
