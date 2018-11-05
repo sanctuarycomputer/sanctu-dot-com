@@ -6,7 +6,6 @@ import IntroSectionParagraph from "components/IntroSectionParagraph";
 import AboutSection from "components/AboutSection";
 import WorkSection from "components/WorkSection";
 import Gallery from "components/Gallery";
-import StudioDetailsSection from "components/StudioDetailsSection";
 import Footer from "components/Footer";
 
 const MainView = ({ model }) => {

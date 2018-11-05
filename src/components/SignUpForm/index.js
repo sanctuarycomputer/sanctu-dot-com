@@ -1,44 +1,46 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 
-import 'what-input'
+import "what-input";
 
-import './SignUpForm.scss';
+import "./SignUpForm.scss";
 
 class SignUpForm extends PureComponent {
   constructor(props) {
     super(...arguments);
 
-    this.state = { 
-      value: ''
+    this.state = {
+      value: ""
     };
   }
 
   handleChange = event => {
     this.setState({ value: event.target.value });
-  }
+  };
 
   handleSubmit = event => {
     event.preventDefault();
-  }
+  };
 
   render() {
     return (
-      <div className={'SignUpForm'}>
+      <div className={"SignUpForm"}>
         <form onSubmit={this.handleSubmit}>
           <label className="small">
             <h3>{this.props.title}</h3>
-            <input 
-              className="SignUpForm__input small ml1_25 p0 w100 inline-block" 
-              type="email" 
-              placeholder="example@example.com"
+            <input
+              className="SignUpForm__input small ml1_25 p0 w100 inline-block"
+              type="email"
+              placeholder="hello@example.com"
               value={this.state.value}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+            />
           </label>
           <div>
-            <input 
-              className="SignUpForm__button ml1_25 p0 small" 
-              type="submit" 
-              value="Submit" />
+            <input
+              className="SignUpForm__button ml1_25 p0 small"
+              type="submit"
+              value="Submit"
+            />
           </div>
         </form>
       </div>

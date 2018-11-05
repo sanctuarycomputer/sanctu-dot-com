@@ -11,10 +11,4 @@
       color: color("gray");
     }
   }
-
-  &__input {
-    @include media("md") {
-      min-width: 210px;
-    }
-  }
 }

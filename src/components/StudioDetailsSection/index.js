@@ -15,7 +15,7 @@ class StudioDetailsSection extends PureComponent {
   render() {
     return (
       <div
-        className={cx("StudioDetailsSection p1 col-8 md:col-4", {
+        className={cx("StudioDetailsSection col-8 py1", {
           [this.props.className]: !!this.props.className
         })}
       >
