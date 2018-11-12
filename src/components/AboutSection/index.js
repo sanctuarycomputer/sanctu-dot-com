@@ -1,47 +1,57 @@
-import React, { PureComponent } from 'react';
-import get from 'utils/get';
-import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
+import React, { PureComponent } from "react";
+import get from "utils/get";
+import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
 
-import { SimpleFragment } from 'models';
+import { SimpleFragment } from "models";
 
-import { List } from 'components/base';
+import { List } from "components/base";
 
-import cx from 'classnames';
-import './AboutSection.scss';
+import cx from "classnames";
+import "./AboutSection.scss";
 
 class AboutSection extends PureComponent {
   render() {
     return (
-      <div className={cx('AboutSection p1 col-8')}>
+      <div className={cx("AboutSection p1 col-8")}>
         <div className="mb2">
           <List
             title={`What we do:`}
-            listItems={simpleFragmentToListItems(get(this, 'props.whatWeDo', {}))}
+            listItems={simpleFragmentToListItems(
+              get(this, "props.whatWeDo", {})
+            )}
           />
         </div>
         <div className="flex flex-wrap">
-          <div className="col-4 md:col-2 mb2 md:mb0 ">
+          <div className="col-4 xl:col-2 mb2 xl:mb0 ">
             <List
               title={`Selected Clients:`}
-              listItems={simpleFragmentToListItems(get(this, 'props.selectedClients', {}))}
+              listItems={simpleFragmentToListItems(
+                get(this, "props.selectedClients", {})
+              )}
             />
           </div>
-          <div className="col-4 md:col-2 mb2 md:mb0 ">
+          <div className="col-4 xl:col-2 mb2 xl:mb0 ">
             <List
               title={`Technology Stack:`}
-              listItems={simpleFragmentToListItems(get(this, 'props.technologyStack', {}))}
+              listItems={simpleFragmentToListItems(
+                get(this, "props.technologyStack", {})
+              )}
             />
           </div>
-          <div className="col-4 md:col-2">
+          <div className="col-4 xl:col-2">
             <List
               title={`Software:`}
-              listItems={simpleFragmentToListItems(get(this, 'props.software', {}))}
+              listItems={simpleFragmentToListItems(
+                get(this, "props.software", {})
+              )}
             />
           </div>
-          <div className="col-4 md:col-2">
+          <div className="col-4 xl:col-2">
             <List
               title={`Collaborators:`}
-              listItems={simpleFragmentToListItems(get(this, 'props.collaborators', {}))}
+              listItems={simpleFragmentToListItems(
+                get(this, "props.collaborators", {})
+              )}
             />
           </div>
         </div>
@@ -55,7 +65,7 @@ AboutSection.propTypes = {
   selectedClients: SimpleFragment,
   technologyStack: SimpleFragment,
   software: SimpleFragment,
-  collaborators: SimpleFragment,
+  collaborators: SimpleFragment
 };
 
 export default AboutSection;

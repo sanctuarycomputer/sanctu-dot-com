@@ -37,7 +37,7 @@ class WorkSection extends PureComponent {
     this.adjustSize();
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
   }
 
@@ -199,7 +199,7 @@ class WorkSection extends PureComponent {
           <div onClick={this.setNextSlide} className="MediaContainer__next" />
         </div>
         <div ref={this.infoContainer} className="col-8 flex flex-row pt3">
-          <div className="col-4 flex flex-col justify-between">
+          <div className="col-4 flex flex-col">
             <div className="mb2">
               <h2 className="paragraph mb1">
                 {get(activeProject, "fields.title", "")}

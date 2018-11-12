@@ -19,3 +19,16 @@ input,
 [data-whatintent="mouse"] input:focus {
   outline: none;
 }
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.sticky-spacer {
+  padding-bottom: 0;
+
+  @include media("md") {
+    padding-bottom: 720px;
+  }
+}

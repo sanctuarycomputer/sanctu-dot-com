@@ -1,10 +1,12 @@
-.SignUpForm{
+@import "styles/app.scss";
+
+.SignUpForm {
   &__input,
   &__button {
     border: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
-    
+
     &::placeholder {
       color: color("gray");
     }
