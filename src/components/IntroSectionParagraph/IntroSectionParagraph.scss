@@ -1,7 +1,11 @@
+@import "styles/app.scss";
+
 .IntroSectionParagraph {
   &__content {
-    position: sticky;
-    top: 0;
+    @include media("md") {
+      top: 0;
+      position: sticky;
+    }
 
     /*
       First paragraph
@@ -30,9 +34,18 @@
       bottom it would naturally have
       as the margin-top of the following paragraph
     */
-
     & p:nth-of-type(3) {
-      margin-top: 2rem;
+      margin-top: $p-line-height;
+      @include media("md") {
+        margin-top: $p-md-line-height;
+      }
+      @include media("xl") {
+        margin-top: $p-xl-line-height;
+      }
+    }
+
+    & p:last-of-type {
+      margin-bottom: 0rem;
     }
   }
 }

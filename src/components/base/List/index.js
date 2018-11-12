@@ -7,11 +7,12 @@ import './List.scss';
 
 const List = ({ title, listItems, className }) => {
   const hasListItems = !!(listItems && listItems.length);
+  if (!hasListItems) return null;
   return (
     <div className={cx('List', {[className]: !!className})}>
       <h3 className="small">{title}</h3>
       <ul className="ml1_25">
-        {(hasListItems && listItems).map(listItem => (
+        {(listItems).map(listItem => (
           <li key={get(listItem, 'uuid')} className="small">
             {listItem.hasLink ? (
               <a 

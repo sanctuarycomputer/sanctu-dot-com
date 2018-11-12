@@ -121,15 +121,20 @@ class WorkSection extends PureComponent {
           {get(this, "props.selectedWorks", []).map((work, index) => (
             <Fragment key={get(work, "sys.id")}>
               <div className="MediaContainer" ref={this.mediaContainer}>
-                <img
-                  className="block mx-auto"
+                <video
+                  className="block mxauto"
+                  poster={get(work, "fields.previewImage.fields.file.url")}
                   style={{
                     width: mediaDimensions.width,
                     height: mediaDimensions.height
                   }}
-                  alt="project asset"
-                  src={get(work, "fields.media.fields.file.url")}
-                />
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={get(work, "fields.video.fields.file.url")}></source>
+                </video>
               </div>
               <div ref={this.infoContainer} className="col-8 flex flex-col pt2">
                 <div className="mb2 col-8 flex flex-row justify-between">
@@ -139,8 +144,10 @@ class WorkSection extends PureComponent {
                     </h2>
                     <a
                       className="small link underline"
-                      alt="project link"
+                      alt="Project Link"
                       href={get(work, "fields.link")}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {get(work, "fields.linkLabel")}
                     </a>
@@ -151,7 +158,7 @@ class WorkSection extends PureComponent {
                 </div>
                 <div className="col-8 flex justify-between">
                   <List
-                    title="Stack:"
+                    title="Tech Stack:"
                     listItems={simpleFragmentToListItems(
                       get(work, "fields.stack.simpleFragments", {})
                     )}
@@ -180,16 +187,21 @@ class WorkSection extends PureComponent {
             transitionMode="fade"
           >
             {get(this, "props.selectedWorks", []).map((work, index) => (
-              <img
+              <video
                 key={get(work, "sys.id")}
                 className="block mxauto"
+                poster={get(work, "fields.previewImage.fields.file.url")}
                 style={{
                   width: mediaDimensions.width,
                   height: mediaDimensions.height
                 }}
-                alt="project asset"
-                src={get(work, "fields.media.fields.file.url")}
-              />
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={get(work, "fields.video.fields.file.url")}></source>
+              </video>
             ))}
           </Slider>
           <div
@@ -206,8 +218,10 @@ class WorkSection extends PureComponent {
               </h2>
               <a
                 className="small link underline"
-                alt="project link"
+                alt="Project Link"
                 href={get(activeProject, "fields.link")}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {get(activeProject, "fields.linkLabel")}
               </a>
@@ -219,7 +233,7 @@ class WorkSection extends PureComponent {
           <div className="col-4 flex justify-end">
             <div className="col-4 xl:col-2">
               <List
-                title="Stack:"
+                title="Tech Stack:"
                 listItems={simpleFragmentToListItems(
                   get(activeProject, "fields.stack.simpleFragments", {})
                 )}

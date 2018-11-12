@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import styles from './Image.scss';
+import './Image.scss';
 
 class Image extends Component {
   constructor(props) {
@@ -44,8 +44,8 @@ class Image extends Component {
       backgroundImage: `url(${src})`
     };
 
-    const styleNames = cx(styles['Image'], {
-      [styles['Image--active']]: this.state.loaded
+    const styleNames = cx('Image', {
+      ['Image--active']: this.state.loaded
     });
 
     if (!bg) {

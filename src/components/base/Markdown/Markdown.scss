@@ -3,16 +3,27 @@
 .Markdown {
   p {
     @extend .paragraph;
-    @extend .mb2;
+
+    margin-bottom: $p-line-height;
+    @include media("md") {
+      margin-bottom: $p-md-line-height;
+    }
+    @include media("xl") {
+      margin-bottom: $p-xl-line-height;
+    }
 
     > em {
       @extend .tiny;
       white-space: nowrap;
       position: relative;
-      top: -8px;
+      top: -6px;
 
       @include media("md") {
-        top: -12px;
+        top: -10px;
+      }
+
+      @include media("xl") {
+        top: -11px;
       }
     }
   }

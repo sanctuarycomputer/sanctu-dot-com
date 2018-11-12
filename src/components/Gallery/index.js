@@ -12,7 +12,7 @@ class Gallery extends PureComponent {
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
     if (index === imageMatrix.length - 1) {
       return (
-        <div className="flex flex-col md:flex-row col-8 pb_5 md:pb1">
+        <div className="flex flex-col md:flex-row col-8 pb_5 md:pb1" key={index}>
           <div className="sticky-spacer col-8 md:col-4 pr_25 md:pr_5">
             <Image
               className="col-4 md:col-8"
@@ -35,7 +35,7 @@ class Gallery extends PureComponent {
     }
 
     return (
-      <div className="flex col-8 pb_5 md:pb1 items-end">
+      <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
         <div className="col-4 pr_25 md:pr_5">
           <Image src={get(imageGroup, "[0].fields.file.url")} />
         </div>
