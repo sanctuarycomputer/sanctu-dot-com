@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  deploy-staging:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: REACT_APP_STAGE=staging NODE_ENV=production PUBLIC_URL=https://staging.sanctuary.computer CI="" yarn build
+      - run: sudo apt-get install python-dev python-pip
+      - run: sudo pip install awscli
+      - run: aws configure set preview.cloudfront true
+      - run: aws s3 sync build s3://computer-sanctuary-staging/ --delete
+      - run: aws s3 cp build/index.html s3://computer-sanctuary-staging/ --cache-control max-age=0
+      - run: aws cloudfront create-invalidation --distribution-id E128T72VZJKBRS --paths '/*'
+
+  deploy-production:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: NODE_ENV=production PUBLIC_URL=https://www.sanctuary.computer CI="" yarn build
+      - run: sudo apt-get install python-dev python-pip
+      - run: sudo pip install awscli
+      - run: aws configure set preview.cloudfront true
+      - run: aws s3 sync build s3://computer-sanctuary-www/ --delete
+      - run: aws s3 cp build/index.html s3://computer-sanctuary-www/ --cache-control max-age=0
+      - run: aws cloudfront create-invalidation --distribution-id E9WTSZDHEB6TK --paths '/*'
+
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - deploy-staging:
+          filters:
+            branches:
+              only: staging
+      - deploy-production:
+          filters:
+            branches:
+              only: production
