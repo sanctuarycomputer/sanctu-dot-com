@@ -37,7 +37,7 @@ class SignUpForm extends PureComponent {
       <div className={"SignUpForm"}>
         <MailchimpSubscribe
           url={url}
-          render={({ subscribe, status, message }) => (
+          render={({ subscribe, status }) => (
             <div>
               <label className="small">
                 <h3>{this.props.title}</h3>
