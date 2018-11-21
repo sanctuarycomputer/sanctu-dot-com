@@ -60,12 +60,12 @@ class SignUpForm extends PureComponent {
             ) : null}
             {status === 'success' ? (
               this.setState({
-                message: 'Thanks for subscribing'
+                message: 'Thank you!'
               })
             ) : null}
             {status === 'error' ? (
               this.setState({
-                message: `Oops! Please try again`
+                message: 'Please try again.'
               })
             ) : null}
           </div>
