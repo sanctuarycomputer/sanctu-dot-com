@@ -6,6 +6,7 @@ import "./SignUpForm.scss";
 
 import ENV from 'config/Environment';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+
 const { MAILCHIMP_URL } = ENV;
 
 class SignUpForm extends PureComponent {
@@ -23,44 +24,35 @@ class SignUpForm extends PureComponent {
   };
 
   render() {
-    const body = document.querySelector('body');
-
-    body.addEventListener('keyup', function (event) {
-      event.preventDefault();
-      if (event.keyCode === 13) {
-        const input = document.getElementById("submit")
-        input.click();
-      }
-    });
-
     return (
       <div className={"SignUpForm"}>
         <MailchimpSubscribe
           url={MAILCHIMP_URL}
           render={({ subscribe, status }) => (
             <div>
-              <label className="small">
-                <h3>{this.props.title}</h3>
-                <input
-                  className="SignUpForm__input small ml1_25 p0 w100 inline-block"
-                  type="email"
-                  placeholder="hello@example.com"
-                  value={this.state.emailAddress}
-                  onChange={this.handleChange}
-                />
-              </label>
-            <div>
-              <input
-                id="submit"
-                className="SignUpForm__button ml1_25 p0 small"
-                type="submit"
-                value="Submit"
-                onClick={() => subscribe({ EMAIL: this.state.emailAddress })}
-              />
-              <div className="relative w100">
-                <p className="smaller absolute ml1_25 p0">{this.state.message}</p>
+              <form onSubmit={(event) => {
+                event.preventDefault();
+                subscribe({ EMAIL: this.state.emailAddress })}
+              }>
+                <label className="small">
+                  <h3>{this.props.title}</h3>
+                  <input
+                    className="SignUpForm__input small ml1_25 p0 w100 inline-block"
+                    type="email"
+                    placeholder="hello@example.com"
+                    value={this.state.emailAddress}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              <div>
+                <button className="SignUpForm__button ml1_25 p0 small" type="submit">
+                  Submit
+                </button>
+                <div className="relative w100">
+                  <p className="smaller absolute ml1_25 p0">{this.state.message}</p>
+                </div>
               </div>
-            </div>
+            </form>
             {status === 'sending' ? (
               this.setState({
                 message: 'Loading...'
