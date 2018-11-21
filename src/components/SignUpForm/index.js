@@ -5,7 +5,8 @@ import "what-input";
 import "./SignUpForm.scss";
 
 import ENV from 'config/Environment';
-import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
+const { MAILCHIMP_URL } = ENV;
 
 class SignUpForm extends PureComponent {
   constructor(props) {
@@ -22,7 +23,6 @@ class SignUpForm extends PureComponent {
   };
 
   render() {
-    const url = ENV.MAILCHIMP_URL;
     const body = document.querySelector('body');
 
     body.addEventListener('keyup', function (event) {
@@ -36,7 +36,7 @@ class SignUpForm extends PureComponent {
     return (
       <div className={"SignUpForm"}>
         <MailchimpSubscribe
-          url={url}
+          url={MAILCHIMP_URL}
           render={({ subscribe, status }) => (
             <div>
               <label className="small">
