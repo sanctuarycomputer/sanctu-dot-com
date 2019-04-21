@@ -5,3 +5,8 @@
 
 @import "./type.scss";
 @import "./utils.scss";
+
+#root {
+  max-width: 1580px;
+  margin: auto;
+}

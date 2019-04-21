@@ -16,7 +16,7 @@ class Gallery extends PureComponent {
           <div className="sticky-spacer col-8 md:col-4 pr_25 md:pr_5">
             <Image
               className="col-4 md:col-8"
-              src={get(imageGroup, "[0].fields.file.url")}
+              src={`${get(imageGroup, "[0].fields.file.url")}?q=85&w=1200`}
             />
             <StudioDetailsSection
               recentArticles={get(this, "props.recentArticles", {})}
@@ -37,10 +37,18 @@ class Gallery extends PureComponent {
     return (
       <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
         <div className="col-4 pr_25 md:pr_5">
-          <Image src={get(imageGroup, "[0].fields.file.url")} />
+          <Image src={
+            get(imageGroup, "[0].fields.file.url").endsWith('.gif') ?
+              `${get(imageGroup, "[0].fields.file.url")}` :
+              `${get(imageGroup, "[0].fields.file.url")}?q=85&w=1200`
+          } />
         </div>
         <div className="col-4 pl_25 md:pl_5">
-          <Image src={get(imageGroup, "[1].fields.file.url")} />
+          <Image src={
+            get(imageGroup, "[1].fields.file.url").endsWith('.gif') ?
+              `${get(imageGroup, "[1].fields.file.url")}` :
+              `${get(imageGroup, "[1].fields.file.url")}?q=85&w=1200`
+          } />
         </div>
       </div>
     );

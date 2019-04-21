@@ -1,6 +1,13 @@
 @import "styles/app.scss";
 
 .SignUpForm {
+  &__input {
+    color: color("black");
+    &:hover {
+      color: color("black");
+    }
+  }
+
   &__input,
   &__button {
     border: 0;

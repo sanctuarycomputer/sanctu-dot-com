@@ -22,7 +22,7 @@ class StudioDetailsSection extends PureComponent {
         <div className="flex flex-col md:flex-row mb2">
           <div className="col-8 md:col-4 xl:col-6">
             <List
-              title={`Recent Articles:`}
+              title={`Recently:`}
               listItems={simpleFragmentToListItems(
                 get(this, "props.recentArticles", {})
               )}
@@ -48,14 +48,14 @@ class StudioDetailsSection extends PureComponent {
           </div>
           <div className="col-8 xl:col-6 xl:order-last mb2">
             <List
-              title={`Available Positions`}
+              title={`Available Positions:`}
               listItems={simpleFragmentToListItems(
                 get(this, "props.availablePositions", {})
               )}
             />
           </div>
           <div className="col-8 xl:col-2 mb2 xl:mb0">
-            <SignUpForm title={`Email Updates`} />
+            <SignUpForm title={`Email Updates:`} />
           </div>
         </div>
       </div>

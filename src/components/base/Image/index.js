@@ -40,7 +40,7 @@ class Image extends Component {
     const { classes } = this.state;
     let bgStyle = {
       ...style,
-      backgroundColor: 'gray',
+      backgroundColor: 'whitesmoke',
       backgroundImage: `url(${src})`
     };
 

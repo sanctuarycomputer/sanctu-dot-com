@@ -255,7 +255,7 @@ class WorkSection extends PureComponent {
   };
 
   render() {
-    return <div className="WorkSection px1 py8">{this.renderWork()}</div>;
+    return <div className="WorkSection px1 py6">{this.renderWork()}</div>;
   }
 }
 

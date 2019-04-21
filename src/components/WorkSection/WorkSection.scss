@@ -14,12 +14,8 @@
         bottom: 0;
         top: 0;
         right: 50%;
-
-        &:hover {
-          cursor: url(../../assets/previous-cursor.svg), pointer;
-        }
+        cursor: w-resize;
       }
-
     }
 
     &__next {
@@ -32,10 +28,7 @@
         right: 0;
         top: 0;
         bottom: 0;
-  
-        &:hover {
-          cursor: url(../../assets/next-cursor.svg), pointer;
-        }
+        cursor: e-resize;
       }
     }
   }

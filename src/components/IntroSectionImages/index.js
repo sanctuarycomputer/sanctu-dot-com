@@ -27,7 +27,7 @@ class IntroSectionImages extends PureComponent {
             <Image
               className="bg-cover bg-no-repeat"
               bg
-              src={get(this, "state.activeImage.fields.file.url")}
+              src={`${get(this, "state.activeImage.fields.file.url")}?q=85`}
             />
           </div>
         </div>

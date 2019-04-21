@@ -40,7 +40,7 @@ class AboutSection extends PureComponent {
           </div>
           <div className="col-4 xl:col-2">
             <List
-              title={`Software:`}
+              title={`Platforms:`}
               listItems={simpleFragmentToListItems(
                 get(this, "props.software", {})
               )}
