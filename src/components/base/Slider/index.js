@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import NukaCarousel from "nuka-carousel";
 import get from "utils/get";
+import './Slider.scss';
 
 class Slider extends PureComponent {
   componentDidMount() {
@@ -14,7 +15,6 @@ class Slider extends PureComponent {
     return (
       <NukaCarousel
         wrapAround={this.props.wrapAround}
-        withoutControls={this.props.withoutControls}
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
       >
@@ -25,7 +25,6 @@ class Slider extends PureComponent {
 }
 
 Slider.defaultProps = {
-  withoutControls: true,
   transitionMode: "fade",
   afterSlide: f => f,
   wrapAround: true,
@@ -36,7 +35,6 @@ Slider.defaultProps = {
 Slider.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   slideIndex: PropTypes.number,
-  withoutControls: PropTypes.bool,
   transitionMode: PropTypes.string,
   afterSlide: PropTypes.func,
   wrapAround: PropTypes.bool,
