@@ -3,7 +3,7 @@ import SanctuLogo from "assets/sanctu_logo.svg";
 import "./Footer.scss";
 
 const Footer = () => (
-  <footer className="Footer col-8 p1 pb2">
+  <footer className="Footer col-8 p1">
     <img
       className="Footer__icon"
       src={SanctuLogo}

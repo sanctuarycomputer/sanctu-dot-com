@@ -13,10 +13,10 @@ class Gallery extends PureComponent {
     if (index === imageMatrix.length - 1) {
       return (
         <div className="flex flex-col md:flex-row col-8 pb_5 md:pb1" key={index}>
-          <div className="sticky-spacer col-8 md:col-4 pr_25 md:pr_5">
+          <div className="col-8 md:col-4 pr_25 md:pr_5">
             <Image
               className="col-4 md:col-8"
-              src={`${get(imageGroup, "[0].fields.file.url")}?q=85&w=1200`}
+              src={`${get(imageGroup, "[0].fields.file.url")}?q=85&w=1400`}
             />
             <StudioDetailsSection
               recentArticles={get(this, "props.recentArticles", {})}
@@ -40,14 +40,14 @@ class Gallery extends PureComponent {
           <Image src={
             get(imageGroup, "[0].fields.file.url").endsWith('.gif') ?
               `${get(imageGroup, "[0].fields.file.url")}` :
-              `${get(imageGroup, "[0].fields.file.url")}?q=85&w=1200`
+              `${get(imageGroup, "[0].fields.file.url")}?q=85&w=1400`
           } />
         </div>
         <div className="col-4 pl_25 md:pl_5">
           <Image src={
             get(imageGroup, "[1].fields.file.url").endsWith('.gif') ?
               `${get(imageGroup, "[1].fields.file.url")}` :
-              `${get(imageGroup, "[1].fields.file.url")}?q=85&w=1200`
+              `${get(imageGroup, "[1].fields.file.url")}?q=85&w=1400`
           } />
         </div>
       </div>
