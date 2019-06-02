@@ -9,6 +9,12 @@ import { Image, Markdown } from "components/base";
 import StudioDetailsSection from "components/StudioDetailsSection";
 
 class Gallery extends PureComponent {
+  renderAttribution = () => {
+    return (
+      <p className="small pb1 color-gray">Images sourced from pubdomordie.com, Jeremy Turner, and ourselves.</p>
+    );
+  }
+
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
     if (index === imageMatrix.length - 1) {
       return (
@@ -37,6 +43,7 @@ class Gallery extends PureComponent {
     return (
       <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
         <div className="col-4 pr_25 md:pr_5">
+          {(index === 0) ? this.renderAttribution() : null}
           <Image src={
             get(imageGroup, "[0].fields.file.url").endsWith('.gif') ?
               `${get(imageGroup, "[0].fields.file.url")}` :
