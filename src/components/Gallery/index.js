@@ -27,7 +27,7 @@ class Gallery extends PureComponent {
             <StudioDetailsSection
               recentArticles={get(this, "props.recentArticles", {})}
               socialMedia={get(this, "props.socialMedia", {})}
-              workSpaces={get(this, "props.workSpaces", {})}
+              openSourceProjects={get(this, "props.openSourceProjects", {})}
               availablePositions={get(this, "props.availablePositions", {})}
             />
           </div>

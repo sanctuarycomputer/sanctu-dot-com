@@ -55,7 +55,7 @@ const MainView = ({ model }) => {
             {}
           )}
           socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
-          workSpaces={get(model, "fields.workSpaces.simpleFragments", {})}
+          openSourceProjects={get(model, "fields.openSourceProjects.simpleFragments", {})}
           availablePositions={get(
             model,
             "fields.availablePositions.simpleFragments",

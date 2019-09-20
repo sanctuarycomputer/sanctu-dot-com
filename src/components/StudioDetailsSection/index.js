@@ -40,9 +40,9 @@ class StudioDetailsSection extends PureComponent {
         <div className="flex flex-col xl:flex-row flex-wrap mb2">
           <div className="col-8 xl:col-6 mb2">
             <List
-              title={`Work Spaces for Rent:`}
+              title={`Open source projects:`}
               listItems={simpleFragmentToListItems(
-                get(this, "props.workSpaces", {})
+                get(this, "props.openSourceProjects", {})
               )}
             />
           </div>
