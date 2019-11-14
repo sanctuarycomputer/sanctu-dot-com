@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import 'styles/app.scss';
 
 import MainContainer from 'containers/MainContainer';
+import NightModeOverlay from "components/NightModeOverlay";
+
+import { isNightMode } from 'state/actions/nightModeActions';
 
 class App extends Component {
   componentDidMount() {
@@ -10,9 +16,29 @@ class App extends Component {
 
   render() {
     return (
+      <>
+        <NightModeOverlay
+          isNightMode={this.props.isNightMode}/>
         <MainContainer />
+      </>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  isNightMode: state.nightMode.isNightMode
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(
+    {
+      isNightMode
+    },
+    dispatch
+  )
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
