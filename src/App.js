@@ -15,10 +15,12 @@ class App extends Component {
   }
 
   render() {
+    const { isNightMode } = this.props
+
     return (
       <>
         <NightModeOverlay
-          isNightMode={this.props.isNightMode}/>
+          isNightMode={isNightMode}/>
         <MainContainer />
       </>
     );

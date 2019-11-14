@@ -6,7 +6,7 @@
     "basement": "https://github.com/sanctuarycomputer/basement.git",
     "classnames": "^2.2.6",
     "contentful": "^7.0.4",
-    "history": "^4.10.1",
+    "date-fns": "^2.7.0",
     "lodash": "^4.17.13",
     "node-sass": "^4.9.3",
     "nuka-carousel": "^4.4.1",
