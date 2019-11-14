@@ -7,12 +7,16 @@ import AboutSection from "components/AboutSection";
 import WorkSection from "components/WorkSection";
 import Gallery from "components/Gallery";
 import Footer from "components/Footer";
+import NightModeOverlay from "components/NightModeOverlay";
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Something went wrong...</h1>;
 
   return (
     <Fragment>
+      <NightModeOverlay
+        socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
+      />
       <div className="flex md:flex-row flex-col">
         <div className="col-8 flex flex-col sticky-spacer">
           <IntroSectionImages images={get(model, "fields.introImages", {})} />
