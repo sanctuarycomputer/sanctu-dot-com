@@ -16,9 +16,29 @@ $sans-serif-stack: "Atlas Grotesk Web", sans-serif;
     }
   }
 
+  &__social-media-links {
+    a {
+      text-decoration: none;
+      color: color("white");
+    }
+  }
+
   &__footer {
     @include media("md-up") {
       left: 0;
+    }
+  }
+
+  &__paragraph {
+    font-family: $serif-stack;
+    font-weight: 200;
+    font-size: 1.65rem;
+    line-height: 2.125rem;
+    letter-spacing: -5;
+  
+    @include media("md-up") {
+      font-size: 3.125rem;
+      line-height: 3.75rem; 
     }
   }
 }

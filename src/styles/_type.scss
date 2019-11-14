@@ -4,6 +4,9 @@ $sans-serif-stack: "Atlas Grotesk Web", sans-serif;
 $p-line-height: 2.1rem;
 $p-md-line-height: 2.64rem;
 $p-xl-line-height: 3rem;
+$night-mode-line-height: 2.1rem;
+$night-mode-md-line-height: 2.64rem;
+
 .paragraph {
   font-family: $serif-stack;
   font-weight: 200;
@@ -48,5 +51,4 @@ $p-xl-line-height: 3rem;
     font-size: 11px;
     letter-spacing: 0.5px;
   }
-
 }
