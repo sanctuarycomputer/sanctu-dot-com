@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { initializeApplication } from 'state/actions/applicationActions';
-import { IDLE, FULFILLED, REJECTED } from 'constants/Status';
+import { IDLE } from 'constants/Status';
 
 import get from 'utils/get';
 
@@ -17,7 +17,7 @@ class App extends Component {
 
     const { initializeApplicationStatus, actions } = props;
 
-    if (initializeApplicationStatus === 'IDLE') {
+    if (initializeApplicationStatus === IDLE) {
       actions.initializeApplication();
     }
   }
@@ -37,8 +37,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     ...state,
-    applicationStatus: get(state, 'status.initializeApplication'),
-    // globalSettings: get(state, 'applicationUI.globalSettings.items[0].fields'),
+    applicationStatus: get(state, 'status.initializeApplication')
   };
 };
 
