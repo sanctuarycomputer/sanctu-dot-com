@@ -32,7 +32,7 @@ class NightModeOverlay extends PureComponent {
                       <a href="www.sanctuary.computer" className="none md:block">Podcast</a>
                   </nav>
                 <div className="NightModeOverlay__sign-up-form none md:block md:mt4">
-                  <SignUpForm title={`Email Updates:`} />
+                  <SignUpForm title='Email Updates:' />
                 </div>
               </div>
               <div className="NightModeOverlay__paragraph p1 md:col-4 col-12 pr6">
