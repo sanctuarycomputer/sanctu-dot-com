@@ -1,10 +1,12 @@
 @import "./reset.scss";
 
 @import "./config.scss";
-@import "~basement/src/index";
+@import '~@sanctucompu/basement/src/index';
 
 @import "./type.scss";
 @import "./utils.scss";
+@import "./global.scss";
+@import "./components.scss";
 
 #root {
   max-width: 1920px;

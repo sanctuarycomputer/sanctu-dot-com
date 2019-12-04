@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import get from 'utils/get';
 
 import cx from 'classnames';
-import './List.scss';
 
 const List = ({ title, listItems, className }) => {
   const hasListItems = !!(listItems && listItems.length);
