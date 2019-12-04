@@ -47,5 +47,4 @@ BlockGeneralInfo.propTypes = {
   })
 };
 
-
 export default BlockGeneralInfo;
