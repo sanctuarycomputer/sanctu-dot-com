@@ -2,8 +2,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import get from "utils/get";
 
-import "./Gallery.scss";
-
 import { Image, Markdown } from "components/base";
 
 import StudioDetailsSection from "components/StudioDetailsSection";

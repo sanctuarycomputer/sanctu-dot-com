@@ -9,7 +9,6 @@ import { SimpleFragment } from "models";
 import { List } from "components/base";
 
 import cx from "classnames";
-import "./StudioDetailsSection.scss";
 
 class StudioDetailsSection extends PureComponent {
   render() {

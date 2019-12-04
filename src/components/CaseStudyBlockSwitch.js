@@ -3,7 +3,7 @@ import get from 'utils/get';
 
 import BlockGeneralInfo from 'components/BlockGeneralInfo';
 
-const BlockSwitch = props => {
+const CaseStudyBlockSwitch = props => {
   const { block } = props;
   const type = get(block, 'sys.contentType.sys.id');
 
@@ -19,4 +19,4 @@ const BlockSwitch = props => {
   return Block(type);
 };
 
-export default BlockSwitch;
+export default CaseStudyBlockSwitch;
