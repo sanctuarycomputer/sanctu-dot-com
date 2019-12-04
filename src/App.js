@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'styles/app.scss';
 
 import MainContainer from 'containers/MainContainer';
+import CaseStudyContainer from 'containers/CaseStudyContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -10,7 +12,19 @@ class App extends Component {
 
   render() {
     return (
-      <MainContainer />
+      <Router>
+        <Switch>
+          <Route
+            path='/:caseStudySlug'
+            exact={true}
+            component={CaseStudyContainer}
+          />
+          <Route
+            path='/'
+            component={MainContainer}
+          />
+        </Switch>
+      </Router>
     );
   }
 }

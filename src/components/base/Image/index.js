@@ -45,7 +45,7 @@ class Image extends Component {
     };
 
     const styleNames = cx('Image', {
-      ['Image--active']: this.state.loaded
+      'Image--active': this.state.loaded
     });
 
     if (!bg) {
