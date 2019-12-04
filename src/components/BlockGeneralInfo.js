@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 import get from 'utils/get';
 
@@ -33,5 +34,18 @@ const BlockGeneralInfo = props => {
     </div>
   );
 };
+
+BlockGeneralInfo.propTypes = {
+  block: PropTypes.shape({
+    fields: PropTypes.shape({
+      header: PropTypes.string,
+      description: PropTypes.string,
+      design: PropTypes.arrayOf(PropTypes.string),
+      techStack: PropTypes.arrayOf(PropTypes.string),
+      contentAlign: PropTypes.string
+    })
+  })
+};
+
 
 export default BlockGeneralInfo;
