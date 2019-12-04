@@ -1,0 +1,68 @@
+.BlockImage {
+  &__image-container {
+    grid-column: 1 / 3;
+  }
+
+  &__image-container--full-center,
+  &__image-container--full-left,
+  &__image-container--full-right {
+    @include media('md-up') {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__image-container--large-center {
+    @include media('md-up') {
+      grid-column: 2 / 8;
+    }
+  }
+
+  &__image-container--large-left {
+    @include media('md-up') {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__image-container--large-right {
+    @include media('md-up') {
+      grid-column: 3 / 9;
+    }
+  }
+
+  &__image-container--medium-center {
+    @include media('md-up') {
+      grid-column: 2 / 8;
+      padding: 0 calc(12.5% - 3rem);
+    }
+  }
+
+  &__image-container--medium-left {
+    @include media('md-up') {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__image-container--medium-right {
+    @include media('md-up') {
+      grid-column: 4 / 9;
+    }
+  }
+
+  &__image-container--small-center {
+    @include media('md-up') {
+      grid-column: 3 / 7;
+    }
+  }
+
+  &__image-container--small-left {
+    @include media('md-up') {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__image-container--small-right {
+    @include media('md-up') {
+      grid-column: 5 / 9;
+    }
+  }
+}

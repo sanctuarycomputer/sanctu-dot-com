@@ -2,6 +2,7 @@ import React from 'react';
 import get from 'utils/get';
 
 import BlockGeneralInfo from 'components/BlockGeneralInfo';
+import BlockImage from 'components/BlockImage';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -11,6 +12,8 @@ const CaseStudyBlockSwitch = props => {
     switch (type) {
       case "caseStudyBlockGeneralInfo":
         return <BlockGeneralInfo block={block} />;
+      case "caseStudyBlockImage":
+        return <BlockImage block={block} />;
       default:
         return null;
     }
