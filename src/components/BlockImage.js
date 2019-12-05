@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { Image } from 'components/base';
 
 const BlockImage = props => {
   const fields = get(props, 'block.fields');
-  const image = flattenImageData(get(fields, 'image', {}));
+  const currentBreakpoint = get(props, 'currentBreakpoint', '');
+  const desktopImage = flattenImageData(get(fields, 'image', {}));
+  const mobileImage = flattenImageData(get(fields, 'mobileImage', desktopImage));
+  const image = currentBreakpoint === Breakpoints.EXTRA_SMALL.label || currentBreakpoint === Breakpoints.SMALL.label ? mobileImage : desktopImage;
   const imageAlign = get(fields, 'imageAlign', 'Center').toLowerCase();
   const imageSize = get(fields, 'imageSize', 'Full').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 1);
@@ -23,10 +27,10 @@ const BlockImage = props => {
       className="BlockImage case-study-block-container"
     >
       <div
-        className={`BlockImage__image-container BlockImage__image-container--${imageSize}-${imageAlign}`}
+        className={`BlockImage__image-container BlockImage__image-container--${imageSize}-${imageAlign} overflow-hidden flex items-center justify-center`}
       >
         <Image
-          className="w100"
+          className="BlockImage__image h100 w100 md:hauto fit-cover"
           alt={image.description}
           src={image.url}
         />
@@ -43,4 +47,4 @@ BlockImage.propTypes = {
 };
 
 
-export default BlockImage;
+export default withBreakpoints(BlockImage);
