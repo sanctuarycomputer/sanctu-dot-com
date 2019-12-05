@@ -5,6 +5,8 @@ import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
+import { ContentfulMedia, SimpleFragment } from "models";
+
 import { Image } from 'components/base';
 
 const BlockImage = props => {
@@ -42,6 +44,12 @@ const BlockImage = props => {
 BlockImage.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
+      image: ContentfulMedia,
+      mobileImage: ContentfulMedia,
+      imageAlign: PropTypes.string,
+      imageSize: PropTypes.string,
+      marginBottom: PropTypes.number,
+      marginTop: PropTypes.number
     })
   })
 };
