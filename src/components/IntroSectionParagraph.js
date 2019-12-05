@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import get from 'utils/get';
 
 import cx from 'classnames';
-import './IntroSectionParagraph.scss';
 
 import { Markdown } from 'components/base';
 

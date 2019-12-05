@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import get from "utils/get";
 
 import cx from "classnames";
-import "./IntroSectionImages.scss";
 
 import { Image } from "components/base";
 

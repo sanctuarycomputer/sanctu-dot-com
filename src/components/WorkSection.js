@@ -2,7 +2,7 @@ import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
 import get from "utils/get";
 import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
-import "./WorkSection.scss";
+
 import { ContentfulMedia, SimpleFragment } from "models";
 
 import { Slider, List } from "components/base";

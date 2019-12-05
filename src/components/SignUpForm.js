@@ -2,8 +2,6 @@ import React, { PureComponent } from "react";
 
 import "what-input";
 
-import "./SignUpForm.scss";
-
 class SignUpForm extends PureComponent {
   constructor(props) {
     super(...arguments);

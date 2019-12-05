@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import NukaCarousel from "nuka-carousel";
 import get from "utils/get";
-import './Slider.scss';
 
 class Slider extends PureComponent {
   componentDidMount() {

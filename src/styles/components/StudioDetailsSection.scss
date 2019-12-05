@@ -1,5 +1,3 @@
-@import 'styles/app.scss';
-
 .StudioDetailsSection {
   @include media("md") {
     height: calc(100vh - 135px);

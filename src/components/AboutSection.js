@@ -7,7 +7,6 @@ import { SimpleFragment } from "models";
 import { List } from "components/base";
 
 import cx from "classnames";
-import "./AboutSection.scss";
 
 class AboutSection extends PureComponent {
   render() {

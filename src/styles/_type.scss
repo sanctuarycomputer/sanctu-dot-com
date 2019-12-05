@@ -49,3 +49,39 @@ $p-xl-line-height: 3rem;
     letter-spacing: 0.5px;
   }
 }
+
+//case study types
+.text-case-study-xl {
+  font-family: $serif-stack;
+  font-size: 5rem;
+  line-height: 6rem;
+  font-weight: 300;
+}
+
+.text-case-study-lg {
+  font-family: $serif-stack;
+  font-size: 4rem;
+  line-height: 4.8125rem;
+  font-weight: 300;
+}
+
+.text-case-study-md {
+  font-family: $serif-stack;
+  font-size: 3rem;
+  line-height: 3.625rem;
+  font-weight: 300;
+}
+
+.text-case-study-sm {
+  font-family: $serif-stack;
+  font-size: 2rem;
+  line-height: 2.375rem;
+  font-weight: 300;
+}
+
+.text-case-study-xs {
+  font-family: $sans-serif-stack;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  font-weight: 300;
+}
