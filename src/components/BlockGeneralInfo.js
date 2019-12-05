@@ -18,7 +18,7 @@ const BlockGeneralInfo = props => {
       {design.length && (
         <div className={`BlockGeneralInfo__design BlockGeneralInfo__design--${contentAlign} text-case-study-xs`}>
           <p>Design:</p>
-          <div className="ml1_5">
+          <div className="ml1_25">
             {design.map((text) => <p key={text}>{text}</p>)}
           </div>
         </div>
@@ -26,7 +26,7 @@ const BlockGeneralInfo = props => {
       {techStack.length && (
         <div className={`BlockGeneralInfo__tech-stack BlockGeneralInfo__tech-stack--${contentAlign} text-case-study-xs`}>
           <p>Tech Stack:</p>
-          <div className="ml1_5">
+          <div className="ml1_25">
             {techStack.map((text) => <p key={text}>{text}</p>)}
           </div>
         </div>
