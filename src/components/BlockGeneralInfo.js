@@ -19,19 +19,19 @@ const BlockGeneralInfo = props => {
 
   return (
     <div className={cx("BlockGeneralInfo p1 flex flex-col")}>
-      <div className="col-8 md:col-4">
+      <div className="col-8 md:col-3">
         {header && <h1 className="BlockGeneralInfo__header paragraph mb1_5">{header}</h1>}
       </div>
       <div className={cx('flex flex-col', {
         'md:flex-row md:justify-between': contentAlign === 'horizontal',
         'md:flex-col': contentAlign === 'vertical'
       })}>
-        <div className="col-8 md:col-4 mb2">
+        <div className="col-8 md:col-3 mb2">
           {description && <Markdown fontSize="small" src={description} />}
         </div>
-        <div className={cx("col-8 md:col-4 flex flex-row", {
-          "justify-end": contentAlign === 'horizontal',
-          "justify-between": contentAlign === 'vertical'
+        <div className={cx("col-8 flex flex-row", {
+          "md:col-4 justify-end": contentAlign === 'horizontal',
+          "md:col-3 justify-between": contentAlign === 'vertical'
         })}>
           <div className="col-4 md:col-2">
             <List

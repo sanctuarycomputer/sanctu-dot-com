@@ -93,7 +93,7 @@ class WorkSection extends PureComponent {
 
   renderWork = () => {
     const { activeIndex, slideCount, mediaDimensions } = this.state;
-    const activeProject = get(this, "props.selectedWorks")[activeIndex];
+    const activeProject = get(this, "props.selectedWorks[activeIndex]");
     const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
     const breakpointIsMobile = currentBreakpoint === Breakpoints.EXTRA_SMALL.label || currentBreakpoint === Breakpoints.SMALL.label;
 
