@@ -5,7 +5,7 @@ import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
-import { ContentfulMedia, SimpleFragment } from "models";
+import { ContentfulMedia } from "models";
 
 import { Image } from 'components/base';
 
