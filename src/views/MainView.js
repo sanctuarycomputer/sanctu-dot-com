@@ -37,7 +37,6 @@ class MainView extends PureComponent {
 
   shouldShowOverlay = () => {
     const now = new Date();
-    //get time, get hours of date x 60, plus minutes 
     const time = now.getHours() * 60 + now.getMinutes();
     
     const shouldShowOverlay =
