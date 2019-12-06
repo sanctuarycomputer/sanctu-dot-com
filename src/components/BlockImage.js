@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
-import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
+import cx from 'classnames';
 
 import { ContentfulMedia } from "models";
 
@@ -26,10 +27,19 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockImage case-study-block-container"
+      className={cx("BlockImage p1 flex", {
+        'justify-center': imageAlign === 'center',
+        'justify-start': imageAlign === 'left',
+        'justify-end': imageAlign === 'right',
+      })}
     >
       <div
-        className={`BlockImage__image-container BlockImage__image-container--${imageSize}-${imageAlign} overflow-hidden flex items-center justify-center`}
+        className={cx(`BlockImage__image-container overflow-hidden`, {
+          'md:col-12': imageSize === 'full',
+          'md:col-6': imageSize === 'large',
+          'md:col-5': imageSize === 'medium',
+          'md:col-4': imageSize === 'small'
+        })}
       >
         <Image
           className="BlockImage__image h100 w100 md:hauto fit-cover"
