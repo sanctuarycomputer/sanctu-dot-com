@@ -12,9 +12,9 @@ class Gallery extends PureComponent {
       <p className="small pb1 color-gray">Images sourced from pubdomordie.com, Jeremy Turner, and ourselves.</p>
     );
   }
-
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
     if (index === imageMatrix.length - 1) {
+
       return (
         <div className="flex flex-col md:flex-row col-8 pb_5 md:pb1" key={index}>
           <div className="col-8 md:col-4 pr_25 md:pr_5">
@@ -31,7 +31,7 @@ class Gallery extends PureComponent {
           </div>
           <div className="col-8 md:col-4 p_25 md:p_5">
             <div className="sticky">
-              <Markdown src={get(this, "props.settingExpectations")} />
+              <Markdown src={get(this, "props.settingExpectations")} fontSize="medium" />
             </div>
           </div>
         </div>

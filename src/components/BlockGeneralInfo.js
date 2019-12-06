@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import { SimpleFragment } from "models";
 
-import { List } from "components/base";
+import { List, Markdown } from "components/base";
 
 const BlockGeneralInfo = props => {
   const fields = get(props, 'block.fields');
@@ -26,8 +26,8 @@ const BlockGeneralInfo = props => {
         'md:flex-row md:justify-between': contentAlign === 'horizontal',
         'md:flex-col': contentAlign === 'vertical'
       })}>
-        <div className="col-8 md:col-4">
-          {description && <p className="BlockGeneralInfo__description small mb1_5">{description}</p>}
+        <div className="col-8 md:col-4 mb2">
+          {description && <Markdown fontSize="small" src={description} />}
         </div>
         <div className={cx("col-8 md:col-4 flex flex-row", {
           "justify-end": contentAlign === 'horizontal',
