@@ -1,16 +1,14 @@
-import React, { Fragment, PureComponent } from "react";
-import PropTypes from "prop-types";
-
-import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
-import get from "utils/get";
-import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
+import React, { Fragment, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
-import { Slider, List } from "components/base";
-import { Aspects } from "constants/Sizes";
+import { ContentfulMedia, SimpleFragment } from 'models';
+
+import { Slider, List } from 'components/base';
+import { Aspects } from 'constants/Sizes';
 
 const { LANDSCAPE } = Aspects;
 
@@ -21,7 +19,7 @@ class WorkSection extends PureComponent {
     super(...arguments);
 
     this.state = {
-      slideCount: get(props, "selectedWorks", []).length,
+      slideCount: get(props, 'selectedWorks', []).length,
       activeIndex: 0,
       mediaDimensions: {
         width: 0,
@@ -34,7 +32,7 @@ class WorkSection extends PureComponent {
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('resize', this.handleResize);
     this.adjustSize();
   }
 
@@ -94,10 +92,12 @@ class WorkSection extends PureComponent {
   };
 
   renderWork = () => {
-    const { activeIndex, slideCount, mediaDimensions, isMobile } = this.state;
-    const activeProject = get(this, "props.selectedWorks")[activeIndex];
+    const { activeIndex, slideCount, mediaDimensions } = this.state;
+    const activeProject = get(this, `props.selectedWorks[${activeIndex}]`);
     const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
-    const breakpointIsMobile = currentBreakpoint === Breakpoints.EXTRA_SMALL.label || currentBreakpoint === Breakpoints.SMALL.label;
+    const breakpointIsMobile =
+      currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
+      currentBreakpoint === Breakpoints.SMALL.label;
 
     if (breakpointIsMobile) {
       return (
