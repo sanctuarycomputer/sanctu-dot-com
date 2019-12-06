@@ -1,10 +1,56 @@
+// @import 'styles/app.scss';
+
+$serif-stack: "Austin News Deck Web", serif;
+$sans-serif-stack: "Atlas Grotesk Web", sans-serif;
+
+// .Overlay {
+//   opacity: 0;
+//   transition: opacity 3500ms cubic-bezier(0.79, 0.1, 0.56, 0.93);
+//   pointer-events: none;
+// }
+
+// .Overlay--active {
+//   opacity: 1;
+//   pointer-events: auto;
+// }
+
 .Overlay {
+  background-color: color("gray-darkest");
+  color: color("white");
   opacity: 0;
   transition: opacity 3500ms cubic-bezier(0.79, 0.1, 0.56, 0.93);
   pointer-events: none;
-}
 
-.Overlay--active {
-  opacity: 1;
-  pointer-events: auto;
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__navigation {
+    @include media("sm-down") {
+      position: absolute;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__footer {
+    @include media("md-up") {
+      left: 0;
+    }
+  }
+
+  &__paragraph {
+    font-family: $serif-stack;
+    font-weight: 200;
+    font-size: 1.65rem;
+    line-height: 2.125rem;
+    letter-spacing: -5;
+
+    @include media("md-up") {
+      font-size: 3.125rem;
+      line-height: 3.75rem; 
+    }
+  }
 }
