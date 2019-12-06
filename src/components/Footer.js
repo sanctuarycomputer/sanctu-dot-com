@@ -1,8 +1,10 @@
 import React from "react";
 import SanctuLogo from "assets/sanctu_logo.svg";
 
-const Footer = () => (
-  <footer className="Footer col-8 p1">
+const Footer = ({ hidden }) => (
+  <footer 
+    aria-hidden={ hidden }
+    className="Footer col-8 p1">
     <img
       className="Footer__icon"
       src={SanctuLogo}
