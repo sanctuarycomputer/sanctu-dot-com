@@ -2,35 +2,51 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 import get from 'utils/get';
+import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
+import cx from 'classnames';
+
+import { SimpleFragment } from "models";
+
+import { List } from "components/base";
 
 const BlockGeneralInfo = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
-  const design = get(fields, 'design', []);
-  const techStack = get(fields, 'techStack', []);
+  const design = get(fields, 'design.simpleFragments', {});
+  const techStack = get(fields, 'techStack.simpleFragments', {});
   const contentAlign = get(fields, 'contentAlign', 'Horizontal').toLowerCase();
 
   return (
-    <div className="BlockGeneralInfo case-study-block-container">
-      {header && <h1 className="BlockGeneralInfo__header text-case-study-xl mb1_5">{header}</h1>}
-      {description && <p className="BlockGeneralInfo__description text-case-study-xs mb1_5">{description}</p>}
-      {design.length && (
-        <div className={`BlockGeneralInfo__design BlockGeneralInfo__design--${contentAlign} text-case-study-xs`}>
-          <p>Design:</p>
-          <div className="ml1_25">
-            {design.map((text) => <p key={text}>{text}</p>)}
+    <div className={cx("BlockGeneralInfo p1 flex flex-col")}>
+      <div className="col-8 md:col-4">
+        {header && <h1 className="BlockGeneralInfo__header paragraph mb1_5">{header}</h1>}
+      </div>
+      <div className={cx('flex flex-col', {
+        'md:flex-row md:justify-between': contentAlign === 'horizontal',
+        'md:flex-col': contentAlign === 'vertical'
+      })}>
+        <div className="col-8 md:col-4">
+          {description && <p className="BlockGeneralInfo__description small mb1_5">{description}</p>}
+        </div>
+        <div className={cx("col-8 md:col-4 flex flex-row", {
+          "justify-end": contentAlign === 'horizontal',
+          "justify-between": contentAlign === 'vertical'
+        })}>
+          <div className="col-4 md:col-2">
+            <List
+              title="Design:"
+              listItems={simpleFragmentToListItems(design)}
+            />
+          </div>
+          <div className="col-4 md:col-2 flex justify-end md:justify-start">
+            <List
+              title="Tech Stack:"
+              listItems={simpleFragmentToListItems(techStack)}
+            />
           </div>
         </div>
-      )}
-      {techStack.length && (
-        <div className={`BlockGeneralInfo__tech-stack BlockGeneralInfo__tech-stack--${contentAlign} text-case-study-xs`}>
-          <p>Tech Stack:</p>
-          <div className="ml1_25">
-            {techStack.map((text) => <p key={text}>{text}</p>)}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -40,8 +56,8 @@ BlockGeneralInfo.propTypes = {
     fields: PropTypes.shape({
       header: PropTypes.string,
       description: PropTypes.string,
-      design: PropTypes.arrayOf(PropTypes.string),
-      techStack: PropTypes.arrayOf(PropTypes.string),
+      design: SimpleFragment,
+      techStack: SimpleFragment,
       contentAlign: PropTypes.string
     })
   })
