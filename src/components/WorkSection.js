@@ -1,14 +1,15 @@
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
+
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from "utils/get";
 import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
 
 import { ContentfulMedia, SimpleFragment } from "models";
 
 import { Slider, List } from "components/base";
-import { Aspects, Breakpoints } from "constants/Sizes";
+import { Aspects } from "constants/Sizes";
 
-const { MEDIUM } = Breakpoints;
 const { LANDSCAPE } = Aspects;
 
 const VERTICAL_GUTTER = 32;
@@ -18,7 +19,6 @@ class WorkSection extends PureComponent {
     super(...arguments);
 
     this.state = {
-      isMobile: false,
       slideCount: get(props, "selectedWorks", []).length,
       activeIndex: 0,
       mediaDimensions: {
@@ -33,7 +33,6 @@ class WorkSection extends PureComponent {
 
   componentDidMount() {
     window.addEventListener("resize", this.handleResize);
-    this.checkDeviceWidth();
     this.adjustSize();
   }
 
@@ -42,26 +41,7 @@ class WorkSection extends PureComponent {
   }
 
   handleResize = () => {
-    this.checkDeviceWidth();
     this.adjustSize();
-  };
-
-  checkDeviceWidth = () => {
-    if (window.innerWidth < MEDIUM) {
-      return this.setState((state, props) => {
-        if (state.isMobile) return;
-        return {
-          isMobile: true
-        };
-      });
-    }
-
-    this.setState((state, props) => {
-      if (!state.isMobile) return;
-      return {
-        isMobile: false
-      };
-    });
   };
 
   adjustSize = () => {
@@ -114,8 +94,10 @@ class WorkSection extends PureComponent {
   renderWork = () => {
     const { activeIndex, slideCount, mediaDimensions, isMobile } = this.state;
     const activeProject = get(this, "props.selectedWorks")[activeIndex];
+    const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
+    const breakpointIsMobile = currentBreakpoint === Breakpoints.EXTRA_SMALL.label || currentBreakpoint === Breakpoints.SMALL.label;
 
-    if (isMobile) {
+    if (breakpointIsMobile) {
       return (
         <Slider>
           {get(this, "props.selectedWorks", []).map((work, index) => (
@@ -274,4 +256,4 @@ WorkSection.propType = {
   )
 };
 
-export default WorkSection;
+export default withBreakpoints(WorkSection);
