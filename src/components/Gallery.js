@@ -16,7 +16,6 @@ class Gallery extends PureComponent {
   };
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
     if (index === imageMatrix.length - 1) {
-
       return (
         <div
           className="flex flex-col md:flex-row col-8 pb_5 md:pb1"
