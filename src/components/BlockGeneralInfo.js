@@ -25,7 +25,7 @@ const BlockGeneralInfo = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockGeneralInfo px1 flex flex-col')}
+      className="BlockGeneralInfo px1 flex flex-col"
     >
       <div className="col-8 md:col-3">
         {header && (
