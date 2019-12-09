@@ -12,16 +12,16 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
     <>
       <div 
         aria-hidden={ !shouldShowOverlay }
-        className={cx('Overlay fixed vw100 vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3 opacity-0', {
-        'Overlay--active opacity-1': shouldShowOverlay
+        className={cx('Overlay fixed vw100 vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3', {
+        'Overlay--active opacity-1': shouldShowOverlay,
+        'opacity-0': !shouldShowOverlay,
         })}
       >
         <div className="flex flex-col md:flex-row col-12 justify-between">
           <div className="Overlay__navigation flex flex-col col-2 md:p1">
             <h6 className="small md:block none">Social Media:</h6>
-            <div className="color-white md:block col-4 md:mb5 pb1">
+            <div className="Overlay__social-media-list md:block col-4 md:mb5 pb1">
               <List
-                className="Overlay__social-media-list"
                 listItems={simpleFragmentToListItems(socialMedia)}
               />
             </div>
@@ -31,7 +31,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
                 title={`Email Updates:`} />
             </div>
           </div>
-          <div className="Overlay__paragraph py1 pl1_25 md:py1 md:px3 md:col-4 col-12 pr6">
+          <div className="Overlay__paragraph py1 pl1_25 md:px3 md:col-4 col-12 pr6">
             <p className="pb2">
               Thanks for visiting Sanctuary Computer. Our website is currently closed.
             </p>
