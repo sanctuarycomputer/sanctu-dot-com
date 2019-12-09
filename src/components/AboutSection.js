@@ -1,31 +1,31 @@
-import React, { PureComponent } from "react";
-import get from "utils/get";
-import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
+import React, { PureComponent } from 'react';
+import get from 'utils/get';
+import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
-import { SimpleFragment } from "models";
+import { SimpleFragment } from 'models';
 
-import { List } from "components/base";
+import { List } from 'components/base';
 
-import cx from "classnames";
+import cx from 'classnames';
 
 class AboutSection extends PureComponent {
   render() {
     return (
-      <div className={cx("AboutSection p1 col-8")}>
+      <div className={cx('AboutSection p1 col-8')}>
         <div className="mb2">
           <List
             title={`What we do:`}
             listItems={simpleFragmentToListItems(
-              get(this, "props.whatWeDo", {})
+              get(this, 'props.whatWeDo', {})
             )}
           />
         </div>
         <div className="flex flex-wrap">
           <div className="col-4 xl:col-2 mb2 xl:mb0 ">
             <List
-              title={`Select Clients:`}
+              title="Select Clients:"
               listItems={simpleFragmentToListItems(
-                get(this, "props.selectedClients", {})
+                get(this, 'props.selectedClients', {})
               )}
             />
           </div>
@@ -33,7 +33,7 @@ class AboutSection extends PureComponent {
             <List
               title={`Tech Stack:`}
               listItems={simpleFragmentToListItems(
-                get(this, "props.technologyStack", {})
+                get(this, 'props.technologyStack', {})
               )}
             />
           </div>
@@ -41,7 +41,7 @@ class AboutSection extends PureComponent {
             <List
               title={`Platforms:`}
               listItems={simpleFragmentToListItems(
-                get(this, "props.software", {})
+                get(this, 'props.software', {})
               )}
             />
           </div>
@@ -49,7 +49,7 @@ class AboutSection extends PureComponent {
             <List
               title={`Collaborators:`}
               listItems={simpleFragmentToListItems(
-                get(this, "props.collaborators", {})
+                get(this, 'props.collaborators', {})
               )}
             />
           </div>

@@ -1,13 +1,13 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
-import "what-input";
+import 'what-input';
 
 class SignUpForm extends PureComponent {
   constructor(props) {
     super(...arguments);
 
     this.state = {
-      value: ""
+      value: ''
     };
   }
 
@@ -22,9 +22,11 @@ class SignUpForm extends PureComponent {
 
   render() {
     return (
-      <div className={"SignUpForm"}>
-        <form 
-          action={'https://computer.us11.list-manage.com/subscribe/post?u=6e62b74d002f42a0e5350892e&amp;id=4f35a74dc5'}
+      <div className="SignUpForm">
+        <form
+          action={
+            'https://computer.us11.list-manage.com/subscribe/post?u=6e62b74d002f42a0e5350892e&amp;id=4f35a74dc5'
+          }
           target="_blank"
           method="post"
         >

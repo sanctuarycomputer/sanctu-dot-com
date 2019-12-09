@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import get from "utils/get";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import get from 'utils/get';
 
-import cx from "classnames";
+import cx from 'classnames';
 
-import { Image } from "components/base";
+import { Image } from 'components/base';
 
 const getRandomImage = imagesArray =>
   imagesArray[Math.floor(Math.random() * imagesArray.length)];
@@ -14,19 +14,19 @@ class IntroSectionImages extends PureComponent {
     super(...arguments);
 
     this.state = {
-      activeImage: getRandomImage(get(props, "images", []))
+      activeImage: getRandomImage(get(props, 'images', []))
     };
   }
 
   render() {
     return (
-      <div className={cx("IntroSectionImages p1 flex flex-col md:flex-row")}>
+      <div className={cx('IntroSectionImages p1 flex flex-col md:flex-row')}>
         <div className="col-8">
           <div className="aspect-portrait">
             <Image
               className="bg-cover bg-no-repeat"
               bg
-              src={`${get(this, "state.activeImage.fields.file.url")}?q=85`}
+              src={`${get(this, 'state.activeImage.fields.file.url')}?q=85`}
             />
           </div>
         </div>
