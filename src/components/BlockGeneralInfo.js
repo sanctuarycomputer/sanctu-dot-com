@@ -16,9 +16,17 @@ const BlockGeneralInfo = props => {
   const design = get(fields, 'design.simpleFragments', {});
   const techStack = get(fields, 'techStack.simpleFragments', {});
   const contentAlign = get(fields, 'contentAlign', 'Horizontal').toLowerCase();
+  const marginBottom = get(fields, 'marginBottom', 1);
+  const marginTop = get(fields, 'marginTop', 1);
 
   return (
-    <div className={cx('BlockGeneralInfo p1 flex flex-col')}>
+    <div
+      style={{
+        marginBottom: `${marginBottom}rem`,
+        marginTop: `${marginTop}rem`
+      }}
+      className="BlockGeneralInfo px1 flex flex-col"
+    >
       <div className="col-8 md:col-3">
         {header && (
           <h1 className="BlockGeneralInfo__header paragraph mb1_5">{header}</h1>
@@ -64,7 +72,9 @@ BlockGeneralInfo.propTypes = {
       description: PropTypes.string,
       design: SimpleFragment,
       techStack: SimpleFragment,
-      contentAlign: PropTypes.string
+      contentAlign: PropTypes.string,
+      marginBottom: PropTypes.number,
+      marginTop: PropTypes.number
     })
   })
 };
