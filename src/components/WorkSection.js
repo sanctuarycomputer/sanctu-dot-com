@@ -1,14 +1,14 @@
-import React, { Fragment, PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
-import get from "utils/get";
-import simpleFragmentToListItems from "utils/simpleFragmentToListItems";
+import get from 'utils/get';
+import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
-import { ContentfulMedia, SimpleFragment } from "models";
+import { ContentfulMedia, SimpleFragment } from 'models';
 
-import { Slider, List } from "components/base";
-import { Aspects } from "constants/Sizes";
+import { Slider, List } from 'components/base';
+import { Aspects } from 'constants/Sizes';
 
 const { LANDSCAPE } = Aspects;
 
@@ -19,7 +19,7 @@ class WorkSection extends PureComponent {
     super(...arguments);
 
     this.state = {
-      slideCount: get(props, "selectedWorks", []).length,
+      slideCount: get(props, 'selectedWorks', []).length,
       activeIndex: 0,
       mediaDimensions: {
         width: 0,
@@ -32,12 +32,12 @@ class WorkSection extends PureComponent {
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('resize', this.handleResize);
     this.adjustSize();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   handleResize = () => {
@@ -93,19 +93,21 @@ class WorkSection extends PureComponent {
 
   renderWork = () => {
     const { activeIndex, slideCount, mediaDimensions } = this.state;
-    const activeProject = get(this, "props.selectedWorks[activeIndex]");
+    const activeProject = get(this, `props.selectedWorks[${activeIndex}]`);
     const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
-    const breakpointIsMobile = currentBreakpoint === Breakpoints.EXTRA_SMALL.label || currentBreakpoint === Breakpoints.SMALL.label;
+    const breakpointIsMobile =
+      currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
+      currentBreakpoint === Breakpoints.SMALL.label;
 
     if (breakpointIsMobile) {
       return (
         <Slider>
-          {get(this, "props.selectedWorks", []).map((work, index) => (
-            <Fragment key={get(work, "sys.id")}>
+          {get(this, 'props.selectedWorks', []).map((work, index) => (
+            <Fragment key={get(work, 'sys.id')}>
               <div className="MediaContainer" ref={this.mediaContainer}>
                 <video
                   className="block mxauto"
-                  poster={get(work, "fields.previewImage.fields.file.url")}
+                  poster={get(work, 'fields.previewImage.fields.file.url')}
                   style={{
                     width: mediaDimensions.width,
                     height: mediaDimensions.height
@@ -115,23 +117,25 @@ class WorkSection extends PureComponent {
                   muted
                   playsInline
                 >
-                  <source src={get(work, "fields.video.fields.file.url")}></source>
+                  <source
+                    src={get(work, 'fields.video.fields.file.url')}
+                  ></source>
                 </video>
               </div>
               <div ref={this.infoContainer} className="col-8 flex flex-col pt2">
                 <div className="mb2 col-8 flex flex-row justify-between">
                   <div>
                     <h2 className="paragraph mb_5">
-                      {get(work, "fields.title", "")}
+                      {get(work, 'fields.title', '')}
                     </h2>
                     <a
                       className="small link underline"
                       alt="Project Link"
-                      href={get(work, "fields.link")}
+                      href={get(work, 'fields.link')}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {get(work, "fields.linkLabel")}
+                      {get(work, 'fields.linkLabel')}
                     </a>
                   </div>
                   <span className="color-gray small block">
@@ -142,14 +146,14 @@ class WorkSection extends PureComponent {
                   <List
                     title="Tech Stack:"
                     listItems={simpleFragmentToListItems(
-                      get(work, "fields.stack.simpleFragments", {})
+                      get(work, 'fields.stack.simpleFragments', {})
                     )}
                   />
                   <List
                     className="ml2"
                     title="Collaborators:"
                     listItems={simpleFragmentToListItems(
-                      get(work, "fields.collaborators.simpleFragments", {})
+                      get(work, 'fields.collaborators.simpleFragments', {})
                     )}
                   />
                 </div>
@@ -168,11 +172,11 @@ class WorkSection extends PureComponent {
             activeIndex={this.state.activeIndex}
             transitionMode="fade"
           >
-            {get(this, "props.selectedWorks", []).map((work, index) => (
+            {get(this, 'props.selectedWorks', []).map((work, index) => (
               <video
-                key={get(work, "sys.id")}
+                key={get(work, 'sys.id')}
                 className="block mxauto"
-                poster={get(work, "fields.previewImage.fields.file.url")}
+                poster={get(work, 'fields.previewImage.fields.file.url')}
                 style={{
                   width: mediaDimensions.width,
                   height: mediaDimensions.height
@@ -182,7 +186,9 @@ class WorkSection extends PureComponent {
                 muted
                 playsInline
               >
-                <source src={get(work, "fields.video.fields.file.url")}></source>
+                <source
+                  src={get(work, 'fields.video.fields.file.url')}
+                ></source>
               </video>
             ))}
           </Slider>
@@ -196,16 +202,16 @@ class WorkSection extends PureComponent {
           <div className="col-4 flex flex-col">
             <div className="mb2">
               <h2 className="paragraph mb1">
-                {get(activeProject, "fields.title", "")}
+                {get(activeProject, 'fields.title', '')}
               </h2>
               <a
                 className="small link underline"
                 alt="Project Link"
-                href={get(activeProject, "fields.link")}
+                href={get(activeProject, 'fields.link')}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {get(activeProject, "fields.linkLabel")}
+                {get(activeProject, 'fields.linkLabel')}
               </a>
             </div>
             <span className="color-gray small block">
@@ -217,7 +223,7 @@ class WorkSection extends PureComponent {
               <List
                 title="Tech Stack:"
                 listItems={simpleFragmentToListItems(
-                  get(activeProject, "fields.stack.simpleFragments", {})
+                  get(activeProject, 'fields.stack.simpleFragments', {})
                 )}
               />
             </div>
@@ -226,7 +232,7 @@ class WorkSection extends PureComponent {
                 className="ml2"
                 title="Collaborators:"
                 listItems={simpleFragmentToListItems(
-                  get(activeProject, "fields.collaborators.simpleFragments", {})
+                  get(activeProject, 'fields.collaborators.simpleFragments', {})
                 )}
               />
             </div>

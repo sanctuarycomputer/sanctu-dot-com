@@ -1,12 +1,12 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import NukaCarousel from "nuka-carousel";
-import get from "utils/get";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import NukaCarousel from 'nuka-carousel';
+import get from 'utils/get';
 
 class Slider extends PureComponent {
   componentDidMount() {
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
+      window.dispatchEvent(new Event('resize'));
     }, 0);
   }
 
@@ -17,14 +17,14 @@ class Slider extends PureComponent {
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
       >
-        {React.Children.map(get(this, "props.children"), child => child)}
+        {React.Children.map(get(this, 'props.children'), child => child)}
       </NukaCarousel>
     );
   }
 }
 
 Slider.defaultProps = {
-  transitionMode: "fade",
+  transitionMode: 'fade',
   afterSlide: f => f,
   wrapAround: true,
   swiping: true,

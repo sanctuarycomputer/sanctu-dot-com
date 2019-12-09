@@ -5,10 +5,12 @@ import Remarkable from 'react-remarkable';
 import cx from 'classnames';
 
 const Markdown = ({ src, fontSize = '' }) => (
-  <div className={cx(`Markdown`, {
-    'Markdown--medium': fontSize === 'medium',
-    'Markdown--small': fontSize === 'small'
-  })}>
+  <div
+    className={cx('Markdown', {
+      'Markdown--medium': fontSize === 'medium',
+      'Markdown--small': fontSize === 'small'
+    })}
+  >
     <Remarkable source={src} />
   </div>
 );
