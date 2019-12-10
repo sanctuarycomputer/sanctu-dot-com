@@ -28,7 +28,8 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
             <div className="Overlay__sign-up-form none md:block md:mt4">
               <SignUpForm 
                 overlayMode={ shouldShowOverlay }
-                title={`Email Updates:`} />
+                title='Email Updates'
+               /> 
             </div>
           </div>
           <div className="Overlay__paragraph py1 pl1_25 md:px3 md:col-4 col-12 pr6">
