@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import cx from "classnames";
 
 import 'what-input';
 
@@ -17,10 +18,12 @@ class SignUpForm extends PureComponent {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('hi');
   };
 
   render() {
+
+    const { overlayMode, title } = this.props;
+
     return (
       <div className="SignUpForm">
         <form
@@ -31,17 +34,24 @@ class SignUpForm extends PureComponent {
           method="post"
         >
           <label className="small">
-            <h3>{this.props.title}</h3>
+            <h3>{title}</h3>
             <input
               name="EMAIL"
-              className="SignUpForm__input small ml1_25 p0 w100 inline-block"
+              className={cx('SignUpForm__input small ml1_25 p0 w100 inline-block', {
+                'SignUpForm--overlay-mode__input': overlayMode,
+                'SignUpForm--day-mode__input': !overlayMode
+                })}
               type="email"
               placeholder="hello@example.com"
             />
           </label>
           <div>
             <input
-              className="SignUpForm__button ml1_25 p0 small"
+              className={cx('SignUpForm__button ml1_25 p0 small', {
+                'SignUpForm--overlay-mode__button': overlayMode,
+                'SignUpForm--day-mode__buton': overlayMode
+
+                })}
               type="submit"
               value="Submit"
             />

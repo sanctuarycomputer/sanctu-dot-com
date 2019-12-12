@@ -9,8 +9,8 @@ import Gallery from "components/Gallery";
 import Footer from "components/Footer";
 import Overlay from "components/Overlay";
 
-const overlayStartTimeInMinutes =  19 * 60; //7 PM
-const overlayEndTimeInMinutes =  7 * 60; //7 AM
+const dayStartTimeInHours =  7; // 7 AM
+const dayEndTimeInHours =  19; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
@@ -37,12 +37,12 @@ class MainView extends PureComponent {
 
   shouldShowOverlay = () => {
     const now = new Date();
-    const time = now.getHours() * 60 + now.getMinutes();
+    const currentTimeInHours = now.getHours();
     
     const shouldShowOverlay =
-      time >= overlayStartTimeInMinutes && time < overlayEndTimeInMinutes;
+      currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
 
-    return shouldShowOverlay;
+      return shouldShowOverlay;
   }
   
   render() {
@@ -52,9 +52,13 @@ class MainView extends PureComponent {
 
     return (
       <Fragment>
-        <Overlay shouldShowOverlay={ this.state.shouldShowOverlay } />
-        <div aria-hidden={ this.state.shouldShowOverlay }
-          className="flex md:flex-row flex-col">
+        <Overlay
+          socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
+          shouldShowOverlay={ this.state.shouldShowOverlay } 
+        />
+        <div 
+        aria-hidden={ this.state.shouldShowOverlay }
+        className='flex md:flex-row flex-col'>
           <div className="col-8 flex flex-col sticky-spacer">
             <IntroSectionImages images={get(model, "fields.introImages", {})} />
             <AboutSection
