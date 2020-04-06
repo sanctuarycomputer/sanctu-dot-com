@@ -10,7 +10,7 @@ import Footer from "components/Footer";
 import Overlay from "components/Overlay";
 
 const dayStartTimeInHours =  7; // 7 AM
-const dayEndTimeInHours =  12; // 7 PM
+const dayEndTimeInHours =  19; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
@@ -36,15 +36,20 @@ class MainView extends PureComponent {
   }
 
   shouldShowOverlay = () => {
+    const html = document.documentElement;
     const now = new Date();
     const currentTimeInHours = now.getHours();
     
     const shouldShowOverlay =
       currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
 
-      return shouldShowOverlay;
+    if (shouldShowOverlay && html && !html.classList.contains('overlay-is-active')) {
+      html.classList.add('overlay-is-active');
+    };
+
+    return shouldShowOverlay;
   }
-  
+
   render() {
     const model = this.props.model;
 

@@ -10,3 +10,14 @@
     grid-template-columns: repeat(8, 1fr);
   }
 }
+
+.overlay-is-active {
+  height: 100%;
+  background-color: color('gray-darkest');
+  overflow: hidden;
+}
+
+.overlay-is-inactive {
+  background-color: color('white');
+  overflow: auto;
+}
