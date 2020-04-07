@@ -2,6 +2,8 @@ import React from 'react';
 import get from 'utils/get';
 
 import BlockGeneralInfo from 'components/BlockGeneralInfo';
+import BlockGeneralParagraph from 'components/BlockGeneralParagraph';
+import BlockLargeParagraph from 'components/BlockLargeParagraph';
 import BlockImage from 'components/BlockImage';
 import BlockImageText from 'components/BlockImageText';
 import BlockHero from 'components/BlockHero';
@@ -15,6 +17,10 @@ const CaseStudyBlockSwitch = props => {
     switch (type) {
       case 'caseStudyBlockGeneralInfo':
         return <BlockGeneralInfo block={block} />;
+      case 'caseStudyBlockGeneralParagraph':
+        return <BlockGeneralParagraph block={block} />;
+      case 'caseStudyBlockLargeParagraph':
+        return <BlockLargeParagraph block={block} />;
       case 'caseStudyBlockImage':
         return <BlockImage block={block} />;
       case 'caseStudyBlockImageText':
