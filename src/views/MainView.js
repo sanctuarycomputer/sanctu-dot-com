@@ -10,7 +10,7 @@ import Footer from "components/Footer";
 import Overlay from "components/Overlay";
 
 const dayStartTimeInHours =  7; // 7 AM
-const dayEndTimeInHours =  19; // 7 PM
+const dayEndTimeInHours =  10; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
@@ -32,29 +32,17 @@ class MainView extends PureComponent {
   }
 
   componentDidUpdate() {
-    const html = document.documentElement;
-
-    if (this.state.shouldShowOverlay) {
-      html && html.classList.add('overlay-is-active');
-    } else {
-      html && html.classList.remove('overlay-is-active');
-    };
+    this.toggleDocumentClass();
   }
 
   componentDidMount() {
-    const html = document.documentElement;
-
     timerID = setInterval(() => {
       this.setState({
         shouldShowOverlay: this.shouldShowOverlay()
       })
     }, 1000);
 
-    if (this.state.shouldShowOverlay) {
-      html && html.classList.add('overlay-is-active');
-    } else {
-      html && html.classList.remove('overlay-is-active');
-    };
+    this.toggleDocumentClass();
   }
 
   componentWillUnmount() {
@@ -69,6 +57,16 @@ class MainView extends PureComponent {
       currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
     
     return shouldShowOverlay;
+  }
+
+  toggleDocumentClass = () => {
+    const html = document.documentElement;
+
+    if (this.state.shouldShowOverlay) {
+      html && html.classList.add('overlay-is-active');
+    } else {
+      html && html.classList.remove('overlay-is-active');
+    };
   }
 
   render() {
