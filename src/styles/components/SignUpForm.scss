@@ -5,6 +5,7 @@
     border: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
+    background-color: transparent;
   }
 
   &--overlay-mode {
@@ -28,6 +29,7 @@
   &--day-mode {
     &__input {
       color: color("black");
+      background-color: transparent;
 
       &:hover {
         color: color("black");
