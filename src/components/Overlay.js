@@ -17,7 +17,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
       })}
       >
         <div className="flex flex-col">
-          <div className="flex flex-row justify-between items-start pt1 px1">
+          <div className="flex flex-row justify-between items-start pt1 px1 pb1 pb1 md:pb1_5 xxl:pb0">
             <div className="Overlay__navigation flex flex-col col-2">
               <h6 className="small md:block none">Social Media:</h6>
               <div className="Overlay__social-media-list md:block col-4 md:mb5 pb1">
