@@ -20,7 +20,19 @@ class MainView extends PureComponent {
 
     this.state = {
       shouldShowOverlay: this.shouldShowOverlay()
-    }
+    };
+
+    window.HackerConsole.on('disableNightMode', () => {      
+      this.setState({
+        shouldShowOverlay: false
+      });
+
+      clearInterval(timerID);
+    });
+  }
+
+  componentDidUpdate() {
+    this.toggleDocumentClass();
   }
 
   componentDidMount() {
@@ -28,11 +40,13 @@ class MainView extends PureComponent {
       this.setState({
         shouldShowOverlay: this.shouldShowOverlay()
       })
-    }, 1000)
+    }, 1000);
+
+    this.toggleDocumentClass();
   }
 
   componentWillUnmount() {
-    clearInterval(timerID)
+    clearInterval(timerID);
   }
 
   shouldShowOverlay = () => {
@@ -41,10 +55,20 @@ class MainView extends PureComponent {
     
     const shouldShowOverlay =
       currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
-
-      return shouldShowOverlay;
+    
+    return shouldShowOverlay;
   }
-  
+
+  toggleDocumentClass = () => {
+    const html = document.documentElement;
+
+    if (this.state.shouldShowOverlay) {
+      html && html.classList.add('overlay-is-active');
+    } else {
+      html && html.classList.remove('overlay-is-active');
+    };
+  }
+
   render() {
     const model = this.props.model;
 
@@ -112,8 +136,6 @@ class MainView extends PureComponent {
       </Fragment>
     );
   }
-
-  
 };
 
 export default MainView;
