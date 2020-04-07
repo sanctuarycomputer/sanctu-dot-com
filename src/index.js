@@ -12,6 +12,9 @@ const HackerConsole = {
   },
   disableNightmode() {
     HackerConsole.emit('disableNightMode');
+  },
+  applyForJob() {
+    console.log("Please email hello@sanctuary.computer for more information!");
   }
 }
 
