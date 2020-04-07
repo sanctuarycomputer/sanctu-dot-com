@@ -22,43 +22,51 @@ class MainView extends PureComponent {
       shouldShowOverlay: this.shouldShowOverlay()
     };
 
-    window.HackerConsole.on('disableNightMode', () => {
-      const html = document.documentElement;
-      
+    window.HackerConsole.on('disableNightMode', () => {      
       this.setState({
         shouldShowOverlay: false
       });
 
-      html.classList.remove('overlay-is-active');
       clearInterval(timerID);
     });
   }
 
+  componentDidUpdate() {
+    const html = document.documentElement;
+
+    if (this.state.shouldShowOverlay) {
+      html && html.classList.add('overlay-is-active');
+    } else {
+      html && html.classList.remove('overlay-is-active');
+    };
+  }
+
   componentDidMount() {
+    const html = document.documentElement;
+
     timerID = setInterval(() => {
       this.setState({
         shouldShowOverlay: this.shouldShowOverlay()
-      });
-    }, 1000)
+      })
+    }, 1000);
+
+    if (this.state.shouldShowOverlay) {
+      html && html.classList.add('overlay-is-active');
+    } else {
+      html && html.classList.remove('overlay-is-active');
+    };
   }
 
   componentWillUnmount() {
-    clearInterval(timerID)
+    clearInterval(timerID);
   }
 
   shouldShowOverlay = () => {
-    const html = document.documentElement;
     const now = new Date();
     const currentTimeInHours = now.getHours();
     
     const shouldShowOverlay =
       currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
-
-    if (shouldShowOverlay && html && !html.classList.contains('overlay-is-active')) {
-      html.classList.add('overlay-is-active');
-    } else {
-      html.classList.remove('overlay-is-active');
-    }
     
     return shouldShowOverlay;
   }
@@ -130,8 +138,6 @@ class MainView extends PureComponent {
       </Fragment>
     );
   }
-
-  
 };
 
 export default MainView;
