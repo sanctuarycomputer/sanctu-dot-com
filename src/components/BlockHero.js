@@ -40,7 +40,7 @@ const BlockHero = props => {
       )}
     </div>
 
-      <div className='flex flex-row justify-end my3'>
+      <div className='flex flex-row justify-end my2'>
       <div className="col-4 flex flex-row">
         <div className="col-4 md:col-3">
           <List
