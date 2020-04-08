@@ -8,7 +8,12 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
+      - run: 
+          name: Install FE Deps
+          command: yarn install
+      - run:
+          name: Build Preview
+          command: yarn build           
       - save_cache:
           paths:
             - node_modules
