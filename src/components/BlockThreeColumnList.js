@@ -23,6 +23,15 @@ const BlockThreeColumnList = props => {
       {header && (
         <h1 className="BlockThreeColumnList__header paragraph col-8 md:col-4 md:pr2">{header}</h1>
       )}
+      {columnOne && (
+        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnOne}</p>
+      )}
+      {columnTwo && (
+        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnTwo}</p>
+      )}
+      {columnThree && (
+        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnThree}</p>
+      )}
     </div>
   );
 };
