@@ -18,7 +18,7 @@ const BlockFooterLinks = props => {
       }}
       className='BlockFooterLinks flex flex-row col-8 md:col-6 px1 pb2 md:px0 md:pb7'
     >
-      <span className="BlockFooterLinks__siteLinkText small">Back To Home</span>
+      <span className="BlockFooterLinks__siteLinkText small">← Back Home</span>
       {siteLinkText && siteLink && (
         <span>
           <a
