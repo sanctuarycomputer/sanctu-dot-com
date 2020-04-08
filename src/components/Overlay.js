@@ -17,7 +17,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
       })}
       >
         <div className="flex flex-col">
-          <div className="flex flex-row justify-between items-start pt1 pb1 md:pb0 pl1_25 md:pl1 lg:pb1_5 xxl:pb0">
+          <div className="flex flex-row justify-between items-start pt1 pb1 px1 md:pb0 lg:pb1_5 xxl:pb0">
             <div className="Overlay__navigation flex flex-col col-2">
               <h6 className="small md:block none">Social Media:</h6>
               <div className="Overlay__social-media-list md:block col-4 md:mb1 xxl:mb4 pb1">
@@ -32,7 +32,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
               </p>
             </div>
           </div>
-        <div className="flex flex-row justify-between items-start pl1_25">
+        <div className="flex flex-row justify-between items-start px1">
           <div className="none md:block col-2">
             <SignUpForm 
               overlayMode={ shouldShowOverlay }
@@ -43,7 +43,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
             <p>Website hours are Monday to Friday 7 AM - 7 PM (in your browser's local time).</p>
           </div>
         </div>
-        <div className="Overlay__footer fixed b0 r0 pr_25">
+        <div className="Overlay__footer fixed b0 r0">
           <Footer hidden={ shouldShowOverlay }/>
         </div>
       </div>
