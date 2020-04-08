@@ -10,14 +10,14 @@ jobs:
           - v1-dependencies-{{ checksum "yarn.lock" }}
       - run: 
           name: Install FE Deps
-          command: yarn install
-      - run:
-          name: Build Preview
-          command: yarn build           
+          command: yarn install      
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Build Preview
+          command: yarn build     
       - run: 
           name: Create Preview Link
           command: bash <(curl -s https://peek.run/ci)
