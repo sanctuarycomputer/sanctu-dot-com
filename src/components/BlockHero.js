@@ -5,8 +5,6 @@ import cx from 'classnames';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import get from 'utils/get';
 
-import { SimpleFragment } from 'models';
-
 import { List } from 'components/base';
 
 const BlockHero = props => {
@@ -40,21 +38,21 @@ const BlockHero = props => {
       )}
     </div>
 
-      <div className='flex flex-row justify-end my2'>
-      <div className="col-4 flex flex-row">
-        <div className="col-4 md:col-3">
+      <div className="flex flex-row justify-end my2">
+      <div className="BlockHero__list col-8 md:col-4 flex flex-row">
+        <div className="col-4 md:col-3 pb2">
           <List
             title="Tech Stack:"
             listItems={simpleFragmentToListItems(techStack)}
           />
         </div>
-        <div className="col-4 md:col-3 flex justify-end md:justify-start">
+        <div className="col-4 md:col-3 flex md:justify-start pb2">
           <List
             title="Strategy & Design:"
             listItems={simpleFragmentToListItems(design)}
           />
         </div>
-        <div className="col-4 md:col-3 flex justify-end md:justify-start">
+        <div className="col-4 md:col-3 flex md:justify-start">
           <List
             title="Collaborators:"
             listItems={simpleFragmentToListItems(collaborators)}

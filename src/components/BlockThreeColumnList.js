@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 import get from 'utils/get';
 
+import { Markdown } from 'components/base';
+
 const BlockThreeColumnList = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const columnOne = get(fields, 'columnOne', '');
   const columnTwo = get(fields, 'columnTwo', '');
   const columnThree = get(fields, 'columnThree', '');
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
 
   return (
     <div
@@ -18,20 +20,27 @@ const BlockThreeColumnList = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnList flex flex-col p1 md:p0 md:flex-row col-8 md:col-6 mxauto"
+      className="BlockThreeColumnList flex flex-col p1 md:p0 col-8 md:col-6 mxauto"
     >
       {header && (
-        <h1 className="BlockThreeColumnList__header paragraph col-8 md:col-4 md:pr2">{header}</h1>
+        <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
       )}
-      {columnOne && (
-        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnOne}</p>
-      )}
-      {columnTwo && (
-        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnTwo}</p>
-      )}
-      {columnThree && (
-        <p className="BlockThreeColumnList__column col-8 md:col-4 md:pr2">{columnThree}</p>
-      )}
+
+        <div className="flex flex-col md:flex-row justify-between">
+          <p className="pb2 md:pb0 md:col-2">
+            <span className="small">1.</span>
+            {columnOne && <Markdown fontSize="small" src={columnOne} />}
+          </p>
+          <p className="pb2 md:pb0 md:col-2">
+            <span className="small">2.</span>
+            {columnTwo && <Markdown fontSize="small" src={columnTwo} />}
+          </p>
+          <p className="pb2 md:pb0 md:col-2">
+            <span className="small">3.</span>
+            {columnThree && <Markdown fontSize="small" src={columnThree} />}
+          </p>
+        </div>
+
     </div>
   );
 };

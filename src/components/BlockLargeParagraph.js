@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import get from 'utils/get';
-import cx from 'classnames';
 
 const BlockLargeParagraph = props => {
   const fields = get(props, 'block.fields');
   const description = get(fields, 'description', '');
-  const link = get(fields, 'link', '');
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
 
   return (
     <div
@@ -17,13 +15,10 @@ const BlockLargeParagraph = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className='BlockLargeParagraph flex col-8 md:col-6 p1 md:p0 mxauto'
+      className='BlockLargeParagraph flex col-8 md:col-6 pl1 pb2 md:pl0 md:pb7 mxauto'
     >
       {description && (
-        <p className="BlockLargeParagraph__description paragraph mb1_5">{description}</p>
-      )}
-      {link && (
-        <p className="BlockLargeParagraph__link paragraph mb1_5">{link}</p>
+        <p className="BlockLargeParagraph__description paragraph">{description}</p>
       )}
     </div>
   );
