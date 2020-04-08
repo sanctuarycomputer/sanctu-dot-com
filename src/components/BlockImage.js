@@ -54,7 +54,7 @@ const BlockImage = props => {
           alt={image.description}
           src={image.url}
         />
-        { caption && <p className="BlockImage__caption small color-gray-darkest">{caption}</p>}
+        { caption && <p className="BlockImage__caption small color-gray-darkest mt_5">{caption}</p>}
       </div>
     </div>
   );
