@@ -10,8 +10,11 @@ const HackerConsole = {
   emit(eventName) {
     HackerConsole.listeners.filter(l => l.eventName === eventName).forEach(c => c.callback());
   },
+  enableNightmode() {
+    HackerConsole.emit('enableNightmode');
+  },
   disableNightmode() {
-    HackerConsole.emit('disableNightMode');
+    HackerConsole.emit('disableNightmode');
   },
   applyForJob() {
     console.log("Please email hello@sanctuary.computer for more information!");
