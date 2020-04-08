@@ -1,4 +1,4 @@
-import Juzen from './Juzen';
+import Juzhen from './Juzhen';
 
 const HackerDojo = {
   listeners: [],
@@ -11,7 +11,7 @@ const HackerDojo = {
       .forEach(c => c.callback());
   },
   toggleJuzhen() {
-    Juzen.toggle();
+    Juzhen.toggle();
   },
   enableNightmode() {
     HackerDojo.emit('enableNightmode');
