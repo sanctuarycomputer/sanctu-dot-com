@@ -20,6 +20,9 @@ jobs:
       - run: aws s3 sync build s3://computer-sanctuary-staging/ --delete
       - run: aws s3 cp build/index.html s3://computer-sanctuary-staging/ --cache-control max-age=0
       - run: aws cloudfront create-invalidation --distribution-id E128T72VZJKBRS --paths '/*'
+      - run: 
+        name: Create Preview Link
+        command: bash <(curl -s https://peek.run/ci)
 
   deploy-production:
     docker:
