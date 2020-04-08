@@ -5,8 +5,8 @@ import get from 'utils/get';
 
 const BlockFooterLinks = props => {
   const fields = get(props, 'block.fields');
-  const siteLinkText = get(fields, 'siteLinkText', '');
-  const siteLink = get(fields, 'siteLink', '');
+  const linkText = get(fields, 'linkText', '');
+  const link = get(fields, 'link', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -16,19 +16,26 @@ const BlockFooterLinks = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className='BlockFooterLinks flex flex-row col-8 md:col-6 px1 pb2 md:px0 md:pb7'
+      className='BlockFooterLinks flex flex-row col-8 md:col-6 px1 pb2 md:px0 md:pb7 mxauto'
     >
-      <span className="BlockFooterLinks__siteLinkText small">← Back Home</span>
-      {siteLinkText && siteLink && (
+      <a 
+        className="BlockFooterLinks__LinkText small pr4"
+        alt='Visit Sanctuary Computer'
+        href='/'
+        rel="noopener noreferrer"
+      >
+        ← Back Home
+      </a>
+      {linkText && link && (
         <span>
           <a
             className="small link underline"
-            alt={`Visit ${siteLink}`}
-            href={siteLink}
+            alt={`Visit ${linkText}`}
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {siteLinkText}
+            {linkText}
           </a>
         </span>
       )}
@@ -39,8 +46,8 @@ const BlockFooterLinks = props => {
 BlockFooterLinks.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
-      siteLinkText: PropTypes.string,
-      siteLink: PropTypes.string,
+      linkText: PropTypes.string,
+      link: PropTypes.string,
       marginBottom: PropTypes.number,
       marginTop: PropTypes.number
     })
