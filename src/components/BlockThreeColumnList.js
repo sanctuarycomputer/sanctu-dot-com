@@ -27,18 +27,18 @@ const BlockThreeColumnList = props => {
       )}
 
         <div className="flex flex-col md:flex-row justify-between">
-          <p className="pb2 md:pb0 md:col-2">
+          <div className="pb2 md:pb0 md:col-2">
             <span className="small">1.</span>
             {columnOne && <Markdown fontSize="small" src={columnOne} />}
-          </p>
-          <p className="pb2 md:pb0 md:col-2">
+          </div>
+          <div className="pb2 md:pb0 md:col-2">
             <span className="small">2.</span>
             {columnTwo && <Markdown fontSize="small" src={columnTwo} />}
-          </p>
-          <p className="pb2 md:pb0 md:col-2">
+          </div>
+          <div className="pb2 md:pb0 md:col-2">
             <span className="small">3.</span>
             {columnThree && <Markdown fontSize="small" src={columnThree} />}
-          </p>
+          </div>
         </div>
 
     </div>

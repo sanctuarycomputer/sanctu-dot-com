@@ -8,6 +8,7 @@ import BlockThreeColumnList from 'components/BlockThreeColumnList';
 import BlockImage from 'components/BlockImage';
 import BlockImageText from 'components/BlockImageText';
 import BlockHero from 'components/BlockHero';
+import BlockFooterLinks from 'components/BlockFooterLinks';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -29,6 +30,8 @@ const CaseStudyBlockSwitch = props => {
         return <BlockImageText block={block} />;
       case 'caseStudyBlockHero':
         return <BlockHero block={block} />;
+      case 'caseStudyBlockFooterLinks':
+        return <BlockFooterLinks block={block} />;
       default:
         return null;
     }

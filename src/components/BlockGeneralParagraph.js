@@ -23,9 +23,9 @@ const BlockGeneralParagraph = props => {
       {header && (
         <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 md:pr2 pb2 md:pb0">{header}</h1>
       )}
-      <p className="col-8 md:col-4">
+      <div className="col-8 md:col-4">
         {description && <Markdown fontSize="small" src={description} />}
-      </p>
+      </div>
     </div>
   );
 };

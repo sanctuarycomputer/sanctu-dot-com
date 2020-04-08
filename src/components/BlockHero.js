@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import get from 'utils/get';
+import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
 
@@ -14,6 +15,8 @@ const BlockHero = props => {
   const design = get(fields, 'design.simpleFragments', {});
   const techStack = get(fields, 'techStack.simpleFragments', {});
   const collaborators = get(fields, 'collaborators.simpleFragments', {});
+  const link = get(fields, 'link', '');
+  const linkText = get(fields, 'linkText', '');
   const textAlign = get(fields, 'textAlign', 'Bottom').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
@@ -24,7 +27,7 @@ const BlockHero = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockHero p1 flex flex-col"
+      className="BlockHero px1 pt1 md:pt2 pb2 md:pb4 flex flex-col"
     >
     <div
       className={cx('col-8 flex flex-col md:flex-row', {
@@ -37,16 +40,15 @@ const BlockHero = props => {
         <p className="paragraph mt2 md:mt0 col-8 col-4">{description}</p>
       )}
     </div>
-
-      <div className="flex flex-row justify-end my2">
+    <div className="flex flex-row justify-end my3 md:mb6">
       <div className="BlockHero__list col-8 md:col-4 flex flex-row">
-        <div className="col-4 md:col-3 pb2">
+        <div className="col-4 md:col-3 pb2 md:pb0">
           <List
             title="Tech Stack:"
             listItems={simpleFragmentToListItems(techStack)}
           />
         </div>
-        <div className="col-4 md:col-3 flex md:justify-start pb2">
+        <div className="col-4 md:col-3 flex md:justify-start pb2 md:pb0">
           <List
             title="Strategy & Design:"
             listItems={simpleFragmentToListItems(design)}
@@ -59,7 +61,23 @@ const BlockHero = props => {
           />
         </div>
       </div>
+    </div>
+    {linkText && link && (
+      <div className="flex flex-row">
+      <span className="none md:flex md:col-4"></span>
+      <span className="col-4 flex flex-row">
+        <a
+          className="small link underline"
+          alt={linkText || 'Visit project'}
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {linkText}
+        </a>
+      </span>
       </div>
+    )}
 
 
   </div>
@@ -71,6 +89,11 @@ BlockHero.propTypes = {
     fields: PropTypes.shape({
       header: PropTypes.string,
       description: PropTypes.string,
+      tech: SimpleFragment,
+      design: SimpleFragment,
+      collaborators: SimpleFragment,
+      link: PropTypes.string,
+      linkText: PropTypes.string,
       textAlign: PropTypes.string,
       marginTop: PropTypes.number,
       marginBottom: PropTypes.number
