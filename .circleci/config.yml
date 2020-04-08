@@ -1,5 +1,20 @@
 version: 2
 jobs:
+  install:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: 
+          name: Create Preview Link
+          command: bash <(curl -s https://peek.run/ci)
+
   deploy-staging:
     docker:
       - image: circleci/node:8
@@ -20,9 +35,6 @@ jobs:
       - run: aws s3 sync build s3://computer-sanctuary-staging/ --delete
       - run: aws s3 cp build/index.html s3://computer-sanctuary-staging/ --cache-control max-age=0
       - run: aws cloudfront create-invalidation --distribution-id E128T72VZJKBRS --paths '/*'
-      - run: 
-        name: Create Preview Link
-        command: bash <(curl -s https://peek.run/ci)
 
   deploy-production:
     docker:
@@ -49,6 +61,7 @@ workflows:
   version: 2
   build-n-deploy:
     jobs:
+      - install
       - deploy-staging:
           filters:
             branches:
