@@ -13,7 +13,7 @@ class App extends Component {
     ╚╩╝└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘   ┴ ┴ ┴└─┘  ═╩╝└─┘╚╝└─┘
     `);
 
-    console.log('Explore window.HackerConsole for more info', window.HackerConsole);
+    console.log('Explore window.HackerDojo for more info', window.HackerDojo);
   }
 
   render() {
