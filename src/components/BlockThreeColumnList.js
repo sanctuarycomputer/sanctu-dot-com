@@ -20,7 +20,7 @@ const BlockThreeColumnList = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnList flex flex-col p1 md:p0 col-8 md:col-6 mxauto"
+      className="BlockThreeColumnList flex flex-col px1 md:px0 md:pb7 col-8 md:col-6 mxauto"
     >
       {header && (
         <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
