@@ -20,7 +20,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
           <div className="flex flex-row justify-between items-start pt1 pb1 md:pb0 pl1_25 md:pl1 lg:pb1_5 xxl:pb0">
             <div className="Overlay__navigation flex flex-col col-2">
               <h6 className="small md:block none">Social Media:</h6>
-              <div className="Overlay__social-media-list md:block col-4 md:mb1_5 xxl:mb4 pb1">
+              <div className="Overlay__social-media-list md:block col-4 md:mb1 xxl:mb4 pb1">
                 <List
                   listItems={simpleFragmentToListItems(socialMedia)}
                 />
