@@ -9,8 +9,8 @@ const BlockGeneralParagraph = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
 
   return (
     <div
@@ -21,7 +21,7 @@ const BlockGeneralParagraph = props => {
       className="BlockGeneralParagraph flex flex-col p1 md:p0 md:flex-row col-8 md:col-6 mxauto"
     >
       {header && (
-        <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 md:pr2">{header}</h1>
+        <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 md:pr2 pb4 md:pb0">{header}</h1>
       )}
       <p className="col-8 md:col-4">
         {description && <Markdown fontSize="small" src={description} />}

@@ -41,7 +41,7 @@ const BlockImage = props => {
     >
       <div
         className={cx('BlockImage__image-container overflow-hidden', {
-          'md:col-12': imageSize === 'full',
+          'md:col-8': imageSize === 'full',
           'md:col-6': imageSize === 'large',
           'md:col-5': imageSize === 'medium',
           'md:col-4': imageSize === 'small'
