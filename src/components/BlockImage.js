@@ -24,8 +24,9 @@ const BlockImage = props => {
       : desktopImage;
   const imageAlign = get(fields, 'imageAlign', 'Center').toLowerCase();
   const imageSize = get(fields, 'imageSize', 'Full').toLowerCase();
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
+  const caption = get(fields, 'caption', '');
 
   return (
     <div
@@ -33,7 +34,7 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockImage px1 flex', {
+      className={cx('BlockImage px1 md:px0 flex pb2 md:pb7', {
         'justify-center': imageAlign === 'center',
         'justify-start': imageAlign === 'left',
         'justify-end': imageAlign === 'right'
@@ -42,9 +43,10 @@ const BlockImage = props => {
       <div
         className={cx('BlockImage__image-container overflow-hidden', {
           'md:col-8': imageSize === 'full',
+          'md:col-8 md:px1': imageSize === 'xlarge',
           'md:col-6': imageSize === 'large',
           'md:col-5': imageSize === 'medium',
-          'md:col-4': imageSize === 'small'
+          'md:col-4': imageSize === 'small',
         })}
       >
         <Image
@@ -52,6 +54,7 @@ const BlockImage = props => {
           alt={image.description}
           src={image.url}
         />
+        { caption && <p className="BlockImage__caption small color-gray-darkest">{caption}</p>}
       </div>
     </div>
   );
@@ -65,7 +68,8 @@ BlockImage.propTypes = {
       imageAlign: PropTypes.string,
       imageSize: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      marginTop: PropTypes.number,
+      caption: PropTypes.string,
     })
   })
 };
