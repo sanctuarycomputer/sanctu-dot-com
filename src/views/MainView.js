@@ -22,7 +22,15 @@ class MainView extends PureComponent {
       shouldShowOverlay: this.shouldShowOverlay()
     };
 
-    window.HackerConsole.on('disableNightMode', () => {      
+    window.HackerConsole.on('enableNightmode', () => {      
+      this.setState({
+        shouldShowOverlay: true
+      });
+
+      clearInterval(timerID);
+    });
+
+    window.HackerConsole.on('disableNightmode', () => {      
       this.setState({
         shouldShowOverlay: false
       });
