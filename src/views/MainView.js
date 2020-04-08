@@ -10,7 +10,7 @@ import Footer from "components/Footer";
 import Overlay from "components/Overlay";
 
 const dayStartTimeInHours =  7; // 7 AM
-const dayEndTimeInHours =  19; // 7 PM
+const dayEndTimeInHours =  10; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
@@ -22,7 +22,7 @@ class MainView extends PureComponent {
       shouldShowOverlay: this.shouldShowOverlay()
     };
 
-    window.HackerConsole.on('enableNightmode', () => {      
+    window.HackerDojo.on('enableNightmode', () => {      
       this.setState({
         shouldShowOverlay: true
       });
@@ -30,7 +30,7 @@ class MainView extends PureComponent {
       clearInterval(timerID);
     });
 
-    window.HackerConsole.on('disableNightmode', () => {      
+    window.HackerDojo.on('disableNightmode', () => {      
       this.setState({
         shouldShowOverlay: false
       });

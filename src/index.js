@@ -2,25 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-const HackerConsole = {  
+const HackerDojo = {  
   listeners: [],
   on(eventName, callback) {
-    HackerConsole.listeners.push({ eventName, callback });
+    HackerDojo.listeners.push({ eventName, callback });
   },
   emit(eventName) {
-    HackerConsole.listeners.filter(l => l.eventName === eventName).forEach(c => c.callback());
+    HackerDojo.listeners.filter(l => l.eventName === eventName).forEach(c => c.callback());
   },
   enableNightmode() {
-    HackerConsole.emit('enableNightmode');
+    HackerDojo.emit('enableNightmode');
   },
   disableNightmode() {
-    HackerConsole.emit('disableNightmode');
+    HackerDojo.emit('disableNightmode');
   },
   applyForJob() {
     console.log("Please email hello@sanctuary.computer for more information!");
   }
 }
 
-window.HackerConsole = HackerConsole;
+window.HackerDojo = HackerDojo;
 
 ReactDOM.render(<App />, document.getElementById('root'));
