@@ -17,7 +17,7 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Build Preview
-          command: yarn build     
+          command: CI="" yarn build     
       - run: 
           name: Create Preview Link
           command: bash <(curl -s https://peek.run/ci)
