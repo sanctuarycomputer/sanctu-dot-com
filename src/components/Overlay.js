@@ -17,29 +17,29 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
       })}
       >
         <div className="flex flex-col">
-          <div className="flex flex-row justify-between items-start pt1 pb1 pl1_25 md:px1 md:pb1_5 xxl:pb0">
+          <div className="flex flex-row justify-between items-start pt1 pb1 md:pb0 pl1_25 md:pl1 lg:pb1_5 xxl:pb0">
             <div className="Overlay__navigation flex flex-col col-2">
               <h6 className="small md:block none">Social Media:</h6>
-              <div className="Overlay__social-media-list md:block col-4 md:mb5 xxl:mb4 pb1">
+              <div className="Overlay__social-media-list md:block col-4 md:mb1_5 xxl:mb4 pb1">
                 <List
                   listItems={simpleFragmentToListItems(socialMedia)}
                 />
               </div>
             </div>
-            <div className="Overlay__paragraph pr6 md:px3 col-12 md:col-4">
+            <div className="Overlay__paragraph col-12 md:col-4">
               <p>
                 Thank you for visiting Sanctuary Computer. Our website is currently closed.
               </p>
             </div>
           </div>
-        <div className="flex flex-row justify-between items-start pl1_25 md:px1">
+        <div className="flex flex-row justify-between items-start pl1_25">
           <div className="none md:block col-2">
             <SignUpForm 
               overlayMode={ shouldShowOverlay }
               title='Email Updates'
             /> 
           </div>
-          <div className="Overlay__paragraph pr6 md:px3 col-12 md:col-4">
+          <div className="Overlay__paragraph col-12 md:col-4">
             <p>Website hours are Monday to Friday 7 AM - 7 PM (in your browser's local time).</p>
           </div>
         </div>
