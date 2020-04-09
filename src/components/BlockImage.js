@@ -80,7 +80,7 @@ const BlockImage = props => {
             alt={imageOne.description}
             src={imageOne.url}
           />
-          { imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
+          {imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
         </div>
         <div className="flex flex-col col-8 sm:col-4 pb3 sm:pb0">
           <Image
@@ -88,7 +88,7 @@ const BlockImage = props => {
             alt={imageTwo.description}
             src={imageTwo.url}
             />
-          { imageTwoCaption && <p className="image-caption small color-gray-darkest mt_5">{imageTwoCaption}</p>}
+          {imageTwoCaption && <p className="image-caption small color-gray-darkest mt_5">{imageTwoCaption}</p>}
         </div> 
       </div>
     )}
