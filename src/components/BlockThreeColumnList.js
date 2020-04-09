@@ -20,12 +20,11 @@ const BlockThreeColumnList = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnList flex flex-col px1 md:px0 md:pb7 col-8 md:col-6 mxauto"
+      className="BlockThreeColumnList flex flex-col col-8 md:col-6 mxauto px1 md:px0 pt3 md:pt0 pb2 md:pb7"
     >
       {header && (
         <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
       )}
-
         <div className="flex flex-col md:flex-row justify-between">
           <div className="pb2 md:pb0 md:col-2">
             <span className="small">1.</span>
@@ -35,12 +34,11 @@ const BlockThreeColumnList = props => {
             <span className="small">2.</span>
             {columnTwo && <Markdown fontSize="small" src={columnTwo} />}
           </div>
-          <div className="pb2 md:pb0 md:col-2">
+          <div className="md:pb0 md:col-2">
             <span className="small">3.</span>
             {columnThree && <Markdown fontSize="small" src={columnThree} />}
           </div>
         </div>
-
     </div>
   );
 };

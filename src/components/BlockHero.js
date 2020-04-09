@@ -35,9 +35,9 @@ const BlockHero = props => {
         'md:items-end': textAlign === 'bottom'
       })}
     >
-      {header && <h1 className="header col-8 col-4">{header}</h1>}
+      {header && <h1 className="header col-8 md:col-4">{header}</h1>}
       {description && (
-        <p className="paragraph mt2 md:mt0 col-8 col-4">{description}</p>
+        <p className="paragraph mt2 md:mt0 col-8 md:col-4">{description}</p>
       )}
     </div>
     <div className="flex flex-row justify-end my3 md:mb6">
@@ -48,13 +48,13 @@ const BlockHero = props => {
             listItems={simpleFragmentToListItems(techStack)}
           />
         </div>
-        <div className="col-4 md:col-3 flex md:justify-start pb2 md:pb0">
+        <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
           <List
             title="Strategy & Design:"
             listItems={simpleFragmentToListItems(design)}
           />
         </div>
-        <div className="col-4 md:col-3 flex md:justify-start">
+        <div className="flex col-4 md:col-3 md:justify-start">
           <List
             title="Collaborators:"
             listItems={simpleFragmentToListItems(collaborators)}
@@ -65,7 +65,7 @@ const BlockHero = props => {
     {linkText && link && (
       <div className="flex flex-row">
       <span className="none md:flex md:col-4"></span>
-      <span className="col-4 flex flex-row">
+      <span className="flex flex-row col-4">
         <a
           className="small link underline"
           alt={linkText || 'Visit project'}
@@ -78,8 +78,6 @@ const BlockHero = props => {
       </span>
       </div>
     )}
-
-
   </div>
   );
 };
