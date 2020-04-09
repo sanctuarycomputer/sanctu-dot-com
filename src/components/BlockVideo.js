@@ -43,11 +43,12 @@ class BlockVideo extends PureComponent {
 
     if (mediaHeight < window.innerHeight) {
       this.setState({
-        mediaDimensions: { width: mediaWidth, height: mediaHeight }
+        mediaDimensions: { width: '100%', height: mediaHeight }
       });
     } else {
       const height = window.innerHeight;
-      const width = height * LANDSCAPE;
+      const width = '100%';
+
       this.setState({ mediaDimensions: { width, height } });
     }
   };
