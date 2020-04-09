@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
@@ -129,20 +130,20 @@ class WorkSection extends PureComponent {
                       {get(work, 'fields.title', '')}
                     </h2>
                     <div className="flex flex-row flex-wrap">
-                      {get(work, 'fields.caseStudyLink', '') && (
-                        <a
-                        className="small link text-no-decoration pb1 pr2"
-                        alt="View case study"
-                        href={get(activeProject, 'fields.caseStudyLink')}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                      → View Case Study
-                      </a>
+                      {get(work, 'fields.caseStudySlug', '') && (
+                        <Link
+                          className="small link text-no-decoration pb1 pr2"
+                          ariaLabel="View case study"
+                          to={get(work, 'fields.caseStudySlug', '')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                        → View Case Study
+                        </Link>
                       )}
                       <a
                         className="small link underline"
-                        alt="Project Link"
+                        ariaLabel="Project Link"
                         href={get(work, 'fields.link')}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -217,20 +218,20 @@ class WorkSection extends PureComponent {
               <h2 className="paragraph mb1">
                 {get(activeProject, 'fields.title', '')}
               </h2>
-              {get(activeProject, 'fields.caseStudyLink', '') && (
-                <a
-                className="small link text-no-decoration pr2"
-                alt="View case study"
-                href={get(activeProject, 'fields.caseStudyLink')}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-              → View Case Study
-              </a>
+              {get(activeProject, 'fields.caseStudySlug', '') && (
+                <Link
+                  className="small link text-no-decoration pb1 pr2"
+                  ariaLabel="View case study"
+                  to={get(activeProject, 'fields.caseStudySlug', '')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                → View Case Study
+                </Link>
               )}
               <a
                 className="small link underline"
-                alt="Project Link"
+                ariaLabel="Project Link"
                 href={get(activeProject, 'fields.link')}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -277,7 +278,7 @@ WorkSection.propType = {
       fields: PropTypes.shape({
         media: ContentfulMedia,
         title: PropTypes.string,
-        caseStudyLink: PropTypes.string,
+        caseStudySlug: PropTypes.string,
         link: PropTypes.string,
         linkLabel: PropTypes.string,
         stack: SimpleFragment,
