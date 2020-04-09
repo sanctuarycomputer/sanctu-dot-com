@@ -128,7 +128,7 @@ class WorkSection extends PureComponent {
                     <h2 className="paragraph mb_5">
                       {get(work, 'fields.title', '')}
                     </h2>
-                    <div className="MediaContainer__links flex flex-row flex-wrap">
+                    <div className="flex flex-row flex-wrap">
                       {get(work, 'fields.caseStudyLink', '') && (
                         <a
                         className="small link text-no-decoration pb1 pr2"
