@@ -11,8 +11,6 @@ import { Aspects } from 'constants/Sizes';
 
 const { LANDSCAPE } = Aspects;
 
-const VERTICAL_GUTTER = 32;
-
 class BlockVideo extends PureComponent {
   constructor(props) {
     super(...arguments);
@@ -49,7 +47,7 @@ class BlockVideo extends PureComponent {
         mediaDimensions: { width: mediaWidth, height: mediaHeight }
       });
     } else {
-      const height = window.innerHeight - VERTICAL_GUTTER;
+      const height = window.innerHeight;
       const width = height * LANDSCAPE;
       this.setState({ mediaDimensions: { width, height } });
     }
@@ -59,12 +57,12 @@ class BlockVideo extends PureComponent {
     const { mediaDimensions } = this.state;
     const fields = get(this.props, 'block.fields');
     const video = get(fields, 'video', '');
-    const autoPlay = get(fields, 'autoPlay', true);
-    const playOnScroll = get(fields, 'playOnScroll', false);
-    const loop = get(fields, 'loop', true);
+    const autoPlay = get(fields, 'autoPlayVideo', true);
+    const playOnScroll = get(fields, 'playVideoOnScroll', false);
+    const loop = get(fields, 'loopVideo', true);
 
     return (
-      <div className="MediaContainer" ref={this.mediaContainer}>
+      <div ref={this.mediaContainer}>
         <video
           className="block mxauto"
           style={{
