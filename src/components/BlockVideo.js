@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from 'utils/get';
 import cx from 'classnames';
 
@@ -39,7 +38,7 @@ class BlockVideo extends PureComponent {
   };
 
   adjustSize = () => {
-    const mediaWidth = this.mediaContainer.current.offsetWidth;
+    const mediaWidth = this.mediaContainer.current.clientWidth;
     const mediaHeight = mediaWidth / LANDSCAPE;
 
     if (mediaHeight < window.innerHeight) {
@@ -58,13 +57,12 @@ class BlockVideo extends PureComponent {
     const fields = get(this.props, 'block.fields');
     const video = get(fields, 'video', '');
     const autoPlay = get(fields, 'autoPlayVideo', true);
-    const playOnScroll = get(fields, 'playVideoOnScroll', false);
     const loop = get(fields, 'loopVideo', true);
 
     return (
       <div ref={this.mediaContainer}>
         <video
-          className="block mxauto"
+          className="BlockVideo__video block mxauto"
           style={{
             width: mediaDimensions.width,
             height: mediaDimensions.height
@@ -83,21 +81,19 @@ class BlockVideo extends PureComponent {
   };
 
   render() {
-    const videoSize = get(this.props.fields, 'videoSize', 'Full').toLowerCase();
+    const videoSize = get(this.props, 'block.fields.videoSize', 'Full').toLowerCase();
 
     return (
       <div className={cx('BlockVideo pb2 md:pb7 mxauto', {
         'md:col-8': videoSize === 'full',
-        'md:col-6 px1': videoSize === 'large',
-        'md:col-5': videoSize === 'medium',
-        'md:col-4': videoSize === 'small'
+        'md:col-8 px1': videoSize === 'xlarge',
+        'md:col-6 px1 md:px0': videoSize === 'large'
       })}>
       {this.renderVideo()}
       </div>
     )
 
   };
-
 };
 
 BlockVideo.propTypes = {
@@ -106,10 +102,9 @@ BlockVideo.propTypes = {
       video: ContentfulMedia,
       videoSize: PropTypes.string,
       autoPlay: PropTypes.bool,
-      playOnScroll: PropTypes.bool,
       loop: PropTypes.bool,
     })
   })
 };
 
-export default withBreakpoints(BlockVideo);
+export default BlockVideo;
