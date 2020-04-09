@@ -5,6 +5,7 @@ import BlockGeneralInfo from 'components/BlockGeneralInfo';
 import BlockImage from 'components/BlockImage';
 import BlockImageText from 'components/BlockImageText';
 import BlockHero from 'components/BlockHero';
+import BlockVideo from 'components/BlockVideo';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -20,6 +21,8 @@ const CaseStudyBlockSwitch = props => {
         return <BlockImageText block={block} />;
       case 'caseStudyBlockHero':
         return <BlockHero block={block} />;
+      case 'caseStudyBlockVideo':
+        return <BlockVideo block={block} />;
       default:
         return null;
     }
