@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import get from 'utils/get';
@@ -6,95 +6,32 @@ import cx from 'classnames';
 
 import { ContentfulMedia } from 'models';
 
-import { Aspects } from 'constants/Sizes';
+const BlockVideo = props => {
+  const fields = get(props, 'block.fields');
+  const video = get(fields, 'video', '');
+  const videoSize = get(props, 'block.fields.videoSize', 'Full').toLowerCase();
+  const autoPlay = get(fields, 'autoPlayVideo', true);
+  const loop = get(fields, 'loopVideo', true);
 
-const { LANDSCAPE } = Aspects;
-
-class BlockVideo extends PureComponent {
-  constructor(props) {
-    super(...arguments);
-
-    this.state = {
-      mediaDimensions: {
-        width: 0,
-        height: 0
-      }
-    };
-
-    this.mediaContainer = React.createRef();
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.adjustSize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = () => {
-    this.adjustSize();
-  };
-
-  adjustSize = () => {
-    const mediaWidth = this.mediaContainer.current.clientWidth;
-    const mediaHeight = mediaWidth / LANDSCAPE;
-
-    if (mediaHeight < window.innerHeight) {
-      this.setState({
-        mediaDimensions: { width: '100%', height: mediaHeight }
-      });
-    } else {
-      const height = window.innerHeight;
-      const width = '100%';
-
-      this.setState({ mediaDimensions: { width, height } });
-    }
-  };
-
-  renderVideo = () => {
-    const { mediaDimensions } = this.state;
-    const fields = get(this.props, 'block.fields');
-    const video = get(fields, 'video', '');
-    const autoPlay = get(fields, 'autoPlayVideo', true);
-    const loop = get(fields, 'loopVideo', true);
-
-    return (
-      <div ref={this.mediaContainer}>
-        <video
-          className="BlockVideo__video block mxauto"
-          style={{
-            width: mediaDimensions.width,
-            height: mediaDimensions.height
-          }}
-          autoPlay={autoPlay}
-          loop={loop}
-          muted
-          playsInline
-        >
-          <source
-            src={get(video, 'fields.file.url')}
-          ></source>
-        </video>
-      </div>
-    );
-  };
-
-  render() {
-    const videoSize = get(this.props, 'block.fields.videoSize', 'Full').toLowerCase();
-
-    return (
-      <div className={cx('BlockVideo pb2 md:pb7 mxauto', {
-        'md:col-8': videoSize === 'full',
-        'md:col-8 px1': videoSize === 'xlarge',
-        'md:col-6 px1 md:px0': videoSize === 'large'
-      })}>
-      {this.renderVideo()}
-      </div>
-    )
-
-  };
+  return (
+    <div className={cx('BlockVideo pb2 md:pb7 mxauto', {
+      'md:col-8': videoSize === 'full',
+      'md:col-8 px1': videoSize === 'xlarge',
+      'md:col-6 px1 md:px0': videoSize === 'large'
+    })}>
+      <video
+        className="BlockVideo__video block hauto w100 mxauto"
+        autoPlay={autoPlay}
+        loop={loop}
+        muted
+        playsInline
+      >
+        <source
+          src={get(video, 'fields.file.url')}
+        ></source>
+      </video>
+    </div>
+  );
 };
 
 BlockVideo.propTypes = {
