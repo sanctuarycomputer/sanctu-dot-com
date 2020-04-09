@@ -34,14 +34,16 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockImage flex pb2 md:pb7 px1 md:px0', {
+      className={cx('BlockImage flex px1 md:px0 md:pb7', {
         'justify-center': imageAlign === 'center',
         'justify-start': imageAlign === 'left',
-        'justify-end': imageAlign === 'right'
+        'justify-end': imageAlign === 'right',
+        'pb4': imageCaption.length > 0,
+        'pb2': !imageCaption.length > 0
       })}
     >
     <div
-      className={cx('BlockImage__image-container overflow-hidden', {
+      className={cx('BlockImage__image-container mxauto', {
         'md:col-8': imageSize === 'full',
         'md:col-8 md:px1': imageSize === 'xlarge',
         'md:col-6': imageSize === 'large',
@@ -49,12 +51,15 @@ const BlockImage = props => {
         'md:col-4': imageSize === 'small',
       })}
     >
+
     <Image
-      className="BlockImage__image h100 w100 md:hauto fit-cover"
-      alt={image.description}
-      src={image.url}
-    />
+    className="BlockImage__image h100 w100 md:hauto fit-cover"
+    alt={image.description}
+    src={image.url}
+  /> 
+
       {imageCaption && <p className="image-caption small color-gray-darkest mt_5">{imageCaption}</p>}
+
     </div>
   </div>
   );
