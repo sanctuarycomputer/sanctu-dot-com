@@ -18,6 +18,12 @@
     a {
       color: color("white");
     }
+
+    @include media("sm-down") {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
   }
 
   &__footer {
