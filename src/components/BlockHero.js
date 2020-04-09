@@ -15,7 +15,7 @@ const BlockHero = props => {
   return (
     <div
       style={{
-        marginBottom: `${marginBottom}rem`,
+        marginBottom:`${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
       className={cx('BlockHero p1 flex flex-col md:flex-row', {
