@@ -13,31 +13,20 @@ import { Image } from 'components/base';
 const BlockImage = props => {
   const fields = get(props, 'block.fields');
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
-  const desktopImageOne = flattenImageData(get(fields, 'imageOne', {}));
-  const desktopImageTwo = flattenImageData(get(fields, 'imageTwo', {}));
-  const mobileImageOne = flattenImageData(
-    get(fields, 'mobileImageOne', desktopImageOne)
+  const desktopImage = flattenImageData(get(fields, 'image', {}));
+  const mobileImage = flattenImageData(
+    get(fields, 'mobileImageOne', desktopImage)
   );
-  const mobileImageTwo = flattenImageData(
-    get(fields, 'mobileImageTwo', desktopImageTwo)
-  );
-  const imageOne =
+  const image =
     currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
     currentBreakpoint === Breakpoints.SMALL.label
-      ? mobileImageOne
-      : desktopImageOne;
-  const imageTwo =
-    currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
-    currentBreakpoint === Breakpoints.SMALL.label
-      ? mobileImageTwo
-      : desktopImageTwo;
-  const imageOneCaption = get(fields, 'imageOneCaption', '');
-  const imageTwoCaption = get(fields, 'imageTwoCaption', '');
+      ? mobileImage
+      : desktopImage;
+  const imageCaption = get(fields, 'imageCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
   const imageAlign = get(fields, 'imageAlign', 'Center').toLowerCase();
-  const imageVariant = get(fields, 'imageVariant', 'Full').toLowerCase();
-  const hasTwoImages = imageVariant === 'two';
+  const imageSize = get(fields, 'imageSize', 'Full').toLowerCase();
 
   return (
     <div
@@ -45,53 +34,28 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockImage px1 flex md:pb7', {
+      className={cx('BlockImage flex pb2 md:pb7 px1 md:px0', {
         'justify-center': imageAlign === 'center',
         'justify-start': imageAlign === 'left',
-        'justify-end': imageAlign === 'right',
-        'pb2 md:px0': !hasTwoImages
+        'justify-end': imageAlign === 'right'
       })}
     >
-      {!hasTwoImages && (
-        <div
-          className={cx('BlockImage__image-container overflow-hidden', {
-            'md:col-8': imageVariant === 'full',
-            'md:col-8 md:px1': imageVariant === 'xlarge',
-            'md:col-6': imageVariant === 'large',
-            'md:col-5': imageVariant === 'medium',
-            'md:col-4': imageVariant === 'small',
-          })}
-        >
-          <Image
-            className="BlockImage__image h100 w100 md:hauto fit-cover"
-            alt={imageOne.description}
-            src={imageOne.url}
-          />
-          {imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
-        </div>
-      )}
-      {hasTwoImages && (
-        <div
-          className='BlockTwoImages__image-container col-8 flex flex-col sm:flex-row'
-        >
-        <div className="flex flex-col col-8 sm:col-4 pb3 sm:pb0 sm:mr1">
-          <Image
-            className="BlockTwoImages__image w100"
-            alt={imageOne.description}
-            src={imageOne.url}
-          />
-          {imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
-        </div>
-        <div className="flex flex-col col-8 sm:col-4 pb3 sm:pb0">
-          <Image
-            className="BlockTwoImages__image w100"
-            alt={imageTwo.description}
-            src={imageTwo.url}
-            />
-          {imageTwoCaption && <p className="image-caption small color-gray-darkest mt_5">{imageTwoCaption}</p>}
-        </div> 
-      </div>
-    )}
+    <div
+      className={cx('BlockImage__image-container overflow-hidden', {
+        'md:col-8': imageSize === 'full',
+        'md:col-8 md:px1': imageSize === 'xlarge',
+        'md:col-6': imageSize === 'large',
+        'md:col-5': imageSize === 'medium',
+        'md:col-4': imageSize === 'small',
+      })}
+    >
+    <Image
+      className="BlockImage__image h100 w100 md:hauto fit-cover"
+      alt={image.description}
+      src={image.url}
+    />
+      {imageCaption && <p className="image-caption small color-gray-darkest mt_5">{imageCaption}</p>}
+    </div>
   </div>
   );
 };
@@ -101,12 +65,9 @@ BlockImage.propTypes = {
     fields: PropTypes.shape({
       imageAlign: PropTypes.string,
       imageVariant: PropTypes.string,
-      imageOne: ContentfulMedia,
-      imageTwo: ContentfulMedia,
-      mobileImageOne: ContentfulMedia,
-      mobileImageTwo: ContentfulMedia,
-      imageOneCaption: PropTypes.string,
-      imageTwoCaption: PropTypes.string,
+      image: ContentfulMedia,
+      mobileImage: ContentfulMedia,
+      imageCaption: PropTypes.string,
       marginBottom: PropTypes.number,
       marginTop: PropTypes.number,
     })
