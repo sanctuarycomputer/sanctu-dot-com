@@ -67,7 +67,7 @@ const BlockImage = props => {
             alt={imageOne.description}
             src={imageOne.url}
           />
-          { imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
+          {imageOneCaption && <p className="image-caption small color-gray-darkest mt_5">{imageOneCaption}</p>}
         </div>
       )}
       {hasTwoImages && (
