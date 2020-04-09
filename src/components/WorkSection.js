@@ -128,15 +128,28 @@ class WorkSection extends PureComponent {
                     <h2 className="paragraph mb_5">
                       {get(work, 'fields.title', '')}
                     </h2>
-                    <a
-                      className="small link underline"
-                      alt="Project Link"
-                      href={get(work, 'fields.link')}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {get(work, 'fields.linkLabel')}
-                    </a>
+                    <div className="MediaContainer__links flex flex-row flex-wrap">
+                      {get(work, 'fields.caseStudyLink', '') && (
+                        <a
+                        className="small link text-no-decoration pb1 pr2"
+                        alt="View case study"
+                        href={get(activeProject, 'fields.caseStudyLink')}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                      → View Case Study
+                      </a>
+                      )}
+                      <a
+                        className="small link underline"
+                        alt="Project Link"
+                        href={get(work, 'fields.link')}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {get(work, 'fields.linkLabel')}
+                      </a>
+                    </div>
                   </div>
                   <span className="color-gray small block">
                     {index + 1}/{slideCount}
@@ -204,6 +217,17 @@ class WorkSection extends PureComponent {
               <h2 className="paragraph mb1">
                 {get(activeProject, 'fields.title', '')}
               </h2>
+              {get(activeProject, 'fields.caseStudyLink', '') && (
+                <a
+                className="small link text-no-decoration pr2"
+                alt="View case study"
+                href={get(activeProject, 'fields.caseStudyLink')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+              → View Case Study
+              </a>
+              )}
               <a
                 className="small link underline"
                 alt="Project Link"
@@ -253,6 +277,7 @@ WorkSection.propType = {
       fields: PropTypes.shape({
         media: ContentfulMedia,
         title: PropTypes.string,
+        caseStudyLink: PropTypes.string,
         link: PropTypes.string,
         linkLabel: PropTypes.string,
         stack: SimpleFragment,
