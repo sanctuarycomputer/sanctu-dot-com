@@ -42,24 +42,21 @@ const BlockImage = props => {
         'pb2': !imageCaption
       })}
     >
-    <div
-      className={cx('BlockImage__image-container mxauto', {
-        'md:col-8': imageSize === 'full',
-        'md:col-8 md:px1': imageSize === 'xlarge',
-        'md:col-6': imageSize === 'large',
-        'md:col-5': imageSize === 'medium',
-        'md:col-4': imageSize === 'small',
-      })}
-    >
-
-    <Image
-    className="BlockImage__image h100 w100 md:hauto fit-cover"
-    alt={image.description}
-    src={image.url}
-  /> 
-
-      {imageCaption && <p className="image-caption small color-gray-darkest mt_5">{imageCaption}</p>}
-
+      <div
+        className={cx('BlockImage__image-container mxauto', {
+          'md:col-8': imageSize === 'full',
+          'md:col-8 md:px1': imageSize === 'xlarge',
+          'md:col-6': imageSize === 'large',
+          'md:col-5': imageSize === 'medium',
+          'md:col-4': imageSize === 'small',
+        })}
+      >
+        <Image
+        className="BlockImage__image h100 w100 hauto fit-cover"
+        alt={image.description}
+        src={image.url}
+        />
+        {imageCaption && <p className="image-caption small color-gray-darkest mt_5">{imageCaption}</p>}
     </div>
   </div>
   );
