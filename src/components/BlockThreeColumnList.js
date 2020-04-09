@@ -9,8 +9,11 @@ const BlockThreeColumnList = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const columnOne = get(fields, 'columnOne', '');
+  const columnOneHeader = get(fields, 'columnOneHeader', '');
   const columnTwo = get(fields, 'columnTwo', '');
+  const columnTwoHeader = get(fields, 'columnTwoHeader', '');
   const columnThree = get(fields, 'columnThree', '');
+  const columnThreeHeader = get(fields, 'columnThreeHeader', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -27,15 +30,15 @@ const BlockThreeColumnList = props => {
       )}
         <div className="flex flex-col md:flex-row justify-between">
           <div className="pb2 md:pb0 md:col-2">
-            <span className="small">1.</span>
+            {columnOneHeader && <span className="small">{columnOneHeader}</span>}
             {columnOne && <Markdown fontSize="small" src={columnOne} />}
           </div>
           <div className="pb2 md:pb0 md:col-2">
-            <span className="small">2.</span>
+            {columnTwoHeader && <span className="small">{columnTwoHeader}</span>}
             {columnTwo && <Markdown fontSize="small" src={columnTwo} />}
           </div>
           <div className="md:pb0 md:col-2">
-            <span className="small">3.</span>
+            {columnThreeHeader && <span className="small">{columnThreeHeader}</span>}
             {columnThree && <Markdown fontSize="small" src={columnThree} />}
           </div>
         </div>
