@@ -37,11 +37,11 @@ const BlockHero = props => {
     >
       {header && <h1 className="header col-8 md:col-4">{header}</h1>}
       {description && (
-        <p className="paragraph mt2 md:mt0 col-8 md:col-4">{description}</p>
+        <p className="paragraph col-8 md:col-4 mt2 md:mt0">{description}</p>
       )}
     </div>
     <div className="flex flex-row justify-end my3 md:mb6">
-      <div className="BlockHero__list col-8 md:col-4 flex flex-row">
+      <div className="BlockHero__list flex flex-row col-8 md:col-4">
         <div className="col-4 md:col-3 pb2 md:pb0">
           <List
             title="Tech Stack:"

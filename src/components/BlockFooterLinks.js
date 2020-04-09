@@ -30,7 +30,7 @@ const BlockFooterLinks = props => {
         <span>
           <a
             className="small link"
-            alt={`Visit ${linkText}`}
+            alt={linkText}
             href={link}
             target="_blank"
             rel="noopener noreferrer"
