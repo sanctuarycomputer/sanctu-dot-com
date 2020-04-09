@@ -15,7 +15,7 @@ const BlockImage = props => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const desktopImage = flattenImageData(get(fields, 'image', {}));
   const mobileImage = flattenImageData(
-    get(fields, 'mobileImageOne', desktopImage)
+    get(fields, 'mobileImage', desktopImage)
   );
   const image =
     currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
