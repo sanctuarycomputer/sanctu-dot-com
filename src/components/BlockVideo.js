@@ -15,7 +15,7 @@ const BlockVideo = props => {
 
   return (
     <div
-    className={cx('BlockVideo pb5 md:pb7 mxauto', {
+    className={cx('BlockVideo pb3 md:pb7 mxauto', {
       'md:col-8': videoSize === 'full',
       'md:col-8 px1': videoSize === 'xlarge',
       'md:col-6 px1 md:px0': videoSize === 'large'
