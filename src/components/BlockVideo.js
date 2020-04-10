@@ -27,7 +27,7 @@ const BlockVideo = props => {
         playsInline
       >
         <source
-          src={get(video, 'fields.file.url')}
+          src={get(video, 'fields.file.url', '')}
         ></source>
       </video>
     </div>
