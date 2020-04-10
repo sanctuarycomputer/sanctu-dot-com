@@ -9,11 +9,11 @@ const BlockThreeColumnList = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const columnOne = get(fields, 'columnOne', '');
-  const columnOneHeader = get(fields, 'columnOneHeader', '');
+  const columnOneNumber = get(fields, 'columnOneNumber', '');
   const columnTwo = get(fields, 'columnTwo', '');
-  const columnTwoHeader = get(fields, 'columnTwoHeader', '');
+  const columnTwoNumber = get(fields, 'columnTwoNumber', '');
   const columnThree = get(fields, 'columnThree', '');
-  const columnThreeHeader = get(fields, 'columnThreeHeader', '');
+  const columnThreeNumber = get(fields, 'columnThreeNumber', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -30,20 +30,20 @@ const BlockThreeColumnList = props => {
       )}
         <ol className="flex flex-col md:flex-row justify-between">
           {columnOne && 
-            <li className="pb2 md:pb0 md:pr1">
-              {columnOneHeader && <span className="medium pr1">{columnOneHeader}</span>}
+            <li className="flex flex-row pb2 md:pb0 md:pr1">
+              {columnOneNumber && <span className="medium pr1">{columnOneNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnOne}/>
             </li>
           }
           {columnTwo && 
-            <li className="pb2 md:pb0 md:pr1">
-              {columnTwoHeader && <span className="medium pr1">{columnTwoHeader}</span>}
+            <li className="flex flex-row pb2 md:pb0 md:pr1">
+              {columnTwoNumber && <span className="medium pr1">{columnTwoNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnTwo}/>
             </li>
           }
           {columnThree && 
-            <li className="md:pb0 md:pr1">
-              {columnThreeHeader && <span className="medium pr1">{columnThreeHeader}</span>}
+            <li className="flex flex-row md:pb0 md:pr1">
+              {columnThreeNumber && <span className="medium pr1">{columnThreeNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnThree}/>
             </li>}
         </ol>
@@ -58,6 +58,9 @@ BlockThreeColumnList.propTypes = {
       columnOne: PropTypes.string,
       columnTwo: PropTypes.string,
       columnThree: PropTypes.string,
+      columnOneNumber: PropTypes.string,
+      columnTwoNumber: PropTypes.string,
+      columnThreeNumber: PropTypes.string,
       marginBottom: PropTypes.number,
       marginTop: PropTypes.number
     })
