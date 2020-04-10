@@ -12,7 +12,7 @@ class IntroSectionParagraph extends PureComponent {
           <div className="IntroSectionParagraph__content md:pt_5">
             <Markdown
               src={get(this, 'props.introParagraph')}
-              fontSize="medium"
+              fontSize="large"
             />
           </div>
         </div>

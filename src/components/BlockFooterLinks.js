@@ -24,7 +24,7 @@ const BlockFooterLinks = props => {
         href='/'
         rel="noopener noreferrer"
       >
-        ← Back Home
+        ← Back to Sanctuary
       </a>
       {linkText && link && (
         <span>

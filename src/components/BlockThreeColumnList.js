@@ -26,22 +26,27 @@ const BlockThreeColumnList = props => {
       className="BlockThreeColumnList flex flex-col col-8 md:col-6 mxauto px1 md:px0 pt3 md:pt0 pb2 md:pb7"
     >
       {header && (
-        <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
+        <h1 className="BlockThreeColumnList__header medium col-8 md:col-4 pb2">{header}</h1>
       )}
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="pb2 md:pb0 md:col-2">
-            {columnOneHeader && <span className="small">{columnOneHeader}</span>}
-            {columnOne && <Markdown fontSize="small" src={columnOne} />}
-          </div>
-          <div className="pb2 md:pb0 md:col-2">
-            {columnTwoHeader && <span className="small">{columnTwoHeader}</span>}
-            {columnTwo && <Markdown fontSize="small" src={columnTwo} />}
-          </div>
-          <div className="md:pb0 md:col-2">
-            {columnThreeHeader && <span className="small">{columnThreeHeader}</span>}
-            {columnThree && <Markdown fontSize="small" src={columnThree} />}
-          </div>
-        </div>
+        <ol className="flex flex-col md:flex-row justify-between">
+          {columnOne && 
+            <li className="pb2 md:pb0 md:pr1">
+              {columnOneHeader && <span className="medium pr1">{columnOneHeader}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnOne}/>
+            </li>
+          }
+          {columnTwo && 
+            <li className="pb2 md:pb0 md:pr1">
+              {columnTwoHeader && <span className="medium pr1">{columnTwoHeader}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnTwo}/>
+            </li>
+          }
+          {columnThree && 
+            <li className="md:pb0 md:pr1">
+              {columnThreeHeader && <span className="medium pr1">{columnThreeHeader}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnThree}/>
+            </li>}
+        </ol>
     </div>
   );
 };

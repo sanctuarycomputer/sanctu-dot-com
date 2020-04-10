@@ -1,0 +1,10 @@
+.BlockThreeColumnList {
+  
+  &__list-item,
+  &__list-item > div,
+  &__list-item > div > span > p {
+
+    display: inline;
+
+  }
+}

@@ -37,7 +37,7 @@ class Gallery extends PureComponent {
             <div className="sticky">
               <Markdown
                 src={get(this, 'props.settingExpectations')}
-                fontSize="medium"
+                fontSize="large"
               />
             </div>
           </div>

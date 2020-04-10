@@ -1,4 +1,4 @@
-.Markdown--medium {
+.Markdown--large {
   p {
     @extend .paragraph;
 
@@ -33,6 +33,36 @@
   a {
     @extend .link;
     text-decoration: none;
+  }
+}
+
+.Markdown--medium {
+  p {
+    @extend .medium;
+  
+    > em {
+      @extend .tiny;
+      white-space: nowrap;
+      position: relative;
+      top: -6px;
+
+      @include media("md") {
+        top: -10px;
+      }
+
+      @include media("xl") {
+        top: -11px;
+      }
+    }
+
+    > strong {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    @extend .link;
+    text-decoration: underline;
   }
 }
 
