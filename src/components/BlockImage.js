@@ -22,10 +22,11 @@ const BlockImage = props => {
     currentBreakpoint === Breakpoints.SMALL.label
       ? mobileImage
       : desktopImage;
+  const imageCaption = get(fields, 'imageCaption', '');
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
   const imageAlign = get(fields, 'imageAlign', 'Center').toLowerCase();
   const imageSize = get(fields, 'imageSize', 'Full').toLowerCase();
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
 
   return (
     <div
@@ -33,39 +34,44 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockImage px1 flex', {
+      className={cx('BlockImage flex px1 md:px0 md:pb10', {
         'justify-center': imageAlign === 'center',
-        'justify-start': imageAlign === 'left',
-        'justify-end': imageAlign === 'right'
+        'justify-start md:px1': imageAlign === 'left',
+        'justify-end md:px1': imageAlign === 'right',
+        'pb4': imageCaption,
+        'pb3': !imageCaption
       })}
     >
       <div
-        className={cx('BlockImage__image-container overflow-hidden', {
-          'md:col-12': imageSize === 'full',
+        className={cx('BlockImage__image-container', {
+          'md:col-8 mxauto': imageSize === 'full',
+          'md:col-8 md:px1 mxauto': imageSize === 'xlarge',
           'md:col-6': imageSize === 'large',
           'md:col-5': imageSize === 'medium',
-          'md:col-4': imageSize === 'small'
+          'md:col-4': imageSize === 'small',
         })}
       >
         <Image
-          className="BlockImage__image h100 w100 md:hauto fit-cover"
-          alt={image.description}
-          src={image.url}
+        className="BlockImage__image h100 w100 hauto fit-cover"
+        alt={image.description}
+        src={image.url}
         />
-      </div>
+        {imageCaption && <p className="image-caption small color-gray-darkest mt_5">{imageCaption}</p>}
     </div>
+  </div>
   );
 };
 
 BlockImage.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
+      imageAlign: PropTypes.string,
+      imageVariant: PropTypes.string,
       image: ContentfulMedia,
       mobileImage: ContentfulMedia,
-      imageAlign: PropTypes.string,
-      imageSize: PropTypes.string,
+      imageCaption: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      marginTop: PropTypes.number,
     })
   })
 };

@@ -8,7 +8,7 @@ $p-xl-line-height: 3rem;
 .header {
   font-family: $serif-stack;
   font-weight: 300;
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 100;
 }
 
@@ -56,4 +56,8 @@ $p-xl-line-height: 3rem;
     font-size: 11px;
     letter-spacing: 0.5px;
   }
+}
+
+.image-caption {
+  opacity: 0.5;
 }

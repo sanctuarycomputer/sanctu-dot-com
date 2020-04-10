@@ -1,9 +1,0 @@
-.BlockImage {
-  &__image-container {
-    height: 28rem;
-    
-    @include media('md-up') {
-      height: auto
-    }
-  }
-}
