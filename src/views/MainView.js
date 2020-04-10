@@ -85,7 +85,7 @@ class MainView extends PureComponent {
 
     return (
       <Fragment>
-        <Meta mainView={model} />
+        <Meta model={model} />
         <Overlay
           socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
           shouldShowOverlay={this.state.shouldShowOverlay}
