@@ -31,19 +31,19 @@ const BlockThreeColumnList = props => {
         <ol className="flex flex-col md:flex-row justify-between">
           {columnOne && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnOneNumber && <span className="small pr1">{columnOneNumber}</span>}
+              {columnOneNumber && <span className="BlockThreeColumnList__number small pr1">{columnOneNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnOne}/>
             </li>
           }
           {columnTwo && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnTwoNumber && <span className="small pr1">{columnTwoNumber}</span>}
+              {columnTwoNumber && <span className="BlockThreeColumnList__number small pr1">{columnTwoNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnTwo}/>
             </li>
           }
           {columnThree && 
             <li className="flex flex-row md:pb0 md:pr1">
-              {columnThreeNumber && <span className="small pr1">{columnThreeNumber}</span>}
+              {columnThreeNumber && <span className="BlockThreeColumnList__number small pr1">{columnThreeNumber}</span>}
               <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnThree}/>
             </li>}
         </ol>
