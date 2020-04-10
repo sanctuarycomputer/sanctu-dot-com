@@ -36,16 +36,16 @@ const BlockImage = props => {
       }}
       className={cx('BlockImage flex px1 md:px0 md:pb7', {
         'justify-center': imageAlign === 'center',
-        'justify-start': imageAlign === 'left',
-        'justify-end': imageAlign === 'right',
+        'justify-start md:px1': imageAlign === 'left',
+        'justify-end md:px1': imageAlign === 'right',
         'pb4': imageCaption,
         'pb2': !imageCaption
       })}
     >
       <div
-        className={cx('BlockImage__image-container mxauto', {
-          'md:col-8': imageSize === 'full',
-          'md:col-8 md:px1': imageSize === 'xlarge',
+        className={cx('BlockImage__image-container', {
+          'md:col-8 mxauto': imageSize === 'full',
+          'md:col-8 md:px1 mxauto': imageSize === 'xlarge',
           'md:col-6': imageSize === 'large',
           'md:col-5': imageSize === 'medium',
           'md:col-4': imageSize === 'small',
