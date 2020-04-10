@@ -133,16 +133,16 @@ class WorkSection extends PureComponent {
                       {get(work, 'fields.caseStudySlug', '') && (
                         <Link
                           className="small link decoration-none pb1 pr2"
-                          ariaLabel="View case study"
+                          aria-label="View case study"
                           to={get(work, 'fields.caseStudySlug', '')}
                           rel="noopener noreferrer"
                         >
-                        → View Case Study
+                          → View Case Study
                         </Link>
                       )}
                       <a
                         className="small link underline"
-                        ariaLabel="Project Link"
+                        aria-label="Project Link"
                         href={get(work, 'fields.link')}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -220,16 +220,16 @@ class WorkSection extends PureComponent {
               {get(activeProject, 'fields.caseStudySlug', '') && (
                 <Link
                   className="small link decoration-none pb1 pr2"
-                  ariaLabel="View case study"
+                  aria-label="View case study"
                   to={get(activeProject, 'fields.caseStudySlug', '')}
                   rel="noopener noreferrer"
                 >
-                → View Case Study
+                  → View Case Study
                 </Link>
               )}
               <a
                 className="small link underline"
-                ariaLabel="Project Link"
+                aria-label="Project Link"
                 href={get(activeProject, 'fields.link')}
                 target="_blank"
                 rel="noopener noreferrer"
