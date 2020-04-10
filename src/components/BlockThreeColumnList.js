@@ -32,19 +32,19 @@ const BlockThreeColumnList = props => {
           {columnOne && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
               {columnOneNumber && <span className="medium pr1">{columnOneNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnOne}/>
+              <Markdown fontSize="medium" src={columnOne}/>
             </li>
           }
           {columnTwo && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
               {columnTwoNumber && <span className="medium pr1">{columnTwoNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnTwo}/>
+              <Markdown fontSize="medium" src={columnTwo}/>
             </li>
           }
           {columnThree && 
             <li className="flex flex-row md:pb0 md:pr1">
               {columnThreeNumber && <span className="medium pr1">{columnThreeNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="medium" src={columnThree}/>
+              <Markdown fontSize="medium" src={columnThree}/>
             </li>}
         </ol>
     </div>
