@@ -15,7 +15,7 @@ const BlockLargeParagraph = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className='BlockLargeParagraph flex col-8 md:col-5 px1 pb5 md:px0 md:pb7 mxauto'
+      className='BlockLargeParagraph flex col-8 md:col-5 px1 pb5 md:px0 md:pb3 mxauto'
     >
       {description && (
         <p className="BlockLargeParagraph__description paragraph">{description}</p>
