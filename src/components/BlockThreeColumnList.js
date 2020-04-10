@@ -23,28 +23,28 @@ const BlockThreeColumnList = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnList flex flex-col col-8 md:col-6 mxauto px1 md:px0 pt3 md:pt0 pb2 md:pb7"
+      className="BlockThreeColumnList flex flex-col col-8 md:col-5 mxauto px1 md:px0 pb3 md:pb7"
     >
       {header && (
-        <h1 className="BlockThreeColumnList__header medium col-8 md:col-4 pb2">{header}</h1>
+        <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
       )}
         <ol className="flex flex-col md:flex-row justify-between">
           {columnOne && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnOneNumber && <span className="medium pr1">{columnOneNumber}</span>}
-              <Markdown fontSize="medium" src={columnOne}/>
+              {columnOneNumber && <span className="small pr1">{columnOneNumber}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnOne}/>
             </li>
           }
           {columnTwo && 
             <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnTwoNumber && <span className="medium pr1">{columnTwoNumber}</span>}
-              <Markdown fontSize="medium" src={columnTwo}/>
+              {columnTwoNumber && <span className="small pr1">{columnTwoNumber}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnTwo}/>
             </li>
           }
           {columnThree && 
             <li className="flex flex-row md:pb0 md:pr1">
-              {columnThreeNumber && <span className="medium pr1">{columnThreeNumber}</span>}
-              <Markdown fontSize="medium" src={columnThree}/>
+              {columnThreeNumber && <span className="small pr1">{columnThreeNumber}</span>}
+              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnThree}/>
             </li>}
         </ol>
     </div>

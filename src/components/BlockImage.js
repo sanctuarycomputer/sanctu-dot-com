@@ -38,8 +38,8 @@ const BlockImage = props => {
         'justify-center': imageAlign === 'center',
         'justify-start md:px1': imageAlign === 'left',
         'justify-end md:px1': imageAlign === 'right',
-        'pb4': imageCaption,
-        'pb2': !imageCaption
+        'pb6': imageCaption,
+        'pb5': !imageCaption
       })}
     >
       <div

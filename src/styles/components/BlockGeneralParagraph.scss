@@ -2,4 +2,8 @@
   @media(max-width: 831px) {
     margin-top: 0!important;
   }
+
+  &__paragraph > div > span > p {
+    line-height: 1.5rem;
+  }
 }
