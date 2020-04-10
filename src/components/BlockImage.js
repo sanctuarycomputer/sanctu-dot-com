@@ -34,7 +34,7 @@ const BlockImage = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className={cx('BlockImage flex px1 md:px0 md:pb7', {
+      className={cx('BlockImage flex px1 md:px0 md:pb10', {
         'justify-center': imageAlign === 'center',
         'justify-start md:px1': imageAlign === 'left',
         'justify-end md:px1': imageAlign === 'right',

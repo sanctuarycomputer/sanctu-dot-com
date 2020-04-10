@@ -18,7 +18,7 @@ const BlockGeneralParagraph = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockGeneralParagraph flex flex-col md:flex-row col-8 md:col-6 mxauto px1 md:px0 pb2 md:pb7  "
+      className="BlockGeneralParagraph flex flex-col md:flex-row col-8 md:col-6 mxauto px1 md:px0 pb2 md:pb10"
     >
       {header && (
         <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 pb2 md:pb0 md:pr2">{header}</h1>
