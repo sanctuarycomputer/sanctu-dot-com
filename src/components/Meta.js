@@ -10,7 +10,7 @@ const DEFAULT_IMAGE =
   'https://www.sanctuary.computer/assets/sanctu-share-card.jpg';
 
 const Meta = ({ model }) => {
-  const fields = get(model, 'block.fields');
+  const fields = get(model, 'fields');
   const seoTitle = get(fields, 'seoTitle', DEFAULT_TITLE);
   const seoDescription = get(fields, 'seoDescription', DEFAULT_DESCRIPTION);
   const seoShareCard = get(fields, 'seoShareCard', DEFAULT_IMAGE);
@@ -35,8 +35,8 @@ const Meta = ({ model }) => {
 };
 
 const CaseStudy = ({ caseStudy }) => {
-  const fields = get(caseStudy, 'block.fields');
-  const seoTitle = get(fields, 'seoTitle', 'title');
+  const fields = get(caseStudy, 'fields');
+  const seoTitle = get(fields, 'seoTitle', DEFAULT_TITLE);
   const seoDescription = get(fields, 'seoDescription', DEFAULT_DESCRIPTION);
   const seoShareCard = get(fields, 'seoShareCard', DEFAULT_IMAGE);
 
