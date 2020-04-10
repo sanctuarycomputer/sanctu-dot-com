@@ -1,28 +1,28 @@
-import React, { Fragment, PureComponent } from "react";
-import get from "utils/get";
+import React, { Fragment, PureComponent } from 'react';
+import get from 'utils/get';
 
-import IntroSectionImages from "components/IntroSectionImages";
-import IntroSectionParagraph from "components/IntroSectionParagraph";
-import AboutSection from "components/AboutSection";
-import WorkSection from "components/WorkSection";
-import Gallery from "components/Gallery";
-import Footer from "components/Footer";
-import Overlay from "components/Overlay";
+import Meta from 'components/Meta';
+import IntroSectionImages from 'components/IntroSectionImages';
+import IntroSectionParagraph from 'components/IntroSectionParagraph';
+import AboutSection from 'components/AboutSection';
+import WorkSection from 'components/WorkSection';
+import Gallery from 'components/Gallery';
+import Footer from 'components/Footer';
+import Overlay from 'components/Overlay';
 
-const dayStartTimeInHours =  7; // 7 AM
-const dayEndTimeInHours =  19; // 7 PM
+const dayStartTimeInHours = 7; // 7 AM
+const dayEndTimeInHours = 19; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       shouldShowOverlay: this.shouldShowOverlay()
     };
 
-    window.HackerDojo.on('enableNightmode', () => {      
+    window.HackerDojo.on('enableNightmode', () => {
       this.setState({
         shouldShowOverlay: true
       });
@@ -30,7 +30,7 @@ class MainView extends PureComponent {
       clearInterval(timerID);
     });
 
-    window.HackerDojo.on('disableNightmode', () => {      
+    window.HackerDojo.on('disableNightmode', () => {
       this.setState({
         shouldShowOverlay: false
       });
@@ -47,7 +47,7 @@ class MainView extends PureComponent {
     timerID = setInterval(() => {
       this.setState({
         shouldShowOverlay: this.shouldShowOverlay()
-      })
+      });
     }, 1000);
 
     this.toggleDocumentClass();
@@ -60,12 +60,13 @@ class MainView extends PureComponent {
   shouldShowOverlay = () => {
     const now = new Date();
     const currentTimeInHours = now.getHours();
-    
+
     const shouldShowOverlay =
-      currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
-    
+      currentTimeInHours < dayStartTimeInHours ||
+      currentTimeInHours >= dayEndTimeInHours;
+
     return shouldShowOverlay;
-  }
+  };
 
   toggleDocumentClass = () => {
     const html = document.documentElement;
@@ -74,8 +75,8 @@ class MainView extends PureComponent {
       html && html.classList.add('overlay-is-active');
     } else {
       html && html.classList.remove('overlay-is-active');
-    };
-  }
+    }
+  };
 
   render() {
     const model = this.props.model;
@@ -84,66 +85,72 @@ class MainView extends PureComponent {
 
     return (
       <Fragment>
+        <Meta mainView={model} />
         <Overlay
-          socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
-          shouldShowOverlay={ this.state.shouldShowOverlay } 
+          socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
+          shouldShowOverlay={this.state.shouldShowOverlay}
         />
-        <div 
-        aria-hidden={ this.state.shouldShowOverlay }
-        className='flex md:flex-row flex-col'>
+        <div
+          aria-hidden={this.state.shouldShowOverlay}
+          className="flex md:flex-row flex-col"
+        >
           <div className="col-8 flex flex-col sticky-spacer">
-            <IntroSectionImages images={get(model, "fields.introImages", {})} />
+            <IntroSectionImages images={get(model, 'fields.introImages', {})} />
             <AboutSection
-              whatWeDo={get(model, "fields.whatWeDo.simpleFragments", {})}
+              whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
               selectedClients={get(
                 model,
-                "fields.selectedClients.simpleFragments",
+                'fields.selectedClients.simpleFragments',
                 {}
               )}
               technologyStack={get(
                 model,
-                "fields.technologyStack.simpleFragments",
+                'fields.technologyStack.simpleFragments',
                 {}
               )}
-              software={get(model, "fields.software.simpleFragments", {})}
+              software={get(model, 'fields.software.simpleFragments', {})}
               collaborators={get(
                 model,
-                "fields.collaborators.simpleFragments",
+                'fields.collaborators.simpleFragments',
                 {}
               )}
             />
           </div>
           <div className="col-8 flex order-first md:order-last">
             <IntroSectionParagraph
-              introParagraph={get(model, "fields.introParagraph")}
+              introParagraph={get(model, 'fields.introParagraph')}
             />
           </div>
         </div>
-        <div aria-hidden={ this.state.shouldShowOverlay }>
-          <WorkSection selectedWorks={get(model, "fields.selectedWorks", [])} />
+        <div aria-hidden={this.state.shouldShowOverlay}>
+          <WorkSection selectedWorks={get(model, 'fields.selectedWorks', [])} />
         </div>
-        <div aria-hidden={ this.state.shouldShowOverlay }>
+        <div aria-hidden={this.state.shouldShowOverlay}>
           <Gallery
-            images={get(model, "fields.gallery", {})}
-            settingExpectations={get(model, "fields.settingExpectations")}
+            images={get(model, 'fields.gallery', {})}
+            settingExpectations={get(model, 'fields.settingExpectations')}
             recentArticles={get(
               model,
-              "fields.recentArticles.simpleFragments",
+              'fields.recentArticles.simpleFragments',
               {}
             )}
-            socialMedia={get(model, "fields.socialMedia.simpleFragments", {})}
-            openSourceProjects={get(model, "fields.openSourceProjects.simpleFragments", {})}
+            socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
+            openSourceProjects={get(
+              model,
+              'fields.openSourceProjects.simpleFragments',
+              {}
+            )}
             availablePositions={get(
               model,
-              "fields.availablePositions.simpleFragments",
+              'fields.availablePositions.simpleFragments',
               {}
             )}
           />
         </div>
-        <Footer hidden={ this.state.shouldShowOverlay }/>
+        <Footer hidden={this.state.shouldShowOverlay} />
       </Fragment>
     );
   }
-};
+}
 
 export default MainView;

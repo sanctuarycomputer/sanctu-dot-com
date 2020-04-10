@@ -9,8 +9,8 @@ const DEFAULT_DESCRIPTION =
 const DEFAULT_IMAGE =
   'https://www.sanctuary.computer/assets/sanctu-share-card.jpg';
 
-const Meta = ({ props }) => {
-  const fields = get(props, 'block.fields');
+const Meta = ({ model }) => {
+  const fields = get(model, 'block.fields');
   const seoTitle = get(fields, 'seoTitle', DEFAULT_TITLE);
   const seoDescription = get(fields, 'seoDescription', DEFAULT_DESCRIPTION);
   const seoShareCard = get(fields, 'seoShareCard', DEFAULT_IMAGE);
