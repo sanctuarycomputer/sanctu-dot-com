@@ -132,7 +132,7 @@ class WorkSection extends PureComponent {
                     <div className="flex flex-row flex-wrap">
                       {get(work, 'fields.caseStudySlug', '') && (
                         <Link
-                          className="small link text-decoration-none pb1 pr2"
+                          className="small link decoration-none pb1 pr2"
                           ariaLabel="View case study"
                           to={get(work, 'fields.caseStudySlug', '')}
                           rel="noopener noreferrer"
@@ -219,7 +219,7 @@ class WorkSection extends PureComponent {
               </h2>
               {get(activeProject, 'fields.caseStudySlug', '') && (
                 <Link
-                  className="small link text-decoration-none pb1 pr2"
+                  className="small link decoration-none pb1 pr2"
                   ariaLabel="View case study"
                   to={get(activeProject, 'fields.caseStudySlug', '')}
                   rel="noopener noreferrer"

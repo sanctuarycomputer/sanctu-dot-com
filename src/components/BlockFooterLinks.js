@@ -19,7 +19,7 @@ const BlockFooterLinks = props => {
       className='BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15'
     >
       <a 
-        className="small link text-decoration-none pr4"
+        className="small link decoration-none pr4"
         alt='Visit Sanctuary Computer'
         href='/'
         rel="noopener noreferrer"
