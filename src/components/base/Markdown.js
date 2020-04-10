@@ -7,7 +7,6 @@ import cx from 'classnames';
 const Markdown = ({ className, src, fontSize = '' }) => (
   <div
     className={cx('Markdown', className, {
-      'Markdown--large': fontSize === 'large',
       'Markdown--medium': fontSize === 'medium',
       'Markdown--small': fontSize === 'small'
     })}
