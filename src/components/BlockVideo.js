@@ -14,7 +14,8 @@ const BlockVideo = props => {
   const loop = get(fields, 'loopVideo', true);
 
   return (
-    <div className={cx('BlockVideo pb2 md:pb7 mxauto', {
+    <div
+    className={cx('BlockVideo pb2 md:pb7 mxauto', {
       'md:col-8': videoSize === 'full',
       'md:col-8 px1': videoSize === 'xlarge',
       'md:col-6 px1 md:px0': videoSize === 'large'
