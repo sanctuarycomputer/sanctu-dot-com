@@ -148,7 +148,7 @@ class WorkSection extends PureComponent {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {get(work, 'fields.linkLabel')}
+                        {get(work, 'fields.linkLabel', '')}
                       </a>
                     </div>
                   </div>
@@ -236,7 +236,7 @@ class WorkSection extends PureComponent {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {get(activeProject, 'fields.linkLabel')}
+                {get(activeProject, 'fields.linkLabel', '')}
               </a>
             </div>
             <span className="color-gray small block">
