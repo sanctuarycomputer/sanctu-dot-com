@@ -41,7 +41,7 @@ jobs:
       - run: aws configure set preview.cloudfront true
       - run: aws s3 sync build s3://computer-sanctuary-staging/ --delete
       - run: aws s3 cp build/index.html s3://computer-sanctuary-staging/ --cache-control max-age=0
-      - run: aws cloudfront create-invalidation --distribution-id E128T72VZJKBRS --paths '/*'
+      - run: curl --location --request POST "https://www.spirit.fish/api/v1/renderers/12c41eaf-cb36-4157-aac2-b28df0d2cb48/api_invalidations" -H "Content-Type:application/json" -H "X-Hatchery-Renderer-Api-Key:$STAGING_SPIRIT_FISH_API_KEY" --data-raw '{"invalidation":{"pages":["*"]}}'
 
   deploy-production:
     docker:
@@ -62,7 +62,7 @@ jobs:
       - run: aws configure set preview.cloudfront true
       - run: aws s3 sync build s3://computer-sanctuary-www/ --delete
       - run: aws s3 cp build/index.html s3://computer-sanctuary-www/ --cache-control max-age=0
-      - run: aws cloudfront create-invalidation --distribution-id E9WTSZDHEB6TK --paths '/*'
+      - run: curl --location --request POST "https://www.spirit.fish/api/v1/renderers/6e1b1396-2248-4fa6-bacd-b88d86104612/api_invalidations" -H "Content-Type:application/json" -H "X-Hatchery-Renderer-Api-Key:$PRODUCTION_SPIRIT_FISH_API_KEY" --data-raw '{"invalidation":{"pages":["*"]}}'
 
 workflows:
   version: 2
