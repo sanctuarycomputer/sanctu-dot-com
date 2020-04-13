@@ -65,7 +65,7 @@ const BlockImage = props => {
         <div
           className={cx('BlockImage__image-container', {
             'md:col-8 mxauto':
-              imageVariant === 'full' || imageVariant === 'large',
+              imageVariant === 'full' || imageVariant === 'xlarge',
             'md:col-6': imageVariant === 'large',
             'md:col-5': imageVariant === 'medium',
             'md:col-4': imageVariant === 'small'
