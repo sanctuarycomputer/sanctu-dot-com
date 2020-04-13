@@ -11,7 +11,7 @@ import Footer from 'components/Footer';
 import Overlay from 'components/Overlay';
 
 const dayStartTimeInHours = 7; // 7 AM
-const dayEndTimeInHours = 19; // 7 PM
+const dayEndTimeInHours = 22; // 7 PM
 let timerID = null;
 
 class MainView extends PureComponent {
