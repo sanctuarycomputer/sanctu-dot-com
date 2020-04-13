@@ -1,6 +1,12 @@
 .BlockHero {
+  &__header {
+    @include media('xs-down') {
+      font-size: 2.5rem;
+    }
+  }
+
   &__list {
-    @include media("sm-down") {
+    @include media('sm-down') {
       flex-wrap: wrap;
     }
   }
