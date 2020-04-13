@@ -6,8 +6,6 @@ import get from 'utils/get';
 const BlockLargeParagraph = props => {
   const fields = get(props, 'block.fields');
   const description = get(fields, 'description', '');
-  const marginBottom = get(fields, 'marginBottom', 0);
-  const marginTop = get(fields, 'marginTop', 0);
   const marginBottomDesktop = `md:mb${get(fields, 'marginBottomDesktop', 0)}`;
   const marginTopDesktop = `md:mt${get(fields, 'marginTopDesktop', 0)}`;
   const marginBottomMobile = `mb${get(fields, 'marginBottomMobile', 0)}`;
@@ -30,8 +28,6 @@ BlockLargeParagraph.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
       description: PropTypes.string,
-      marginBottom: PropTypes.number,
-      marginTop: PropTypes.number,
       marginBottomDesktop: PropTypes.number,
       marginTopDesktop: PropTypes.number,
       marginBottomMobile: PropTypes.number,

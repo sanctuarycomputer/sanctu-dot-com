@@ -14,8 +14,6 @@ const BlockThreeColumnList = props => {
   const columnTwoNumber = get(fields, 'columnTwoNumber', '');
   const columnThree = get(fields, 'columnThree', '');
   const columnThreeNumber = get(fields, 'columnThreeNumber', '');
-  const marginBottom = get(fields, 'marginBottom', 0);
-  const marginTop = get(fields, 'marginTop', 0);
   const marginBottomDesktop = `md:mb${get(fields, 'marginBottomDesktop', 0)}`;
   const marginTopDesktop = `md:mt${get(fields, 'marginTopDesktop', 0)}`;
   const marginBottomMobile = `mb${get(fields, 'marginBottomMobile', 0)}`;
@@ -88,8 +86,6 @@ BlockThreeColumnList.propTypes = {
       columnOneNumber: PropTypes.string,
       columnTwoNumber: PropTypes.string,
       columnThreeNumber: PropTypes.string,
-      marginBottom: PropTypes.number,
-      marginTop: PropTypes.number,
       marginBottomDesktop: PropTypes.number,
       marginTopDesktop: PropTypes.number,
       marginBottomMobile: PropTypes.number,

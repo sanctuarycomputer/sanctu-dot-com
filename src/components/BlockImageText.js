@@ -31,16 +31,14 @@ const BlockImageText = props => {
     'imageTextAlign',
     'Image:Text'
   ).toLowerCase();
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
+  const marginBottomDesktop = `md:mb${get(fields, 'marginBottomDesktop', 0)}`;
+  const marginTopDesktop = `md:mt${get(fields, 'marginTopDesktop', 0)}`;
+  const marginBottomMobile = `mb${get(fields, 'marginBottomMobile', 0)}`;
+  const marginTopMobile = `mt${get(fields, 'marginTopMobile', 0)}`;
 
   return (
     <div
-      style={{
-        marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
-      }}
-      className="BlockImageText px1 flex flex-col"
+      className={`BlockImageText px1 flex flex-col ${marginBottomMobile} ${marginBottomDesktop} ${marginTopMobile} ${marginTopDesktop}`}
     >
       {header && headerOnTop && (
         <p
@@ -146,8 +144,10 @@ BlockImageText.propTypes = {
       descriptionAlign: PropTypes.string,
       descriptionWidth: PropTypes.number,
       imageTextAlign: PropTypes.string,
-      marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      marginBottomDesktop: PropTypes.number,
+      marginTopDesktop: PropTypes.number,
+      marginBottomMobile: PropTypes.number,
+      marginTopMobile: PropTypes.number
     })
   })
 };
