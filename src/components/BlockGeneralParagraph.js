@@ -11,20 +11,28 @@ const BlockGeneralParagraph = props => {
   const description = get(fields, 'description', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const marginBottomDesktop = `md:mb${get(fields, 'marginBottomDesktop', 0)}`;
+  const marginTopDesktop = `md:mt${get(fields, 'marginTopDesktop', 0)}`;
+  const marginBottomMobile = `mb${get(fields, 'marginBottomMobile', 0)}`;
+  const marginTopMobile = `mt${get(fields, 'marginTopMobile', 0)}`;
 
   return (
     <div
-      style={{
-        marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
-      }}
-      className="BlockGeneralParagraph flex flex-col md:flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:pb10"
+      className={`BlockGeneralParagraph flex flex-col md:flex-row col-8 md:col-5 mxauto px1 md:px0 ${marginBottomMobile} ${marginBottomDesktop} ${marginTopMobile} ${marginTopDesktop}`}
     >
       {header && (
-        <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 pb2 md:pb0 md:pr2">{header}</h1>
+        <h1 className="BlockGeneralParagraph__header paragraph col-8 md:col-4 pb2 md:pb0 md:pr2">
+          {header}
+        </h1>
       )}
       <div className="col-8 md:col-4">
-        {description && <Markdown className="BlockGeneralParagraph__paragraph" fontSize="small" src={description} />}
+        {description && (
+          <Markdown
+            className="BlockGeneralParagraph__paragraph"
+            fontSize="small"
+            src={description}
+          />
+        )}
       </div>
     </div>
   );
@@ -36,7 +44,11 @@ BlockGeneralParagraph.propTypes = {
       header: PropTypes.string,
       description: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      marginTop: PropTypes.number,
+      marginBottomDesktop: PropTypes.number,
+      marginTopDesktop: PropTypes.number,
+      marginBottomMobile: PropTypes.number,
+      marginTopMobile: PropTypes.number
     })
   })
 };

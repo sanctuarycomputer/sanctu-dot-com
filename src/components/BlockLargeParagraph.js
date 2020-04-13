@@ -8,17 +8,19 @@ const BlockLargeParagraph = props => {
   const description = get(fields, 'description', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const marginBottomDesktop = `md:mb${get(fields, 'marginBottomDesktop', 0)}`;
+  const marginTopDesktop = `md:mt${get(fields, 'marginTopDesktop', 0)}`;
+  const marginBottomMobile = `mb${get(fields, 'marginBottomMobile', 0)}`;
+  const marginTopMobile = `mt${get(fields, 'marginTopMobile', 0)}`;
 
   return (
     <div
-      style={{
-        marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
-      }}
-      className='BlockLargeParagraph flex col-8 md:col-5 px1 md:px0 pb3 mxauto'
+      className={`BlockLargeParagraph flex col-8 md:col-5 px1 md:px0 ${marginBottomMobile} ${marginBottomDesktop} ${marginTopMobile} ${marginTopDesktop} mxauto`}
     >
       {description && (
-        <p className="BlockLargeParagraph__description paragraph">{description}</p>
+        <p className="BlockLargeParagraph__description paragraph">
+          {description}
+        </p>
       )}
     </div>
   );
@@ -29,7 +31,11 @@ BlockLargeParagraph.propTypes = {
     fields: PropTypes.shape({
       description: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      marginTop: PropTypes.number,
+      marginBottomDesktop: PropTypes.number,
+      marginTopDesktop: PropTypes.number,
+      marginBottomMobile: PropTypes.number,
+      marginTopMobile: PropTypes.number
     })
   })
 };
