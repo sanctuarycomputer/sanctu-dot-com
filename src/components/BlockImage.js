@@ -127,7 +127,7 @@ BlockImage.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
       imageHorizontalAlignment: PropTypes.string,
-      imageVeticalAlignment: PropTypes.string,
+      imageVerticalAlignment: PropTypes.string,
       imageVariant: PropTypes.string,
       imageOne: ContentfulMedia,
       imageTwo: ContentfulMedia,
