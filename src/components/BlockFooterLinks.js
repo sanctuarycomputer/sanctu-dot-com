@@ -16,12 +16,12 @@ const BlockFooterLinks = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className='BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15'
+      className="BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15"
     >
-      <a 
-        className="small link decoration-none pr4"
-        alt='Visit Sanctuary Computer'
-        href='/'
+      <a
+        className="small link decoration-none pr3"
+        alt="Visit Sanctuary Computer"
+        href="/"
         rel="noopener noreferrer"
       >
         ← Back to Sanctuary
