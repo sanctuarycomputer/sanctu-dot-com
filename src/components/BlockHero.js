@@ -20,6 +20,8 @@ const BlockHero = props => {
   const textAlign = get(fields, 'textAlign', 'Bottom').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const isTwoColumnList =
+    !Object.keys(design).length || !Object.keys(collaborators).length;
 
   return (
     <div
@@ -50,18 +52,44 @@ const BlockHero = props => {
               listItems={simpleFragmentToListItems(techStack)}
             />
           </div>
-          <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
-            <List
-              title="Strategy & Design:"
-              listItems={simpleFragmentToListItems(design)}
-            />
-          </div>
-          <div className="flex col-4 md:col-3 md:justify-start">
-            <List
-              title="Collaborators:"
-              listItems={simpleFragmentToListItems(collaborators)}
-            />
-          </div>
+          {!isTwoColumnList ? (
+            <>
+              <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
+                <List
+                  title="Strategy & Design:"
+                  listItems={simpleFragmentToListItems(design)}
+                />
+              </div>
+              <div className="flex col-4 md:col-3 md:justify-start">
+                <List
+                  title="Collaborators:"
+                  listItems={simpleFragmentToListItems(collaborators)}
+                />
+              </div>
+            </>
+          ) : (
+            ''
+          )}
+          {isTwoColumnList && Object.keys(collaborators).length ? (
+            <div className="flex col-4 md:col-3 md:justify-start">
+              <List
+                title="Collaborators:"
+                listItems={simpleFragmentToListItems(collaborators)}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          {isTwoColumnList && Object.keys(design).length ? (
+            <div className="flex col-4 md:col-3 md:justify-start">
+              <List
+                title="Strategy & Design:"
+                listItems={simpleFragmentToListItems(design)}
+              />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
       {linkText && link && (
