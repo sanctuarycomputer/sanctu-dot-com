@@ -24,7 +24,7 @@ const Meta = ({ model }) => {
       <meta property="og:site_name" content="Sanctuary Computer" />
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:title" content={seoTitle} />
-      <meta name="twitter:seoDescription" content={seoDescription} />
+      <meta name="twitter:description" content={seoDescription} />
       <meta name="twitter:image" content={seoShareCard} />
       <meta name="twitter:site" content="@sanctucompu" />
       <meta name="twitter:creator" content="@sanctucompu" />
