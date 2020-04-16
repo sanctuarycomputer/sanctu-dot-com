@@ -73,21 +73,21 @@ const BlockHero = props => {
           ) : (
             ''
           )}
-          {isTwoColumnList && Object.keys(columnThree).length ? (
-            <div className="flex col-4 md:col-3 md:justify-start">
-              <List
-                title={columnThreeTitle}
-                listItems={simpleFragmentToListItems(columnThree)}
-              />
-            </div>
-          ) : (
-            ''
-          )}
           {isTwoColumnList && Object.keys(columnTwo).length ? (
             <div className="flex col-4 md:col-3 md:justify-start">
               <List
                 title={columnTwoTitle}
                 listItems={simpleFragmentToListItems(columnTwo)}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          {isTwoColumnList && Object.keys(columnThree).length ? (
+            <div className="flex col-4 md:col-3 md:justify-start">
+              <List
+                title={columnThreeTitle}
+                listItems={simpleFragmentToListItems(columnThree)}
               />
             </div>
           ) : (
