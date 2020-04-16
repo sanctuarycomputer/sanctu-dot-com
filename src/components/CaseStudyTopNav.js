@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import get from 'lodash/get';
 import throttle from 'lodash/throttle';
 
@@ -45,14 +46,14 @@ class CaseStudyTopNav extends Component {
     return (
       <>
         <div className="md:none p1">
-          <a
-            className="small link decoration-none pr3"
-            alt="Visit Sanctuary Computer"
-            href="/"
+          <Link
+            className="small link decoration-none"
+            aria-label="Visit Sanctuary Computer"
+            to="/"
             rel="noopener noreferrer"
           >
             ← Back to Sanctuary
-          </a>
+          </Link>
         </div>
         <div
           className={cx(
@@ -62,14 +63,14 @@ class CaseStudyTopNav extends Component {
             }
           )}
         >
-          <a
-            className="small link decoration-none pr3"
-            alt="Visit Sanctuary Computer"
-            href="/"
+          <Link
+            className="small link decoration-none"
+            aria-label="Visit Sanctuary Computer"
+            to="/"
             rel="noopener noreferrer"
           >
             ← Back to Sanctuary
-          </a>
+          </Link>
         </div>
       </>
     );
