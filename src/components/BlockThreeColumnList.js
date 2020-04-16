@@ -26,27 +26,54 @@ const BlockThreeColumnList = props => {
       className="BlockThreeColumnList flex flex-col col-8 md:col-5 mxauto px1 md:px0 pb3 md:pb7"
     >
       {header && (
-        <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">{header}</h1>
+        <h1 className="BlockThreeColumnList__header small col-8 md:col-4 pb2">
+          {header}
+        </h1>
       )}
-        <ol className="flex flex-col md:flex-row justify-between">
-          {columnOne && 
-            <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnOneNumber && <span className="BlockThreeColumnList__number small pr1">{columnOneNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnOne}/>
-            </li>
-          }
-          {columnTwo && 
-            <li className="flex flex-row pb2 md:pb0 md:pr1">
-              {columnTwoNumber && <span className="BlockThreeColumnList__number small pr1">{columnTwoNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnTwo}/>
-            </li>
-          }
-          {columnThree && 
-            <li className="flex flex-row md:pb0 md:pr1">
-              {columnThreeNumber && <span className="BlockThreeColumnList__number small pr1">{columnThreeNumber}</span>}
-              <Markdown className="BlockThreeColumnList__list-item" fontSize="small" src={columnThree}/>
-            </li>}
-        </ol>
+      <ol className="flex flex-col md:flex-row">
+        {columnOne && (
+          <li className="flex flex-row pb2 md:pb0 md:pr1 md:col-4">
+            {columnOneNumber && (
+              <span className="BlockThreeColumnList__number small pr1">
+                {columnOneNumber}
+              </span>
+            )}
+            <Markdown
+              className="BlockThreeColumnList__list-item"
+              fontSize="small"
+              src={columnOne}
+            />
+          </li>
+        )}
+        {columnTwo && (
+          <li className="flex flex-row pb2 md:pb0 md:pr1 md:col-4">
+            {columnTwoNumber && (
+              <span className="BlockThreeColumnList__number small pr1">
+                {columnTwoNumber}
+              </span>
+            )}
+            <Markdown
+              className="BlockThreeColumnList__list-item"
+              fontSize="small"
+              src={columnTwo}
+            />
+          </li>
+        )}
+        {columnThree && (
+          <li className="flex flex-row md:pb0 md:pr1 md:col-4">
+            {columnThreeNumber && (
+              <span className="BlockThreeColumnList__number small pr1">
+                {columnThreeNumber}
+              </span>
+            )}
+            <Markdown
+              className="BlockThreeColumnList__list-item"
+              fontSize="small"
+              src={columnThree}
+            />
+          </li>
+        )}
+      </ol>
     </div>
   );
 };
