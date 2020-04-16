@@ -1,9 +1,9 @@
 .CaseStudyTopNav {
-  transition: all 0.65s ease-in-out;
+  transition: all 600ms cubic-bezier(0.42, 0, 0, 1);
   transform: translateY(-2rem);
 
   &--active {
-    transition: all 0.75s ease-in-out;
+    transition: all 600ms cubic-bezier(0.42, 0, 0, 1);
     transform: translateY(0);
   }
 
