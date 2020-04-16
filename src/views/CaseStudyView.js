@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import get from 'utils/get';
 
 import Meta from 'components/Meta';
+import CaseStudyTopNav from 'components/CaseStudyTopNav';
 import CaseStudyBlockSwitch from 'components/CaseStudyBlockSwitch';
 
 const CaseStudyView = ({ model }) => {
@@ -11,6 +12,7 @@ const CaseStudyView = ({ model }) => {
   return (
     <Fragment>
       <Meta model={model} />
+      <CaseStudyTopNav />
       {get(model, 'fields.contentBlocks', []).map((block, i) => (
         <CaseStudyBlockSwitch key={get(block, 'sys.id', i)} block={block} />
       ))}

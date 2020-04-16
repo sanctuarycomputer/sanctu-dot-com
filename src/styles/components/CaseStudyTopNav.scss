@@ -1,0 +1,14 @@
+.CaseStudyTopNav {
+  transition: all 600ms cubic-bezier(0.42, 0, 0, 1);
+  transform: translateY(-2rem);
+
+  &--active {
+    transition: all 600ms cubic-bezier(0.42, 0, 0, 1);
+    transform: translateY(0);
+  }
+
+  @include media('md-up') {
+    display: initial;
+    position: fixed;
+  }
+}
