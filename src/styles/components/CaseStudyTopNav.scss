@@ -1,26 +1,15 @@
-@keyframes animate-appear-from-top {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
+.CaseStudyTopNav--desktop {
+  display: none;
+  transition: all 0.5s ease-in-out;
+  transform: translateY(-2rem);
 
-  100% {
-    opacity: 1;
+  &--active {
+    transition: all 0.75s ease-in-out;
     transform: translateY(0);
   }
-}
-
-.CaseStudyTopNav--desktop {
-  transition: all 0.75s ease-in-out;
-  display: none;
 
   @include media('md-up') {
     display: initial;
     position: fixed;
-  }
-
-  &--active {
-    animation: animate-appear-from-top 0.75s;
-    animation-fill-mode: forwards;
   }
 }

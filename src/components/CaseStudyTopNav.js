@@ -16,12 +16,12 @@ class CaseStudyTopNav extends Component {
 
     const scrollAtBottom =
       get(window, 'innerHeight', 0) + get(window, 'scrollY', 0) >=
-      get(document, 'body.offsetHeight', 0);
+      get(document, 'body.offsetHeight', 0) - 450;
 
     if (pageOffset < 40) {
       this.setState({ showCaseStudyTopNav: false });
     } else {
-      if ((pageOffset > 0) & !scrollAtBottom) {
+      if (pageOffset > 0 && !scrollAtBottom) {
         this.setState({ showCaseStudyTopNav: true });
       } else {
         this.setState({ showCaseStudyTopNav: false });
@@ -40,7 +40,7 @@ class CaseStudyTopNav extends Component {
   }
 
   render() {
-    const { showCaseStudyTopNav, scrollAtBottom } = this.state;
+    const { showCaseStudyTopNav } = this.state;
 
     return (
       <>
