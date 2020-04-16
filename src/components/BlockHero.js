@@ -12,16 +12,19 @@ const BlockHero = props => {
   const fields = get(props, 'block.fields', {});
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
-  const design = get(fields, 'design.simpleFragments', {});
-  const techStack = get(fields, 'techStack.simpleFragments', {});
-  const collaborators = get(fields, 'collaborators.simpleFragments', {});
+  const columnOne = get(fields, 'columnOne.simpleFragments', {});
+  const columnTwo = get(fields, 'columnTwo.simpleFragments', {});
+  const columnThree = get(fields, 'columnThree.simpleFragments', {});
+  const columnOneTitle = get(fields, 'columnOneTitle', '');
+  const columnTwoTitle = get(fields, 'columnTwoTitle', '');
+  const columnThreeTitle = get(fields, 'columnThreeTitle', '');
   const link = get(fields, 'link', '');
   const linkText = get(fields, 'linkText', '');
   const textAlign = get(fields, 'textAlign', 'Bottom').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
   const isTwoColumnList =
-    !Object.keys(design).length || !Object.keys(collaborators).length;
+    !Object.keys(columnTwo).length || !Object.keys(columnThree).length;
 
   return (
     <div
@@ -48,43 +51,43 @@ const BlockHero = props => {
         <div className="BlockHero__list flex flex-row col-8 md:col-4">
           <div className="col-4 md:col-3 pb2 md:pb0">
             <List
-              title="Tech Stack:"
-              listItems={simpleFragmentToListItems(techStack)}
+              title={columnOneTitle}
+              listItems={simpleFragmentToListItems(columnOne)}
             />
           </div>
           {!isTwoColumnList ? (
             <>
               <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
                 <List
-                  title="Strategy & Design:"
-                  listItems={simpleFragmentToListItems(design)}
+                  title={columnTwoTitle}
+                  listItems={simpleFragmentToListItems(columnTwo)}
                 />
               </div>
               <div className="flex col-4 md:col-3 md:justify-start">
                 <List
-                  title="Collaborators:"
-                  listItems={simpleFragmentToListItems(collaborators)}
+                  title={columnThreeTitle}
+                  listItems={simpleFragmentToListItems(columnThree)}
                 />
               </div>
             </>
           ) : (
             ''
           )}
-          {isTwoColumnList && Object.keys(collaborators).length ? (
+          {isTwoColumnList && Object.keys(columnTwo).length ? (
             <div className="flex col-4 md:col-3 md:justify-start">
               <List
-                title="Collaborators:"
-                listItems={simpleFragmentToListItems(collaborators)}
+                title={columnTwoTitle}
+                listItems={simpleFragmentToListItems(columnTwo)}
               />
             </div>
           ) : (
             ''
           )}
-          {isTwoColumnList && Object.keys(design).length ? (
+          {isTwoColumnList && Object.keys(columnThree).length ? (
             <div className="flex col-4 md:col-3 md:justify-start">
               <List
-                title="Strategy & Design:"
-                listItems={simpleFragmentToListItems(design)}
+                title={columnThreeTitle}
+                listItems={simpleFragmentToListItems(columnThree)}
               />
             </div>
           ) : (
@@ -117,9 +120,12 @@ BlockHero.propTypes = {
     fields: PropTypes.shape({
       header: PropTypes.string,
       description: PropTypes.string,
-      tech: SimpleFragment,
-      design: SimpleFragment,
-      collaborators: SimpleFragment,
+      columnOne: SimpleFragment,
+      columnTwo: SimpleFragment,
+      columnThree: SimpleFragment,
+      columnOneTitle: PropTypes.string,
+      columnTwoTitle: PropTypes.string,
+      columnThreeTitle: PropTypes.string,
       link: PropTypes.string,
       linkText: PropTypes.string,
       textAlign: PropTypes.string,
