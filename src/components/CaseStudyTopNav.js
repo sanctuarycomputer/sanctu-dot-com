@@ -56,9 +56,9 @@ class CaseStudyTopNav extends Component {
         </div>
         <div
           className={cx(
-            'CaseStudyTopNav--desktop events-none opacity-0 l0 r0 t0 p1',
+            'CaseStudyTopNav events-none none opacity-0 l0 r0 t0 p1',
             {
-              'CaseStudyTopNav--desktop--active opacity-1 events-all': showCaseStudyTopNav
+              'CaseStudyTopNav--active opacity-1 events-all': showCaseStudyTopNav
             }
           )}
         >
