@@ -41,7 +41,7 @@ const BlockHero = props => {
         })}
       >
         {header && (
-          <h1 className="BlockHero__header header col-8 md:col-4">{header}</h1>
+          <h1 className="BlockHero__header col-8 md:col-4">{header}</h1>
         )}
         {description && (
           <p className="paragraph col-8 md:col-4 mt2 md:mt0">{description}</p>
