@@ -10,6 +10,7 @@ import BlockImageText from 'components/BlockImageText';
 import BlockHero from 'components/BlockHero';
 import BlockVideo from 'components/BlockVideo';
 import BlockFooterLinks from 'components/BlockFooterLinks';
+import BlockViewMore from 'components/BlockViewMore';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -35,6 +36,8 @@ const CaseStudyBlockSwitch = props => {
         return <BlockVideo block={block} />;
       case 'caseStudyBlockFooterLinks':
         return <BlockFooterLinks block={block} />;
+      case 'caseStudyBlockViewMore':
+        return <BlockViewMore block={block} />;
       default:
         return null;
     }
