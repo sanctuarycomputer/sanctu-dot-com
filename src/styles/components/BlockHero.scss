@@ -1,9 +1,13 @@
 .BlockHero {
   &__header {
     font-family: $serif-stack;
-    font-weight: 300;
-    font-size: 2.5rem;
     font-weight: 100;
+    font-size: 2.5rem;
+
+    @include media('xs-down') {
+      font-weight: 200;
+      font-size: 1.65rem;
+    }
   }
 
   &__list {
