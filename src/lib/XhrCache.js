@@ -56,9 +56,7 @@ const xhrCache = {
   },
   publish: () => {
     xhrCache.scriptTag.innerHTML = `window.SPIRIT_FISH_XHR_CACHE = ${JSON.stringify(
-      xhrCache.data,
-      null,
-      0
+      xhrCache.data
     )}`;
   },
   get: url => {
