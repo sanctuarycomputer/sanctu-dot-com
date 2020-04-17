@@ -26,7 +26,7 @@ const BlockViewMore = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockViewMore flex flex-col col-8 px1 pb1"
+      className="BlockViewMore flex flex-col px1 pb1"
     >
       {header && <span className="small pb1">{header}</span>}
       <div className="flex flex-col md:flex-row">
@@ -34,7 +34,7 @@ const BlockViewMore = props => {
           {linkOneText && linkOne && (
             <Link
               className="small link decoration-none"
-              aria-label={linkOneText || 'Visit Case Study'}
+              aria-label={linkOneText}
               to={linkOne}
               rel="noopener noreferrer"
             >
@@ -53,7 +53,7 @@ const BlockViewMore = props => {
           {linkTwoText && linkTwo && (
             <Link
               className="small link decoration-none"
-              aria-label={linkTwoText || 'Visit Case Study'}
+              aria-label={linkTwoText}
               to={linkTwo}
               rel="noopener noreferrer"
             >
