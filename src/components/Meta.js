@@ -28,11 +28,17 @@ const Meta = ({ model }) => {
         name="twitter:description"
         content="Sanctuary Computer is committed to offering at least one of our healthcare plans with 100% coverage, indefinitely."
       />
-      <meta name="twitter:image" content="%PUBLIC_URL%/assets/share.jpg" />
+      <meta
+        name="twitter:image"
+        content="https://m4a.sanctuary.computer/assets/share.jpg"
+      />
       <meta property="og:title" content="Medicare for All (employees)" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="http://mfa.sanctuary.computer/" />
-      <meta property="og:image" content="%PUBLIC_URL%/assets/share.jpg" />
+      <meta property="og:url" content="https://staging.sanctuary.computer/" />
+      <meta
+        property="og:image"
+        content="https://m4a.sanctuary.computer/assets/share.jpg"
+      />
       <meta
         property="og:description"
         content="Sanctuary Computer is committed to offering at least one of our healthcare plans with 100% coverage, indefinitely."
