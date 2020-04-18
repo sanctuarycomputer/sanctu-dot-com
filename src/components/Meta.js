@@ -18,6 +18,7 @@ const Meta = ({ model }) => {
     <Helmet>
       <title>{seoTitle}</title>
       <meta name="description" content={seoDescription} />
+      <meta property="og:type" content="website" />
       <meta property="og:title" content={seoTitle} />
       <meta property="og:description" content={seoDescription} />
       <meta property="og:image" content={seoShareCard} />
