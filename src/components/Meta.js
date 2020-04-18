@@ -17,19 +17,26 @@ const Meta = ({ model }) => {
   return (
     <Helmet>
       <title>{seoTitle}</title>
-      <meta name="description" content={seoDescription} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={seoTitle} />
-      <meta property="og:description" content={seoDescription} />
-      <meta property="og:image" content={seoShareCard} />
-      <meta property="og:site_name" content="Sanctuary Computer" />
-      <meta property="og:locale" content="en_US" />
-      <meta name="twitter:title" content={seoTitle} />
-      <meta name="twitter:description" content={seoDescription} />
-      <meta name="twitter:image" content={seoShareCard} />
+      <meta
+        name="description"
+        content="Sanctuary Computer is committed to offering at least one of our healthcare plans with 100% coverage, indefinitely."
+      />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@sanctucompu" />
-      <meta name="twitter:creator" content="@sanctucompu" />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Medicare for All (employees)" />
+      <meta
+        name="twitter:description"
+        content="Sanctuary Computer is committed to offering at least one of our healthcare plans with 100% coverage, indefinitely."
+      />
+      <meta name="twitter:image" content="%PUBLIC_URL%/assets/share.jpg" />
+      <meta property="og:title" content="Medicare for All (employees)" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="http://mfa.sanctuary.computer/" />
+      <meta property="og:image" content="%PUBLIC_URL%/assets/share.jpg" />
+      <meta
+        property="og:description"
+        content="Sanctuary Computer is committed to offering at least one of our healthcare plans with 100% coverage, indefinitely."
+      />
     </Helmet>
   );
 };
