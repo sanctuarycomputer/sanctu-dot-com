@@ -58,6 +58,8 @@ class MainView extends PureComponent {
   }
 
   shouldShowOverlay = () => {
+    if (window.SPIRIT_FISH) return false;
+
     const now = new Date();
     const currentTimeInHours = now.getHours();
 
