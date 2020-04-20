@@ -1,0 +1,32 @@
+.BlockThreeColumnHero {
+  &__image {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  &__description > div > span > p {
+    padding-bottom: 1rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__header {
+    @include media('md-up') {
+      &::before {
+        content: '';
+        display: block;
+        margin: -0.45rem 0;
+      }
+    }
+
+    @include media('lg-up') {
+      &::before {
+        content: '';
+        display: block;
+        margin: -0.5rem 0;
+      }
+    }
+  }
+}

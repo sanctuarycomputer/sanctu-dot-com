@@ -47,54 +47,58 @@ const BlockHero = props => {
           <p className="paragraph col-8 md:col-4 mt2 md:mt0">{description}</p>
         )}
       </div>
-      <div className="flex flex-row justify-end my3 md:mb6">
-        <div className="BlockHero__list flex flex-row col-8 md:col-4">
-          <div className="col-4 md:col-3 pb2 md:pb0">
-            <List
-              title={columnOneTitle}
-              listItems={simpleFragmentToListItems(columnOne)}
-            />
-          </div>
-          {!isTwoColumnList ? (
-            <>
-              <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
+
+      {columnOne && (
+        <div className="flex flex-row justify-end my3 md:mb6">
+          <div className="BlockHero__list flex flex-row col-8 md:col-4">
+            <div className="col-4 md:col-3 pb2 md:pb0">
+              <List
+                title={columnOneTitle}
+                listItems={simpleFragmentToListItems(columnOne)}
+              />
+            </div>
+            {!isTwoColumnList ? (
+              <>
+                <div className="flex col-4 md:col-3 md:justify-start pb2 md:pb0">
+                  <List
+                    title={columnTwoTitle}
+                    listItems={simpleFragmentToListItems(columnTwo)}
+                  />
+                </div>
+                <div className="flex col-4 md:col-3 md:justify-start">
+                  <List
+                    title={columnThreeTitle}
+                    listItems={simpleFragmentToListItems(columnThree)}
+                  />
+                </div>
+              </>
+            ) : (
+              ''
+            )}
+            {isTwoColumnList && Object.keys(columnTwo).length ? (
+              <div className="flex col-4 md:col-3 md:justify-start">
                 <List
                   title={columnTwoTitle}
                   listItems={simpleFragmentToListItems(columnTwo)}
                 />
               </div>
+            ) : (
+              ''
+            )}
+            {isTwoColumnList && Object.keys(columnThree).length ? (
               <div className="flex col-4 md:col-3 md:justify-start">
                 <List
                   title={columnThreeTitle}
                   listItems={simpleFragmentToListItems(columnThree)}
                 />
               </div>
-            </>
-          ) : (
-            ''
-          )}
-          {isTwoColumnList && Object.keys(columnTwo).length ? (
-            <div className="flex col-4 md:col-3 md:justify-start">
-              <List
-                title={columnTwoTitle}
-                listItems={simpleFragmentToListItems(columnTwo)}
-              />
-            </div>
-          ) : (
-            ''
-          )}
-          {isTwoColumnList && Object.keys(columnThree).length ? (
-            <div className="flex col-4 md:col-3 md:justify-start">
-              <List
-                title={columnThreeTitle}
-                listItems={simpleFragmentToListItems(columnThree)}
-              />
-            </div>
-          ) : (
-            ''
-          )}
+            ) : (
+              ''
+            )}
+          </div>
         </div>
-      </div>
+      )}
+
       {linkText && link && (
         <div className="flex flex-row">
           <span className="none md:flex md:col-4"></span>
