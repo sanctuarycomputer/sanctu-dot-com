@@ -12,6 +12,7 @@ import { Markdown } from 'components/base';
 const BlockThreeColumnHero = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
+  const headerDescription = get(fields, 'headerDescription', '');
   const description = get(fields, 'description', '');
   const imageOne = flattenImageData(get(fields, 'imageOne', {}));
   const marginBottom = get(fields, 'marginBottom', 0);
@@ -23,29 +24,58 @@ const BlockThreeColumnHero = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnHero flex flex-col md:flex-row mxauto px1 pt1 pb3 justify-between"
+      className="BlockThreeColumnHero flex flex-col"
     >
-      {header && (
-        <h1 className="BlockThreeColumnHero__header paragraph md:col-3">
-          {header}
-        </h1>
-      )}
-      <div className="flex md:justify-center items-center md:col-3 py1 md:py0">
-        {description && (
+      <div className="flex flex-col md:flex-row col-8 mxauto px1 pt1 pb3 justify-between">
+        {header && (
+          <h1 className="BlockThreeColumnHero__header paragraph md:col-3">
+            {header}
+          </h1>
+        )}
+        <div className="none md:flex col-3 justify-center items-center ">
+          {headerDescription && (
+            <Markdown
+              className="BlockThreeColumnHero__header-description tiny"
+              src={headerDescription}
+            />
+          )}
+        </div>
+        <div className="none md:flex col-3 justify-end">
+          {imageOne && (
+            <Image
+              className="BlockThreeColumnHero__image"
+              alt={imageOne.description}
+              src={imageOne.url}
+            />
+          )}
+        </div>
+      </div>
+      {description && (
+        <div className="flex md:justify-end px1 pb1">
           <Markdown
-            className="BlockThreeColumnHero__description tiny"
+            className="BlockThreeColumnHero__description paragraph md:col-4"
             src={description}
           />
-        )}
-      </div>
-      <div className="flex md:col-3 md:justify-end">
-        {imageOne && (
-          <Image
-            className="BlockThreeColumnHero__image"
-            alt={imageOne.description}
-            src={imageOne.url}
-          />
-        )}
+        </div>
+      )}
+      <div className="flex flex-row md:none justify-between px1 pt2 pb4">
+        <div className="flex col-4">
+          {headerDescription && (
+            <Markdown
+              className="BlockThreeColumnHero__header-description tiny"
+              src={headerDescription}
+            />
+          )}
+        </div>
+        <div className="flex col-4 justify-end">
+          {imageOne && (
+            <Image
+              className="BlockThreeColumnHero__image"
+              alt={imageOne.description}
+              src={imageOne.url}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -55,6 +85,7 @@ BlockThreeColumnHero.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
       header: PropTypes.string,
+      headerDescription: PropTypes.string,
       description: PropTypes.string,
       imageOne: ContentfulMedia,
       marginBottom: PropTypes.number,

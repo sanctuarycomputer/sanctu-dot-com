@@ -20,7 +20,7 @@ const BlockLargeParagraph = props => {
         marginTop: `${marginTop}rem`
       }}
       className={cx('BlockLargeParagraph flex px1', {
-        'md:col-5 mxauto md:px0  pb3': textAlign === 'center',
+        'md:col-5 mxauto md:px0 pb3': textAlign === 'center',
         'md:justify-end pr1 pb1': textAlign === 'right',
         'md:justify-start pl1 pb1': textAlign === 'left'
       })}
