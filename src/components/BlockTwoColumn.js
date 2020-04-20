@@ -25,7 +25,7 @@ const BlockTwoColumn = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockTwoColumn flex flex-col md:flex-row col-8 xl:col-6 px1 xl:px0 pb3 mxauto"
+      className="BlockTwoColumn flex flex-col md:flex-row col-8 xl:col-6 px1 xl:px0 pb md:pb7 mxauto"
     >
       {header && (
         <p className="BlockTwoColumn__header paragraph col-8 md:col-2 pb1 md:pb0 md:pr2">
