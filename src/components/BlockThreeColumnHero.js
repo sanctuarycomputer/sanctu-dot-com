@@ -13,8 +13,8 @@ const BlockThreeColumnHero = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const headerDescription = get(fields, 'headerDescription', '');
-  const description = get(fields, 'description', '');
-  const imageOne = flattenImageData(get(fields, 'imageOne', {}));
+  const headerImage = flattenImageData(get(fields, 'headerImage', {}));
+  const paragraph = get(fields, 'paragraph', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -41,20 +41,20 @@ const BlockThreeColumnHero = props => {
           )}
         </div>
         <div className="none md:flex col-3 justify-end">
-          {imageOne && (
+          {headerImage && (
             <Image
               className="BlockThreeColumnHero__image"
-              alt={imageOne.description}
-              src={imageOne.url}
+              alt={headerImage.description}
+              src={headerImage.url}
             />
           )}
         </div>
       </div>
-      {description && (
+      {paragraph && (
         <div className="flex md:justify-end px1 pb1">
           <Markdown
-            className="BlockThreeColumnHero__description paragraph md:col-4"
-            src={description}
+            className="BlockThreeColumnHero__paragraph paragraph md:col-4"
+            src={paragraph}
           />
         </div>
       )}
@@ -68,11 +68,11 @@ const BlockThreeColumnHero = props => {
           )}
         </div>
         <div className="flex col-4 justify-end">
-          {imageOne && (
+          {headerImage && (
             <Image
               className="BlockThreeColumnHero__image"
-              alt={imageOne.description}
-              src={imageOne.url}
+              alt={headerImage.description}
+              src={headerImage.url}
             />
           )}
         </div>
@@ -86,8 +86,8 @@ BlockThreeColumnHero.propTypes = {
     fields: PropTypes.shape({
       header: PropTypes.string,
       headerDescription: PropTypes.string,
-      description: PropTypes.string,
-      imageOne: ContentfulMedia,
+      paragraph: PropTypes.string,
+      headerImage: ContentfulMedia,
       marginBottom: PropTypes.number,
       marginTop: PropTypes.number
     })
