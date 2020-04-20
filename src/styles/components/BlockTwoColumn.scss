@@ -1,0 +1,23 @@
+.BlockTwoColumn {
+  &__header {
+    @include media('md-up') {
+      &::before {
+        content: '';
+        display: block;
+        margin: -0.45rem 0;
+      }
+    }
+
+    @include media('lg-up') {
+      &::before {
+        content: '';
+        display: block;
+        margin: -0.5rem 0;
+      }
+    }
+  }
+
+  &__paragraph > p {
+    line-height: 1.5rem;
+  }
+}
