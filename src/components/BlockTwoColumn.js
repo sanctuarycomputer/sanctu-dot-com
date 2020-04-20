@@ -17,7 +17,6 @@ const BlockTwoColumn = props => {
   const sectionFourText = get(fields, 'sectionFourText', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const hasTwoRows = sectionOneText && sectionTwoText && sectionThreeText;
 
   return (
     <div
@@ -45,7 +44,7 @@ const BlockTwoColumn = props => {
               className={cx(
                 'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:pb0',
                 {
-                  pb2: hasTwoRows
+                  pb2: sectionThreeText
                 }
               )}
             >
