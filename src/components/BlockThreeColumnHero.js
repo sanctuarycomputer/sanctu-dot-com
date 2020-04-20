@@ -28,19 +28,17 @@ const BlockThreeColumnHero = props => {
     >
       <div className="flex flex-col md:flex-row col-8 mxauto px1 py1 md:pb3 justify-between">
         {header && (
-          <h1 className="BlockThreeColumnHero__header paragraph md:col-3">
+          <h1 className="BlockThreeColumnHero__header paragraph md:col-4">
             {header}
           </h1>
         )}
-        <div className="none md:flex col-3 justify-center items-center ">
+        <div className="none md:flex col-4 justify-between justify-center items-center">
           {headerDescription && (
             <Markdown
               className="BlockThreeColumnHero__header-description tiny"
               src={headerDescription}
             />
           )}
-        </div>
-        <div className="none md:flex col-3 justify-end">
           {headerImage && (
             <Image
               className="BlockThreeColumnHero__image"
