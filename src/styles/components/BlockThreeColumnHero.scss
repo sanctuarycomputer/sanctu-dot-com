@@ -7,7 +7,12 @@
   &__description > div > span > p {
     padding-bottom: 1rem;
 
+    &:nth-child(2) {
+      margin-left: 0.75rem;
+    }
+
     &:last-child {
+      margin-left: 0.75rem;
       padding-bottom: 0;
     }
   }
