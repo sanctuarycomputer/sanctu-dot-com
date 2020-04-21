@@ -36,9 +36,15 @@ const BlockImageText = props => {
     'imageTextAlign',
     'Image:Text'
   ).toLowerCase();
-  const marginBottom = get(fields, 'marginBottom', 1);
-  const marginTop = get(fields, 'marginTop', 1);
-
+  const imageTextAlignOnMobile = get(
+    fields,
+    'imageTextAlignOnMobile',
+    'Image:Text'
+  ).toLowerCase();
+  const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
+  console.log(fields);
   return (
     <div
       style={{
@@ -59,18 +65,22 @@ const BlockImageText = props => {
       <div
         className={cx('w100 flex flex-col', {
           'md:flex-row': imageTextAlign === 'image:text',
-          'md:flex-row-reverse': imageTextAlign === 'text:image'
+          'md:flex-row-reverse': imageTextAlign === 'text:image',
+          'sm:items-start': verticalAlign === 'top',
+          'sm:items-end': verticalAlign === 'bottom',
+          'flex-col-reverse': imageTextAlignOnMobile === 'text:image'
         })}
       >
         <div
-          className={cx('col-8 mb1 md:mb0', {
+          className={cx('col-8', {
             'md:col-6': imageTextRatio === '6:2',
             'md:col-5': imageTextRatio === '5:3',
             'md:col-4': imageTextRatio === '4:4',
             'md:col-3': imageTextRatio === '3:5',
             'md:col-2': imageTextRatio === '2:6',
             'md:mr_5': imageTextAlign === 'image:text',
-            'md:ml_5': imageTextAlign === 'text:image'
+            'md:ml_5': imageTextAlign === 'text:image',
+            'mb1 md:mb0': imageTextAlignOnMobile === 'image:text'
           })}
         >
           <Image alt={image.description} src={image.url} />
@@ -83,7 +93,8 @@ const BlockImageText = props => {
             'md:col-5': imageTextRatio === '3:5',
             'md:col-6': imageTextRatio === '2:6',
             'md:ml_5': imageTextAlign === 'image:text',
-            'md:mr_5': imageTextAlign === 'text:image'
+            'md:mr_5': imageTextAlign === 'text:image',
+            'mb1 md:mb0': imageTextAlignOnMobile === 'text:image'
           })}
         >
           {header && (
@@ -160,6 +171,7 @@ BlockImageText.propTypes = {
       descriptionAlign: PropTypes.string,
       descriptionWidth: PropTypes.number,
       imageTextAlign: PropTypes.string,
+      imageTextAlignOnMobile: PropTypes.string,
       marginBottom: PropTypes.number,
       marginTop: PropTypes.number
     })

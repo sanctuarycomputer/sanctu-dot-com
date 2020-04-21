@@ -24,7 +24,7 @@ const BlockThreeColumnHero = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockThreeColumnHero flex flex-col"
+      className="BlockThreeColumnHero flex flex-col pb3 md:pb7"
     >
       <div className="flex flex-col md:flex-row col-8 mxauto px1 py1 md:pb3 justify-between">
         {header && (
@@ -56,7 +56,7 @@ const BlockThreeColumnHero = props => {
           />
         </div>
       )}
-      <div className="flex flex-row md:none justify-between px1 pt2 pb4">
+      <div className="flex flex-row md:none justify-between px1 pt2 md:pb4">
         <div className="flex col-4">
           {headerDescription && (
             <Markdown

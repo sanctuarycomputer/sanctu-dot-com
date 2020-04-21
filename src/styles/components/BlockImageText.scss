@@ -1,4 +1,9 @@
 .BlockImageText {
+  @include media('sm-down') {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
   &__description--1,
   &__header--1 {
     @include media('md-up') {
