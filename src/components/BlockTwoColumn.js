@@ -28,19 +28,19 @@ const BlockTwoColumn = props => {
         marginTop: `${marginTop}rem`
       }}
       className={cx(
-        'BlockTwoColumn flex flex-col md:flex-row col-8 xl:col-6 px1 xl:px0 md:pb7 mxauto',
+        'BlockTwoColumn flex flex-col md:flex-row xl:col-6 px1 xl:px0 md:pb7 mxauto',
         {
           pb3: !hideSectionTextOnMobile,
-          'pt1 pb4': hideSectionTextOnMobile
+          'pt1 pb4 md:pt0 md:pb3': hideSectionTextOnMobile
         }
       )}
     >
       {header && (
-        <p className="BlockTwoColumn__header paragraph col-8 md:col-4 pb1 md:pb0 md:pr4">
+        <p className="BlockTwoColumn__header paragraph md:col-4 pb1 md:pb0 md:pr4">
           {header}
         </p>
       )}
-      <div className="flex flex-col col-8 md:col-4">
+      <div className="flex flex-col md:col-4">
         {sectionOneText && (
           <div
             className={cx(
@@ -124,7 +124,7 @@ const BlockTwoColumn = props => {
           </div>
         )}
         {sectionFourText && (
-          <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3">
+          <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col">
             {sectionFourTitle && (
               <p
                 className={cx('pb_5 underline', {

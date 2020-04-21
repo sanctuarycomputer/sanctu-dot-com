@@ -44,7 +44,7 @@ const BlockImageText = props => {
   const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  console.log(fields);
+
   return (
     <div
       style={{
