@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
-import flattenImageData from 'utils/flattenImageData';
 import { SimpleFragment } from 'models';
 import { ContentfulMedia } from 'models';
 
-import { Image, List } from 'components/base';
+import { List } from 'components/base';
 import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
 
 const BlockFooterWithLists = props => {
@@ -36,7 +35,6 @@ const BlockFooterWithLists = props => {
               listItems={simpleFragmentToListItems(listOne)}
             />
           </div>
-
           <div className="flex md:col-3 md:justify-end pb2 md:pb0 md:col-4 md:pr3">
             <List
               title={listTwoTitle}
@@ -71,15 +69,12 @@ const BlockFooterWithLists = props => {
 BlockFooterWithLists.propTypes = {
   block: PropTypes.shape({
     fields: PropTypes.shape({
-      header: PropTypes.string,
-      linkOneImage: ContentfulMedia,
-      linkOneText: PropTypes.string,
-      linkOne: PropTypes.string,
-      linkTwoImage: ContentfulMedia,
-      linkTwoText: PropTypes.string,
-      linkTwo: PropTypes.string,
-      marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
+      listOne: SimpleFragment,
+      listTwo: SimpleFragment,
+      listOneTitle: PropTypes.string,
+      listTwoTitle: PropTypes.string,
+      marginTop: PropTypes.number,
+      marginBottom: PropTypes.number
     })
   })
 };
