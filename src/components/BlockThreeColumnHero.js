@@ -56,7 +56,7 @@ const BlockThreeColumnHero = props => {
           />
         </div>
       )}
-      <div className="flex flex-row md:none justify-between px1 pt2 pb4">
+      <div className="flex flex-row md:none justify-between px1 pt2 md:pb4">
         <div className="flex col-4">
           {headerDescription && (
             <Markdown
