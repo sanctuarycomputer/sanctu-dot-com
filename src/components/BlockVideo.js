@@ -15,22 +15,32 @@ const BlockVideo = props => {
 
   return (
     <div
-    className={cx('BlockVideo pb3 md:pb7 mxauto', {
-      'md:col-8': videoSize === 'full',
-      'md:col-8 px1': videoSize === 'xlarge',
-      'md:col-6 px1 md:px0': videoSize === 'large'
-    })}>
-      <video
-        className="BlockVideo__video block hauto w100 mxauto"
-        autoPlay={autoPlay}
-        loop={loop}
-        muted
-        playsInline
+      className={cx('BlockVideo pb3 md:pb7', {
+        'md:col-8 mxauto': videoSize === 'full',
+        'md:col-8 px1 mxauto': videoSize === 'xlarge',
+        'md:col-6 px1 md:px0 mxauto': videoSize === 'large',
+        'md:col-8 px1 md:px0 flex sm:justify-start':
+          videoSize === 'half-left-align',
+        'md:col-8 px1 md:px0 flex sm:justify-end':
+          videoSize === 'half-right-align'
+      })}
+    >
+      <div
+        className={cx({
+          'sm:col-4 sm:pl1': videoSize === 'half-left-align',
+          'sm:col-4 sm:pr1': videoSize === 'half-right-align'
+        })}
       >
-        <source
-          src={get(video, 'fields.file.url', '')}
-        ></source>
-      </video>
+        <video
+          className="BlockVideo__video block hauto w100"
+          autoPlay={autoPlay}
+          loop={loop}
+          muted
+          playsInline
+        >
+          <source src={get(video, 'fields.file.url', '')}></source>
+        </video>
+      </div>
     </div>
   );
 };
@@ -41,7 +51,7 @@ BlockVideo.propTypes = {
       video: ContentfulMedia,
       videoSize: PropTypes.string,
       autoPlay: PropTypes.bool,
-      loop: PropTypes.bool,
+      loop: PropTypes.bool
     })
   })
 };
