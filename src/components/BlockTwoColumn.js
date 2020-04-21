@@ -32,7 +32,11 @@ const BlockTwoColumn = props => {
         </p>
       )}
       <div className="flex flex-col col-8 md:col-6">
-        <div className="flex flex-col md:flex-row md:pb3">
+        <div
+          className={cx('flex flex-col md:flex-row', {
+            'md:pb2': sectionThreeText
+          })}
+        >
           {sectionOneText && (
             <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 pb2 md:pb0 md:mr1">
               {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
