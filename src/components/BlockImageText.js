@@ -36,6 +36,7 @@ const BlockImageText = props => {
     'imageTextAlign',
     'Image:Text'
   ).toLowerCase();
+  const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 1);
   const marginTop = get(fields, 'marginTop', 1);
 
@@ -59,7 +60,9 @@ const BlockImageText = props => {
       <div
         className={cx('w100 flex flex-col', {
           'md:flex-row': imageTextAlign === 'image:text',
-          'md:flex-row-reverse': imageTextAlign === 'text:image'
+          'md:flex-row-reverse': imageTextAlign === 'text:image',
+          'sm:items-start': verticalAlign === 'top',
+          'sm:items-end': verticalAlign === 'bottom'
         })}
       >
         <div
