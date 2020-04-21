@@ -51,7 +51,7 @@ const BlockImageText = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockImageText px1 flex flex-col pb3 md:pb7"
+      className="BlockImageText px1 flex flex-col pb3 md:pb1"
     >
       {header && headerOnTop && (
         <p
