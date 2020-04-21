@@ -27,8 +27,8 @@ const BlockVideo = props => {
     >
       <div
         className={cx({
-          'flex sm:col-4 sm:pl1': videoSize === 'half-left-align',
-          'flex sm:col-4 sm:pr1': videoSize === 'half-right-align'
+          'sm:col-4 sm:pl1': videoSize === 'half-left-align',
+          'sm:col-4 sm:pr1': videoSize === 'half-right-align'
         })}
       >
         <video
