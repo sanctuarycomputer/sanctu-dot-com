@@ -31,7 +31,7 @@ const BlockViewMore = props => {
       className="BlockViewMore flex flex-col px1 pb3 md:pb7"
     >
       <div className="flex flex-col">
-        {header && <span className="small pb1">{header}</span>}
+        {header && <span className="paragraph sm:none pb1">{header}</span>}
         <div className="flex flex-col md:flex-row">
           <div className="md:col-4 flex flex-col pb2 md:pb0">
             {linkOneText && linkOne && (

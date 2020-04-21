@@ -35,8 +35,8 @@ const BlockTwoColumn = props => {
         <div className="flex flex-col md:flex-row md:pb3">
           {sectionOneText && (
             <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 pb2 md:pb0 md:mr1">
-              {sectionOneTitle && <p className="pb1">{sectionOneTitle}</p>}
-              <p>{sectionOneText}</p>
+              {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
+              <p className="ml1">{sectionOneText}</p>
             </div>
           )}
           {sectionTwoText && (
@@ -48,8 +48,8 @@ const BlockTwoColumn = props => {
                 }
               )}
             >
-              {sectionTwoTitle && <p className="pb1">{sectionTwoTitle}</p>}
-              <p>{sectionTwoText}</p>
+              {sectionTwoTitle && <p className="pb_5">{sectionTwoTitle}</p>}
+              <p className="ml1_25">{sectionTwoText}</p>
             </div>
           )}
         </div>
@@ -63,14 +63,14 @@ const BlockTwoColumn = props => {
                 }
               )}
             >
-              {sectionThreeTitle && <p className="pb1">{sectionThreeTitle}</p>}
-              <p>{sectionThreeText}</p>
+              {sectionThreeTitle && <p className="pb_5">{sectionThreeTitle}</p>}
+              <p className="ml1_25">{sectionThreeText}</p>
             </div>
           )}
           {sectionFourText && (
             <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4">
-              {sectionFourTitle && <p className="pb1">{sectionFourTitle}</p>}
-              <p>{sectionFourText}</p>
+              {sectionFourTitle && <p className="pb_5">{sectionFourTitle}</p>}
+              <p className="ml1_25">{sectionFourText}</p>
             </div>
           )}
         </div>
