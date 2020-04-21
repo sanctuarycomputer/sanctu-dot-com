@@ -43,7 +43,7 @@ const BlockTwoColumn = props => {
               className={cx(
                 'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:mr1',
                 {
-                  pb2: sectionThreeText && !hideSectionTextOnMobile
+                  'pb2 md:pb0': sectionTwoText && !hideSectionTextOnMobile
                 }
               )}
             >
