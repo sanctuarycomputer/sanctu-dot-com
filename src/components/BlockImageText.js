@@ -13,6 +13,11 @@ const BlockImageText = props => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
+  const descriptionFont = get(
+    fields,
+    'descriptionFont',
+    'sans-serif'
+  ).toLowerCase();
   const image = flattenImageData(get(fields, 'image', {}));
   const linkText = get(fields, 'linkText', '');
   const link = get(fields, 'link', '');
@@ -40,7 +45,7 @@ const BlockImageText = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockImageText px1 flex flex-col"
+      className="BlockImageText px1 flex flex-col pb3 md:pb7"
     >
       {header && headerOnTop && (
         <p
@@ -110,7 +115,16 @@ const BlockImageText = props => {
               'BlockImageText__description--6': descriptionWidth === 6
             })}
           >
-            {description && <p className="small">{description}</p>}
+            {description && (
+              <p
+                className={cx({
+                  paragraph: descriptionFont === 'serif',
+                  small: descriptionFont === 'sans-serif'
+                })}
+              >
+                {description}
+              </p>
+            )}
             {linkText && link && (
               <div className="mt2">
                 <a
