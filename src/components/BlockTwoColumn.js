@@ -15,6 +15,7 @@ const BlockTwoColumn = props => {
   const sectionThreeText = get(fields, 'sectionThreeText', '');
   const sectionFourTitle = get(fields, 'sectionFourTitle', '');
   const sectionFourText = get(fields, 'sectionFourText', '');
+  const hideSectionTextOnMobile = get(fields, 'hideSectionTextOnMobile', false);
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -38,9 +39,22 @@ const BlockTwoColumn = props => {
           })}
         >
           {sectionOneText && (
-            <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 pb2 md:pb0 md:mr1">
+            <div
+              className={cx(
+                'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:mr1',
+                {
+                  pb2: sectionThreeText && !hideSectionTextOnMobile
+                }
+              )}
+            >
               {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
-              <p className="ml1">{sectionOneText}</p>
+              <p
+                className={cx({
+                  'none sm:flex': hideSectionTextOnMobile
+                })}
+              >
+                {sectionOneText}
+              </p>
             </div>
           )}
           {sectionTwoText && (
@@ -48,12 +62,18 @@ const BlockTwoColumn = props => {
               className={cx(
                 'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:pb0',
                 {
-                  pb2: sectionThreeText
+                  pb2: sectionThreeText && !hideSectionTextOnMobile
                 }
               )}
             >
               {sectionTwoTitle && <p className="pb_5">{sectionTwoTitle}</p>}
-              <p className="ml1_25">{sectionTwoText}</p>
+              <p
+                className={cx({
+                  'none sm:flex': hideSectionTextOnMobile
+                })}
+              >
+                {sectionTwoText}
+              </p>
             </div>
           )}
         </div>
@@ -63,18 +83,30 @@ const BlockTwoColumn = props => {
               className={cx(
                 'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:pb0 md:mr1',
                 {
-                  pb2: sectionFourText
+                  pb2: sectionFourText && !hideSectionTextOnMobile
                 }
               )}
             >
               {sectionThreeTitle && <p className="pb_5">{sectionThreeTitle}</p>}
-              <p className="ml1_25">{sectionThreeText}</p>
+              <p
+                className={cx({
+                  'none sm:flex': hideSectionTextOnMobile
+                })}
+              >
+                {sectionThreeText}
+              </p>
             </div>
           )}
           {sectionFourText && (
             <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4">
               {sectionFourTitle && <p className="pb_5">{sectionFourTitle}</p>}
-              <p className="ml1_25">{sectionFourText}</p>
+              <p
+                className={cx({
+                  'none sm:flex': hideSectionTextOnMobile
+                })}
+              >
+                {sectionFourText}
+              </p>
             </div>
           )}
         </div>
