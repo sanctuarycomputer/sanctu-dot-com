@@ -13,6 +13,7 @@ import BlockFooterLinks from 'components/BlockFooterLinks';
 import BlockViewMore from 'components/BlockViewMore';
 import BlockTwoColumn from 'components/BlockTwoColumn';
 import BlockThreeColumnHero from 'components/BlockThreeColumnHero';
+import BlockFooterWithLists from 'components/BlockFooterWithLists';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -44,6 +45,8 @@ const CaseStudyBlockSwitch = props => {
         return <BlockTwoColumn block={block} />;
       case 'caseStudyBlockThreeColumnHero':
         return <BlockThreeColumnHero block={block} />;
+      case 'caseStudyBlockFooterWithLists':
+        return <BlockFooterWithLists block={block} />;
       default:
         return null;
     }
