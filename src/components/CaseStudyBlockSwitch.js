@@ -12,6 +12,7 @@ import BlockVideo from 'components/BlockVideo';
 import BlockFooterLinks from 'components/BlockFooterLinks';
 import BlockViewMore from 'components/BlockViewMore';
 import BlockTwoColumn from 'components/BlockTwoColumn';
+import BlockThreeColumnHero from 'components/BlockThreeColumnHero';
 
 const CaseStudyBlockSwitch = props => {
   const { block } = props;
@@ -41,6 +42,8 @@ const CaseStudyBlockSwitch = props => {
         return <BlockViewMore block={block} />;
       case 'caseStudyBlockTwoColumn':
         return <BlockTwoColumn block={block} />;
+      case 'caseStudyBlockThreeColumnHero':
+        return <BlockThreeColumnHero block={block} />;
       default:
         return null;
     }

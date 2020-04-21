@@ -1,5 +1,5 @@
 .BlockGeneralParagraph {
-  @media (max-width: 831px) {
+  @include media('sm-down') {
     margin-top: 0 !important;
   }
 
