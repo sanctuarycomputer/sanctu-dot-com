@@ -28,7 +28,7 @@ const BlockViewMore = props => {
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockViewMore flex flex-col px1 pb3 md:pb7"
+      className="BlockViewMore flex flex-col col-8 md:col-6 mxauto px1 pb3 md:pb7"
     >
       <div className="flex flex-col">
         {header && <span className="small pb1">{header}</span>}
