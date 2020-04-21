@@ -36,88 +36,81 @@ const BlockTwoColumn = props => {
       )}
     >
       {header && (
-        <p className="BlockTwoColumn__header paragraph col-8 md:col-2 pb1 md:pb0 md:pr2">
+        <p className="BlockTwoColumn__header paragraph col-8 md:col-4 pb1 md:pb0 md:pr4">
           {header}
         </p>
       )}
-      <div className="flex flex-col col-8 md:col-6">
-        <div
-          className={cx('flex flex-col md:flex-row', {
-            'md:pb2': sectionThreeText
-          })}
-        >
-          {sectionOneText && (
-            <div
-              className={cx(
-                'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:mr1',
-                {
-                  'pb2 md:pb0': sectionTwoText && !hideSectionTextOnMobile
-                }
-              )}
-            >
-              {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
-              <Markdown
-                className={cx('BlockTwoColumn__section-text', {
-                  'none sm:flex': hideSectionTextOnMobile
-                })}
-                src={sectionOneText}
-                font="small"
-              />
-            </div>
-          )}
-          {sectionTwoText && (
-            <div
-              className={cx(
-                'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:pb0',
-                {
-                  pb2: sectionThreeText && !hideSectionTextOnMobile
-                }
-              )}
-            >
-              {sectionTwoTitle && <p className="pb_5">{sectionTwoTitle}</p>}
-              <Markdown
-                className={cx('BlockTwoColumn__section-text', {
-                  'none sm:flex': hideSectionTextOnMobile
-                })}
-                src={sectionTwoText}
-                font="small"
-              />
-            </div>
-          )}
-        </div>
-        <div className="flex flex-col md:flex-row">
-          {sectionThreeText && (
-            <div
-              className={cx(
-                'BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4 md:pb0 md:mr1',
-                {
-                  pb2: sectionFourText && !hideSectionTextOnMobile
-                }
-              )}
-            >
-              {sectionThreeTitle && <p className="pb_5">{sectionThreeTitle}</p>}
-              <Markdown
-                className={cx('BlockTwoColumn__section-text', {
-                  'none sm:flex': hideSectionTextOnMobile
-                })}
-                src={sectionThreeText}
-                font="small"
-              />
-            </div>
-          )}
-          {sectionFourText && (
-            <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col col-8 md:col-4">
-              {sectionFourTitle && <p className="pb_5">{sectionFourTitle}</p>}
-              <Markdown
-                className={cx('BlockTwoColumn__section-text', {
-                  'none sm:flex': hideSectionTextOnMobile
-                })}
-                src={sectionFourText}
-                font="small"
-              />
-            </div>
-          )}
-        </div>
+      <div className="flex flex-col col-8 md:col-4">
+        {sectionOneText && (
+          <div
+            className={cx(
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2',
+              {
+                pb2: sectionTwoText && !hideSectionTextOnMobile
+              }
+            )}
+          >
+            {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
+            <Markdown
+              className={cx('BlockTwoColumn__section-text ml1', {
+                'none sm:flex': hideSectionTextOnMobile
+              })}
+              src={sectionOneText}
+              font="small"
+            />
+          </div>
+        )}
+        {sectionTwoText && (
+          <div
+            className={cx(
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col',
+              {
+                pb2: sectionThreeText && !hideSectionTextOnMobile,
+                'pb0 sm:pb2': sectionThreeText && hideSectionTextOnMobile
+              }
+            )}
+          >
+            {sectionTwoTitle && <p className="pb_5">{sectionTwoTitle}</p>}
+            <Markdown
+              className={cx('BlockTwoColumn__section-text ml1', {
+                'none sm:flex': hideSectionTextOnMobile
+              })}
+              src={sectionTwoText}
+              font="small"
+            />
+          </div>
+        )}
+        {sectionThreeText && (
+          <div
+            className={cx(
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2',
+              {
+                pb2: !hideSectionTextOnMobile
+              }
+            )}
+          >
+            {sectionThreeTitle && <p className="pb_5">{sectionThreeTitle}</p>}
+            <Markdown
+              className={cx('BlockTwoColumn__section-text ml1', {
+                'none sm:flex': hideSectionTextOnMobile
+              })}
+              src={sectionThreeText}
+              font="small"
+            />
+          </div>
+        )}
+        {sectionFourText && (
+          <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2">
+            {sectionFourTitle && <p className="pb_5">{sectionFourTitle}</p>}
+            <Markdown
+              className={cx('BlockTwoColumn__section-text ml1', {
+                'none sm:flex': hideSectionTextOnMobile
+              })}
+              src={sectionFourText}
+              font="small"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

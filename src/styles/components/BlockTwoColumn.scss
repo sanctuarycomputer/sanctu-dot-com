@@ -19,12 +19,15 @@
 
   &__section-text {
     > div > span > p {
-      padding-bottom: 1rem;
       line-height: 1.5rem;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
     }
+    // > div > span > p {
+    //   padding-bottom: 1rem;
+    //   line-height: 1.5rem;
+
+    //   &:last-child {
+    //     padding-bottom: 0;
+    //   }
+    // }
   }
 }
