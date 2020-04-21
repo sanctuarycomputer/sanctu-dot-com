@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import get from 'utils/get';
 
@@ -18,25 +19,24 @@ const BlockFooterLinks = props => {
       }}
       className="BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15"
     >
-      <a
+      <Link
         className="small link decoration-none pr3"
-        alt="Visit Sanctuary Computer"
-        href="/"
+        aria-label="Visit Sanctuary Computer"
+        to="/"
         rel="noopener noreferrer"
       >
         ← Back to Sanctuary
-      </a>
+      </Link>
       {linkText && link && (
         <span>
-          <a
-            className="small link"
-            alt={linkText}
-            href={link}
-            target="_blank"
+          <Link
+            className="small link decoration-none"
+            aria-label="Visit next case study"
+            to={link}
             rel="noopener noreferrer"
           >
-            {linkText}
-          </a>
+            → {linkText}
+          </Link>
         </span>
       )}
     </div>
