@@ -28,13 +28,13 @@ const BlockFooterWithLists = props => {
     >
       <div className="flex flex-row justify-end">
         <div className="flex flex-col flex-col-reverse md:flex-row col-8 md:col-4">
-          <div className="md:col-3 pb2 md:pb0 md:col-4">
+          <div className="md:col-4 pb2 md:pb0">
             <List
               title={listOneTitle}
               listItems={simpleFragmentToListItems(listOne)}
             />
           </div>
-          <div className="flex md:col-3 md:justify-end pb2 md:pb0 md:col-4 md:pr3">
+          <div className="flex md:col-4 pb2 md:pb0">
             <List
               title={listTwoTitle}
               listItems={simpleFragmentToListItems(listTwo)}
