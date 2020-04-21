@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import { ContentfulMedia } from 'models';
 
-import { Image } from 'components/base';
+import { Image, Markdown } from 'components/base';
 
 const BlockImageText = props => {
   const fields = get(props, 'block.fields');
@@ -44,14 +44,14 @@ const BlockImageText = props => {
   const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  console.log(fields);
+
   return (
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
         marginTop: `${marginTop}rem`
       }}
-      className="BlockImageText px1 flex flex-col pb3 md:pb7"
+      className="BlockImageText px1 flex flex-col pb1"
     >
       {header && headerOnTop && (
         <p
@@ -127,14 +127,13 @@ const BlockImageText = props => {
             })}
           >
             {description && (
-              <p
-                className={cx({
+              <Markdown
+                className={cx('BlockImageText__description paragraph', {
                   paragraph: descriptionFont === 'serif',
                   small: descriptionFont === 'sans-serif'
                 })}
-              >
-                {description}
-              </p>
+                src={description}
+              />
             )}
             {linkText && link && (
               <div className="mt2">

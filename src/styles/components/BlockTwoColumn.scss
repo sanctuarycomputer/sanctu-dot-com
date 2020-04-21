@@ -17,7 +17,17 @@
     }
   }
 
-  &__paragraph > p {
-    line-height: 1.5rem;
+  &__section-title {
+    &--style-none {
+      @include media('xs-down') {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__section-text {
+    > div > span > p {
+      line-height: 1.5rem;
+    }
   }
 }

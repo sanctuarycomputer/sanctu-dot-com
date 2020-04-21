@@ -1,4 +1,12 @@
 .BlockImageText {
+  &__description > div > span > p {
+    padding-bottom: 2rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
   &__description--1,
   &__header--1 {
     @include media('md-up') {
