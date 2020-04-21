@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import { SimpleFragment } from 'models';
-import { ContentfulMedia } from 'models';
 
 import { List } from 'components/base';
 import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
