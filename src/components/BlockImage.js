@@ -46,7 +46,8 @@ const BlockImage = props => {
   const imageTwoCaption = get(fields, 'imageTwoCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const hasTwoImages = imageVariant === 'two';
+  const hasTwoImages = imageVariant === 'two' && imageOne.url && imageTwo.url;
+  const hasOneImage = imageVariant !== 'two' && (imageOne.url || imageTwo.url);
 
   return (
     <div
@@ -61,7 +62,7 @@ const BlockImage = props => {
         'md:px0': imageVariant === 'full'
       })}
     >
-      {!hasTwoImages && (
+      {hasOneImage && (
         <div
           className={cx('BlockImage__image-container', {
             'md:col-8 mxauto':
