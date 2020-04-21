@@ -17,17 +17,17 @@
     }
   }
 
+  &__section-title {
+    &--style-none {
+      @include media('xs-down') {
+        text-decoration: none;
+      }
+    }
+  }
+
   &__section-text {
     > div > span > p {
       line-height: 1.5rem;
     }
-    // > div > span > p {
-    //   padding-bottom: 1rem;
-    //   line-height: 1.5rem;
-
-    //   &:last-child {
-    //     padding-bottom: 0;
-    //   }
-    // }
   }
 }

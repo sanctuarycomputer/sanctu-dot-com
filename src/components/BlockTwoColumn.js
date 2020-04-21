@@ -44,15 +44,23 @@ const BlockTwoColumn = props => {
         {sectionOneText && (
           <div
             className={cx(
-              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2',
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
                 pb2: sectionTwoText && !hideSectionTextOnMobile
               }
             )}
           >
-            {sectionOneTitle && <p className="pb_5">{sectionOneTitle}</p>}
+            {sectionOneTitle && (
+              <p
+                className={cx('pb_5 underline', {
+                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                })}
+              >
+                {sectionOneTitle}
+              </p>
+            )}
             <Markdown
-              className={cx('BlockTwoColumn__section-text ml1', {
+              className={cx('BlockTwoColumn__section-text', {
                 'none sm:flex': hideSectionTextOnMobile
               })}
               src={sectionOneText}
@@ -66,13 +74,21 @@ const BlockTwoColumn = props => {
               'BlockTwoColumn__paragraph Markdown--small flex flex-col',
               {
                 pb2: sectionThreeText && !hideSectionTextOnMobile,
-                'pb0 sm:pb2': sectionThreeText && hideSectionTextOnMobile
+                'pb0 sm:pb3': sectionThreeText && hideSectionTextOnMobile
               }
             )}
           >
-            {sectionTwoTitle && <p className="pb_5">{sectionTwoTitle}</p>}
+            {sectionTwoTitle && (
+              <p
+                className={cx('pb_5 underline', {
+                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                })}
+              >
+                {sectionTwoTitle}
+              </p>
+            )}
             <Markdown
-              className={cx('BlockTwoColumn__section-text ml1', {
+              className={cx('BlockTwoColumn__section-text', {
                 'none sm:flex': hideSectionTextOnMobile
               })}
               src={sectionTwoText}
@@ -83,15 +99,23 @@ const BlockTwoColumn = props => {
         {sectionThreeText && (
           <div
             className={cx(
-              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2',
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
                 pb2: !hideSectionTextOnMobile
               }
             )}
           >
-            {sectionThreeTitle && <p className="pb_5">{sectionThreeTitle}</p>}
+            {sectionThreeTitle && (
+              <p
+                className={cx('pb_5 underline', {
+                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                })}
+              >
+                {sectionThreeTitle}
+              </p>
+            )}
             <Markdown
-              className={cx('BlockTwoColumn__section-text ml1', {
+              className={cx('BlockTwoColumn__section-text', {
                 'none sm:flex': hideSectionTextOnMobile
               })}
               src={sectionThreeText}
@@ -100,10 +124,18 @@ const BlockTwoColumn = props => {
           </div>
         )}
         {sectionFourText && (
-          <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb2">
-            {sectionFourTitle && <p className="pb_5">{sectionFourTitle}</p>}
+          <div className="BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3">
+            {sectionFourTitle && (
+              <p
+                className={cx('pb_5 underline', {
+                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                })}
+              >
+                {sectionFourTitle}
+              </p>
+            )}
             <Markdown
-              className={cx('BlockTwoColumn__section-text ml1', {
+              className={cx('BlockTwoColumn__section-text', {
                 'none sm:flex': hideSectionTextOnMobile
               })}
               src={sectionFourText}
