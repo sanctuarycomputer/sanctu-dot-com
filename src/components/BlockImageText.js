@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import { ContentfulMedia } from 'models';
 
-import { Image } from 'components/base';
+import { Image, Markdown } from 'components/base';
 
 const BlockImageText = props => {
   const fields = get(props, 'block.fields');
@@ -127,14 +127,13 @@ const BlockImageText = props => {
             })}
           >
             {description && (
-              <p
-                className={cx({
+              <Markdown
+                className={cx('BlockImageText__description paragraph', {
                   paragraph: descriptionFont === 'serif',
                   small: descriptionFont === 'sans-serif'
                 })}
-              >
-                {description}
-              </p>
+                src={description}
+              />
             )}
             {linkText && link && (
               <div className="mt2">
