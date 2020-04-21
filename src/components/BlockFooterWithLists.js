@@ -42,7 +42,7 @@ const BlockFooterWithLists = props => {
           </div>
         </div>
       </div>
-      <div className="flex md:flex-row justify-between pt1 md:pt0">
+      <div className="flex md:flex-row justify-between pt1 md:pt10">
         <>
           <img
             className="BlockFooterWithLists__icon"
