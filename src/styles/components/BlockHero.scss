@@ -1,16 +1,4 @@
 .BlockHero {
-  &__header {
-    font-family: $serif-stack;
-    font-size: 1.65rem;
-    font-weight: 200;
-
-    @include media('sm-up') {
-      font-size: 2.5rem;
-      line-height: 3rem;
-      padding-right: 3.5rem;
-    }
-  }
-
   &__list {
     @include media('sm-down') {
       flex-wrap: wrap;

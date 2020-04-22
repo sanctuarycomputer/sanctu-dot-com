@@ -49,7 +49,7 @@ const BlockThreeColumnHero = props => {
         </div>
       </div>
       {paragraph && (
-        <div className="flex md:justify-end px1 pb1">
+        <div className="flex md:justify-end px1 pb1 md:pb0">
           <Markdown
             className="BlockThreeColumnHero__paragraph paragraph md:col-4"
             src={paragraph}

@@ -137,7 +137,7 @@ class WorkSection extends PureComponent {
                           to={get(work, 'fields.caseStudySlug', '')}
                           rel="noopener noreferrer"
                         >
-                          → View Case Study
+                          → View case study
                         </Link>
                       )}
                       <a
@@ -224,7 +224,7 @@ class WorkSection extends PureComponent {
                   to={get(activeProject, 'fields.caseStudySlug', '')}
                   rel="noopener noreferrer"
                 >
-                  → View Case Study
+                  → View case study
                 </Link>
               )}
               <a

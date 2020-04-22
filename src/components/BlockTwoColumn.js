@@ -28,7 +28,7 @@ const BlockTwoColumn = props => {
         marginTop: `${marginTop}rem`
       }}
       className={cx(
-        'BlockTwoColumn flex flex-col md:flex-row xl:col-6 px1 xl:px0 md:pb7 mxauto',
+        'BlockTwoColumn flex flex-col md:flex-row xl:col-6 px1 xl:px0 md:pb12 mxauto',
         {
           pb3: !hideSectionTextOnMobile,
           'pt1 pb4 md:pt0 md:pb3': hideSectionTextOnMobile
