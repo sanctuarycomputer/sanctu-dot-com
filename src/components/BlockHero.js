@@ -40,9 +40,7 @@ const BlockHero = props => {
           'md:items-end': textAlign === 'bottom'
         })}
       >
-        {header && (
-          <h1 className="BlockHero__header col-8 md:col-4">{header}</h1>
-        )}
+        {header && <h1 className="paragraph col-8 md:col-4">{header}</h1>}
         {description && (
           <p className="paragraph col-8 md:col-4 mt2 md:mt0">{description}</p>
         )}
