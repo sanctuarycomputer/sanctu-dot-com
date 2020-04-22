@@ -71,10 +71,9 @@ const BlockTwoColumn = props => {
         {sectionTwoText && (
           <div
             className={cx(
-              'BlockTwoColumn__paragraph Markdown--small flex flex-col',
+              'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
-                pb2: sectionThreeText && !hideSectionTextOnMobile,
-                'pb0 sm:pb3': sectionThreeText && hideSectionTextOnMobile
+                pb2: sectionThreeText && !hideSectionTextOnMobile
               }
             )}
           >
