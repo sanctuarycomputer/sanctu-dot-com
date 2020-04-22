@@ -20,7 +20,7 @@ const Footer = ({ hidden }) => (
       <Link
         className="small link decoration-none"
         aria-label="View our capabilities"
-        to="/"
+        to="/capabilities"
         rel="noopener noreferrer"
       >
         Working with us →
