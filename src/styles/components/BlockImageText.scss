@@ -5,6 +5,11 @@
     &:last-child {
       padding-bottom: 0;
     }
+
+    a {
+      @extend .link;
+      text-decoration: none;
+    }
   }
 
   &__description--1,
