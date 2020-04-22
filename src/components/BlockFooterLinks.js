@@ -20,7 +20,7 @@ const BlockFooterLinks = props => {
       className="BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15"
     >
       <Link
-        className="small link decoration-none pr3"
+        className="small link decoration-none pr5"
         aria-label="Visit Sanctuary Computer"
         to="/"
         rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const BlockFooterLinks = props => {
             to={link}
             rel="noopener noreferrer"
           >
-            → {linkText}
+            {linkText} →
           </Link>
         </span>
       )}
