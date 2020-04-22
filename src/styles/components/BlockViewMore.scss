@@ -1,4 +1,9 @@
 .BlockViewMore {
+  @include media('sm-down') {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
   &__footer-icon {
     max-width: 80px;
   }
