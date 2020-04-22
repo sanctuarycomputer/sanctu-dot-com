@@ -17,9 +17,15 @@ const BlockVideo = props => {
   const loop = get(fields, 'loopVideo', true);
   const hasTwoElements =
     videoSize === 'two' && image.url && video.fields.file.url;
+  const marginBottom = get(fields, 'marginBottom', 0);
+  const marginTop = get(fields, 'marginTop', 0);
 
   return (
     <div
+      style={{
+        marginBottom: `${marginBottom}rem`,
+        marginTop: `${marginTop}rem`
+      }}
       className={cx('BlockVideo pb3 md:pb7', {
         'md:col-8 mxauto': videoSize === 'full',
         'md:col-8 px1 mxauto': videoSize === 'xlarge',
@@ -85,7 +91,9 @@ BlockVideo.propTypes = {
       image: ContentfulMedia,
       videoSize: PropTypes.string,
       autoPlay: PropTypes.bool,
-      loop: PropTypes.bool
+      loop: PropTypes.bool,
+      marginBottom: PropTypes.number,
+      marginTop: PropTypes.number
     })
   })
 };
