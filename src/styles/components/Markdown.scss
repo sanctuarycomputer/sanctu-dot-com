@@ -3,24 +3,25 @@
     @extend .paragraph;
 
     margin-bottom: $p-line-height;
-    @include media("md") {
+    @include media('md') {
       margin-bottom: $p-md-line-height;
     }
-    @include media("xl") {
+    @include media('xl') {
       margin-bottom: $p-xl-line-height;
     }
 
-    > em {
+    > em,
+    > em a {
       @extend .tiny;
       white-space: nowrap;
       position: relative;
       top: -6px;
 
-      @include media("md") {
+      @include media('md') {
         top: -10px;
       }
 
-      @include media("xl") {
+      @include media('xl') {
         top: -11px;
       }
     }
@@ -39,18 +40,18 @@
 .Markdown--small {
   p {
     @extend .small;
-  
+
     > em {
       @extend .tiny;
       white-space: nowrap;
       position: relative;
       top: -6px;
 
-      @include media("md") {
+      @include media('md') {
         top: -10px;
       }
 
-      @include media("xl") {
+      @include media('xl') {
         top: -11px;
       }
     }
