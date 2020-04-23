@@ -10,8 +10,7 @@
       margin-bottom: $p-xl-line-height;
     }
 
-    > em,
-    > em a {
+    > em {
       @extend .tiny;
       white-space: nowrap;
       position: relative;
