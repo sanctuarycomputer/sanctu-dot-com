@@ -3,4 +3,14 @@
     max-width: 80px;
     padding-left: 2px;
   }
+
+  &__link {
+    &--overlay-is-active {
+      color: color('white');
+    }
+
+    &--overlay-is-inactive {
+      color: color('black');
+    }
+  }
 }

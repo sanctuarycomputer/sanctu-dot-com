@@ -55,6 +55,9 @@ class MainView extends PureComponent {
 
   componentWillUnmount() {
     clearInterval(timerID);
+
+    const html = document.documentElement;
+    html && html.classList.remove('overlay-is-active');
   }
 
   shouldShowOverlay = () => {

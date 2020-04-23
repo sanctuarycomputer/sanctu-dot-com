@@ -1,4 +1,6 @@
 import React from 'react';
+import cx from 'classnames';
+
 import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
 import SanctuLogoWhite from 'assets/sanctu_logo_white.svg';
 
@@ -18,7 +20,10 @@ const Footer = ({ hidden }) => (
     </div>
     <div className="flex justify-end items-end">
       <Link
-        className="small link decoration-none"
+        className={cx('small link decoration-none', {
+          'Footer__link--overlay-is-active': hidden,
+          'Footer__link--overlay-is-inactive': !hidden
+        })}
         aria-label="View our capabilities"
         to="/capabilities"
         rel="noopener noreferrer"
