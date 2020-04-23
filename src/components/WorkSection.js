@@ -50,7 +50,7 @@ class WorkSection extends PureComponent {
 
         return { activeIndex: nextSlideIndex };
       });
-    }, 8000);
+    }, 7000);
   }
 
   componentWillUnmount() {
