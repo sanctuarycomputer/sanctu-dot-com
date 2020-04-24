@@ -43,11 +43,13 @@ const BlockFooterWithLists = props => {
         </div>
       </div>
       <div className="flex md:flex-row justify-between pt1 md:pt10">
-        <img
-          className="BlockFooterWithLists__icon"
-          src={SanctuLogoBlack}
-          alt="Sanctuary Computer logo"
-        />
+        <div>
+          <img
+            className="BlockFooterWithLists__icon"
+            src={SanctuLogoBlack}
+            alt="Sanctuary Computer logo"
+          />
+        </div>
         <div className="flex justify-end items-end">
           <Link
             className="small link decoration-none"
