@@ -6,15 +6,15 @@ class MainContainer extends ContainerBase {
   view = import('views/NotificationView');
 
   beforeModel = () => {
-    const contentful = ContentfulClient();
-    return ContentfulData.setRef(contentful);
+    //const contentful = ContentfulClient();
+    //return ContentfulData.setRef(contentful);
   };
 
   model = () => {
-    return ContentfulData.getEntries({
-      content_type: 'sanctuary',
-      include: 4
-    }).then(res => res.items[0]);
+    //return ContentfulData.getEntries({
+    //  content_type: 'sanctuary',
+    //  include: 4
+    //}).then(res => res.items[0]);
   };
 }
 

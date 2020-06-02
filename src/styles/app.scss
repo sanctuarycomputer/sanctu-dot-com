@@ -19,3 +19,28 @@ canvas {
   max-width: 100%;
   margin: auto;
 }
+
+/* For BLM Embed */
+html,
+body {
+  background-color: #ffffff;
+}
+img {
+  max-width: 100px;
+}
+ul {
+  margin: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+}
+.embed-link {
+  bottom: 10px;
+  left: 10px;
+  margin-top: 2em;
+  display: inline-block;
+  margin-bottom: 1em;
+  max-width: 400px;
+  border-radius: 3px;
+  font-size: 11px;
+}
