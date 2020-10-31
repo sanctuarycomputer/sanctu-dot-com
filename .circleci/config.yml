@@ -8,17 +8,17 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: 
+      - run:
           name: Install FE Deps
-          command: yarn install      
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Build Preview
-          command: CI="" yarn build     
-      - run: 
+          command: CI="" yarn build
+      - run:
           name: Create Preview Link
           command: bash <(curl -s https://peek.run/ci)
 
@@ -36,12 +36,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: REACT_APP_STAGE=staging NODE_ENV=production PUBLIC_URL=https://staging.sanctuary.computer CI="" yarn build
-      - run: sudo apt-get install python-dev python-pip
-      - run: sudo pip install awscli
-      - run: aws configure set preview.cloudfront true
-      - run: aws s3 sync build s3://computer-sanctuary-staging/ --delete
-      - run: aws s3 cp build/index.html s3://computer-sanctuary-staging/ --cache-control max-age=0
-      - run: curl --location --request POST "https://www.spirit.fish/api/v1/renderers/12c41eaf-cb36-4157-aac2-b28df0d2cb48/api_invalidations" -H "Content-Type:application/json" -H "X-Hatchery-Renderer-Api-Key:$STAGING_SPIRIT_FISH_API_KEY" --data-raw '{"invalidation":{"pages":["*"]}}'
+      - run: yarn global add @spirit-fish/cli
+      - run: spirit-fish deploy 12c41eaf-cb36-4157-aac2-b28df0d2cb48 ./build --activate --token $SPIRIT_FISH_TOKEN
 
   deploy-production:
     docker:
