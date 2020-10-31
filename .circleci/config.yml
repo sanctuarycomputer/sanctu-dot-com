@@ -24,7 +24,7 @@ jobs:
 
   deploy-staging:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     steps:
       - checkout
       - restore_cache:
@@ -41,7 +41,7 @@ jobs:
 
   deploy-production:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     steps:
       - checkout
       - restore_cache:
