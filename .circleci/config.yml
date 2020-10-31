@@ -36,8 +36,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: REACT_APP_STAGE=staging NODE_ENV=production PUBLIC_URL=https://staging.sanctuary.computer CI="" yarn build
-      - run: yarn global add @spirit-fish/cli
-      - run: spirit-fish deploy 12c41eaf-cb36-4157-aac2-b28df0d2cb48 ./build --activate --token $SPIRIT_FISH_TOKEN
+      - run: npx spirit-fish deploy 12c41eaf-cb36-4157-aac2-b28df0d2cb48 ./build --activate --token $SPIRIT_FISH_TOKEN
 
   deploy-production:
     docker:
