@@ -1,4 +1,5 @@
 import Juzhen from './Juzhen';
+import Clippy from './Clippy';
 
 const HackerDojo = {
   listeners: [],
@@ -12,6 +13,9 @@ const HackerDojo = {
   },
   toggleJuzhen() {
     Juzhen.toggle();
+  },
+  addAgent(agentName) {
+    Clippy.addAgent(agentName);
   },
   enableNightmode() {
     HackerDojo.emit('enableNightmode');
