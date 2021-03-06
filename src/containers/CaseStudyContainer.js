@@ -8,18 +8,23 @@ class CaseStudyContainer extends ContainerBase {
   beforeModel = () => {
     const contentful = ContentfulClient();
     return ContentfulData.setRef(contentful);
-  }
+  };
 
   model = () => {
-    return ContentfulData.getEntries({
-      content_type: 'caseStudy',
-      'fields.slug': window.location.pathname,
-      include: 4,
-    }).then(res => res.items[0]);
+    return Promise.all([
+      ContentfulData.getEntries({
+        content_type: 'caseStudy',
+        'fields.slug': window.location.pathname,
+        include: 4
+      }).then(res => res.items[0]),
+      ContentfulData.getEntries({
+        content_type: 'sanctuary',
+        include: 4
+      }).then(res => res.items[0])
+    ]).then(res => {
+      return { caseStudy: res[0], global: res[1] };
+    });
   };
 }
 
 export default CaseStudyContainer;
-
-
-

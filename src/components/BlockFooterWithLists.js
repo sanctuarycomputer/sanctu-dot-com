@@ -11,10 +11,12 @@ import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
 
 const BlockFooterWithLists = props => {
   const fields = get(props, 'block.fields');
-  const listOne = get(fields, 'listOne.simpleFragments', {});
-  const listTwo = get(fields, 'listTwo.simpleFragments', {});
-  const listOneTitle = get(fields, 'listOneTitle', '');
-  const listTwoTitle = get(fields, 'listTwoTitle', '');
+  const listOne = get(
+    props,
+    'global.fields.recentArticles.simpleFragments',
+    {}
+  );
+  const listTwo = get(props, 'global.fields.socialMedia.simpleFragments', {});
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
 
@@ -30,13 +32,13 @@ const BlockFooterWithLists = props => {
         <div className="flex flex-col flex-col-reverse md:flex-row col-8 md:col-4">
           <div className="md:col-4 pb2 md:pb0">
             <List
-              title={listOneTitle}
+              title={'Recently'}
               listItems={simpleFragmentToListItems(listOne)}
             />
           </div>
           <div className="flex md:col-4 pb2 md:pb0">
             <List
-              title={listTwoTitle}
+              title={'Social Media'}
               listItems={simpleFragmentToListItems(listTwo)}
             />
           </div>

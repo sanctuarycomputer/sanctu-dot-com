@@ -43,7 +43,7 @@ const BlockViewMore = props => {
               >
                 <div className="flex flex-col">
                   <Image
-                    className="h100 w100 hauto fit-cover pb1 md:pr1"
+                    className="left-side h100 w100 hauto fit-cover pb1"
                     alt={linkOneImage.description}
                     src={linkOneImage.url}
                   />
@@ -67,7 +67,7 @@ const BlockViewMore = props => {
               >
                 <div className="flex flex-col">
                   <Image
-                    className="h100 w100 hauto fit-cover pb1"
+                    className="right-side h100 w100 hauto fit-cover pb1"
                     alt={linkTwoImage.description}
                     src={linkTwoImage.url}
                   />

@@ -16,7 +16,7 @@ import BlockThreeColumnHero from 'components/BlockThreeColumnHero';
 import BlockFooterWithLists from 'components/BlockFooterWithLists';
 
 const CaseStudyBlockSwitch = props => {
-  const { block } = props;
+  const { block, global } = props;
   const type = get(block, 'sys.contentType.sys.id');
 
   const Block = type => {
@@ -46,7 +46,7 @@ const CaseStudyBlockSwitch = props => {
       case 'caseStudyBlockThreeColumnHero':
         return <BlockThreeColumnHero block={block} />;
       case 'caseStudyBlockFooterWithLists':
-        return <BlockFooterWithLists block={block} />;
+        return <BlockFooterWithLists block={block} global={global} />;
       default:
         return null;
     }

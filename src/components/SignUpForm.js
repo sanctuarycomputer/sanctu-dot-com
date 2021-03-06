@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import cx from "classnames";
+import cx from 'classnames';
 
 import 'what-input';
 
@@ -21,26 +21,26 @@ class SignUpForm extends PureComponent {
   };
 
   render() {
-
     const { overlayMode, title } = this.props;
 
     return (
       <div className="SignUpForm">
         <form
-          action={
-            'https://computer.us11.list-manage.com/subscribe/post?u=6e62b74d002f42a0e5350892e&amp;id=4f35a74dc5'
-          }
+          action={'https://sanctucompu.substack.com/api/v1/free?nojs=true'}
           target="_blank"
           method="post"
         >
           <label className="small">
             <h3>{title}</h3>
             <input
-              name="EMAIL"
-              className={cx('SignUpForm__input small ml1_25 p0 w100 inline-block', {
-                'SignUpForm--overlay-mode__input': overlayMode,
-                'SignUpForm--day-mode__input': !overlayMode
-                })}
+              name="email"
+              className={cx(
+                'SignUpForm__input small ml1_25 p0 w100 inline-block',
+                {
+                  'SignUpForm--overlay-mode__input': overlayMode,
+                  'SignUpForm--day-mode__input': !overlayMode
+                }
+              )}
               type="email"
               placeholder="hello@example.com"
             />
@@ -50,8 +50,7 @@ class SignUpForm extends PureComponent {
               className={cx('SignUpForm__button ml1_25 p0 small', {
                 'SignUpForm--overlay-mode__button': overlayMode,
                 'SignUpForm--day-mode__buton': overlayMode
-
-                })}
+              })}
               type="submit"
               value="Submit"
             />
