@@ -1,57 +1,19 @@
 {
   "name": "sanctu-dot-com",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@sanctucompu/basement": "^1.1.0",
-    "classnames": "^2.2.6",
-    "contentful": "^7.0.4",
-    "lodash": "^4.17.13",
-    "node-sass": "^4.9.3",
-    "nuka-carousel": "^4.4.1",
-    "object-hash": "^1.3.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-helmet": "^6.0.0",
-    "react-remarkable": "^1.1.3",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "2.0.4",
-    "what-input": "^5.1.2",
-    "xhook": "^1.4.9"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "prettier": {
-    "singleQuote": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "@spirit-fish/cli": "^0.0.4",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.7"
   }
 }

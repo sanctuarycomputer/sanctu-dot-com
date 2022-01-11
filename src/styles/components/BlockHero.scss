@@ -1,7 +1,0 @@
-.BlockHero {
-  &__list {
-    @include media('sm-down') {
-      flex-wrap: wrap;
-    }
-  }
-}
