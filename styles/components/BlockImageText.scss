@@ -1,0 +1,56 @@
+.BlockImageText {
+  &__description > div > span > p {
+    padding-bottom: 2rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    a {
+      @extend .link;
+      text-decoration: none;
+    }
+  }
+
+  &__description--1,
+  &__header--1 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8);
+    }
+  }
+
+  &__description--2,
+  &__header--2 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8 * 2);
+    }
+  }
+
+  &__description--3,
+  &__header--3 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8 * 3);
+    }
+  }
+
+  &__description--4,
+  &__header--4 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8 * 4);
+    }
+  }
+
+  &__description--5,
+  &__header--5 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8 * 5);
+    }
+  }
+
+  &__description--6,
+  &__header--6 {
+    @include media('md-up') {
+      width: calc((100vw - 3rem) / 8 * 6);
+    }
+  }
+}

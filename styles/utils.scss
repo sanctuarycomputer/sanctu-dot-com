@@ -1,0 +1,34 @@
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+input,
+.link {
+  color: color("black");
+
+  &:hover {
+    color: color("gray");
+    cursor: pointer;
+  }
+}
+
+[data-whatintent="mouse"] input:focus {
+  outline: none;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.sticky-spacer {
+  padding-bottom: 0;
+
+  @include media("md") {
+    padding-bottom: 120px;
+  }
+}

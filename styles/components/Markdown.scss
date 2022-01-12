@@ -1,0 +1,67 @@
+.Markdown--medium {
+  p {
+    @extend .paragraph;
+
+    margin-bottom: $p-line-height;
+    @include media('md') {
+      margin-bottom: $p-md-line-height;
+    }
+    @include media('xl') {
+      margin-bottom: $p-xl-line-height;
+    }
+
+    > em {
+      @extend .tiny;
+      white-space: nowrap;
+      position: relative;
+      top: -6px;
+
+      @include media('md') {
+        top: -10px;
+      }
+
+      @include media('xl') {
+        top: -11px;
+      }
+    }
+
+    > strong {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    @extend .link;
+    text-decoration: none;
+  }
+}
+
+.Markdown--small {
+  p {
+    @extend .small;
+
+    > em {
+      @extend .tiny;
+      white-space: nowrap;
+      position: relative;
+      top: -6px;
+
+      @include media('md') {
+        top: -10px;
+      }
+
+      @include media('xl') {
+        top: -11px;
+      }
+    }
+
+    > strong {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    @extend .link;
+    text-decoration: underline;
+  }
+}

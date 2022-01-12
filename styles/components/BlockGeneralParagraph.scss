@@ -1,0 +1,14 @@
+.BlockGeneralParagraph {
+  @include media('sm-down') {
+    margin-top: 0 !important;
+  }
+
+  &__paragraph > div > span > p {
+    line-height: 1.5rem;
+    padding-bottom: 1rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

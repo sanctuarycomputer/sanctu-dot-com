@@ -1,0 +1,70 @@
+.Overlay {
+  transition: opacity 3500ms cubic-bezier(0.79, 0.1, 0.56, 0.93);
+  pointer-events: none;
+
+  &--active {
+    pointer-events: auto;
+  }
+
+  &__navigation {
+    @include media("sm-down") {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__social-media-list {
+    a {
+      color: color("white");
+    }
+
+    @include media("sm-down") {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__footer {
+    @include media("md-up") {
+      left: 0;
+    }
+  }
+
+  &__paragraph {
+    font-family: $serif-stack;
+    font-weight: 200;
+    font-size: 1.65rem;
+    line-height: 2.125rem;
+    letter-spacing: -5;
+
+    > p {
+      @include media("md-up") {
+        &::before {
+          content: '';
+          display: block;
+          margin: -0.45rem 0;
+        }
+      }
+
+      @include media("lg-up") {
+        &::before {
+          content: '';
+          display: block;
+          margin: -0.50rem 0;
+        }
+      }
+    }
+
+    @include media("md-up") {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+
+    @include media("lg-up") {
+      font-size: 3.125rem;
+      line-height: 3.75rem; 
+    }
+  }
+}

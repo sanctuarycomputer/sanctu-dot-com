@@ -1,0 +1,64 @@
+$serif-stack: 'Austin News Deck Web', serif;
+$sans-serif-stack: 'Atlas Grotesk Web', sans-serif;
+
+$p-line-height: 2.1rem;
+$p-md-line-height: 2.64rem;
+$p-xl-line-height: 3rem;
+
+.header {
+  font-family: $serif-stack;
+  font-weight: 300;
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.paragraph {
+  font-family: $serif-stack;
+  font-weight: 200;
+  font-size: 1.65rem;
+  line-height: $p-line-height;
+  letter-spacing: -5;
+
+  @include media('md') {
+    font-size: 2.2rem;
+    line-height: $p-md-line-height;
+  }
+
+  @include media('xl') {
+    font-size: 2.5rem;
+    line-height: $p-xl-line-height;
+  }
+}
+
+.small {
+  font-family: $sans-serif-stack;
+  font-size: 0.9rem;
+  line-height: 1.125rem;
+}
+
+.tiny {
+  font-family: $sans-serif-stack;
+  line-height: 0;
+  font-weight: 400;
+
+  margin: 0 2px;
+  font-size: 8px;
+  letter-spacing: 0.4px;
+
+  @include media('md') {
+    margin: 0 2px;
+    font-size: 10px;
+    letter-spacing: 0.4px;
+  }
+
+  @include media('xl') {
+    margin: 0 2px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+}
+
+.image-caption {
+  opacity: 0.5;
+  line-height: 1.2rem;
+}

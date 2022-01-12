@@ -1,5 +1,21 @@
-.test {
-  &__inner {
-    border: solid red;
-  }
+@import './reset.scss';
+
+@import './config.scss';
+@import '~@sanctucompu/basement/src/index';
+
+@import './type.scss';
+@import './utils.scss';
+@import './global.scss';
+@import './components.scss';
+
+canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#root {
+  max-width: 100%;
+  margin: auto;
 }

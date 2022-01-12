@@ -1,0 +1,46 @@
+.SignUpForm {
+
+  &__input,
+  &__button {
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+  }
+
+  &--overlay-mode {
+    &__input,
+    &__button {
+      color: color("white");
+      background-color: transparent;
+
+      &:hover {
+        color: color("gray");
+      }
+    }
+
+    &__input {
+      &::placeholder {
+        color: color("white");
+      }
+    }
+  }
+
+  &--day-mode {
+    &__input {
+      color: color("black");
+      background-color: transparent;
+
+      &:hover {
+        color: color("black");
+      }
+    }
+
+    &__input {
+      &::placeholder {
+        color: color("gray");
+      }
+    }
+  }
+
+}
