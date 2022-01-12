@@ -13,7 +13,7 @@ class Image extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (typeof window === "undefined") return
     
     const { src } = this.props;
