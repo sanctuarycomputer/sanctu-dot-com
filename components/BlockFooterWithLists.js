@@ -7,7 +7,6 @@ import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
-import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
 
 const BlockFooterWithLists = props => {
   const fields = get(props, 'block.fields');
@@ -48,7 +47,7 @@ const BlockFooterWithLists = props => {
         <div>
           <img
             className="BlockFooterWithLists__icon"
-            src={SanctuLogoBlack}
+            src='assets/sanctu_logo_black.svg'
             alt="Sanctuary Computer logo"
           />
         </div>

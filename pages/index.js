@@ -2,7 +2,6 @@ import React, { Fragment, PureComponent } from 'react';
 import get from 'utils/get';
 
 import ContentfulClient from 'lib/ContentfulClient';
-import ContainerBase from 'lib/ContainerBase';
 import ContentfulData from 'lib/ContentfulData';
 
 import Meta from 'components/Meta';
