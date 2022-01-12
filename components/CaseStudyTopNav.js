@@ -47,12 +47,16 @@ class CaseStudyTopNav extends Component {
       <>
         <div className="md:none p1">
           <Link
-            className="small link decoration-none"
-            aria-label="Visit Sanctuary Computer"
             href="/"
-            rel="noopener noreferrer"
+            passHref
           >
-            ← Back to Sanctuary
+            <a
+              className="small link decoration-none"
+              aria-label="Visit Sanctuary Computer"
+              rel="noopener noreferrer"
+            >
+              ← Back to Sanctuary
+            </a>
           </Link>
         </div>
         <div
@@ -64,12 +68,16 @@ class CaseStudyTopNav extends Component {
           )}
         >
           <Link
-            className="small link decoration-none"
-            aria-label="Visit Sanctuary Computer"
             href="/"
-            rel="noopener noreferrer"
+            passHref
           >
-            ← Back to Sanctuary
+            <a
+              className="small link decoration-none"
+              aria-label="Visit Sanctuary Computer"
+              rel="noopener noreferrer"
+            >
+              ← Back to Sanctuary
+            </a>
           </Link>
         </div>
       </>

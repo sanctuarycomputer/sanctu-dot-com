@@ -36,48 +36,56 @@ const BlockViewMore = props => {
           <div className="md:col-4 flex flex-col pb2 md:pb0">
             {linkOneText && linkOne && (
               <Link
-                className="small link decoration-none"
-                aria-label={linkOneText}
                 href={linkOne}
-                rel="noopener noreferrer"
+                passHref
               >
-                <div className="flex flex-col">
-                  <Image
-                    className="left-side h100 w100 hauto fit-cover pb1"
-                    alt={linkOneImage.description}
-                    src={linkOneImage.url}
-                  />
-                  {linkOneImageCaption && (
-                    <p className="image-caption small color-gray-darkest pb_5">
-                      {linkOneImageCaption}
-                    </p>
-                  )}
-                  → {linkOneText}
-                </div>
+                <a
+                  className="small link decoration-none"
+                  aria-label={linkOneText}
+                  rel="noopener noreferrer"
+                >
+                  <div className="flex flex-col">
+                    <Image
+                      className="left-side h100 w100 hauto fit-cover pb1"
+                      alt={linkOneImage.description}
+                      src={linkOneImage.url}
+                    />
+                    {linkOneImageCaption && (
+                      <p className="image-caption small color-gray-darkest pb_5">
+                        {linkOneImageCaption}
+                      </p>
+                    )}
+                    → {linkOneText}
+                  </div>
+                </a>
               </Link>
             )}
           </div>
           <div className="md:col-4 flex flex-col">
             {linkTwoText && linkTwo && (
               <Link
-                className="small link decoration-none"
-                aria-label={linkTwoText}
                 href={linkTwo}
-                rel="noopener noreferrer"
+                passHref
               >
-                <div className="flex flex-col">
-                  <Image
-                    className="right-side h100 w100 hauto fit-cover pb1"
-                    alt={linkTwoImage.description}
-                    src={linkTwoImage.url}
-                  />
-                  {linkTwoImageCaption && (
-                    <p className="image-caption small color-gray-darkest pb_5">
-                      {linkTwoImageCaption}
-                    </p>
-                  )}
-                  → {linkTwoText}
-                </div>
+                <a
+                  className="small link decoration-none"
+                  aria-label={linkTwoText}
+                  rel="noopener noreferrer"
+                >
+                  <div className="flex flex-col">
+                    <Image
+                      className="right-side h100 w100 hauto fit-cover pb1"
+                      alt={linkTwoImage.description}
+                      src={linkTwoImage.url}
+                    />
+                    {linkTwoImageCaption && (
+                      <p className="image-caption small color-gray-darkest pb_5">
+                        {linkTwoImageCaption}
+                      </p>
+                    )}
+                    → {linkTwoText}
+                  </div>
+                </a>
               </Link>
             )}
           </div>

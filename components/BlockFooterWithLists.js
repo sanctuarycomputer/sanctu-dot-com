@@ -53,12 +53,16 @@ const BlockFooterWithLists = props => {
         </div>
         <div className="flex justify-end items-end">
           <Link
-            className="small link decoration-none"
-            aria-label="Visit Sanctuary Computer"
             href="/"
-            rel="noopener noreferrer"
+            passHref
           >
-            ← Back to Sanctuary
+            <a 
+              className="small link decoration-none"
+              aria-label="Visit Sanctuary Computer"
+              rel="noopener noreferrer"
+            >
+              ← Back to Sanctuary
+            </a>
           </Link>
         </div>
       </div>

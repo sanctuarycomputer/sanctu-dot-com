@@ -20,22 +20,30 @@ const BlockFooterLinks = props => {
       className="BlockFooterLinks flex flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:py0 md:pb15"
     >
       <Link
-        className="small link decoration-none pr5"
-        aria-label="Visit Sanctuary Computer"
         href="/"
-        rel="noopener noreferrer"
+        passHref
       >
-        ← Back to Sanctuary
+        <a
+          className="small link decoration-none pr5"
+          aria-label="Visit Sanctuary Computer"
+          rel="noopener noreferrer"
+        >
+          ← Back to Sanctuary
+        </a>
       </Link>
       {linkText && link && (
         <span>
           <Link
-            className="small link decoration-none"
-            aria-label="Visit next case study"
             href={link}
-            rel="noopener noreferrer"
+            passHref
           >
-            {linkText} →
+            <a
+              className="small link decoration-none"
+              aria-label="Visit next case study"
+              rel="noopener noreferrer"
+            >
+              {linkText} →
+            </a>
           </Link>
         </span>
       )}

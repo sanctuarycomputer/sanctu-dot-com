@@ -19,15 +19,19 @@ const Footer = ({ hidden, hideCapabilitiesLink }) => (
     {!hideCapabilitiesLink && (
       <div className="flex justify-end items-end">
         <Link
-          className={cx('small link decoration-none', {
-            'Footer__link--overlay-is-active': hidden,
-            'Footer__link--overlay-is-inactive': !hidden
-          })}
-          aria-label="View our capabilities"
           href="/capabilities"
-          rel="noopener noreferrer"
+          passHref
         >
-          Working with us →
+          <a
+            className={cx('small link decoration-none', {
+              'Footer__link--overlay-is-active': hidden,
+              'Footer__link--overlay-is-inactive': !hidden
+            })}
+            aria-label="View our capabilities"
+            rel="noopener noreferrer"
+          >
+            Working with us →
+          </a>
         </Link>
       </div>
     )}
