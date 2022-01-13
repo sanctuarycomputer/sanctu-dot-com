@@ -2,7 +2,7 @@ name: Deploy Preview
 on: push
 jobs:
   deploy-preview:
-    if: github.ref != 'refs/heads/production'
+    if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
           scope: ${{ secrets.VERCEL_ORG_ID }}
 
   deploy-production:
-    if: github.ref == 'refs/heads/production'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
