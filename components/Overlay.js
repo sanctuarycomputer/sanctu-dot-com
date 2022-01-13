@@ -39,7 +39,7 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
           </div>
           <div className="Overlay__paragraph col-12 md:col-4">
             <p>
-              Website hours are Monday to Friday 7 AM - 7 PM (in your browser's
+              Website hours are Monday to Friday 7 AM - 7 PM (in your browser&apos;s
               local time).
             </p>
           </div>
