@@ -87,6 +87,9 @@ class MainView extends PureComponent {
   };
 
   render() {
+    const now = new Date();
+    const currentTimeInHours = now.getHours();
+    console.log(this.state.shouldShowOverlay, currentTimeInHours, dayEndTimeInHours)
     const model = this.props.model;
 
     if (!model || model.isError) return <h1>Something went wrong...</h1>;
