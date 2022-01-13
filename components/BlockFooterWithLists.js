@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
-import SanctuLogoBlack from 'assets/sanctu_logo_black.svg';
 
 const BlockFooterWithLists = props => {
   const fields = get(props, 'block.fields');
@@ -48,18 +47,22 @@ const BlockFooterWithLists = props => {
         <div>
           <img
             className="BlockFooterWithLists__icon"
-            src={SanctuLogoBlack}
+            src='assets/sanctu_logo_black.svg'
             alt="Sanctuary Computer logo"
           />
         </div>
         <div className="flex justify-end items-end">
           <Link
-            className="small link decoration-none"
-            aria-label="Visit Sanctuary Computer"
-            to="/"
-            rel="noopener noreferrer"
+            href="/"
+            passHref
           >
-            ← Back to Sanctuary
+            <a 
+              className="small link decoration-none"
+              aria-label="Visit Sanctuary Computer"
+              rel="noopener noreferrer"
+            >
+              ← Back to Sanctuary
+            </a>
           </Link>
         </div>
       </div>

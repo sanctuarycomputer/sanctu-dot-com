@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head'
 import get from 'lodash/get';
 
 const DEFAULT_TITLE = 'SANCTU COMPU - The Safest Place on Earth.';
@@ -15,7 +15,7 @@ const Meta = ({ model }) => {
     'https:' + get(fields, 'seoShareCard.fields.file.url', DEFAULT_IMAGE);
 
   return (
-    <Helmet>
+    <Head>
       <title>{seoTitle}</title>
       <meta name="description" content={seoDescription} />
       <meta property="og:type" content="website" />
@@ -30,7 +30,7 @@ const Meta = ({ model }) => {
       <meta name="twitter:site" content="@sanctucompu" />
       <meta name="twitter:creator" content="@sanctucompu" />
       <meta name="twitter:card" content="summary_large_image" />
-    </Helmet>
+    </Head>
   );
 };
 

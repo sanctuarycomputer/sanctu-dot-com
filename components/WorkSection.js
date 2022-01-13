@@ -1,5 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
@@ -153,23 +153,31 @@ class WorkSection extends PureComponent {
                     <div className="flex flex-row flex-wrap">
                       {get(work, 'fields.caseStudySlug', '') && (
                         <Link
-                          className="small link decoration-none pb1 pr2"
-                          aria-label="View case study"
-                          to={get(work, 'fields.caseStudySlug', '')}
-                          rel="noopener noreferrer"
+                          href={get(work, 'fields.caseStudySlug', '')}
+                          passHref
                         >
-                          → View case study
+                          <a
+                            className="small link decoration-none pb1 pr2"
+                            aria-label="View case study"
+                            rel="noopener noreferrer"
+                          >
+                            → View case study
+                          </a>
                         </Link>
                       )}
-                      <a
-                        className="small link underline"
-                        aria-label="Project Link"
-                        href={get(work, 'fields.link')}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href={get(work, 'fields.link', '')}
+                        passHref
                       >
-                        {get(work, 'fields.linkLabel', '')}
-                      </a>
+                        <a
+                          className="small link underline"
+                          aria-label="Project Link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {get(work, 'fields.linkLabel', '')}
+                        </a>
+                      </Link>
                     </div>
                   </div>
                   <span className="color-gray small block">
@@ -240,23 +248,31 @@ class WorkSection extends PureComponent {
               </h2>
               {get(activeProject, 'fields.caseStudySlug', '') && (
                 <Link
-                  className="small link decoration-none pb1 pr2"
-                  aria-label="View case study"
-                  to={get(activeProject, 'fields.caseStudySlug', '')}
-                  rel="noopener noreferrer"
+                  href={get(activeProject, 'fields.caseStudySlug', '')}
+                  passHref
                 >
-                  → View case study
+                  <a
+                    className="small link decoration-none pb1 pr2"
+                    aria-label="View case study"
+                    rel="noopener noreferrer"
+                  >
+                    → View case study
+                  </a>
                 </Link>
               )}
-              <a
-                className="small link underline"
-                aria-label="Project Link"
+              <Link
                 href={get(activeProject, 'fields.link')}
-                target="_blank"
-                rel="noopener noreferrer"
+                passHref
               >
-                {get(activeProject, 'fields.linkLabel', '')}
-              </a>
+                <a
+                  className="small link underline"
+                  aria-label="Project Link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {get(activeProject, 'fields.linkLabel', '')}
+                </a>
+              </Link>
             </div>
             <span className="color-gray small block">
               {activeIndex + 1}/{slideCount}

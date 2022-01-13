@@ -1,6 +1,9 @@
 import React, { Fragment, PureComponent } from 'react';
 import get from 'utils/get';
 
+import ContentfulClient from 'lib/ContentfulClient';
+import ContentfulData from 'lib/ContentfulData';
+
 import Meta from 'components/Meta';
 import IntroSectionImages from 'components/IntroSectionImages';
 import IntroSectionParagraph from 'components/IntroSectionParagraph';
@@ -22,21 +25,23 @@ class MainView extends PureComponent {
       shouldShowOverlay: this.shouldShowOverlay()
     };
 
-    window.HackerDojo.on('enableNightmode', () => {
-      this.setState({
-        shouldShowOverlay: true
+    if (typeof window !== "undefined" && window.HackerDojo) {
+      window.HackerDojo.on('enableNightmode', () => {
+        this.setState({
+          shouldShowOverlay: true
+        });
+  
+        clearInterval(timerID);
       });
-
-      clearInterval(timerID);
-    });
-
-    window.HackerDojo.on('disableNightmode', () => {
-      this.setState({
-        shouldShowOverlay: false
+  
+      window.HackerDojo.on('disableNightmode', () => {
+        this.setState({
+          shouldShowOverlay: false
+        });
+  
+        clearInterval(timerID);
       });
-
-      clearInterval(timerID);
-    });
+    }
   }
 
   componentDidUpdate() {
@@ -61,8 +66,6 @@ class MainView extends PureComponent {
   }
 
   shouldShowOverlay = () => {
-    if (window.SPIRIT_FISH) return false;
-
     const now = new Date();
     const currentTimeInHours = now.getHours();
 
@@ -157,5 +160,21 @@ class MainView extends PureComponent {
     );
   }
 }
+
+export const getStaticProps = async () => {
+  const contentful = ContentfulClient();
+  ContentfulData.setRef(contentful);
+
+  const model = await ContentfulData.getEntries({
+    content_type: 'sanctuary',
+    include: 4,
+  }).then(res => res.items[0]);
+
+  return {
+    props: {
+      model
+    }
+  }
+};
 
 export default MainView;
