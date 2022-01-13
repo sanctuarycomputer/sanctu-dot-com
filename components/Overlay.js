@@ -7,6 +7,7 @@ import Footer from 'components/Footer';
 import SignUpForm from 'components/SignUpForm';
 
 const Overlay = ({ socialMedia, shouldShowOverlay }) => {
+  console.log('overlay', shouldShowOverlay)
   return (
     <div
       aria-hidden={!shouldShowOverlay}

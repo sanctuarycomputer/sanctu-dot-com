@@ -87,9 +87,6 @@ class MainView extends PureComponent {
   };
 
   render() {
-    const now = new Date();
-    const currentTimeInHours = now.getHours();
-    console.log(this.state.shouldShowOverlay, currentTimeInHours, dayEndTimeInHours)
     const model = this.props.model;
 
     if (!model || model.isError) return <h1>Something went wrong...</h1>;
@@ -97,68 +94,73 @@ class MainView extends PureComponent {
     return (
       <Fragment>
         <Meta model={model} />
-        <Overlay
-          socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
-          shouldShowOverlay={this.state.shouldShowOverlay}
-        />
-        <div
-          aria-hidden={this.state.shouldShowOverlay}
-          className="flex md:flex-row flex-col"
-        >
-          <div className="col-8 flex flex-col sticky-spacer">
-            <IntroSectionImages images={get(model, 'fields.introImages', {})} />
-            <AboutSection
-              whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
-              selectedClients={get(
-                model,
-                'fields.selectedClients.simpleFragments',
-                {}
-              )}
-              technologyStack={get(
-                model,
-                'fields.technologyStack.simpleFragments',
-                {}
-              )}
-              software={get(model, 'fields.software.simpleFragments', {})}
-              collaborators={get(
-                model,
-                'fields.collaborators.simpleFragments',
-                {}
-              )}
-            />
-          </div>
-          <div className="col-8 flex order-first md:order-last">
-            <IntroSectionParagraph
-              introParagraph={get(model, 'fields.introParagraph')}
-            />
-          </div>
-        </div>
-        <div aria-hidden={this.state.shouldShowOverlay}>
-          <WorkSection selectedWorks={get(model, 'fields.selectedWorks', [])} />
-        </div>
-        <div aria-hidden={this.state.shouldShowOverlay}>
-          <Gallery
-            images={get(model, 'fields.gallery', {})}
-            settingExpectations={get(model, 'fields.settingExpectations')}
-            recentArticles={get(
-              model,
-              'fields.recentArticles.simpleFragments',
-              {}
-            )}
+        {this.state.shouldShowOverlay ? (
+          <Overlay
             socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
-            openSourceProjects={get(
-              model,
-              'fields.openSourceProjects.simpleFragments',
-              {}
-            )}
-            availablePositions={get(
-              model,
-              'fields.availablePositions.simpleFragments',
-              {}
-            )}
+            shouldShowOverlay={this.state.shouldShowOverlay}
           />
-        </div>
-        <Footer hidden={this.state.shouldShowOverlay} />
+        ) : (
+          <Fragment>
+          <div
+            aria-hidden={this.state.shouldShowOverlay}
+            className="flex md:flex-row flex-col"
+          >
+            <div className="col-8 flex flex-col sticky-spacer">
+              <IntroSectionImages images={get(model, 'fields.introImages', {})} />
+              <AboutSection
+                whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
+                selectedClients={get(
+                  model,
+                  'fields.selectedClients.simpleFragments',
+                  {}
+                )}
+                technologyStack={get(
+                  model,
+                  'fields.technologyStack.simpleFragments',
+                  {}
+                )}
+                software={get(model, 'fields.software.simpleFragments', {})}
+                collaborators={get(
+                  model,
+                  'fields.collaborators.simpleFragments',
+                  {}
+                )}
+              />
+            </div>
+            <div className="col-8 flex order-first md:order-last">
+              <IntroSectionParagraph
+                introParagraph={get(model, 'fields.introParagraph')}
+              />
+            </div>
+          </div>
+          <div aria-hidden={this.state.shouldShowOverlay}>
+            <WorkSection selectedWorks={get(model, 'fields.selectedWorks', [])} />
+          </div>
+          <div aria-hidden={this.state.shouldShowOverlay}>
+            <Gallery
+              images={get(model, 'fields.gallery', {})}
+              settingExpectations={get(model, 'fields.settingExpectations')}
+              recentArticles={get(
+                model,
+                'fields.recentArticles.simpleFragments',
+                {}
+              )}
+              socialMedia={get(model, 'fields.socialMedia.simpleFragments', {})}
+              openSourceProjects={get(
+                model,
+                'fields.openSourceProjects.simpleFragments',
+                {}
+              )}
+              availablePositions={get(
+                model,
+                'fields.availablePositions.simpleFragments',
+                {}
+              )}
+            />
+          </div>
+          <Footer hidden={this.state.shouldShowOverlay} />
+          </Fragment>
+        )}
       </Fragment>
     );
   }
