@@ -11,10 +11,9 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
     <div
       aria-hidden={!shouldShowOverlay}
       className={cx(
-        'Overlay fixed vw100 vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3',
+        'Overlay fixed vw100 vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3 opacity-0',
         {
-          'Overlay--active opacity-1': shouldShowOverlay,
-          'opacity-0': !shouldShowOverlay
+          'Overlay--active': !!shouldShowOverlay
         }
       )}
     >
