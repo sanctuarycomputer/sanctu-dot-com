@@ -16,6 +16,7 @@ class Slider extends PureComponent {
         wrapAround={this.props.wrapAround}
         slideIndex={this.props.activeIndex}
         transitionMode={this.props.transitionMode}
+        afterSlide={this.props.afterSlide}
       >
         {React.Children.map(get(this, 'props.children'), child => child)}
       </NukaCarousel>
@@ -28,7 +29,7 @@ Slider.defaultProps = {
   afterSlide: f => f,
   wrapAround: true,
   swiping: true,
-  slideIndex: 0
+  slideIndex: 0,
 };
 
 Slider.propTypes = {

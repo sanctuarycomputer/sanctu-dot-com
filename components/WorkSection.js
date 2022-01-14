@@ -90,8 +90,6 @@ class WorkSection extends PureComponent {
 
       return { activeIndex: previousSlideIndex };
     });
-
-    clearInterval(timerID);
   };
 
   renderWork = () => {
@@ -104,7 +102,10 @@ class WorkSection extends PureComponent {
 
     if (breakpointIsMobile) {
       return (
-        <Slider>
+        <Slider
+          activeIndex={this.state.activeIndex}
+          afterSlide={(slideIndex) => this.setState({ activeIndex: slideIndex })}
+        >
           {get(this, 'props.selectedWorks', []).map((work, index) => (
             <Fragment key={get(work, 'sys.id')}>
               <div className="MediaContainer" ref={this.mediaContainer}>
@@ -115,14 +116,16 @@ class WorkSection extends PureComponent {
                     width: mediaDimensions.width,
                     height: mediaDimensions.height
                   }}
-                  autoPlay={false}
+                  autoPlay
                   loop
                   muted
                   playsInline
                 >
-                  <source
-                    src={get(work, 'fields.video.fields.file.url')}
-                  ></source>
+                  {breakpointIsMobile && (activeIndex === index) && (
+                    <source
+                      src={get(work, 'fields.video.fields.file.url')}
+                    ></source>
+                  )}
                 </video>
               </div>
               <div ref={this.infoContainer} className="col-8 flex flex-col pt2">
@@ -209,9 +212,11 @@ class WorkSection extends PureComponent {
                 muted
                 playsInline
               >
-                <source
-                  src={get(work, 'fields.video.fields.file.url')}
-                ></source>
+                {!breakpointIsMobile && (activeIndex === index) && (
+                  <source
+                    src={get(work, 'fields.video.fields.file.url')}
+                  ></source>
+                )}
               </video>
             ))}
           </Slider>
