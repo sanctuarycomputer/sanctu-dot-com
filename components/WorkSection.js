@@ -15,8 +15,6 @@ const { LANDSCAPE } = Aspects;
 
 const VERTICAL_GUTTER = 32;
 
-let timerID = null;
-
 class WorkSection extends PureComponent {
   constructor(props) {
     super(...arguments);
@@ -37,25 +35,10 @@ class WorkSection extends PureComponent {
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     this.adjustSize();
-
-    timerID = setInterval(() => {
-      const { slideCount } = this.state;
-
-      this.setState(state => {
-        const potentialNextSlide = state.activeIndex + 1;
-        const lastAvailableSlide = slideCount - 1;
-
-        const nextSlideIndex =
-          state.activeIndex < lastAvailableSlide ? potentialNextSlide : 0;
-
-        return { activeIndex: nextSlideIndex };
-      });
-    }, 7000);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
-    clearInterval(timerID);
   }
 
   handleResize = () => {
@@ -91,8 +74,6 @@ class WorkSection extends PureComponent {
 
       return { activeIndex: nextSlideIndex };
     });
-
-    clearInterval(timerID);
   };
 
   setPreviousSlide = () => {
@@ -134,7 +115,7 @@ class WorkSection extends PureComponent {
                     width: mediaDimensions.width,
                     height: mediaDimensions.height
                   }}
-                  autoPlay
+                  autoPlay={false}
                   loop
                   muted
                   playsInline
