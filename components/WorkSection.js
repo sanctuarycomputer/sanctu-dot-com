@@ -25,7 +25,8 @@ class WorkSection extends PureComponent {
       mediaDimensions: {
         width: 0,
         height: 0
-      }
+      },
+      isIntersecting: false
     };
 
     this.mediaContainer = React.createRef();
@@ -35,6 +36,12 @@ class WorkSection extends PureComponent {
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     this.adjustSize();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => this.setState({isIntersecting: entry.isIntersecting})
+    )
+
+    observer.observe(this.mediaContainer.current)
   }
 
   componentWillUnmount() {
@@ -121,7 +128,7 @@ class WorkSection extends PureComponent {
                   muted
                   playsInline
                 >
-                  {breakpointIsMobile && (activeIndex === index) && (
+                  {breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
                     <source
                       src={get(work, 'fields.video.fields.file.url')}
                     ></source>
@@ -212,7 +219,7 @@ class WorkSection extends PureComponent {
                 muted
                 playsInline
               >
-                {!breakpointIsMobile && (activeIndex === index) && (
+                {!breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
                   <source
                     src={get(work, 'fields.video.fields.file.url')}
                   ></source>
