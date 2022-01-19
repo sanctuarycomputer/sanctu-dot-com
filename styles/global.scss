@@ -20,3 +20,7 @@
 html {
   transition: background-color 3500ms cubic-bezier(0.79, 0.1, 0.56, 0.93);
 }
+
+.pace .pace-progress {
+  background: black !important;
+}

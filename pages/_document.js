@@ -34,6 +34,8 @@ class MyDocument extends Document {
           <NextScript />
           <script async defer src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossOrigin="anonymous"></script>
           <script async defer src="clippyjs/build/clippy.min.js"></script>
+          <script async defer src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+          <link  async defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
         </body>
       </Html>
     )
