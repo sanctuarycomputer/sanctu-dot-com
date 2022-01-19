@@ -15,8 +15,6 @@ const { LANDSCAPE } = Aspects;
 
 const VERTICAL_GUTTER = 32;
 
-let timerID = null;
-
 class WorkSection extends PureComponent {
   constructor(props) {
     super(...arguments);
@@ -27,7 +25,8 @@ class WorkSection extends PureComponent {
       mediaDimensions: {
         width: 0,
         height: 0
-      }
+      },
+      isIntersecting: false
     };
 
     this.mediaContainer = React.createRef();
@@ -38,24 +37,15 @@ class WorkSection extends PureComponent {
     window.addEventListener('resize', this.handleResize);
     this.adjustSize();
 
-    timerID = setInterval(() => {
-      const { slideCount } = this.state;
+    const observer = new IntersectionObserver(
+      ([entry]) => this.setState({isIntersecting: entry.isIntersecting})
+    )
 
-      this.setState(state => {
-        const potentialNextSlide = state.activeIndex + 1;
-        const lastAvailableSlide = slideCount - 1;
-
-        const nextSlideIndex =
-          state.activeIndex < lastAvailableSlide ? potentialNextSlide : 0;
-
-        return { activeIndex: nextSlideIndex };
-      });
-    }, 7000);
+    observer.observe(this.mediaContainer.current)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
-    clearInterval(timerID);
   }
 
   handleResize = () => {
@@ -91,8 +81,6 @@ class WorkSection extends PureComponent {
 
       return { activeIndex: nextSlideIndex };
     });
-
-    clearInterval(timerID);
   };
 
   setPreviousSlide = () => {
@@ -109,8 +97,6 @@ class WorkSection extends PureComponent {
 
       return { activeIndex: previousSlideIndex };
     });
-
-    clearInterval(timerID);
   };
 
   renderWork = () => {
@@ -123,7 +109,10 @@ class WorkSection extends PureComponent {
 
     if (breakpointIsMobile) {
       return (
-        <Slider>
+        <Slider
+          activeIndex={this.state.activeIndex}
+          afterSlide={(slideIndex) => this.setState({ activeIndex: slideIndex })}
+        >
           {get(this, 'props.selectedWorks', []).map((work, index) => (
             <Fragment key={get(work, 'sys.id')}>
               <div className="MediaContainer" ref={this.mediaContainer}>
@@ -139,9 +128,11 @@ class WorkSection extends PureComponent {
                   muted
                   playsInline
                 >
-                  <source
-                    src={get(work, 'fields.video.fields.file.url')}
-                  ></source>
+                  {breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
+                    <source
+                      src={get(work, 'fields.video.fields.file.url')}
+                    ></source>
+                  )}
                 </video>
               </div>
               <div ref={this.infoContainer} className="col-8 flex flex-col pt2">
@@ -228,9 +219,11 @@ class WorkSection extends PureComponent {
                 muted
                 playsInline
               >
-                <source
-                  src={get(work, 'fields.video.fields.file.url')}
-                ></source>
+                {!breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
+                  <source
+                    src={get(work, 'fields.video.fields.file.url')}
+                  ></source>
+                )}
               </video>
             ))}
           </Slider>
