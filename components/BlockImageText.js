@@ -83,7 +83,12 @@ const BlockImageText = props => {
             'mb1 md:mb0': imageTextAlignOnMobile === 'image:text'
           })}
         >
-          <Image alt={image.description} src={image.url} />
+          <Image 
+            alt={image.description} 
+            src={image.url}
+            width={image.width}
+            height={image.height}
+          />
         </div>
         <div
           className={cx('col-8 flex flex-col', {

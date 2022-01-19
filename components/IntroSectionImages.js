@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'utils/get';
+import flattenImageData from 'utils/flattenImageData';
 
 import cx from 'classnames';
 
@@ -17,16 +18,17 @@ class IntroSectionImages extends PureComponent {
       activeImage: getRandomImage(get(props, 'images', []))
     };
   }
-
   render() {
+    const selectedImage = flattenImageData(this.state.activeImage)
+    
     return (
       <div className={cx('IntroSectionImages p1 flex flex-col md:flex-row')}>
         <div className="col-8">
           <div className="aspect-portrait">
             <Image
-              className="bg-cover bg-no-repeat"
-              bg
-              src={`${get(this, 'state.activeImage.fields.file.url')}?q=85`}
+              src={selectedImage.url}
+              layout='fill'
+              alt={selectedImage.description}
             />
           </div>
         </div>

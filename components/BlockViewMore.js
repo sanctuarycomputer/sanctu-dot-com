@@ -49,6 +49,8 @@ const BlockViewMore = props => {
                       className="left-side h100 w100 hauto fit-cover pb1"
                       alt={linkOneImage.description}
                       src={linkOneImage.url}
+                      width={linkOneImage.width}
+                      height={linkOneImage.height}
                     />
                     {linkOneImageCaption && (
                       <p className="image-caption small color-gray-darkest pb_5">
@@ -77,6 +79,8 @@ const BlockViewMore = props => {
                       className="right-side h100 w100 hauto fit-cover pb1"
                       alt={linkTwoImage.description}
                       src={linkTwoImage.url}
+                      width={linkTwoImage.width}
+                      height={linkTwoImage.height}
                     />
                     {linkTwoImageCaption && (
                       <p className="image-caption small color-gray-darkest pb_5">

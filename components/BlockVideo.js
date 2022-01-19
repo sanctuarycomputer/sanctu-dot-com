@@ -76,6 +76,8 @@ const BlockVideo = props => {
               className="BlockImage__image h100 w100"
               alt={image.description}
               src={image.url}
+              width={image.width}
+              height={image.height}
             />
           </div>
         </div>

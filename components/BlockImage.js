@@ -26,12 +26,8 @@ const BlockImage = props => {
   const imageVariant = get(fields, 'imageVariant', 'Full').toLowerCase();
   const desktopImageOne = flattenImageData(get(fields, 'imageOne', {}));
   const desktopImageTwo = flattenImageData(get(fields, 'imageTwo', {}));
-  const mobileImageOne = flattenImageData(
-    get(fields, 'mobileImageOne', desktopImageOne)
-  );
-  const mobileImageTwo = flattenImageData(
-    get(fields, 'mobileImageTwo', desktopImageTwo)
-  );
+  const mobileImageOne = flattenImageData(get(fields, 'mobileImageOne', desktopImageOne));
+  const mobileImageTwo = flattenImageData(get(fields, 'mobileImageTwo', desktopImageTwo));
   const imageOne =
     currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
     currentBreakpoint === Breakpoints.SMALL.label
@@ -46,8 +42,10 @@ const BlockImage = props => {
   const imageTwoCaption = get(fields, 'imageTwoCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const hasTwoImages = imageVariant === 'two' && imageOne.url && imageTwo.url;
-  const hasOneImage = imageVariant !== 'two' && (imageOne.url || imageTwo.url);
+  const imageOneUrl = imageOne.url
+  const imageTwoUrl = imageTwo.url
+  const hasTwoImages = imageVariant === 'two' && imageOneUrl && imageTwoUrl;
+  const hasOneImage = imageVariant !== 'two' && (imageOneUrl || imageTwoUrl);
 
   return (
     <div
@@ -74,8 +72,10 @@ const BlockImage = props => {
         >
           <Image
             className="BlockImage__image h100 w100 hauto fit-cover"
+            src={imageOneUrl}
+            height={imageOne.height}
+            width={imageOne.width}
             alt={imageOne.description}
-            src={imageOne.url}
           />
           {imageOneCaption && (
             <p className="image-caption small color-gray-darkest mt_5">
@@ -97,8 +97,10 @@ const BlockImage = props => {
           <div className="flex flex-col col-8 sm:col-4 pb3 sm:pb0 sm:mr1">
             <Image
               className="BlockTwoImages__image w100"
+              src={imageOneUrl}
+              height={imageOne.height}
+              width={imageOne.width}
               alt={imageOne.description}
-              src={imageOne.url}
             />
             {imageOneCaption && (
               <p className="image-caption small color-gray-darkest mt_5">
@@ -109,8 +111,10 @@ const BlockImage = props => {
           <div className="flex flex-col col-8 sm:col-4">
             <Image
               className="BlockTwoImages__image w100"
+              src={imageTwoUrl}
+              height={imageTwo.height}
+              width={imageTwo.width}
               alt={imageTwo.description}
-              src={imageTwo.url}
             />
             {imageTwoCaption && (
               <p className="image-caption small color-gray-darkest mt_5">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import NextImage from 'next/image'
 
 class Image extends Component {
   constructor(props) {
@@ -13,18 +14,7 @@ class Image extends Component {
     };
   }
 
-  componentDidMount() {
-    if (typeof window === "undefined") return
-    
-    const { src } = this.props;
-    const loader = new window.Image();
-    loader.src = '';
-    loader.onload = () => this.didLoad();
-    loader.src = src;
-  }
-
-  didLoad() {
-    if (this.outOfView) return;
+  onLoadCallBack = () => {
     const { className } = this.props;
     const classes = `${className}`;
     const loaded = true;
@@ -32,12 +22,8 @@ class Image extends Component {
     this.setState({ classes, loaded });
   }
 
-  componentWillUnmount() {
-    this.outOfView = true;
-  }
-
   render() {
-    const { src, alt, style, bg, children } = this.props;
+    const { src, alt, style, bg, children, width, height, quality, layout, loading } = this.props;
     const { classes } = this.state;
     let bgStyle = {
       ...style,
@@ -45,17 +31,32 @@ class Image extends Component {
       backgroundImage: `url(${src})`
     };
 
+    if (!bg) {
+      if (Object.keys(style).length > 0) {
+        console.error('You cannot use style on next/image')
+      }
+
+      if (layout !== 'fill' && (!width && !height)) {
+        console.error('width and height must supplied for next/image')
+      }
+    }
+
     const styleNames = cx('Image', {
       'Image--active': this.state.loaded
     });
 
     if (!bg) {
       return (
-        <img
-          style={style}
+        <NextImage
           className={`${classes} ${styleNames}`}
           src={src}
           alt={alt}
+          width={width}
+          height={height}
+          quality={quality}
+          layout={layout}
+          loading={loading}
+          onLoadingComplete={this.onLoadCallBack}
         />
       );
     }
@@ -75,7 +76,12 @@ Image.propTypes = {
   className: PropTypes.string,
   styleName: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  onImgLoad: PropTypes.func
+  onImgLoad: PropTypes.func,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  quality: PropTypes.number,
+  layout: PropTypes.oneOf(['responsive', 'intrinsic', 'fixed', 'fill']),
+  loading: PropTypes.oneOf(['lazy', 'eager'])
 };
 
 Image.defaultProps = {
@@ -85,7 +91,10 @@ Image.defaultProps = {
   style: {},
   children: null,
   className: 'w100',
-  onImgLoad: () => {}
+  onImgLoad: () => {},
+  layout: 'responsive',
+  quality: 85,
+  loading: 'lazy'
 };
 
 export default Image;

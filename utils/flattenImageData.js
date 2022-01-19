@@ -7,9 +7,13 @@ export default imageFile => {
     return imageFile;
   }
 
+  const imageUrl = get(imageFile, 'fields.file.url', '')
+
   return {
     title: get(imageFile, 'fields.title', ''),
-    url: get(imageFile, 'fields.file.url', ''),
-    description: get(imageFile, 'fields.description', '')
+    url: imageUrl ? `https:${imageUrl}` : '',
+    description: get(imageFile, 'fields.description', ''),
+    width: get(imageFile, 'fields.file.details.image.width', undefined),
+    height: get(imageFile, 'fields.file.details.image.height', undefined),
   };
 };
