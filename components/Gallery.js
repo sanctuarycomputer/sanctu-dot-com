@@ -16,8 +16,8 @@ class Gallery extends PureComponent {
     );
   };
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
-    const imageOne = flattenImageData(imageGroup[0])
-    const imageTwo = flattenImageData(imageGroup[1])
+    const imageOne = flattenImageData(imageGroup[0], {q: '85', w: '1400'})
+    const imageTwo = flattenImageData(imageGroup[1], {q: '85', w: '1400'})
     const imageOneUrl = imageOne.url;
     const imageTwoUrl = imageTwo.url;
 
@@ -31,7 +31,7 @@ class Gallery extends PureComponent {
             <Image
               className="col-4 md:col-8"
               alt={imageOne.description}
-              src={`${imageOneUrl}?q=85&w=1400`}
+              src={imageOneUrl}
               width={imageOne.width}
               height={imageOne.height}
             />
@@ -59,11 +59,7 @@ class Gallery extends PureComponent {
         <div className="block col-4 pr_25 md:pr_5">
           {index === 0 ? this.renderAttribution() : null}
           <Image
-            src={
-              imageOneUrl.endsWith('.gif')
-                ? imageOneUrl
-                : `${imageOneUrl}?q=85&w=1400`
-            }
+            src={imageOneUrl}
             width={imageOne.width}
             height={imageOne.height}
             alt={imageOne.description}
@@ -71,11 +67,7 @@ class Gallery extends PureComponent {
         </div>
         <div className="block col-4 pl_25 md:pl_5">
           <Image
-            src={
-              imageTwoUrl.endsWith('.gif')
-                ? imageTwoUrl
-                : `${imageTwoUrl}?q=85&w=1400`
-            }
+            src={imageTwoUrl}
             width={imageTwo.width}
             height={imageTwo.height}
             alt={imageTwo.description}
