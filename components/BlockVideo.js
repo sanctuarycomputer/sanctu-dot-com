@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import get from 'utils/get';
 import cx from 'classnames';
 import flattenImageData from 'utils/flattenImageData';
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { ContentfulMedia } from 'models';
 import { Image } from 'components/base';
 
 const BlockVideo = props => {
+  const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const video = get(fields, 'video', '');
   const image = flattenImageData(get(fields, 'image', {}));
@@ -19,6 +21,7 @@ const BlockVideo = props => {
     videoSize === 'two' && image.url && video.fields.file.url;
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
 
   return (
     <div
@@ -78,6 +81,7 @@ const BlockVideo = props => {
               src={image.url}
               width={image.width}
               height={image.height}
+              sizes={selectedSizes}
             />
           </div>
         </div>
@@ -100,4 +104,4 @@ BlockVideo.propTypes = {
   })
 };
 
-export default BlockVideo;
+export default withBreakpoints(BlockVideo);

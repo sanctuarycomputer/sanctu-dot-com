@@ -18,13 +18,17 @@ class Image extends Component {
     const { className } = this.props;
     const classes = `${className}`;
     const loaded = true;
+
+    if (this.state.classes === classes && this.state.loaded === loaded) return;
+
     this.props.onImgLoad();
     this.setState({ classes, loaded });
   }
 
   render() {
-    const { src, alt, style, bg, children, width, height, quality, layout, loading } = this.props;
+    const { src, alt, style, bg, children, width, height, quality, layout, loading, sizes } = this.props;
     const { classes } = this.state;
+
     let bgStyle = {
       ...style,
       backgroundColor: 'whitesmoke',
@@ -57,6 +61,7 @@ class Image extends Component {
           layout={layout}
           loading={loading}
           onLoadingComplete={this.onLoadCallBack}
+          sizes={['fixed', 'intrinsic'].includes(layout) ? undefined : sizes}
         />
       );
     }
@@ -81,7 +86,8 @@ Image.propTypes = {
   height: PropTypes.number,
   quality: PropTypes.number,
   layout: PropTypes.oneOf(['responsive', 'intrinsic', 'fixed', 'fill']),
-  loading: PropTypes.oneOf(['lazy', 'eager'])
+  loading: PropTypes.oneOf(['lazy', 'eager']),
+  sizes: PropTypes.string,
 };
 
 Image.defaultProps = {
@@ -94,7 +100,8 @@ Image.defaultProps = {
   onImgLoad: () => {},
   layout: 'responsive',
   quality: 85,
-  loading: 'lazy'
+  loading: 'lazy',
+  sizes: '100vw',
 };
 
 export default Image;

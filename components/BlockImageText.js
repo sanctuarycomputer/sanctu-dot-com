@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
-import cx from 'classnames';
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { ContentfulMedia } from 'models';
 
 import { Image, Markdown } from 'components/base';
 
 const BlockImageText = props => {
+  const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
@@ -44,6 +46,7 @@ const BlockImageText = props => {
   const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
 
   return (
     <div
@@ -88,6 +91,7 @@ const BlockImageText = props => {
             src={image.url}
             width={image.width}
             height={image.height}
+            sizes={selectedSizes}
           />
         </div>
         <div
@@ -182,4 +186,4 @@ BlockImageText.propTypes = {
   })
 };
 
-export default BlockImageText;
+export default withBreakpoints(BlockImageText);

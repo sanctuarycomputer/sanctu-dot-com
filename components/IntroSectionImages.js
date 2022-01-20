@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
+
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
-
-import cx from 'classnames';
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { Image } from 'components/base';
 
@@ -19,8 +20,10 @@ class IntroSectionImages extends PureComponent {
     };
   }
   render() {
+    const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
     const selectedImage = flattenImageData(this.state.activeImage)
-    
+    const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
+
     return (
       <div className={cx('IntroSectionImages p1 flex flex-col md:flex-row')}>
         <div className="col-8">
@@ -29,6 +32,7 @@ class IntroSectionImages extends PureComponent {
               src={selectedImage.url}
               layout='fill'
               alt={selectedImage.description}
+              sizes={selectedSizes}
             />
           </div>
         </div>
@@ -49,4 +53,4 @@ IntroSectionImages.propTypes = {
   )
 };
 
-export default IntroSectionImages;
+export default withBreakpoints(IntroSectionImages);

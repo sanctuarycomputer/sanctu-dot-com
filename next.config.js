@@ -13,5 +13,6 @@ module.exports = {
   },
   images: {
     domains: ['images.ctfassets.net'],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 384, 416, 832, 512, 576, 1024, 1152, 995, 1990]
   },
 }

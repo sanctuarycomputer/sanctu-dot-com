@@ -39,7 +39,7 @@ const BlockThreeColumnHero = props => {
               src={headerDescription}
             />
           )}
-          {headerImage.url && (
+          {/* {headerImage.url && (
             <div className="BlockThreeColumnHero__image">
               <Image
                 alt={headerImage.description}
@@ -48,7 +48,7 @@ const BlockThreeColumnHero = props => {
                 height={headerImage.height}
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
       {paragraph && (
@@ -69,7 +69,7 @@ const BlockThreeColumnHero = props => {
           )}
         </div>
         <div className="flex col-4 justify-end">
-          {headerImage.url && (
+          {/* {headerImage.url && (
             <div className="BlockThreeColumnHero__image">
               <Image
                 alt={headerImage.description}
@@ -78,7 +78,7 @@ const BlockThreeColumnHero = props => {
                 height={headerImage.height}
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

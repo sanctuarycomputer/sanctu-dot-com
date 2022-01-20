@@ -28,16 +28,10 @@ const BlockImage = props => {
   const desktopImageTwo = flattenImageData(get(fields, 'imageTwo', {}));
   const mobileImageOne = flattenImageData(get(fields, 'mobileImageOne', desktopImageOne));
   const mobileImageTwo = flattenImageData(get(fields, 'mobileImageTwo', desktopImageTwo));
-  const imageOne =
-    currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
-    currentBreakpoint === Breakpoints.SMALL.label
-      ? mobileImageOne
-      : desktopImageOne;
-  const imageTwo =
-    currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
-    currentBreakpoint === Breakpoints.SMALL.label
-      ? mobileImageTwo
-      : desktopImageTwo;
+  const selectedSizes = Breakpoints.EXTRA_SMALL.label === currentBreakpoint ? '100vw' : '50vw';
+  const isMobile = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint);
+  const imageOne = isMobile ? mobileImageOne : desktopImageOne;
+  const imageTwo = isMobile ? mobileImageTwo : desktopImageTwo;
   const imageOneCaption = get(fields, 'imageOneCaption', '');
   const imageTwoCaption = get(fields, 'imageTwoCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
@@ -62,7 +56,7 @@ const BlockImage = props => {
     >
       {hasOneImage && (
         <div
-          className={cx('BlockImage__image-container', {
+          className={cx('BlockImage__image-container w100', {
             'md:col-8 mxauto':
               imageVariant === 'full' || imageVariant === 'xlarge',
             'md:col-6': imageVariant === 'large',
@@ -76,6 +70,7 @@ const BlockImage = props => {
             height={imageOne.height}
             width={imageOne.width}
             alt={imageOne.description}
+            sizes='100vw'
           />
           {imageOneCaption && (
             <p className="image-caption small color-gray-darkest mt_5">
@@ -101,6 +96,7 @@ const BlockImage = props => {
               height={imageOne.height}
               width={imageOne.width}
               alt={imageOne.description}
+              sizes={selectedSizes}
             />
             {imageOneCaption && (
               <p className="image-caption small color-gray-darkest mt_5">
@@ -115,6 +111,7 @@ const BlockImage = props => {
               height={imageTwo.height}
               width={imageTwo.width}
               alt={imageTwo.description}
+              sizes={selectedSizes}
             />
             {imageTwoCaption && (
               <p className="image-caption small color-gray-darkest mt_5">
