@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import get from 'lodash/get';
 
 const DEFAULT_TITLE = 'SANCTU COMPU - The Safest Place on Earth.';
 const DEFAULT_DESCRIPTION =
   'Sanctuary Computer (sanctu • compu) is an artful technology studio in Chinatown, NYC.';
-const DEFAULT_IMAGE = '//www.sanctuary.computer/assets/sanctu-share-card.jpg';
+const DEFAULT_IMAGE = "/assets/sanctu-share-card.jpg";
 
 const Meta = ({ model }) => {
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin)
+    }
+  }, [])
   const fields = get(model, 'fields');
   const seoTitle = get(fields, 'seoTitle', DEFAULT_TITLE);
   const seoDescription = get(fields, 'seoDescription', DEFAULT_DESCRIPTION);
-  const seoShareCard =
-    'https:' + get(fields, 'seoShareCard.fields.file.url', DEFAULT_IMAGE);
+  const seoShareCardUrl = get(fields, 'seoShareCard.fields.file.url');
+  const seoShareCard = seoShareCardUrl ? `https:${seoShareCardUrl}` :  `${origin}${DEFAULT_IMAGE}`;
 
   return (
     <Head>
