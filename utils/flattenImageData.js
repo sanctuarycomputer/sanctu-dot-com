@@ -9,7 +9,7 @@ export default (imageFile, query) => {
 
   const imageUrl = get(imageFile, 'fields.file.url', '')
   const sanitizedQuery = query ? Object.entries(query).map((entry) => `&${entry[0]}=${entry[1]}`).join('') : ''
-  const webpImageUrl = imageUrl.endsWith('.gif') ? imageUrl : `${imageUrl}?fm=webp${sanitizedQuery}`
+  const webpImageUrl = imageUrl.endsWith('.gif') ? imageUrl : `${imageUrl}?${sanitizedQuery}`
 
   return {
     title: get(imageFile, 'fields.title', ''),
