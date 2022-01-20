@@ -51,20 +51,27 @@ class Image extends Component {
 
     if (!bg) {
       return (
-        <NextImage
-          className={`${classes} ${styleNames}`}
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          quality={quality}
-          layout={layout}
-          loading={loading}
-          onLoadingComplete={this.onLoadCallBack}
-          sizes={['fixed', 'intrinsic'].includes(layout) ? undefined : sizes}
-        />
+        <>
+          <div className={cx("absolute", {
+            'Image__selecting-div': !this.state.loaded,
+            'Image__selecting-div--loaded': this.state.loaded
+          })}></div>
+          <NextImage
+            className={`${classes} ${styleNames}`}
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            quality={quality}
+            layout={layout}
+            loading={loading}
+            onLoadingComplete={this.onLoadCallBack}
+            sizes={['fixed', 'intrinsic'].includes(layout) ? undefined : sizes}
+          />
+        </>
       );
     }
+
     return (
       <div className={`${classes} ${styleNames}`} style={bgStyle}>
         {children}

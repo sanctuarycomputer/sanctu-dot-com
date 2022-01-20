@@ -6,3 +6,21 @@
 .Image--active {
   opacity: 1;
 }
+
+.Image__selecting-div {
+  pointer-events: none;
+  visibility: hidden;
+
+  & + span {
+    background-color: #e0e0e0 !important;
+  }
+}
+
+.Image__selecting-div--loaded {
+  pointer-events: none;
+  visibility: hidden;
+
+  & + span {
+    background-color: none !important;
+  }
+}
