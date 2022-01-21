@@ -8,6 +8,8 @@ import Meta from 'components/Meta';
 import CaseStudyTopNav from 'components/CaseStudyTopNav';
 import CaseStudyBlockSwitch from 'components/CaseStudyBlockSwitch';
 
+import { OneMonth } from 'constants/Time';
+
 const CaseStudyView = ({ model }) => {
   if (!model || model.isError) {
     return <h1>Something went wrong...</h1>;
@@ -33,14 +35,16 @@ const CaseStudyView = ({ model }) => {
   );
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async ({ res }) => {
+  res.setHeader('Cache-Control', `public, max-age=${OneMonth}, stale-while-revalidate=59`);
+  
   const contentful = ContentfulClient();
   ContentfulData.setRef(contentful);
 
   const caseStudyPages = await ContentfulData.getEntries({
     content_type: 'caseStudy',
     select: 'fields.slug'
-  }).then((res) => res.items)
+  }).then((response) => response.items)
 
   // Get the paths we want to pre-render based on generic pages  
   const paths = caseStudyPages.map((page) => ({

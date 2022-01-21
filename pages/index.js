@@ -13,6 +13,8 @@ import Gallery from 'components/Gallery';
 import Footer from 'components/Footer';
 import Overlay from 'components/Overlay';
 
+import { OneMonth } from 'constants/Time';
+
 const dayStartTimeInHours = 7; // 7 AM
 const dayEndTimeInHours = 19; // 7 PM
 let timerID = null;
@@ -170,14 +172,16 @@ const MainView = (props) => {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ res }) => {
+  res.setHeader('Cache-Control', `public, max-age=${OneMonth}, stale-while-revalidate=59`);
+  
   const contentful = ContentfulClient();
   ContentfulData.setRef(contentful);
 
   const model = await ContentfulData.getEntries({
     content_type: 'sanctuary',
     include: 4,
-  }).then(res => res.items[0]);
+  }).then(response => response.items[0]);
 
   return {
     props: {
