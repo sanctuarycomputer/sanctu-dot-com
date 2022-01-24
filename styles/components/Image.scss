@@ -1,8 +1,26 @@
 .Image {
   opacity: 0;
-  transition: opacity 350ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
 }
 
 .Image--active {
   opacity: 1;
+}
+
+.Image__selecting-div {
+  pointer-events: none;
+  visibility: hidden;
+
+  & + span {
+    background-color: #f8f8f8 !important;
+  }
+}
+
+.Image__selecting-div--loaded {
+  pointer-events: none;
+  visibility: hidden;
+
+  & + span {
+    background-color: none !important;
+  }
 }

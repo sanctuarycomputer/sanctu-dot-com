@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import flattenImageData from 'utils/flattenImageData';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from 'utils/get';
@@ -118,7 +119,7 @@ class WorkSection extends PureComponent {
               <div className="MediaContainer" ref={this.mediaContainer}>
                 <video
                   className="block mxauto"
-                  poster={get(work, 'fields.previewImage.fields.file.url')}
+                  poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
                   style={{
                     width: mediaDimensions.width,
                     height: mediaDimensions.height
@@ -209,7 +210,7 @@ class WorkSection extends PureComponent {
               <video
                 key={get(work, 'sys.id')}
                 className="block mxauto"
-                poster={get(work, 'fields.previewImage.fields.file.url')}
+                poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
                 style={{
                   width: mediaDimensions.width,
                   height: mediaDimensions.height

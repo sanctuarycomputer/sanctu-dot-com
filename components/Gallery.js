@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'utils/get';
+import flattenImageData from 'utils/flattenImageData';
 
 import { Image, Markdown } from 'components/base';
 
@@ -15,6 +16,11 @@ class Gallery extends PureComponent {
     );
   };
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
+    const imageOne = flattenImageData(imageGroup[0])
+    const imageTwo = flattenImageData(imageGroup[1])
+    const imageOneUrl = imageOne.url;
+    const imageTwoUrl = imageTwo.url;
+
     if (index === imageMatrix.length - 1) {
       return (
         <div
@@ -24,7 +30,11 @@ class Gallery extends PureComponent {
           <div className="col-8 md:col-4 pr_25 md:pr_5">
             <Image
               className="col-4 md:col-8"
-              src={`${get(imageGroup, '[0].fields.file.url')}?q=85&w=1400`}
+              alt={imageOne.description}
+              src={imageOneUrl}
+              width={imageOne.width}
+              height={imageOne.height}
+              sizes='50vw'
             />
             <StudioDetailsSection
               recentArticles={get(this, 'props.recentArticles', {})}
@@ -47,23 +57,23 @@ class Gallery extends PureComponent {
 
     return (
       <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
-        <div className="col-4 pr_25 md:pr_5">
+        <div className="block col-4 pr_25 md:pr_5">
           {index === 0 ? this.renderAttribution() : null}
           <Image
-            src={
-              get(imageGroup, '[0].fields.file.url').endsWith('.gif')
-                ? `${get(imageGroup, '[0].fields.file.url')}`
-                : `${get(imageGroup, '[0].fields.file.url')}?q=85&w=1400`
-            }
+            src={imageOneUrl}
+            width={imageOne.width}
+            height={imageOne.height}
+            alt={imageOne.description}
+            sizes='50vw'
           />
         </div>
-        <div className="col-4 pl_25 md:pl_5">
+        <div className="block col-4 pl_25 md:pl_5">
           <Image
-            src={
-              get(imageGroup, '[1].fields.file.url').endsWith('.gif')
-                ? `${get(imageGroup, '[1].fields.file.url')}`
-                : `${get(imageGroup, '[1].fields.file.url')}?q=85&w=1400`
-            }
+            src={imageTwoUrl}
+            width={imageTwo.width}
+            height={imageTwo.height}
+            alt={imageTwo.description}
+            sizes='50vw'
           />
         </div>
       </div>

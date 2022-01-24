@@ -5,10 +5,12 @@ import Link from 'next/link';
 import get from 'utils/get';
 import { ContentfulMedia } from 'models';
 import flattenImageData from 'utils/flattenImageData';
+import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { Image } from 'components/base';
 
 const BlockViewMore = props => {
+  const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const linkOne = get(fields, 'linkOne', '');
@@ -21,6 +23,7 @@ const BlockViewMore = props => {
   const linkTwoImageCaption = get(fields, 'linkTwoImageCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
+  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
 
   return (
     <div
@@ -49,6 +52,9 @@ const BlockViewMore = props => {
                       className="left-side h100 w100 hauto fit-cover pb1"
                       alt={linkOneImage.description}
                       src={linkOneImage.url}
+                      width={linkOneImage.width}
+                      height={linkOneImage.height}
+                      sizes={selectedSizes}
                     />
                     {linkOneImageCaption && (
                       <p className="image-caption small color-gray-darkest pb_5">
@@ -77,6 +83,9 @@ const BlockViewMore = props => {
                       className="right-side h100 w100 hauto fit-cover pb1"
                       alt={linkTwoImage.description}
                       src={linkTwoImage.url}
+                      width={linkTwoImage.width}
+                      height={linkTwoImage.height}
+                      sizes={selectedSizes}
                     />
                     {linkTwoImageCaption && (
                       <p className="image-caption small color-gray-darkest pb_5">
@@ -113,4 +122,4 @@ BlockViewMore.propTypes = {
   })
 };
 
-export default BlockViewMore;
+export default withBreakpoints(BlockViewMore);
