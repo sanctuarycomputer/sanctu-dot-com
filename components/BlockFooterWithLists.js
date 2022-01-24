@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
@@ -45,10 +46,12 @@ const BlockFooterWithLists = props => {
       </div>
       <div className="flex md:flex-row justify-between pt1 md:pt10">
         <div>
-          <img
+          <Image
             className="BlockFooterWithLists__icon"
-            src='assets/sanctu_logo_black.svg'
+            src='/assets/sanctu_logo_black.svg'
             alt="Sanctuary Computer logo"
+            width='80'
+            height='75'
           />
         </div>
         <div className="flex justify-end items-end">

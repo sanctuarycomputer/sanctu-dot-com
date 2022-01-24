@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import Image from 'next/image';
 
 import Link from 'next/link';
 
@@ -9,10 +10,12 @@ const Footer = ({ hidden, hideCapabilitiesLink }) => (
     className="Footer col-8 p1 flex md:flex-row justify-between"
   >
     <div>
-      <img
+      <Image
         className="Footer__icon"
         src={hidden ? '/assets/sanctu_logo_white.svg' : '/assets/sanctu_logo_black.svg'}
         alt="sanctuary computer logo"
+        width='80'
+        height='75'
       />
     </div>
 
