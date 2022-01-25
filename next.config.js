@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  compress: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -13,7 +14,7 @@ module.exports = {
   },
   images: {
     domains: ['images.ctfassets.net'],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 384, 416, 832, 512, 576, 1024, 1152, 995, 1990],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 384, 416, 512, 576, 620, 700, 760, 800, 832, 1024, 1152, 995, 1990],
     formats: ['image/webp'],
   },
 }
