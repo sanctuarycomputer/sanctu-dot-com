@@ -14,7 +14,6 @@ class MyDocument extends Document {
           <link rel="shortcut icon" href="favicon-16x16.png" />
           <link rel="shortcut icon" href="favicon-32x32.png" />
           <meta name="theme-color" content="#000000" />
-          <script async rel="dns-prefetch" type="text/javascript" src="https://www.google-analytics.com/analytics.js"></script>
           <script async rel="dns-prefetch" src="https://www.googletagmanager.com/gtag/js?id=UA-88778470-4"></script>
           <script
             dangerouslySetInnerHTML={{

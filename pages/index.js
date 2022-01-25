@@ -183,7 +183,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       model
-    }
+    },
+    revalidate: 60,
   }
 };
 
