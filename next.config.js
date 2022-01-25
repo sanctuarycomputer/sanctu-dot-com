@@ -14,6 +14,7 @@ module.exports = {
   },
   images: {
     domains: ['images.ctfassets.net'],
+    deviceSizes: [375, 414, 520, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 384, 416, 512, 576, 620, 700, 760, 800, 832, 1024, 1152, 995, 1990],
     formats: ['image/webp'],
   },
