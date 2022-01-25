@@ -38,9 +38,9 @@ class MyDocument extends Document {
           <link defer rel="stylesheet" type="text/css" href="clippyjs/build/clippy.css" />
           <link defer rel="prefetch" as="style" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
           <link defer rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
-          <script defer rel="prefetch" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossOrigin="anonymous"></script>
-          <script defer rel="prefetch" src="clippyjs/build/clippy.min.js"></script>
-          <script defer rel="prefetch" src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+          <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></NextScript>
+          <NextScript defer strategy="lazyOnload" rel="prefetch" src="clippyjs/build/clippy.min.js"></NextScript>
+          <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></NextScript>
         </body>
       </Html>
     )
