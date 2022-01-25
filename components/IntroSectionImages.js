@@ -32,7 +32,7 @@ class IntroSectionImages extends PureComponent {
               src={selectedImage.url}
               layout='fill'
               alt={selectedImage.description}
-              sizes={selectedSizes}
+              sizes='50vw'
             />
           </div>
         </div>
