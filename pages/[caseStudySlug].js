@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import get from 'utils/get';
+import dynamic from "next/dynamic";
 
 import ContentfulClient from 'lib/ContentfulClient';
 import ContentfulData from 'lib/ContentfulData';
 
-import Meta from 'components/Meta';
-import CaseStudyTopNav from 'components/CaseStudyTopNav';
-import CaseStudyBlockSwitch from 'components/CaseStudyBlockSwitch';
+const Meta = dynamic(() => import('components/Meta'));
+const CaseStudyTopNav = dynamic(() => import('components/CaseStudyTopNav'));
+const CaseStudyBlockSwitch = dynamic(() => import('components/CaseStudyBlockSwitch'));
 
 const CaseStudyView = ({ model }) => {
   if (!model || model.isError) {
