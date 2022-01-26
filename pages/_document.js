@@ -14,9 +14,10 @@ class MyDocument extends Document {
           <link rel="shortcut icon" href="favicon-16x16.png" />
           <link rel="shortcut icon" href="favicon-32x32.png" />
           <meta name="theme-color" content="#000000" />
-          <script async rel="prefetch" type="text/javascript" src="https://www.google-analytics.com/analytics.js"></script>
-          <script async rel="prefetch" src="https://www.googletagmanager.com/gtag/js?id=UA-88778470-4"></script>
-          <script
+          <NextScript defer strategy="lazyOnload" rel="preconnect" src="https://images.ctfassets.net"></NextScript>
+          <NextScript async rel="preconnect" type="text/javascript" src="https://www.google-analytics.com/analytics.js"></NextScript>
+          <NextScript async rel="prefetch" src="https://www.googletagmanager.com/gtag/js?id=UA-88778470-4"></NextScript>
+          <NextScript
             defer
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
@@ -30,17 +31,25 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <link defer rel="prefetch" as="font" href="https://fonts.sanctuary.computer/AustinNewsDeck/styles.css" />
-          <link defer rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AustinNewsDeck/styles.css" />
-          <link defer rel="prefetch" as="font" href="https://fonts.sanctuary.computer/AtlasGrotesk/styles.css" />
-          <link defer rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AtlasGrotesk/styles.css" />
-          <link defer rel="prefetch" as="style" href="clippyjs/build/clippy.css" />
-          <link defer rel="stylesheet" type="text/css" href="clippyjs/build/clippy.css" />
-          <link defer rel="prefetch" as="style" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
-          <link defer rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
-          <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></NextScript>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `</script><link rel='preload' href='https://fonts.sanctuary.computer/AustinNewsDeck/styles.css' as='style' onload="this.onload=null;this.rel='stylesheet'"/><script>`,
+            }}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `</script><link rel='preload' href='https://fonts.sanctuary.computer/AtlasGrotesk/styles.css' as='style' onload="this.onload=null;this.rel='stylesheet'"/><script>`,
+            }}
+          />
+          <noscript>
+            <link rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AustinNewsDeck/styles.css" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AtlasGrotesk/styles.css" />
+          </noscript>
           <NextScript defer strategy="lazyOnload" rel="prefetch" src="clippyjs/build/clippy.min.js"></NextScript>
+          <link defer rel="prefetch" as="style" type="text/css" href="clippyjs/build/clippy.css" />
+          <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></NextScript>
           <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></NextScript>
+          <link defer rel="prefetch" as="style" type="text/css" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
         </body>
       </Html>
     )
