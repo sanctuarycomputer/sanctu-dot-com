@@ -65,16 +65,18 @@ const MainView = (props) => {
   }
 
   useEffect(() => {
-    setShouldShowOverlay(getShouldShowOverlay())
-    getWindowAndHackerDojoIsAvailable()
-
-    timerID = setInterval(() => {
+    if (typeof window !== "undefined") {
       setShouldShowOverlay(getShouldShowOverlay())
       getWindowAndHackerDojoIsAvailable()
-    }, 1000);
-
-    toggleDocumentClass();
-    setRenderContent(true)
+  
+      timerID = setInterval(() => {
+        setShouldShowOverlay(getShouldShowOverlay())
+        getWindowAndHackerDojoIsAvailable()
+      }, 1000);
+  
+      toggleDocumentClass();
+      setRenderContent(true)
+    }
 
     return () => {
       clearInterval(timerID);
