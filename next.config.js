@@ -19,4 +19,17 @@ module.exports = {
     formats: ['image/webp'],
     minimumCacheTTL: 60,
   },
+  plugins: [
+    [
+      '@fullhuman/postcss-purgecss',
+      {
+        content: [
+            './pages/**/*.{js,jsx,ts}',
+            './components/**/*.{js,jsx,ts}'
+        ],
+        defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+        safelist: ["html", "body"]
+      }
+    ],
+  ]
 }
