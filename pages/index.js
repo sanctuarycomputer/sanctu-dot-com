@@ -1,18 +1,17 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import get from 'utils/get';
-import dynamic from "next/dynamic";
 
 import ContentfulClient from 'lib/ContentfulClient';
 import ContentfulData from 'lib/ContentfulData';
 
-const Meta = dynamic(() => import('components/Meta'));
-const IntroSectionImages = dynamic(() => import('components/IntroSectionImages'));
-const IntroSectionParagraph = dynamic(() => import('components/IntroSectionParagraph'));
-const AboutSection = dynamic(() => import('components/AboutSection'));
-const WorkSection = dynamic(() => import('components/WorkSection'));
-const Gallery = dynamic(() => import('components/Gallery'));
-const Footer = dynamic(() => import('components/Footer'));
-const Overlay = dynamic(() => import('components/Overlay'));
+import Meta from 'components/Meta';
+import IntroSectionImages from 'components/IntroSectionImages';
+import IntroSectionParagraph from 'components/IntroSectionParagraph';
+import AboutSection from 'components/AboutSection';
+import WorkSection from 'components/WorkSection';
+import Gallery from 'components/Gallery';
+import Footer from 'components/Footer';
+import Overlay from 'components/Overlay';
 
 const dayStartTimeInHours = 7; // 7 AM
 const dayEndTimeInHours = 19; // 7 PM
