@@ -31,20 +31,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `</script><link rel='preload' href='https://fonts.sanctuary.computer/AustinNewsDeck/styles.css' as='style' onload="this.onload=null;this.rel='stylesheet'"/><script>`,
-            }}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `</script><link rel='preload' href='https://fonts.sanctuary.computer/AtlasGrotesk/styles.css' as='style' onload="this.onload=null;this.rel='stylesheet'"/><script>`,
-            }}
-          />
-          <noscript>
-            <link rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AustinNewsDeck/styles.css" />
-            <link rel="stylesheet" type="text/css" href="https://fonts.sanctuary.computer/AtlasGrotesk/styles.css" />
-          </noscript>
           <NextScript defer strategy="lazyOnload" rel="prefetch" src="clippyjs/build/clippy.min.js"></NextScript>
           <link defer rel="prefetch" as="style" type="text/css" href="clippyjs/build/clippy.css" />
           <NextScript defer strategy="lazyOnload" rel="prefetch" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></NextScript>
