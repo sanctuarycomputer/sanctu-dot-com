@@ -1,27 +1,25 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import NukaCarousel from 'nuka-carousel';
 import get from 'utils/get';
 
-class Slider extends PureComponent {
-  componentDidMount() {
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 0);
-  }
+const Slider = () => {
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     window.dispatchEvent(new Event('resize'));
+  //   }, 0);
+  // }
+  //   wrapAround={this.props.wrapAround}
+  //   slideIndex={this.props.activeIndex}
+  //   transitionMode={this.props.transitionMode}
+  //   afterSlide={this.props.afterSlide}
 
-  render() {
-    return (
-      <NukaCarousel
-        wrapAround={this.props.wrapAround}
-        slideIndex={this.props.activeIndex}
-        transitionMode={this.props.transitionMode}
-        afterSlide={this.props.afterSlide}
-      >
+  return (
+    <div className="relative overflow-hidden debug">
+      <div className="flex debug">
         {React.Children.map(get(this, 'props.children'), child => child)}
-      </NukaCarousel>
-    );
-  }
+      </div>
+    </div>
+  );
 }
 
 Slider.defaultProps = {

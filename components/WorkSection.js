@@ -1,7 +1,9 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import flattenImageData from 'utils/flattenImageData';
+import cx from 'classnames';
+import { useSwipeable } from 'react-swipeable';
 
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import get from 'utils/get';
@@ -9,86 +11,68 @@ import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 
 import { ContentfulMedia, SimpleFragment } from 'models';
 
-import { Slider, List } from 'components/base';
+import { List } from 'components/base';
 import { Aspects } from 'constants/Sizes';
 
 const { LANDSCAPE } = Aspects;
 
 const VERTICAL_GUTTER = 32;
 
-class WorkSection extends PureComponent {
-  constructor(props) {
-    super(...arguments);
+const WorkSection = (props) => {
+  const [slideCount, setSlideCount] = useState(get(props, 'selectedWorks', []).length);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mediaDimensions, setMediaDimensions] = useState({ width: 0, height: 0 })
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
-    this.state = {
-      slideCount: get(props, 'selectedWorks', []).length,
-      activeIndex: 0,
-      mediaDimensions: {
-        width: 0,
-        height: 0
-      },
-      isIntersecting: false
-    };
-
-    this.mediaContainer = React.createRef();
-    this.infoContainer = React.createRef();
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.adjustSize();
-
-    const observer = new IntersectionObserver(
-      ([entry]) => this.setState({isIntersecting: entry.isIntersecting})
-    )
-
-    observer.observe(this.mediaContainer.current)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = () => {
-    this.adjustSize();
-  };
-
-  adjustSize = () => {
-    const infoHeight = this.infoContainer.current.offsetHeight;
-    const mediaWidth = this.mediaContainer.current.offsetWidth;
+  const mediaContainer = useRef();
+  const infoContainer = useRef();
+  
+  const adjustSize = () => {
+    const infoHeight = infoContainer.current ? infoContainer.current.offsetHeight : 0;
+    const mediaWidth = mediaContainer.current ? mediaContainer.current.offsetWidth : 0;
     const mediaHeight = mediaWidth / LANDSCAPE;
     const moduleHeight = infoHeight + mediaHeight;
 
     if (moduleHeight < window.innerHeight) {
-      this.setState({
-        mediaDimensions: { width: mediaWidth, height: mediaHeight }
-      });
+      setMediaDimensions({ width: mediaWidth, height: mediaHeight })
     } else {
       const height = window.innerHeight - infoHeight - VERTICAL_GUTTER;
       const width = height * LANDSCAPE;
-      this.setState({ mediaDimensions: { width, height } });
+      setMediaDimensions({ width, height })
     }
   };
 
-  setNextSlide = () => {
-    const { slideCount } = this.state;
+  const handleResize = () => {
+    adjustSize();
+  };
 
-    this.setState(state => {
-      const potentialNextSlide = state.activeIndex + 1;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      adjustSize();
+  
+      const observer = new IntersectionObserver(
+        ([entry]) => setIsIntersecting(entry.isIntersecting)
+      )
+  
+      mediaContainer.current && observer.observe(mediaContainer.current)
+
+      return () => window.removeEventListener('resize', handleResize);
+    }    
+  }, [mediaContainer.current])
+
+  const setNextSlide = () => {
+      const potentialNextSlide = activeIndex + 1;
       const lastAvailableSlide = slideCount - 1;
 
       const nextSlideIndex =
-        state.activeIndex < lastAvailableSlide ? potentialNextSlide : 0;
+        activeIndex < lastAvailableSlide ? potentialNextSlide : 0;
 
-      return { activeIndex: nextSlideIndex };
-    });
+      setActiveIndex(nextSlideIndex);
   };
 
-  setPreviousSlide = () => {
-    const { slideCount } = this.state;
-
-    this.setState(state => {
-      const potentialPreviousSlide = state.activeIndex - 1;
+  const setPreviousSlide = () => {
+      const potentialPreviousSlide = activeIndex - 1;
       const lastAvailableSlide = slideCount - 1;
 
       const previousSlideIndex =
@@ -96,145 +80,161 @@ class WorkSection extends PureComponent {
           ? potentialPreviousSlide
           : lastAvailableSlide;
 
-      return { activeIndex: previousSlideIndex };
-    });
+      setActiveIndex(previousSlideIndex);
   };
 
-  renderWork = () => {
-    const { activeIndex, slideCount, mediaDimensions } = this.state;
-    const activeProject = get(this, `props.selectedWorks[${activeIndex}]`);
-    const currentBreakpoint = get(this, 'props.currentBreakpoint', '');
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: setNextSlide,
+    onSwipedRight: setPreviousSlide,
+  });
+
+  const renderWork = () => {
+    const activeProject = get(props, `selectedWorks[${activeIndex}]`);
+    const currentBreakpoint = get(props, 'currentBreakpoint', '');
     const breakpointIsMobile =
       currentBreakpoint === Breakpoints.EXTRA_SMALL.label ||
       currentBreakpoint === Breakpoints.SMALL.label;
 
     if (breakpointIsMobile) {
       return (
-        <Slider
-          activeIndex={this.state.activeIndex}
-          afterSlide={(slideIndex) => this.setState({ activeIndex: slideIndex })}
-        >
-          {get(this, 'props.selectedWorks', []).map((work, index) => (
-            <Fragment key={get(work, 'sys.id')}>
-              <div className="MediaContainer" ref={this.mediaContainer}>
-                <video
-                  className="block mxauto"
-                  poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
-                  style={{
-                    width: mediaDimensions.width,
-                    height: mediaDimensions.height
-                  }}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  {breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
-                    <source
-                      src={get(work, 'fields.video.fields.file.url')}
-                    ></source>
-                  )}
-                </video>
-              </div>
-              <div ref={this.infoContainer} className="col-8 flex flex-col pt2">
-                <div className="mb2 col-8 flex flex-row justify-between">
-                  <div>
-                    <h2 className="paragraph mb_5">
-                      {get(work, 'fields.title', '')}
-                    </h2>
-                    <div className="flex flex-row flex-wrap">
-                      {get(work, 'fields.caseStudySlug', '') && (
+        <div ref={mediaContainer}>
+          <div className="relative" {...swipeHandlers} >
+            {get(props, 'selectedWorks', []).map((work, index) => (
+              <div 
+                key={get(work, 'sys.id')}
+                className={cx("WorkSection__video block mxauto", {
+                  'absolute t0 opacity-0 events-none': index !== activeIndex
+                })}
+              >
+                <div className="MediaContainer relative">
+                  <video
+                    className="block mxauto"
+                    poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
+                    style={{
+                      width: mediaDimensions.width,
+                      height: mediaDimensions.height
+                    }}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    {breakpointIsMobile && isIntersecting && (activeIndex === index) && (
+                      <source
+                        src={get(work, 'fields.video.fields.file.url')}
+                      ></source>
+                    )}
+                  </video>
+                  <div
+                    onClick={setPreviousSlide}
+                    className="MediaContainer__previous"
+                  />
+                  <div onClick={setNextSlide} className="MediaContainer__next" />
+                </div>
+                <div ref={infoContainer} className="col-8 flex flex-col pt2">
+                  <div className="mb2 col-8 flex flex-row justify-between">
+                    <div>
+                      <h2 className="paragraph mb_5">
+                        {get(work, 'fields.title', '')}
+                      </h2>
+                      <div className="flex flex-row flex-wrap">
+                        {get(work, 'fields.caseStudySlug', '') && (
+                          <Link
+                            href={get(work, 'fields.caseStudySlug', '')}
+                            passHref
+                          >
+                            <a
+                              className="small link decoration-none pb1 pr2"
+                              aria-label="View case study"
+                              rel="noopener noreferrer"
+                            >
+                              → View case study
+                            </a>
+                          </Link>
+                        )}
                         <Link
-                          href={get(work, 'fields.caseStudySlug', '')}
+                          href={get(work, 'fields.link', '')}
                           passHref
                         >
                           <a
-                            className="small link decoration-none pb1 pr2"
-                            aria-label="View case study"
+                            className="small link underline"
+                            aria-label="Project Link"
+                            target="_blank"
                             rel="noopener noreferrer"
                           >
-                            → View case study
+                            {get(work, 'fields.linkLabel', '')}
                           </a>
                         </Link>
-                      )}
-                      <Link
-                        href={get(work, 'fields.link', '')}
-                        passHref
-                      >
-                        <a
-                          className="small link underline"
-                          aria-label="Project Link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {get(work, 'fields.linkLabel', '')}
-                        </a>
-                      </Link>
+                      </div>
                     </div>
+                    <span className="color-gray small block">
+                      {index + 1}/{slideCount}
+                    </span>
                   </div>
-                  <span className="color-gray small block">
-                    {index + 1}/{slideCount}
-                  </span>
-                </div>
-                <div className="col-8 flex justify-between">
-                  <List
-                    title="Tech Stack:"
-                    listItems={simpleFragmentToListItems(
-                      get(work, 'fields.stack.simpleFragments', {})
-                    )}
-                  />
-                  <List
-                    className="ml2"
-                    title="Collaborators:"
-                    listItems={simpleFragmentToListItems(
-                      get(work, 'fields.collaborators.simpleFragments', {})
-                    )}
-                  />
+                  <div className="col-8 flex justify-between">
+                    <List
+                      title="Tech Stack:"
+                      listItems={simpleFragmentToListItems(
+                        get(work, 'fields.stack.simpleFragments', {})
+                      )}
+                    />
+                    <List
+                      className="ml2"
+                      title="Collaborators:"
+                      listItems={simpleFragmentToListItems(
+                        get(work, 'fields.collaborators.simpleFragments', {})
+                      )}
+                    />
+                  </div>
                 </div>
               </div>
-            </Fragment>
-          ))}
-        </Slider>
+            ))}
+          </div>
+        </div>
       );
     }
 
     return (
-      <Fragment>
-        <div className="MediaContainer" ref={this.mediaContainer}>
-          <Slider
-            swiping={false}
-            activeIndex={this.state.activeIndex}
-            transitionMode="fade"
+      <>
+        <div className="MediaContainer" ref={mediaContainer}>
+          <div 
+            style={{
+              width: mediaDimensions.width,
+              height: mediaDimensions.height
+            }}
+            className="relative"
           >
-            {get(this, 'props.selectedWorks', []).map((work, index) => (
-              <video
-                key={get(work, 'sys.id')}
-                className="block mxauto"
-                poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
-                style={{
-                  width: mediaDimensions.width,
-                  height: mediaDimensions.height
-                }}
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                {!breakpointIsMobile && this.state.isIntersecting && (activeIndex === index) && (
-                  <source
-                    src={get(work, 'fields.video.fields.file.url')}
-                  ></source>
-                )}
-              </video>
-            ))}
-          </Slider>
+          {get(props, 'selectedWorks', []).map((work, index) => (
+            <video
+              key={get(work, 'sys.id')}
+              className={cx("WorkSection__video block mxauto absolute t0", {
+                'opacity-0 events-none': index !== activeIndex
+              })}
+              poster={`${flattenImageData(get(work, 'fields.previewImage', {})).url}?fm=webp`}
+              style={{
+                width: mediaDimensions.width,
+                height: mediaDimensions.height
+              }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              {!breakpointIsMobile && isIntersecting && (activeIndex === index) && (
+                <source
+                  src={get(work, 'fields.video.fields.file.url')}
+                ></source>
+              )}
+            </video>
+          ))}
+          </div>
           <div
-            onClick={this.setPreviousSlide}
+            onClick={setPreviousSlide}
             className="MediaContainer__previous"
           />
-          <div onClick={this.setNextSlide} className="MediaContainer__next" />
+          <div onClick={setNextSlide} className="MediaContainer__next" />
         </div>
-        <div ref={this.infoContainer} className="col-8 flex flex-row pt3">
+        <div ref={infoContainer} className="col-8 flex flex-row pt3">
           <div className="col-4 flex flex-col">
             <div className="mb2">
               <h2 className="paragraph mb1">
@@ -292,13 +292,11 @@ class WorkSection extends PureComponent {
             </div>
           </div>
         </div>
-      </Fragment>
+      </>
     );
   };
 
-  render() {
-    return <div className="WorkSection px1 py6">{this.renderWork()}</div>;
-  }
+  return <div className="WorkSection px1 py6">{renderWork()}</div>;
 }
 
 WorkSection.propType = {
