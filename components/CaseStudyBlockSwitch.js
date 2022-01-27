@@ -1,19 +1,20 @@
 import React from 'react';
 import get from 'utils/get';
+import dynamic from "next/dynamic";
 
-import BlockGeneralInfo from 'components/BlockGeneralInfo';
-import BlockGeneralParagraph from 'components/BlockGeneralParagraph';
-import BlockLargeParagraph from 'components/BlockLargeParagraph';
-import BlockThreeColumnList from 'components/BlockThreeColumnList';
-import BlockImage from 'components/BlockImage';
-import BlockImageText from 'components/BlockImageText';
-import BlockHero from 'components/BlockHero';
-import BlockVideo from 'components/BlockVideo';
-import BlockFooterLinks from 'components/BlockFooterLinks';
-import BlockViewMore from 'components/BlockViewMore';
-import BlockTwoColumn from 'components/BlockTwoColumn';
-import BlockThreeColumnHero from 'components/BlockThreeColumnHero';
-import BlockFooterWithLists from 'components/BlockFooterWithLists';
+const BlockGeneralInfo = dynamic(() => import('components/BlockGeneralInfo'));
+const BlockGeneralParagraph = dynamic(() => import('components/BlockGeneralParagraph'));
+const BlockLargeParagraph = dynamic(() => import('components/BlockLargeParagraph'));
+const BlockThreeColumnList = dynamic(() => import('components/BlockThreeColumnList'));
+const BlockImage = dynamic(() => import('components/BlockImage'));
+const BlockImageText = dynamic(() => import('components/BlockImageText'));
+const BlockHero = dynamic(() => import('components/BlockHero'));
+const BlockVideo = dynamic(() => import('components/BlockVideo'));
+const BlockFooterLinks = dynamic(() => import('components/BlockFooterLinks'));
+const BlockViewMore = dynamic(() => import('components/BlockViewMore'));
+const BlockTwoColumn = dynamic(() => import('components/BlockTwoColumn'));
+const BlockThreeColumnHero = dynamic(() => import('components/BlockThreeColumnHero'));
+const BlockFooterWithLists = dynamic(() => import('components/BlockFooterWithLists'));
 
 const CaseStudyBlockSwitch = props => {
   const { block, global } = props;
