@@ -1,4 +1,5 @@
 const path = require('path')
+BasementExtractor = (content) => content.match(/[A-Za-z0-9-_:\/]+/g) || [];
 
 module.exports = {
   compress: true,
@@ -19,4 +20,36 @@ module.exports = {
     formats: ['image/webp'],
     minimumCacheTTL: 60,
   },
+  "plugins": [
+    "postcss-flexbugs-fixes",
+    [
+      "postcss-preset-env",
+      {
+        "autoprefixer": {
+          "flexbox": "no-2009"
+        },
+        "stage": 3,
+        "features": {
+          "custom-properties": false
+        }
+      }
+    ],
+    [
+      '@fullhuman/postcss-purgecss',
+      {
+        content: [
+          './pages/**/*.{js,jsx,ts,tsx}',
+          './components/**/*.{js,jsx,ts,tsx}'
+        ],
+        css: ['./styles/**/*.{scss,css}'],
+        extractors: [
+          {
+            extractor: BasementExtractor,
+            extensions: ['scss','css']
+          }
+        ],
+        safelist: ["html", "body"]
+      }
+    ],
+  ]
 }
