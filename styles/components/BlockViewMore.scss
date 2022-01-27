@@ -1,11 +1,11 @@
 .BlockViewMore {
-  img.left-side {
+  &__left-side {
     padding-right: 0.5rem;
     @include media('sm-down') {
       padding-right: 0;
     }
   }
-  img.right-side {
+  &__right-side {
     padding-left: 0.5rem;
     @include media('sm-down') {
       padding-left: 0;

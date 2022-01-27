@@ -43,13 +43,13 @@ const BlockViewMore = props => {
                 passHref
               >
                 <a
-                  className="small link decoration-none"
+                  className="BlockViewMore__left-side small link decoration-none"
                   aria-label={linkOneText}
                   rel="noopener noreferrer"
                 >
                   <div className="flex flex-col">
                     <Image
-                      className="left-side h100 w100 hauto fit-cover pb1"
+                      className="h100 w100 hauto fit-cover pb1"
                       alt={linkOneImage.description}
                       src={linkOneImage.url}
                       width={linkOneImage.width}
@@ -74,7 +74,7 @@ const BlockViewMore = props => {
                 passHref
               >
                 <a
-                  className="small link decoration-none"
+                  className="BlockViewMore__right-side small link decoration-none"
                   aria-label={linkTwoText}
                   rel="noopener noreferrer"
                 >
