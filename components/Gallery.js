@@ -28,14 +28,25 @@ class Gallery extends PureComponent {
           key={index}
         >
           <div className="col-8 md:col-4 pr_25 md:pr_5">
-            <Image
+            {imageOneUrl.endsWith('.gif') ? (<video
+                className="col-4 md:col-8"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src='//videos.ctfassets.net/zb716c7gdesq/ilaodksHf2xMUAmE34mnC/aa9e9ef6d78bb7c469b635c5156264f0/Tend_Final.mp4'
+                ></source>
+              </video>) : (<Image
               className="col-4 md:col-8"
               alt={imageOne.description}
-              src={imageOneUrl}
+              src={ imageOneUrl}
               width={imageOne.width}
               height={imageOne.height}
               sizes='50vw'
             />
+            )}
             <StudioDetailsSection
               recentArticles={get(this, 'props.recentArticles', {})}
               socialMedia={get(this, 'props.socialMedia', {})}
@@ -59,22 +70,42 @@ class Gallery extends PureComponent {
       <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
         <div className="block col-4 pr_25 md:pr_5">
           {index === 0 ? this.renderAttribution() : null}
-          <Image
+          {imageOneUrl.endsWith('.gif') ? (<video
+                className="col-4 md:col-8"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src='//videos.ctfassets.net/zb716c7gdesq/ilaodksHf2xMUAmE34mnC/aa9e9ef6d78bb7c469b635c5156264f0/Tend_Final.mp4'
+                ></source>
+              </video>) : (<Image
             src={imageOneUrl}
             width={imageOne.width}
             height={imageOne.height}
             alt={imageOne.description}
             sizes='50vw'
-          />
+          />)}
         </div>
         <div className="block col-4 pl_25 md:pl_5">
-          <Image
+        {imageTwoUrl.endsWith('.gif') ? (<video
+                className="col-4 md:col-8"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src='//videos.ctfassets.net/zb716c7gdesq/ilaodksHf2xMUAmE34mnC/aa9e9ef6d78bb7c469b635c5156264f0/Tend_Final.mp4'
+                ></source>
+              </video>) : (<Image
             src={imageTwoUrl}
             width={imageTwo.width}
             height={imageTwo.height}
             alt={imageTwo.description}
             sizes='50vw'
-          />
+          />)}
         </div>
       </div>
     );
