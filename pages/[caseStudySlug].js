@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 import ContentfulClient from 'lib/ContentfulClient';
 import ContentfulData from 'lib/ContentfulData';
 
-const Meta = dynamic(() => import('components/Meta'));
-const CaseStudyTopNav = dynamic(() => import('components/CaseStudyTopNav'));
+import Meta from 'components/Meta';
+import CaseStudyTopNav from 'components/CaseStudyTopNav';
 const CaseStudyBlockSwitch = dynamic(() => import('components/CaseStudyBlockSwitch'));
 
 const CaseStudyView = ({ model }) => {
