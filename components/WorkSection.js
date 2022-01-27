@@ -202,7 +202,7 @@ const WorkSection = (props) => {
               width: mediaDimensions.width,
               height: mediaDimensions.height
             }}
-            className="relative"
+            className="relative mxauto"
           >
           {get(props, 'selectedWorks', []).map((work, index) => (
             <video
