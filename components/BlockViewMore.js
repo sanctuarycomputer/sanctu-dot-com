@@ -49,7 +49,7 @@ const BlockViewMore = props => {
                 >
                   <div className="flex flex-col">
                     <Image
-                      className="h100 w100 hauto fit-cover pb1"
+                      className="h100 w100 hauto fit-cover"
                       alt={linkOneImage.description}
                       src={linkOneImage.url}
                       width={linkOneImage.width}
@@ -57,11 +57,13 @@ const BlockViewMore = props => {
                       sizes={selectedSizes}
                     />
                     {linkOneImageCaption && (
-                      <p className="image-caption small color-gray-darkest pb_5">
+                      <p className="image-caption small color-gray-darkest pt1 pb_5">
                         {linkOneImageCaption}
                       </p>
                     )}
+                    <p className="pt1">
                     → {linkOneText}
+                    </p>
                   </div>
                 </a>
               </Link>
@@ -80,7 +82,7 @@ const BlockViewMore = props => {
                 >
                   <div className="flex flex-col">
                     <Image
-                      className="right-side h100 w100 hauto fit-cover pb1"
+                      className="right-side h100 w100 hauto fit-cover"
                       alt={linkTwoImage.description}
                       src={linkTwoImage.url}
                       width={linkTwoImage.width}
@@ -88,11 +90,13 @@ const BlockViewMore = props => {
                       sizes={selectedSizes}
                     />
                     {linkTwoImageCaption && (
-                      <p className="image-caption small color-gray-darkest pb_5">
+                      <p className="image-caption small color-gray-darkest pt1 pb_5">
                         {linkTwoImageCaption}
                       </p>
                     )}
+                    <p className="pt1">
                     → {linkTwoText}
+                    </p>
                   </div>
                 </a>
               </Link>
