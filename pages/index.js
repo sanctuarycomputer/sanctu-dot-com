@@ -22,7 +22,7 @@ const MainView = (props) => {
     if (typeof window !== 'undefined') {
       const now = new Date();
       const currentTimeInHours = now.getHours();
-  
+
       return currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
     } else {
       return false;
@@ -49,12 +49,12 @@ const MainView = (props) => {
         setShouldShowOverlay(true)
         clearInterval(timerID);
       });
-  
+
       window.HackerDojo.on('disableNightmode', () => {
         setShouldShowOverlay(false)
         clearInterval(timerID);
       });
-    } 
+    }
   }
 
   const getWindowAndHackerDojoIsAvailable = () => {
@@ -67,12 +67,12 @@ const MainView = (props) => {
     if (typeof window !== "undefined") {
       setShouldShowOverlay(getShouldShowOverlay())
       getWindowAndHackerDojoIsAvailable()
-  
+
       timerID = setInterval(() => {
         setShouldShowOverlay(getShouldShowOverlay())
         getWindowAndHackerDojoIsAvailable()
       }, 1000);
-  
+
       toggleDocumentClass();
       setRenderContent(true)
     }
@@ -89,7 +89,6 @@ const MainView = (props) => {
   useEffect(() => {
     addToggleNightmode()
   }, [addToggleNightmode, windowAndHackerDojoIsAvailable])
-  
 
   useEffect(() => {
     toggleDocumentClass();
