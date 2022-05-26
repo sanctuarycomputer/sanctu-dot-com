@@ -42,7 +42,7 @@ export const getStaticPaths = async () => {
     select: 'fields.slug'
   }).then((res) => res.items)
 
-  // Get the paths we want to pre-render based on generic pages  
+  // Get the paths we want to pre-render based on generic pages
   const paths = caseStudyPages.map((page) => ({
     params: { caseStudySlug: page.fields.slug.split('/').pop() }
   }))
@@ -83,7 +83,7 @@ export const getStaticProps = async (ctx) => {
     props: {
       model
     },
-    revalidate: 86400,
+    revalidate: 300,
   }
 };
 
