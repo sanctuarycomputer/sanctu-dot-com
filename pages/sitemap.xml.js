@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ContentfulClient from 'lib/ContentfulClient';
-import ContentfulData from 'lib/ContentfulData';
 
 import get from 'lodash/get';
 
@@ -13,14 +12,13 @@ export async function getServerSideProps(ctx) {
   
   if (res) {
     const contentful = ContentfulClient();
-    ContentfulData.setRef(contentful);
   
     const [caseStudyPages, homepage] = await Promise.all([
-      ContentfulData.getEntries({
+      contentful.getEntries({
         content_type: 'caseStudy',
         select: 'sys.createdAt,sys.updatedAt,fields.slug'
       }).then((res) => res.items),
-      ContentfulData.getEntries({
+      contentful.getEntries({
         content_type: 'sanctuary',
         select: 'sys.createdAt,sys.updatedAt'
       }).then((res) => {

@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import get from 'utils/get';
 
 import ContentfulClient from 'lib/ContentfulClient';
-import ContentfulData from 'lib/ContentfulData';
 
 import Meta from 'components/Meta';
 import IntroSectionImages from 'components/IntroSectionImages';
@@ -173,9 +172,8 @@ const MainView = (props) => {
 
 export const getStaticProps = async () => {
   const contentful = ContentfulClient();
-  ContentfulData.setRef(contentful);
 
-  const model = await ContentfulData.getEntries({
+  const model = await contentful.getEntries({
     content_type: 'sanctuary',
     include: 4,
   }).then(res => res.items[0]);

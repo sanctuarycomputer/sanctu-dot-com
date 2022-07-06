@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import get from 'utils/get';
 
 import ContentfulClient from 'lib/ContentfulClient';
-import ContentfulData from 'lib/ContentfulData';
 
 import Meta from 'components/Meta';
 import CaseStudyTopNav from 'components/CaseStudyTopNav';
@@ -35,9 +34,7 @@ const CaseStudyView = ({ model }) => {
 
 export const getStaticPaths = async () => {
   const contentful = ContentfulClient();
-  ContentfulData.setRef(contentful);
-
-  const caseStudyPages = await ContentfulData.getEntries({
+  const caseStudyPages = await contentful.getEntries({
     content_type: 'caseStudy',
     select: 'fields.slug'
   }).then((res) => res.items)
@@ -63,15 +60,13 @@ export const getStaticProps = async (ctx) => {
   }
 
   const contentful = ContentfulClient();
-  ContentfulData.setRef(contentful);
-
   const model = await Promise.all([
-    ContentfulData.getEntries({
+    contentful.getEntries({
       content_type: 'caseStudy',
       'fields.slug': `/${caseStudySlug}`,
       include: 4
     }).then(res => res.items[0]),
-    ContentfulData.getEntries({
+    contentful.getEntries({
       content_type: 'sanctuary',
       include: 4
     }).then(res => res.items[0])
@@ -83,7 +78,7 @@ export const getStaticProps = async (ctx) => {
     props: {
       model
     },
-    revalidate: 300,
+    revalidate: 5,
   }
 };
 
