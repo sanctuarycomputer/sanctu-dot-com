@@ -4,7 +4,6 @@ on:
     types: [publish-event]
 jobs:
   deploy-production:
-    if: github.ref == 'refs/heads/production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
