@@ -22,7 +22,6 @@ const pauseStartVideo = (videoId) => {
     }
 }
 
-  
 const renderGalleryRowTest = (worksGroup, index, worksMatrix) => {
     return (
         <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
