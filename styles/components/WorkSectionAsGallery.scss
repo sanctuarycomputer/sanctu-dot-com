@@ -1,0 +1,41 @@
+.Gallery{
+    &__case-study-hover-overlay {
+        display: flex; 
+        opacity: 0;
+        justify-content: space-between;
+        align-items: end; 
+        height: 100%; 
+        width: 100%; 
+
+        font-family: $sans-serif-stack;
+        font-size: .75rem; 
+        font-weight: bold; 
+        color: #FFFFFF;
+        
+        position: absolute;
+        z-index: 99; 
+
+        &--info {
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-evenly;
+
+            height: 3rem; 
+            margin: 0rem 0rem .5rem .5rem;
+        }
+
+        &--video-button {
+            all: unset; 
+            cursor: pointer; 
+            display: flex;
+            align-items: center; 
+            height: 2rem; 
+            margin: 0rem .5rem .5rem 0rem;
+        }
+    }
+
+    &__case-study-hover-overlay:hover {
+        opacity: 1; 
+        background: linear-gradient(to bottom, transparent 0%, black 200%);
+    }
+}
