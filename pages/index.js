@@ -7,7 +7,6 @@ import Meta from 'components/Meta';
 import IntroSectionImages from 'components/IntroSectionImages';
 import IntroSectionParagraph from 'components/IntroSectionParagraph';
 import AboutSection from 'components/AboutSection';
-import WorkSection from 'components/WorkSection';
 import Gallery from 'components/Gallery';
 import Footer from 'components/Footer';
 import Overlay from 'components/Overlay';
@@ -138,9 +137,6 @@ const MainView = (props) => {
                 introParagraph={get(model, 'fields.introParagraph')}
               />
             </div>
-          </div>
-          <div aria-hidden={shouldShowOverlay}>
-            <WorkSection selectedWorks={get(model, 'fields.selectedWorks', [])} />
           </div>
           <div aria-hidden={shouldShowOverlay}>
              <WorkSectionAsGallery
