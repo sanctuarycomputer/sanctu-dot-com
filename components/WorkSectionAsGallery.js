@@ -86,9 +86,8 @@ const renderGalleryRowTest = (worksGroup, index, worksMatrix) => {
             </div>
             </div>
         )}
-        </div>
-    );
-    };
+    </div>);
+};
 
 class WorkSectionAsGallery extends PureComponent {
     render() {
@@ -114,7 +113,7 @@ class WorkSectionAsGallery extends PureComponent {
 WorkSectionAsGallery.propTypes = {
     selectedWorks: PropTypes.arrayOf(
         PropTypes.shape({
-          fields: PropTypes.shape({
+        fields: PropTypes.shape({
             media: ContentfulMedia,
             title: PropTypes.string,
             caseStudySlug: PropTypes.string,
@@ -122,9 +121,9 @@ WorkSectionAsGallery.propTypes = {
             linkLabel: PropTypes.string,
             stack: SimpleFragment,
             collaborators: SimpleFragment
-          })
         })
-      )
+        })
+    )
 }
 
 export default WorkSectionAsGallery;
