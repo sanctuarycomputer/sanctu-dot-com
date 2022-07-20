@@ -13,14 +13,14 @@ import flattenImageData from 'utils/flattenImageData';
 
 const pauseStartVideo = (videoId) => {
   const video = document.getElementById(videoId);
-  const videoButtonText = document.getElementById(`${videoId}--video-button-text`).innerText;
+  const videoButtonText = document.getElementById(`${videoId}--video-button-text`).textContent;
 
   if (videoButtonText == '(Pause)') {
     video.pause();
-    document.getElementById(`${videoId}--video-button-text`).innerText = '(Play)';
+    document.getElementById(`${videoId}--video-button-text`).textContent = '(Play)';
   } else {
     video.play();
-    document.getElementById(`${videoId}--video-button-text`).innerText = '(Pause)';
+    document.getElementById(`${videoId}--video-button-text`).textContent = '(Pause)';
   }
 }
 
