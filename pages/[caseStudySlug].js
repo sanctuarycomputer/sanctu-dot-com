@@ -16,7 +16,7 @@ const CaseStudyView = ({ model }) => {
   if (!caseStudy.sys || !caseStudy.fields) {
     return <h1>Something went wrong...</h1>;
   }
-
+  
   return (
     <Fragment>
       <Meta model={caseStudy} />

@@ -1,11 +1,29 @@
 .WorkSectionAsGallery{
-    &__case-study-hover-overlay {
+    margin-top: 2rem; 
+
+    &__work-gallery-text {
+        padding: 0rem 1.25rem 0rem 1.25rem;
+        @include media('md-up') {
+            padding: 0rem 5rem 0rem 5rem;
+        }
+        @include media('lg-up') {
+            padding: 0rem 10rem 0rem 10rem;
+            margin: 10rem 0rem 10rem 0rem; 
+        }
+
+        margin: 4rem 0rem 4rem 0rem; 
+    }
+    &__work-hover-overlay {
         display: flex; 
-        opacity: 0;
+
+        opacity: 1;
+        @include media('lg-up') {
+            opacity: 0;
+        }
+        background: linear-gradient(to bottom, transparent 0%, black 200%);
+
         justify-content: space-between;
         align-items: end; 
-        height: 100%; 
-        width: 100%; 
 
         font-family: $sans-serif-stack;
         font-size: .75rem; 
@@ -13,6 +31,8 @@
         color: #FFFFFF;
         
         position: absolute;
+        height: 100%; 
+        width: 100%; 
         z-index: 99; 
 
         &--info {
@@ -34,7 +54,7 @@
         }
     }
 
-    &__case-study-hover-overlay:hover {
+    &__work-hover-overlay:hover {
         opacity: 1; 
         background: linear-gradient(to bottom, transparent 0%, black 200%);
     }

@@ -140,7 +140,7 @@ const MainView = (props) => {
           </div>
           <div aria-hidden={shouldShowOverlay}>
              <WorkSectionAsGallery
-                selectedWorks={get(model, 'fields.selectedWorks', [])}
+                workGallery={get(model, 'fields.workGallery', {})}
              />
           </div>
           <div aria-hidden={shouldShowOverlay}>
