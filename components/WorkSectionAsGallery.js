@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
@@ -11,30 +11,40 @@ import { Markdown, Image } from 'components/base';
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
 
-const pauseStartVideo = (videoId) => {
-  const video = document.getElementById(videoId);
-  const videoButtonText = document.getElementById(`${videoId}--video-button-text`).textContent;
+const PLAY_VIDEO = "(Play)";
+const PAUSE_VIDEO = "(Pause)"; 
 
-  if (videoButtonText == '(Pause)') {
-    video.pause();
-    document.getElementById(`${videoId}--video-button-text`).textContent = '(Play)';
-  } else {
-    video.play();
-    document.getElementById(`${videoId}--video-button-text`).textContent = '(Pause)';
-  }
-}
+const renderWork = (work) => {
+  const [videoStatus, setVideoStatus] = useState(PLAY_VIDEO);
+  const videoRef = useRef(null);
+  const buttonRef = useRef(null); 
 
-const renderWorkOverlay = (work) => {
-  const workIsImage = work.fields.asset.fields.file.contentType.startsWith("image/");
+  useEffect(() => {
+    if (videoStatus === PLAY_VIDEO) {
+      videoRef.current?.play(); 
+      buttonRef.current?.textContent = PAUSE_VIDEO;
+    } else {
+      videoRef.current?.pause();
+      buttonRef.current?.textContent = PLAY_VIDEO;
+    }
+  }, [videoStatus])
 
-  return (
+  const workIsImage = get(work, 'fields.asset.fields.file.contentType', '').startsWith("image/");  
+  const workImage = flattenImageData(get(work, 'fields.asset', {}));
+  const title = get(work, 'fields.title', '');
+  const caseStudySlug = get(work, 'fields.caseStudySlug', '');
+  const link = get(work, 'fields.link', '');
+  const src = get(work, 'fields.video.fields.file.url', '');
+  const id = get(work, 'sys.id', '');
+
+ return (
+   <>
     <div className="WorkSectionAsGallery__work-hover-overlay">
       <div className="WorkSectionAsGallery__work-hover-overlay--info">
-        <div className="WorkSectionAsGallery__work-hover-overlay--title">{work.fields.title}</div>
-        {work.fields.caseStudySlug ? 
+        <div className="WorkSectionAsGallery__work-hover-overlay--title">{title}</div>
+        {caseStudySlug ? 
           <Link
-            href={work.fields.caseStudySlug}
-            passHref
+            href={caseStudySlug}
           >
             <a
               className="decoration-none color-white"
@@ -45,7 +55,7 @@ const renderWorkOverlay = (work) => {
             </a>
           </Link> : 
           <Link
-            href={work.fields.link}
+            href={link}
           >
             <a
               className="decoration-none color-white"
@@ -60,148 +70,151 @@ const renderWorkOverlay = (work) => {
       </div>
       {!workIsImage &&
         <button 
-          id={`${work.sys.id}--video-button-text`}
           className="WorkSectionAsGallery__work-hover-overlay--video-button"
-          onClick={() => pauseStartVideo(work.sys.id)}
+          ref={buttonRef}
+          onClick={() => {
+            videoStatus === PAUSE_VIDEO ? setVideoStatus(PLAY_VIDEO) : setVideoStatus(PAUSE_VIDEO)
+          }}
         >
           (Pause)
         </button>
       }
     </div>
-  );
+    {workIsImage ? 
+      <Image
+        src={workImage.url}
+        width={workImage.width}
+        height={workImage.height}
+        sizes='50vw'
+      />  :
+      <video
+        id={id}
+        key={id}
+        style={{
+          width: '100%', 
+          height: '100%' 
+        }}
+        autoPlay
+        loop
+        muted
+        playsInline
+        ref={videoRef}
+      >
+        <source src={src}></source>
+      </video>
+    }
+    </>
+ );
 }
-
-const renderWorkAsImageOrVideo = (work) => {
-  const workIsImage = work.fields.asset.fields.file.contentType.startsWith("image/");
-  const workImage = flattenImageData(work.fields.asset);
-
-  return (
-    <div>
-      {workIsImage ? 
-        <Image
-          src={workImage.url}
-          width={workImage.width}
-          height={workImage.height}
-          sizes='50vw'
-        />  :
-        <video
-          id={work.sys.id}
-          key={work.sys.id}
-          style={{
-            width: '100%', 
-            height: '100%' 
-          }}
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={work.fields.video.fields.file.url}></source>
-        </video>
-      }
-    </div>
-  );
-}
-
-const renderWorkGalleryBlock = (workGalleryBlock, index) => {
-  const fullWidthWork = get(workGalleryBlock, 'fields.fullWidthWork', {});
-  const halfWidthWorkOne = get(workGalleryBlock, 'fields.halfWidthWorkOne', {});
-  const halfWidthWorkTwo = get(workGalleryBlock, 'fields.halfWidthWorkTwo', {});
+const renderWorkGalleryAssetBlock = (workGalleryBlock) => {
+  const displayFirstAssetAsFullWidth = get(workGalleryBlock, 'fields.displayFirstAssetAsFullWidth', true);
+  const works = get(workGalleryBlock, 'fields.works', []);
 
   return (
     <div className="flex-col">
-      {workGalleryBlock.fields.displayFullWidthAssetAtTop && 
-        <div className="block col-8 relative">
-          {renderWorkOverlay(fullWidthWork)}
-          {renderWorkAsImageOrVideo(fullWidthWork)}
-        </div>
+      {displayFirstAssetAsFullWidth && 
+        <>
+          <div className="block col-8 relative">
+            {renderWork(works[0])}
+          </div>
+          <div className="flex col-8 pb_5 md:pb1 items-end">
+            <div className="block col-4 pr_25 md:pr_5">
+              <div className="relative">
+                {renderWork(works[1])}
+              </div>
+            </div>
+            <div className="block col-4 pr_25 md:pr_5">
+              <div className="relative">
+                {renderWork(works[2])}
+              </div>
+            </div>
+          </div>
+        </>
       }
-      <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
-        <div className="block col-4 pr_25 md:pr_5">
-          <div className="relative">
-            {renderWorkOverlay(halfWidthWorkOne)}
-            {renderWorkAsImageOrVideo(halfWidthWorkOne)}
+      {!displayFirstAssetAsFullWidth && 
+        <>
+          <div className="flex col-8 pb_5 md:pb1 items-end">
+            <div className="block col-4 pr_25 md:pr_5">
+              <div className="relative">
+                {renderWork(works[0])}
+              </div>
+            </div>
+            <div className="block col-4 pr_25 md:pr_5">
+              <div className="relative">
+                {renderWork(works[1])}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="block col-4 pr_25 md:pr_5">
-          <div className="relative">
-            {renderWorkOverlay(halfWidthWorkTwo)}
-            {renderWorkAsImageOrVideo(halfWidthWorkTwo)}
+          <div className="block col-8 relative">
+            {renderWork(works[2])}
           </div>
-        </div>
-      </div>
-      {!workGalleryBlock.fields.displayFullWidthAssetAtTop && 
-        <div className="block col-8 relative">
-          {renderWorkOverlay(fullWidthWork)}
-          {renderWorkAsImageOrVideo(fullWidthWork)}
-        </div>
+        </>
       }
     </div>
   );
 }
 
-class WorkSectionAsGallery extends PureComponent {
-  render() {
-    const fields = get(this, 'props.workGallery.fields', {}); 
-    const workGalleryBlockOne = get(fields, 'workGalleryBlockOne', {});
-    const workGalleryTextOne = get(fields, 'workGalleryTextOne', '');
-    const workGalleryBlockTwo = get(fields, 'workGalleryBlockTwo', {});
-    const workGalleryTextTwo = get(fields, 'workGalleryTextTwo', '');
-    const workGalleryBlockAnyRemaining = get(fields, 'workGalleryBlockAnyRemaining', []);
+const renderWorkGalleryTextBlock = (textBlock) => {
+  const text = get(textBlock, 'fields.text', '');
+  return (
+    <div>
+      {text &&
+        <Markdown
+          className="WorkSectionAsGallery__work-gallery-text Markdown--medium"
+          src={text}
+        />
+      }
+    </div>
+  );
+};
 
-    return (
-      <div className="WorkSectionAsGallery">
-        {renderWorkGalleryBlock(workGalleryBlockOne)}
-        <Markdown
-          className="WorkSectionAsGallery__work-gallery-text Markdown--medium"
-          src={workGalleryTextOne}
-        />
-        {renderWorkGalleryBlock(workGalleryBlockTwo)}
-        <Markdown
-          className="WorkSectionAsGallery__work-gallery-text Markdown--medium"
-          src={workGalleryTextTwo}
-        />
-        {workGalleryBlockAnyRemaining.map((block) => renderWorkGalleryBlock(block))}
-      </div>
-    );
-  }
+const WorkSectionAsGallery = (props) => {
+  const fields = get(props, 'workGallery.fields', {}); 
+  const workGalleryAssetBlocks = get(fields, 'workGalleryAssetBlocks', []);
+  const workGalleryTextBlocks = get(fields, 'workGalleryTextBlocks', []);
+  const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
+
+  console.log(workGalleryAssetBlocks);
+
+  const maximumLengthBlocks = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
+  
+  console.log(maximumLengthBlocks);
+  console.log(workGalleryAssetBlocks.length);
+  console.log(workGalleryTextBlocks.length)
+  return (
+    <div className="WorkSectionAsGallery">
+      {maximumLengthBlocks.map((index) => {
+        const workGalleryBlock = renderWorkGalleryAssetBlock(workGalleryAssetBlocks[index]);
+        const textBlock = renderWorkGalleryTextBlock(workGalleryTextBlocks[index])
+        return (
+          <>
+            {renderAssetBlocksFirst && workGalleryBlock}
+            {textBlock}
+            {!renderAssetBlocksFirst && workGalleryBlock}
+          </>
+        );
+      })}
+    </div>
+  );
 }
 
-const workGalleryBlockPropType = PropTypes.shape({
+const WorkPropType = PropTypes.shape({
+  fields: PropTypes.shape({
+    title: PropTypes.string,
+    caseStudySlug: PropTypes.string,
+    asset: ContentfulMedia,
+    link: PropTypes.string,
+    linkLabel: PropTypes.string,
+    stack: SimpleFragment,
+    collaborators: SimpleFragment
+  })
+}); 
+
+const WorkGalleryBlockPropType = PropTypes.shape({
   title: PropTypes.string, 
-  fullWidthWork: PropTypes.shape({
-    fields: PropTypes.shape({
-      title: PropTypes.string,
-      caseStudySlug: PropTypes.string,
-      asset: ContentfulMedia,
-      link: PropTypes.string,
-      linkLabel: PropTypes.string,
-      stack: SimpleFragment,
-      collaborators: SimpleFragment
-    })
-  }),
-  halfWidthWorkOne: PropTypes.shape({
-    fields: PropTypes.shape({
-      title: PropTypes.string,
-      caseStudySlug: PropTypes.string,
-      asset: ContentfulMedia,
-      link: PropTypes.string,
-      linkLabel: PropTypes.string,
-      stack: SimpleFragment,
-      collaborators: SimpleFragment
-    })
-  }), 
-  halfWidthWorkTwo: PropTypes.shape({
-    fields: PropTypes.shape({
-      title: PropTypes.string,
-      caseStudySlug: PropTypes.string,
-      asset: ContentfulMedia,
-      link: PropTypes.string,
-      linkLabel: PropTypes.string,
-      stack: SimpleFragment,
-      collaborators: SimpleFragment
-    })
-  }), 
+  fullWidthWork: WorkPropType,
+  halfWidthWorkOne: WorkPropType,
+  halfWidthWorkTwo: WorkPropType,
   displayFullWidthAssetAtTop: PropTypes.bool
 });
 
@@ -209,11 +222,11 @@ WorkSectionAsGallery.propTypes = {
   workGallery: PropTypes.shape({
     fields: PropTypes.shape({
       title: PropTypes.string, 
-      workGalleryBlockOne: workGalleryBlockPropType,
+      workGalleryBlockOne: WorkGalleryBlockPropType,
       workGalleryTextOne: PropTypes.string,
-      workGalleryBlockTwo: workGalleryBlockPropType,
+      workGalleryBlockTwo: WorkGalleryBlockPropType,
       workGalleryTextTwo: PropTypes.string,
-      workGalleryBlockAnyRemaining: PropTypes.arrayOf(workGalleryBlockPropType)
+      workGalleryBlockAnyRemaining: PropTypes.arrayOf(WorkGalleryBlockPropType)
     })
   })
 }
