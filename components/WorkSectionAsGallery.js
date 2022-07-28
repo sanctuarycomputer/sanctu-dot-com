@@ -230,3 +230,4 @@ WorkSectionAsGallery.propTypes = {
 }
 
 export default WorkSectionAsGallery;
+
