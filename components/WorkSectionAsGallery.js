@@ -42,8 +42,8 @@ const renderWork = (work) => {
 
  return (
    <>
-    <div className="WorkSectionAsGallery__work-hover-overlay">
-      <div className="WorkSectionAsGallery__work-hover-overlay--info">
+    <div className="WorkSectionAsGallery__work-hover-overlay flex justify-between items-end color-white absolute h100 w100">
+      <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
         <div className="WorkSectionAsGallery__work-hover-overlay--title">{title}</div>
         {caseStudySlug ? 
           <Link
@@ -110,6 +110,7 @@ const renderWork = (work) => {
     </>
  );
 }
+
 const renderWorkGalleryAssetBlock = (workGalleryBlock) => {
   const displayFirstAssetAsFullWidth = get(workGalleryBlock, 'fields.displayFirstAssetAsFullWidth', true);
   const works = get(workGalleryBlock, 'fields.works', []);
@@ -164,7 +165,7 @@ const renderWorkGalleryTextBlock = (textBlock) => {
     <div>
       {text &&
         <Markdown
-          className="WorkSectionAsGallery__work-gallery-text Markdown--medium"
+          className="WorkSectionAsGallery__work-gallery-text my4 lg:my10 px1_25 md:px5 lg:px10 Markdown--medium"
           src={text}
         />
       }
@@ -180,7 +181,7 @@ const WorkSectionAsGallery = (props) => {
   const maximumLengthBlocks = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
   
   return (
-    <div className="WorkSectionAsGallery">
+    <div className="WorkSectionAsGallery mt2">
       {maximumLengthBlocks.map((index) => {
         const workGalleryBlock = renderWorkGalleryAssetBlock(workGalleryAssetBlocks[index]);
         const textBlock = renderWorkGalleryTextBlock(workGalleryTextBlocks[index])
