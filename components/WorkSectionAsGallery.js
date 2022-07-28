@@ -23,9 +23,12 @@ const renderWork = (work) => {
     if (videoStatus === PLAY_VIDEO) {
       videoRef.current?.play(); 
       buttonRef.current?.textContent = PAUSE_VIDEO;
+      buttonRef.current?.ariaLabel = `pause video for ${title}`
+
     } else {
       videoRef.current?.pause();
       buttonRef.current?.textContent = PLAY_VIDEO;
+      buttonRef.current?.ariaLabel = `play video for ${title}`
     }
   }, [videoStatus])
 
@@ -48,7 +51,7 @@ const renderWork = (work) => {
           >
             <a
               className="decoration-none color-white"
-              aria-label="read the case study"
+              aria-label={`read the case study for ${title}`}
               rel="noopener noreferrer"
             >
             (read case study)
@@ -59,7 +62,7 @@ const renderWork = (work) => {
           >
             <a
               className="decoration-none color-white"
-              aria-label="visit the site"
+              aria-label={`visit the site for ${title}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -71,6 +74,7 @@ const renderWork = (work) => {
       {!workIsImage &&
         <button 
           className="WorkSectionAsGallery__work-hover-overlay--video-button"
+          aria-label={`pause video for ${title}`}
           ref={buttonRef}
           onClick={() => {
             videoStatus === PAUSE_VIDEO ? setVideoStatus(PLAY_VIDEO) : setVideoStatus(PAUSE_VIDEO)
@@ -173,14 +177,8 @@ const WorkSectionAsGallery = (props) => {
   const workGalleryAssetBlocks = get(fields, 'workGalleryAssetBlocks', []);
   const workGalleryTextBlocks = get(fields, 'workGalleryTextBlocks', []);
   const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
-
-  console.log(workGalleryAssetBlocks);
-
   const maximumLengthBlocks = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
   
-  console.log(maximumLengthBlocks);
-  console.log(workGalleryAssetBlocks.length);
-  console.log(workGalleryTextBlocks.length)
   return (
     <div className="WorkSectionAsGallery">
       {maximumLengthBlocks.map((index) => {
