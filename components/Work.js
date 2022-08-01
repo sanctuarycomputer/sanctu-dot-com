@@ -23,9 +23,9 @@ const Work = ({work}) => {
 
   useEffect(() => {
     if (videoStatus == PLAY_VIDEO) {
-      videoRef?.current?.play(); 
-      buttonRef?.current?.textContent = PAUSE_VIDEO;
-      buttonRef?.current?.ariaLabel = `pause video for ${title}`
+      videoRef.current?.play(); 
+      buttonRef.current?.textContent = PAUSE_VIDEO;
+      buttonRef.current?.ariaLabel = `pause video for ${title}`
 
     } else {
       videoRef.current?.pause();
