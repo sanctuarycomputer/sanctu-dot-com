@@ -15,10 +15,6 @@ const PLAY_VIDEO = "(Play)";
 const PAUSE_VIDEO = "(Pause)"; 
 
 const Work = ({work}) => {
-  if (!work) { 
-    return null; 
-  }
-
   const [videoStatus, setVideoStatus] = useState(PLAY_VIDEO);
   const videoRef = useRef(null);
   const buttonRef = useRef(null); 
@@ -40,6 +36,10 @@ const Work = ({work}) => {
     }
   }, [videoStatus])
 
+  if (!work) { 
+    return null; 
+  }
+  
   const workIsImage = get(work, 'fields.asset.fields.file.contentType', '').startsWith("image/");  
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
   const title = get(work, 'fields.title', '');
