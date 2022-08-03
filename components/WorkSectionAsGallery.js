@@ -86,11 +86,11 @@ const WorkSectionAsGallery = (props) => {
   const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
 
   // In order render all elements of both arrays, we need to loop an amount equal to the longer of the two arrays.
-  const maximumLengthBlocks = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
+  const numberOfBlocksToLoopThrough = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
   
   return (
     <div className="WorkSectionAsGallery mt2">
-      {maximumLengthBlocks.map((index) => {
+      {numberOfBlocksToLoopThrough.map((index) => {
         return (
           <div key={index}>
             {renderAssetBlocksFirst && <WorkGalleryAssetBlock assetBlock={workGalleryAssetBlocks[index]}/>}
