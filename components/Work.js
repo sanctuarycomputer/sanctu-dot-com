@@ -15,7 +15,9 @@ const PLAY_VIDEO = "(Play)";
 const PAUSE_VIDEO = "(Pause)"; 
 
 const Work = ({work}) => {
-  if (!work) return; 
+  if (!work) { 
+    return null; 
+  }
 
   const [videoStatus, setVideoStatus] = useState(PLAY_VIDEO);
   const videoRef = useRef(null);
@@ -96,10 +98,7 @@ const Work = ({work}) => {
       <video
         id={id}
         key={id}
-        style={{
-          width: '100%', 
-          height: '100%' 
-        }}
+        className="w100 h100"
         autoPlay
         loop
         muted

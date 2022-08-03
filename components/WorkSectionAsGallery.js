@@ -9,9 +9,13 @@ import Work from 'components/Work';
 
 import get from 'utils/get';
 
-const renderWorkGalleryAssetBlock = (workGalleryBlock) => {
-  const displayFirstAssetAsFullWidth = get(workGalleryBlock, 'fields.displayFirstAssetAsFullWidth', true);
-  const works = get(workGalleryBlock, 'fields.works', []);
+const WorkGalleryAssetBlock = ({assetBlock}) => {
+  if (!assetBlock) {
+    return null; 
+  }
+
+  const displayFirstAssetAsFullWidth = get(assetBlock, 'fields.displayFirstAssetAsFullWidth', true);
+  const works = get(assetBlock, 'fields.works', []);
 
   return (
     <div className="flex-col">
@@ -57,7 +61,11 @@ const renderWorkGalleryAssetBlock = (workGalleryBlock) => {
   );
 }
 
-const renderWorkGalleryTextBlock = (textBlock) => {
+const WorkGalleryTextBlock = ({textBlock}) => {
+  if (!textBlock) {
+    return null;
+  }
+
   const text = get(textBlock, 'fields.text', '');
   return (
     <div>
@@ -81,14 +89,12 @@ const WorkSectionAsGallery = (props) => {
   return (
     <div className="WorkSectionAsGallery mt2">
       {maximumLengthBlocks.map((index) => {
-        const workGalleryBlock = renderWorkGalleryAssetBlock(workGalleryAssetBlocks[index]);
-        const textBlock = renderWorkGalleryTextBlock(workGalleryTextBlocks[index])
         return (
-          <>
-            {renderAssetBlocksFirst && workGalleryBlock}
-            {textBlock}
-            {!renderAssetBlocksFirst && workGalleryBlock}
-          </>
+          <div key={index}>
+            {renderAssetBlocksFirst && <WorkGalleryAssetBlock assetBlock={workGalleryAssetBlocks[index]}/>}
+            <WorkGalleryTextBlock textBlock={workGalleryTextBlocks[index]}/>
+            {!renderAssetBlocksFirst && <WorkGalleryAssetBlock assetBlock={workGalleryAssetBlocks[index]}/>}
+          </div>
         );
       })}
     </div>
