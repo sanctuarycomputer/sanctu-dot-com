@@ -84,6 +84,8 @@ const WorkSectionAsGallery = (props) => {
   const workGalleryAssetBlocks = get(fields, 'workGalleryAssetBlocks', []);
   const workGalleryTextBlocks = get(fields, 'workGalleryTextBlocks', []);
   const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
+
+  // In order render all elements of both arrays, we need to loop an amount equal to the longer of the two arrays.
   const maximumLengthBlocks = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
   
   return (
