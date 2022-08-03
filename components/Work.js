@@ -20,26 +20,29 @@ const Work = ({work}) => {
   const buttonRef = useRef(null); 
 
   useEffect(() => {
-    if (videoStatus == PLAY_VIDEO) {
-      const button = buttonRef.current; 
- 
+    if (videoStatus == PLAY_VIDEO) { 
       videoRef.current?.play(); 
-      button.textContent = PAUSE_VIDEO;
-      button.ariaLabel = `pause video for ${title}`
 
-    } else {
-      const button = buttonRef.current; 
- 
+      const button = buttonRef.current;
+      if (button) {
+        button.textContent = PAUSE_VIDEO;
+        button.ariaLabel = `pause video for ${title}`
+      }
+    } else { 
       videoRef.current?.pause();
-      button.textContent = PLAY_VIDEO;
-      button.ariaLabel = `play video for ${title}`
+
+      const button = buttonRef.current;
+      if(button) {
+        button.textContent = PLAY_VIDEO;
+        button.ariaLabel = `play video for ${title}`
+      }
     }
   }, [videoStatus])
 
   if (!work) { 
     return null; 
   }
-  
+
   const workIsImage = get(work, 'fields.asset.fields.file.contentType', '').startsWith("image/");  
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
   const title = get(work, 'fields.title', '');
@@ -48,7 +51,8 @@ const Work = ({work}) => {
   const src = get(work, 'fields.video.fields.file.url', '');
   const id = get(work, 'sys.id', '');
 
- return (
+  console.log(workImage);
+  return (
    <>
     <div className="WorkSectionAsGallery__work-hover-overlay flex justify-between items-end color-white absolute h100 w100">
       <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
@@ -94,6 +98,7 @@ const Work = ({work}) => {
     </div>
     {workIsImage ? 
       <Image
+        alt={workImage.alt}
         src={workImage.url}
         width={workImage.width}
         height={workImage.height}
