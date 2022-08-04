@@ -7,10 +7,10 @@ import Meta from 'components/Meta';
 import IntroSectionImages from 'components/IntroSectionImages';
 import IntroSectionParagraph from 'components/IntroSectionParagraph';
 import AboutSection from 'components/AboutSection';
-import WorkSection from 'components/WorkSection';
 import Gallery from 'components/Gallery';
 import Footer from 'components/Footer';
 import Overlay from 'components/Overlay';
+import WorkSectionAsGallery from 'components/WorkSectionAsGallery';
 
 const dayStartTimeInHours = 7; // 7 AM
 const dayEndTimeInHours = 19; // 7 PM
@@ -111,7 +111,7 @@ const MainView = (props) => {
             className="flex md:flex-row flex-col"
           >
             <div className="col-8 flex flex-col sticky-spacer">
-              <IntroSectionImages images={get(model, 'fields.introImages', {})} />
+              <IntroSectionImages images={get(model, 'fields.introImages', {})} /> 
               <AboutSection
                 whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
                 selectedClients={get(
@@ -139,7 +139,9 @@ const MainView = (props) => {
             </div>
           </div>
           <div aria-hidden={shouldShowOverlay}>
-            <WorkSection selectedWorks={get(model, 'fields.selectedWorks', [])} />
+             <WorkSectionAsGallery
+                workGallery={get(model, 'fields.workGallery', {})}
+             />
           </div>
           <div aria-hidden={shouldShowOverlay}>
             <Gallery

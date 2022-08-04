@@ -1,0 +1,31 @@
+.WorkSectionAsGallery{
+    &__work-hover-overlay {
+        opacity: 1;
+        @include media('lg-up') {
+            opacity: 0;
+        }
+        background: linear-gradient(to bottom, transparent 0%, black 200%);
+
+        font-family: $sans-serif-stack;
+        font-size: .75rem; 
+        font-weight: bold; 
+        
+        z-index: 99; 
+
+        &--info {
+            height: 3rem; 
+        }
+
+        &--video-button {
+            all: unset; 
+            cursor: pointer; 
+            height: 2rem; 
+            margin: 0rem .5rem .5rem 0rem;
+        }
+    }
+
+    &__work-hover-overlay:hover {
+        opacity: 1; 
+        background: linear-gradient(to bottom, transparent 0%, black 200%);
+    }
+}
