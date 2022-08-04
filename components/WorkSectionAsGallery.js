@@ -30,7 +30,7 @@ const WorkGalleryAssetBlock = ({assetBlock}) => {
                 <Work work={works[1]}/>
               </div>
             </div>
-            <div className="block col-4 pr_25 md:pr_5">
+            <div className="block col-4 pl_25 md:pl_5">
               <div className="relative">
                 <Work work={works[2]}/>
               </div>
@@ -46,7 +46,7 @@ const WorkGalleryAssetBlock = ({assetBlock}) => {
                 <Work work={works[0]}/>
               </div>
             </div>
-            <div className="block col-4 pr_25 md:pr_5">
+            <div className="block col-4 pl_25 md:pl_5">
               <div className="relative">
                 <Work work={works[1]}/>
               </div>
@@ -71,7 +71,7 @@ const WorkGalleryTextBlock = ({textBlock}) => {
     <div>
       {text &&
         <Markdown
-          className="WorkSectionAsGallery__work-gallery-text my4 lg:my10 px1_25 md:px5 lg:px10 Markdown--medium"
+          className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:px10 md:py13 Markdown--medium"
           src={text}
         />
       }
@@ -85,7 +85,7 @@ const WorkSectionAsGallery = (props) => {
   const workGalleryTextBlocks = get(fields, 'workGalleryTextBlocks', []);
   const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
 
-  // In order render all elements of both arrays, we need to loop an amount equal to the longer of the two arrays.
+  // In order to render all elements of both arrays, we need to loop an amount equal to the longer of the two arrays.
   const numberOfBlocksToLoopThrough = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
   
   return (

@@ -51,7 +51,6 @@ const Work = ({work}) => {
   const src = get(work, 'fields.video.fields.file.url', '');
   const id = get(work, 'sys.id', '');
 
-  console.log(workImage);
   return (
    <>
     <div className="WorkSectionAsGallery__work-hover-overlay flex justify-between items-end color-white absolute h100 w100">
