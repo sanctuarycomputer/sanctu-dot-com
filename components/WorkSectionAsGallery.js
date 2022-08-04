@@ -71,7 +71,7 @@ const WorkGalleryTextBlock = ({textBlock}) => {
     <div>
       {text &&
         <Markdown
-          className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:px10 md:py13 Markdown--medium"
+          className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:p13 Markdown--medium"
           src={text}
         />
       }
