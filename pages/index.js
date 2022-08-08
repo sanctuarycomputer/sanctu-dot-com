@@ -18,7 +18,7 @@ let timerID = null;
 
 const MainView = (props) => {
   const getShouldShowOverlay = () => {
-    if (typeof window !== 'undefined') {
+    if (!get(model, 'fields.disableNightMode', '') && typeof window !== 'undefined') {
       const now = new Date();
       const currentTimeInHours = now.getHours();
 
@@ -87,7 +87,7 @@ const MainView = (props) => {
 
   useEffect(() => {
     addToggleNightmode()
-  }, [addToggleNightmode, windowAndHackerDojoIsAvailable])
+  }, [windowAndHackerDojoIsAvailable])
 
   useEffect(() => {
     toggleDocumentClass();
