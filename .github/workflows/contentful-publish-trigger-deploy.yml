@@ -1,5 +1,5 @@
-name: Contentful Publish Trigger Deploy 
-on: 
+name: Contentful Publish Trigger Deploy
+on:
   repository_dispatch:
     types: [publish-event]
 jobs:
@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: refs/heads/production # Ensure we're deploying production branch from webhook and cron builds.
       - uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
