@@ -14,7 +14,7 @@ import flattenImageData from 'utils/flattenImageData';
 const PLAY_VIDEO = "(Play)";
 const PAUSE_VIDEO = "(Pause)"; 
 
-const Work = ({work}) => {
+const Work = ({ work, width = '100vw' }) => {
   const [videoStatus, setVideoStatus] = useState(PLAY_VIDEO);
   const videoRef = useRef(null);
   const buttonRef = useRef(null); 
@@ -39,7 +39,9 @@ const Work = ({work}) => {
     }
   }, [videoStatus])
 
-  if (!work) { 
+  const workIsPlaceholder = !work?.fields?.name;
+
+  if (!work || workIsPlaceholder) { 
     return null; 
   }
 
@@ -101,7 +103,7 @@ const Work = ({work}) => {
         src={workImage.url}
         width={workImage.width}
         height={workImage.height}
-        sizes='50vw'
+        sizes={width}
       />  :
       <video
         id={id}
