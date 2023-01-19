@@ -23,11 +23,12 @@ const BlockGeneralInfo = (props) => {
   ).toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 1);
   const marginTop = get(fields, 'marginTop', 1);
+
   /* frequently used class conditions */
   const isContentHorizontalRight =
-    contentAlign === 'horizontal' && horizontalContentColumn !== 'left';
+    contentAlign === 'horizontal' && horizontalContentColumn === 'left';
   const isContentVerticalOrHorizontalLeft =
-    (contentAlign === 'horizontal' && horizontalContentColumn === 'left') ||
+    (contentAlign === 'horizontal' && horizontalContentColumn !== 'left') ||
     contentAlign === 'vertical';
 
   return (
@@ -39,19 +40,12 @@ const BlockGeneralInfo = (props) => {
       className="BlockGeneralInfo px1 flex flex-col"
     >
       <div
-        className={cx('col-8', {
-          'md:col-4 self-end md:flex md:flex-row': isContentHorizontalRight,
-          'md:col-3': isContentVerticalOrHorizontalLeft,
+        className={cx('col-8 md:col-3', {
+          'self-end': isContentHorizontalRight,
         })}
       >
         {header && (
-          <h1
-            className={cx('BlockGeneralInfo__header paragraph mb1_5', {
-              'md:col-6': isContentHorizontalRight,
-            })}
-          >
-            {header}
-          </h1>
+          <h1 className="BlockGeneralInfo__header paragraph mb1_5">{header}</h1>
         )}
       </div>
       <div
@@ -62,21 +56,8 @@ const BlockGeneralInfo = (props) => {
           'md:flex-col': contentAlign === 'vertical',
         })}
       >
-        <div
-          className={cx('col-8 mb2', {
-            'md:col-3': isContentVerticalOrHorizontalLeft,
-            'md:col-4 md:flex md:flex-row': isContentHorizontalRight,
-          })}
-        >
-          {description && (
-            <Markdown
-              fontSize="small"
-              src={description}
-              className={cx({
-                'md:col-6': isContentHorizontalRight,
-              })}
-            />
-          )}
+        <div className="col-8 mb2 md:col-3">
+          {description && <Markdown fontSize="small" src={description} />}
         </div>
         <div
           className={cx('col-8 flex flex-row', {
