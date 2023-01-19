@@ -9,42 +9,60 @@ import { SimpleFragment } from 'models';
 
 import { List, Markdown } from 'components/base';
 
-const BlockGeneralInfo = props => {
+const BlockGeneralInfo = (props) => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
   const design = get(fields, 'design.simpleFragments', {});
   const techStack = get(fields, 'techStack.simpleFragments', {});
   const contentAlign = get(fields, 'contentAlign', 'Horizontal').toLowerCase();
+  const horizontalContentColumn = get(
+    fields,
+    'horizontalContentColumn',
+    'Left'
+  ).toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 1);
   const marginTop = get(fields, 'marginTop', 1);
+
+  /* frequently used class conditions */
+  const isContentHorizontalRight =
+    contentAlign === 'horizontal' && horizontalContentColumn !== 'left';
+  const isContentVerticalOrHorizontalLeft =
+    (contentAlign === 'horizontal' && horizontalContentColumn === 'left') ||
+    contentAlign === 'vertical';
 
   return (
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockGeneralInfo px1 flex flex-col"
     >
-      <div className="col-8 md:col-3">
+      <div
+        className={cx('col-8 md:col-3', {
+          'self-end': isContentHorizontalRight,
+        })}
+      >
         {header && (
           <h1 className="BlockGeneralInfo__header paragraph mb1_5">{header}</h1>
         )}
       </div>
       <div
         className={cx('flex flex-col', {
-          'md:flex-row md:justify-between': contentAlign === 'horizontal',
-          'md:flex-col': contentAlign === 'vertical'
+          'md:justify-between': contentAlign === 'horizontal',
+          'md:flex-row': isContentVerticalOrHorizontalLeft,
+          'md:flex-row-reverse': isContentHorizontalRight,
+          'md:flex-col': contentAlign === 'vertical',
         })}
       >
-        <div className="col-8 md:col-3 mb2">
+        <div className="col-8 mb2 md:col-3">
           {description && <Markdown fontSize="small" src={description} />}
         </div>
         <div
           className={cx('col-8 flex flex-row', {
             'md:col-4 justify-end': contentAlign === 'horizontal',
-            'md:col-3 justify-between': contentAlign === 'vertical'
+            'md:col-3 justify-between': contentAlign === 'vertical',
           })}
         >
           <div className="col-4 md:col-2">
@@ -74,9 +92,9 @@ BlockGeneralInfo.propTypes = {
       techStack: SimpleFragment,
       contentAlign: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockGeneralInfo;
