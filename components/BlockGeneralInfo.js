@@ -23,7 +23,6 @@ const BlockGeneralInfo = (props) => {
   ).toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 1);
   const marginTop = get(fields, 'marginTop', 1);
-
   /* frequently used class conditions */
   const isContentHorizontalRight =
     contentAlign === 'horizontal' && horizontalContentColumn !== 'left';
