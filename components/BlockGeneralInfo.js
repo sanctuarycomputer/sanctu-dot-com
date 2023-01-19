@@ -26,9 +26,9 @@ const BlockGeneralInfo = (props) => {
 
   /* frequently used class conditions */
   const isContentHorizontalRight =
-    contentAlign === 'horizontal' && horizontalContentColumn === 'left';
+    contentAlign === 'horizontal' && horizontalContentColumn !== 'left';
   const isContentVerticalOrHorizontalLeft =
-    (contentAlign === 'horizontal' && horizontalContentColumn !== 'left') ||
+    (contentAlign === 'horizontal' && horizontalContentColumn === 'left') ||
     contentAlign === 'vertical';
 
   return (
