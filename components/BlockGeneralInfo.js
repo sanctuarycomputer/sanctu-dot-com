@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import get from 'utils/get';
 import simpleFragmentToListItems from 'utils/simpleFragmentToListItems';
 import cx from 'classnames';
 
 import { SimpleFragment } from 'models';
-
 import { List, Markdown } from 'components/base';
 
 const BlockGeneralInfo = (props) => {
