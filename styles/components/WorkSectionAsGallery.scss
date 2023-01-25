@@ -17,23 +17,27 @@
     }
     background: linear-gradient(to bottom, transparent 0%, black 200%);
 
-    font-family: $sans-serif-stack;
-    font-size: 0.75rem;
+    @extend .tiny;
+    line-height: 1.125rem;
+    margin: 0;
+
+    @include media('md') {
+      line-height: 1.5rem;
+    }
+
+    @include media('lg-up') {
+      line-height: 2rem;
+    }
+
     &--title {
       font-weight: bold;
     }
 
     z-index: 99;
 
-    &--info {
-      height: 3rem;
-    }
-
     &--video-button {
       all: unset;
       cursor: pointer;
-      height: 2rem;
-      margin: 0rem 0.5rem 0.5rem 0rem;
     }
   }
 

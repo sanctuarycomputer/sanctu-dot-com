@@ -60,13 +60,13 @@ const Work = ({ work, width = '100vw' }) => {
   return (
     <>
       <div
-        className={`WorkSectionAsGallery__work-hover-overlay ${
+        className={`WorkSectionAsGallery__work-hover-overlay lg:p1_5 md:p1 p_625 ${
           workIsImage
             ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
             : 'WorkSectionAsGallery__work-hover-overlay--for-video'
         } flex justify-between items-end color-white absolute`}
       >
-        <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
+        <div className="flex flex-col">
           <div className="WorkSectionAsGallery__work-hover-overlay--title">
             {title}
           </div>

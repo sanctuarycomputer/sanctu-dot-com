@@ -28,7 +28,7 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
           <div className="block col-8 mb_5 md:mb1 relative">
             <Work work={works[0]} />
           </div>
-          <div className="flex col-8 pb_5 md:pb1 items-start">
+          <div className="flex col-8 pb_5 md:pb1 items-end">
             <div className="block col-4">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
