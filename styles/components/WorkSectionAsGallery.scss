@@ -16,11 +16,13 @@
       opacity: 0;
     }
 
+    transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+
     &--light {
       background: linear-gradient(
         to bottom,
-        transparent 0%,
-        color('white') 200%
+        transparent 50%,
+        rgba(255, 255, 255, 0.6) 150%
       );
       color: black;
       &:hover {
@@ -29,7 +31,11 @@
     }
 
     &--dark {
-      background: linear-gradient(to bottom, transparent 0%, black 200%);
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.5) 150%
+      );
       color: white;
       &:hover {
         opacity: 1;
