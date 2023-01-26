@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+
 import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
