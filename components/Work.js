@@ -52,7 +52,11 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
-  const hoveredStateTheme = get(work, 'fields.hoveredStateTheme', 'Dark').toLowerCase();
+  const hoveredStateTheme = get(
+    work,
+    'fields.hoveredStateTheme',
+    'Dark'
+  ).toLowerCase();
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
@@ -72,17 +76,25 @@ const Work = ({ work, width = '100vw' }) => {
           target={caseStudySlug ? '_self' : '_blank'}
         >
           <div
-            className={`WorkSectionAsGallery__work-hover-overlay pointer ${
-              workIsImage
-                ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-                : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-            } flex justify-between items-end color-white absolute`}
+            className={cx(
+              `WorkSectionAsGallery__work-hover-overlay pointer ${
+                workIsImage
+                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
+                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
+              } flex justify-between items-end absolute`,
+              {
+                'WorkSectionAsGallery__work-hover-overlay--dark':
+                  hoveredStateTheme === 'dark',
+                'WorkSectionAsGallery__work-hover-overlay--light':
+                  hoveredStateTheme === 'light',
+              }
+            )}
           >
             <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
                 {title}
               </div>
-              <div className="decoration-none color-white">
+              <div className="decoration-none">
                 {caseStudySlug ? '(read case study)' : '→ visit the site'}
               </div>
             </div>
