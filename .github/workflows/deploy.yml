@@ -13,6 +13,10 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           scope: ${{ secrets.VERCEL_ORG_ID }}
+          
+      - name: Check Formatting
+        id: check_formatting
+        run: yarn prettier --check .
 
   deploy-production:
     if: github.ref == 'refs/heads/production'
@@ -27,3 +31,4 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           scope: ${{ secrets.VERCEL_ORG_ID }}
           vercel-args: --prod
+
