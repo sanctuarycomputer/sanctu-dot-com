@@ -11,9 +11,9 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
     <div
       aria-hidden={!shouldShowOverlay}
       className={cx(
-        'Overlay fixed vw100 vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3 opacity-0',
+        'Overlay fixed vh100 flex flex-col overflow-hidden col-12 bg-color-gray-darkest color-white z3 opacity-0',
         {
-          'Overlay--active': !!shouldShowOverlay
+          'Overlay--active': !!shouldShowOverlay,
         }
       )}
     >
@@ -38,8 +38,8 @@ const Overlay = ({ socialMedia, shouldShowOverlay }) => {
           </div>
           <div className="Overlay__paragraph col-12 md:col-4">
             <p>
-              Website hours are Monday to Friday 7 AM - 7 PM (in your browser&apos;s
-              local time).
+              Website hours are Monday to Friday 7 AM - 7 PM (in your
+              browser&apos;s local time).
             </p>
           </div>
         </div>

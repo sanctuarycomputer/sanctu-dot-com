@@ -70,13 +70,13 @@ const Work = ({ work, width = '100vw' }) => {
           target={caseStudySlug ? '_self' : '_blank'}
         >
           <div
-            className={`WorkSectionAsGallery__work-hover-overlay pointer ${
+            className={`WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
               workIsImage
                 ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
                 : 'WorkSectionAsGallery__work-hover-overlay--for-video'
             } flex justify-between items-end color-white absolute`}
           >
-            <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
+            <div className="flex flex-col">
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
                 {title}
               </div>
@@ -114,7 +114,7 @@ const Work = ({ work, width = '100vw' }) => {
         <video
           id={id}
           key={id}
-          className="w100 h100"
+          className="block w100 h100"
           autoPlay
           loop
           muted
