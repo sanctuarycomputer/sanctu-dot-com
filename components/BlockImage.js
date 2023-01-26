@@ -10,7 +10,7 @@ import { ContentfulMedia } from 'models';
 
 import { Image } from 'components/base';
 
-const BlockImage = props => {
+const BlockImage = (props) => {
   const fields = get(props, 'block.fields');
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const imageHorizontalAlignment = get(
@@ -26,18 +26,26 @@ const BlockImage = props => {
   const imageVariant = get(fields, 'imageVariant', 'Full').toLowerCase();
   const desktopImageOne = flattenImageData(get(fields, 'imageOne', {}));
   const desktopImageTwo = flattenImageData(get(fields, 'imageTwo', {}));
-  const mobileImageOne = flattenImageData(get(fields, 'mobileImageOne', desktopImageOne));
-  const mobileImageTwo = flattenImageData(get(fields, 'mobileImageTwo', desktopImageTwo));
-  const selectedSizes = Breakpoints.EXTRA_SMALL.label === currentBreakpoint ? '100vw' : '50vw';
-  const isMobile = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint);
+  const mobileImageOne = flattenImageData(
+    get(fields, 'mobileImageOne', desktopImageOne)
+  );
+  const mobileImageTwo = flattenImageData(
+    get(fields, 'mobileImageTwo', desktopImageTwo)
+  );
+  const selectedSizes =
+    Breakpoints.EXTRA_SMALL.label === currentBreakpoint ? '100vw' : '50vw';
+  const isMobile = [
+    Breakpoints.EXTRA_SMALL.label,
+    Breakpoints.SMALL.label,
+  ].includes(currentBreakpoint);
   const imageOne = isMobile ? mobileImageOne : desktopImageOne;
   const imageTwo = isMobile ? mobileImageTwo : desktopImageTwo;
   const imageOneCaption = get(fields, 'imageOneCaption', '');
   const imageTwoCaption = get(fields, 'imageTwoCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const imageOneUrl = imageOne.url
-  const imageTwoUrl = imageTwo.url
+  const imageOneUrl = imageOne.url;
+  const imageTwoUrl = imageTwo.url;
   const hasTwoImages = imageVariant === 'two' && imageOneUrl && imageTwoUrl;
   const hasOneImage = imageVariant !== 'two' && (imageOneUrl || imageTwoUrl);
 
@@ -45,13 +53,13 @@ const BlockImage = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className={cx('BlockImage flex px1 pb3 md:pb12', {
         'justify-center': imageHorizontalAlignment === 'center',
         'justify-start md:px1': imageHorizontalAlignment === 'left',
         'justify-end md:px1': imageHorizontalAlignment === 'right',
-        'md:px0': imageVariant === 'full'
+        'md:px0': imageVariant === 'full',
       })}
     >
       {hasOneImage && (
@@ -61,7 +69,7 @@ const BlockImage = props => {
               imageVariant === 'full' || imageVariant === 'xlarge',
             'md:col-6': imageVariant === 'large',
             'md:col-5': imageVariant === 'medium',
-            'md:col-4': imageVariant === 'small'
+            'md:col-4': imageVariant === 'small',
           })}
         >
           <Image
@@ -70,7 +78,7 @@ const BlockImage = props => {
             height={imageOne.height}
             width={imageOne.width}
             alt={imageOne.description}
-            sizes='100vw'
+            sizes="100vw"
           />
           {imageOneCaption && (
             <p className="image-caption small color-gray-darkest mt_5">
@@ -85,7 +93,7 @@ const BlockImage = props => {
             'BlockTwoImages__image-container col-8 flex flex-col sm:flex-row',
             {
               'sm:items-start': imageVerticalAlignment === 'top',
-              'sm:items-end': imageVerticalAlignment === 'bottom'
+              'sm:items-end': imageVerticalAlignment === 'bottom',
             }
           )}
         >
@@ -138,9 +146,9 @@ BlockImage.propTypes = {
       imageOneCaption: PropTypes.string,
       imageTwoCaption: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default withBreakpoints(BlockImage);

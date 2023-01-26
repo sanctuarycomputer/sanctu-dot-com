@@ -9,7 +9,7 @@ import { ContentfulMedia } from 'models';
 import { Image } from 'components/base';
 import { Markdown } from 'components/base';
 
-const BlockThreeColumnHero = props => {
+const BlockThreeColumnHero = (props) => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const headerDescription = get(fields, 'headerDescription', '');
@@ -22,7 +22,7 @@ const BlockThreeColumnHero = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockThreeColumnHero flex flex-col pb3 md:pb7"
     >
@@ -46,7 +46,7 @@ const BlockThreeColumnHero = props => {
                 src={headerImage.url}
                 width={headerImage.width}
                 height={headerImage.height}
-                sizes='50px'
+                sizes="50px"
               />
             </div>
           )}
@@ -77,7 +77,7 @@ const BlockThreeColumnHero = props => {
                 src={headerImage.url}
                 width={headerImage.width}
                 height={headerImage.height}
-                sizes='50px'
+                sizes="50px"
               />
             </div>
           )}
@@ -95,9 +95,9 @@ BlockThreeColumnHero.propTypes = {
       paragraph: PropTypes.string,
       headerImage: ContentfulMedia,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockThreeColumnHero;

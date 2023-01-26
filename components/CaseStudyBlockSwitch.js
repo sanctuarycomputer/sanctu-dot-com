@@ -1,11 +1,17 @@
 import React from 'react';
 import get from 'utils/get';
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
 const BlockGeneralInfo = dynamic(() => import('components/BlockGeneralInfo'));
-const BlockGeneralParagraph = dynamic(() => import('components/BlockGeneralParagraph'));
-const BlockLargeParagraph = dynamic(() => import('components/BlockLargeParagraph'));
-const BlockThreeColumnList = dynamic(() => import('components/BlockThreeColumnList'));
+const BlockGeneralParagraph = dynamic(() =>
+  import('components/BlockGeneralParagraph')
+);
+const BlockLargeParagraph = dynamic(() =>
+  import('components/BlockLargeParagraph')
+);
+const BlockThreeColumnList = dynamic(() =>
+  import('components/BlockThreeColumnList')
+);
 const BlockImage = dynamic(() => import('components/BlockImage'));
 const BlockImageText = dynamic(() => import('components/BlockImageText'));
 const BlockHero = dynamic(() => import('components/BlockHero'));
@@ -13,14 +19,18 @@ const BlockVideo = dynamic(() => import('components/BlockVideo'));
 const BlockFooterLinks = dynamic(() => import('components/BlockFooterLinks'));
 const BlockViewMore = dynamic(() => import('components/BlockViewMore'));
 const BlockTwoColumn = dynamic(() => import('components/BlockTwoColumn'));
-const BlockThreeColumnHero = dynamic(() => import('components/BlockThreeColumnHero'));
-const BlockFooterWithLists = dynamic(() => import('components/BlockFooterWithLists'));
+const BlockThreeColumnHero = dynamic(() =>
+  import('components/BlockThreeColumnHero')
+);
+const BlockFooterWithLists = dynamic(() =>
+  import('components/BlockFooterWithLists')
+);
 
-const CaseStudyBlockSwitch = props => {
+const CaseStudyBlockSwitch = (props) => {
   const { block, global } = props;
   const type = get(block, 'sys.contentType.sys.id');
 
-  const Block = type => {
+  const Block = (type) => {
     switch (type) {
       case 'caseStudyBlockGeneralInfo':
         return <BlockGeneralInfo block={block} />;

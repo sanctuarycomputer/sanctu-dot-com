@@ -10,7 +10,7 @@ import { ContentfulMedia } from 'models';
 
 import { Image, Markdown } from 'components/base';
 
-const BlockImageText = props => {
+const BlockImageText = (props) => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
@@ -46,20 +46,25 @@ const BlockImageText = props => {
   const verticalAlign = get(fields, 'verticalAlign', 'Top').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
+  const selectedSizes = [
+    Breakpoints.EXTRA_SMALL.label,
+    Breakpoints.SMALL.label,
+  ].includes(currentBreakpoint)
+    ? '100vw'
+    : '50vw';
 
   return (
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockImageText px1 flex flex-col pb1"
     >
       {header && headerOnTop && (
         <p
           className={cx('mb3 paragraph', {
-            'none md:block': headerOnTop
+            'none md:block': headerOnTop,
           })}
         >
           {header}
@@ -71,7 +76,7 @@ const BlockImageText = props => {
           'md:flex-row-reverse': imageTextAlign === 'text:image',
           'sm:items-start': verticalAlign === 'top',
           'sm:items-end': verticalAlign === 'bottom',
-          'flex-col-reverse': imageTextAlignOnMobile === 'text:image'
+          'flex-col-reverse': imageTextAlignOnMobile === 'text:image',
         })}
       >
         <div
@@ -83,11 +88,11 @@ const BlockImageText = props => {
             'md:col-2': imageTextRatio === '2:6',
             'md:mr_5': imageTextAlign === 'image:text',
             'md:ml_5': imageTextAlign === 'text:image',
-            'mb1 md:mb0': imageTextAlignOnMobile === 'image:text'
+            'mb1 md:mb0': imageTextAlignOnMobile === 'image:text',
           })}
         >
-          <Image 
-            alt={image.description} 
+          <Image
+            alt={image.description}
             src={image.url}
             width={image.width}
             height={image.height}
@@ -103,7 +108,7 @@ const BlockImageText = props => {
             'md:col-6': imageTextRatio === '2:6',
             'md:ml_5': imageTextAlign === 'image:text',
             'md:mr_5': imageTextAlign === 'text:image',
-            'mb1 md:mb0': imageTextAlignOnMobile === 'text:image'
+            'mb1 md:mb0': imageTextAlignOnMobile === 'text:image',
           })}
         >
           {header && (
@@ -117,7 +122,7 @@ const BlockImageText = props => {
                 'BlockImageText__header--3': headerWidth === 3,
                 'BlockImageText__header--4': headerWidth === 4,
                 'BlockImageText__header--5': headerWidth === 5,
-                'BlockImageText__header--6': headerWidth === 6
+                'BlockImageText__header--6': headerWidth === 6,
               })}
             >
               <p className="paragraph">{header}</p>
@@ -132,14 +137,14 @@ const BlockImageText = props => {
               'BlockImageText__description--3': descriptionWidth === 3,
               'BlockImageText__description--4': descriptionWidth === 4,
               'BlockImageText__description--5': descriptionWidth === 5,
-              'BlockImageText__description--6': descriptionWidth === 6
+              'BlockImageText__description--6': descriptionWidth === 6,
             })}
           >
             {description && (
               <Markdown
                 className={cx('BlockImageText__description paragraph', {
                   paragraph: descriptionFont === 'serif',
-                  small: descriptionFont === 'sans-serif'
+                  small: descriptionFont === 'sans-serif',
                 })}
                 src={description}
               />
@@ -181,9 +186,9 @@ BlockImageText.propTypes = {
       imageTextAlign: PropTypes.string,
       imageTextAlignOnMobile: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default withBreakpoints(BlockImageText);

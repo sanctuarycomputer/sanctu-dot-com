@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 class CaseStudyTopNav extends Component {
   state = {
-    showCaseStudyTopNav: false
+    showCaseStudyTopNav: false,
   };
 
   handleScroll = () => {
@@ -46,10 +46,7 @@ class CaseStudyTopNav extends Component {
     return (
       <>
         <div className="md:none p1">
-          <Link
-            href="/"
-            passHref
-          >
+          <Link href="/" passHref>
             <a
               className="small link decoration-none"
               aria-label="Visit Sanctuary Computer"
@@ -63,14 +60,12 @@ class CaseStudyTopNav extends Component {
           className={cx(
             'CaseStudyTopNav events-none none opacity-0 l0 r0 t0 p1 nav-z-index',
             {
-              'CaseStudyTopNav--active opacity-1 events-all': showCaseStudyTopNav
+              'CaseStudyTopNav--active opacity-1 events-all':
+                showCaseStudyTopNav,
             }
           )}
         >
-          <Link
-            href="/"
-            passHref
-          >
+          <Link href="/" passHref>
             <a
               className="small link decoration-none"
               aria-label="Visit Sanctuary Computer"

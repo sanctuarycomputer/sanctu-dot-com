@@ -9,20 +9,24 @@ import Work from 'components/Work';
 
 import get from 'utils/get';
 
-const WorkGalleryAssetBlock = ({assetBlock}) => {
+const WorkGalleryAssetBlock = ({ assetBlock }) => {
   if (!assetBlock) {
-    return null; 
+    return null;
   }
 
-  const displayFirstAssetAsFullWidth = get(assetBlock, 'fields.displayFirstAssetAsFullWidth', true);
+  const displayFirstAssetAsFullWidth = get(
+    assetBlock,
+    'fields.displayFirstAssetAsFullWidth',
+    true
+  );
   const works = get(assetBlock, 'fields.works', []);
 
   return (
     <div className="flex-col">
-      {displayFirstAssetAsFullWidth && 
+      {displayFirstAssetAsFullWidth && (
         <>
           <div className="block col-8 relative">
-            <Work work={works[0]}/>
+            <Work work={works[0]} />
           </div>
           <div className="flex col-8 pb_5 md:pb1 items-end">
             <div className="block col-4 pr_25 md:pr_5">
@@ -37,8 +41,8 @@ const WorkGalleryAssetBlock = ({assetBlock}) => {
             </div>
           </div>
         </>
-      }
-      {!displayFirstAssetAsFullWidth && 
+      )}
+      {!displayFirstAssetAsFullWidth && (
         <>
           <div className="flex col-8 pb_5 md:pb1 items-end">
             <div className="block col-4 pr_25 md:pr_5">
@@ -53,15 +57,15 @@ const WorkGalleryAssetBlock = ({assetBlock}) => {
             </div>
           </div>
           <div className="block col-8 relative">
-            <Work work={works[2]}/>
+            <Work work={works[2]} />
           </div>
         </>
-      }
+      )}
     </div>
   );
-}
+};
 
-const WorkGalleryTextBlock = ({textBlock}) => {
+const WorkGalleryTextBlock = ({ textBlock }) => {
   if (!textBlock) {
     return null;
   }
@@ -69,39 +73,50 @@ const WorkGalleryTextBlock = ({textBlock}) => {
   const text = get(textBlock, 'fields.text', '');
   return (
     <div>
-      {text &&
+      {text && (
         <Markdown
           className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:p13 Markdown--medium"
           src={text}
         />
-      }
+      )}
     </div>
   );
 };
 
 const WorkSectionAsGallery = (props) => {
-  const fields = get(props, 'workGallery.fields', {}); 
+  const fields = get(props, 'workGallery.fields', {});
   const workGalleryAssetBlocks = get(fields, 'workGalleryAssetBlocks', []);
   const workGalleryTextBlocks = get(fields, 'workGalleryTextBlocks', []);
   const renderAssetBlocksFirst = get(fields, 'renderAssetBlocksFirst', true);
 
   // In order to render all elements of both arrays, we need to loop an amount equal to the longer of the two arrays.
-  const numberOfBlocksToLoopThrough = workGalleryAssetBlocks.length > workGalleryTextBlocks.length ? [...Array(workGalleryAssetBlocks.length).keys()] : [...Array(workGalleryTextBlocks.length).keys()]; 
-  
+  const numberOfBlocksToLoopThrough =
+    workGalleryAssetBlocks.length > workGalleryTextBlocks.length
+      ? [...Array(workGalleryAssetBlocks.length).keys()]
+      : [...Array(workGalleryTextBlocks.length).keys()];
+
   return (
     <div className="WorkSectionAsGallery mt2">
       {numberOfBlocksToLoopThrough.map((index) => {
         return (
           <div key={index}>
-            {renderAssetBlocksFirst && <WorkGalleryAssetBlock assetBlock={workGalleryAssetBlocks[index]}/>}
-            <WorkGalleryTextBlock textBlock={workGalleryTextBlocks[index]}/>
-            {!renderAssetBlocksFirst && <WorkGalleryAssetBlock assetBlock={workGalleryAssetBlocks[index]}/>}
+            {renderAssetBlocksFirst && (
+              <WorkGalleryAssetBlock
+                assetBlock={workGalleryAssetBlocks[index]}
+              />
+            )}
+            <WorkGalleryTextBlock textBlock={workGalleryTextBlocks[index]} />
+            {!renderAssetBlocksFirst && (
+              <WorkGalleryAssetBlock
+                assetBlock={workGalleryAssetBlocks[index]}
+              />
+            )}
           </div>
         );
       })}
     </div>
   );
-}
+};
 
 const WorkPropType = PropTypes.shape({
   fields: PropTypes.shape({
@@ -112,30 +127,29 @@ const WorkPropType = PropTypes.shape({
     linkLabel: PropTypes.string,
     stack: SimpleFragment,
     collaborators: SimpleFragment,
-    video: ContentfulMedia
-  })
-}); 
+    video: ContentfulMedia,
+  }),
+});
 
 const WorkGalleryTextBlockPropType = PropTypes.shape({
-  text: PropTypes.string
-})
+  text: PropTypes.string,
+});
 
 const WorkGalleryAssetBlockPropType = PropTypes.shape({
-  title: PropTypes.string, 
+  title: PropTypes.string,
   works: PropTypes.arrayOf(WorkPropType),
-  displayFirstAssetAsFullWidth: PropTypes.bool
-})
+  displayFirstAssetAsFullWidth: PropTypes.bool,
+});
 
 WorkSectionAsGallery.propTypes = {
   workGallery: PropTypes.shape({
     fields: PropTypes.shape({
-      title: PropTypes.string, 
+      title: PropTypes.string,
       workGalleryAssetBlocks: PropTypes.arrayOf(WorkGalleryAssetBlockPropType),
       workGalleryTextBlocks: PropTypes.arrayOf(WorkGalleryTextBlockPropType),
-      renderAssetBlocksFirst: PropTypes.bool
-    })
-  })
-}
+      renderAssetBlocksFirst: PropTypes.bool,
+    }),
+  }),
+};
 
 export default WorkSectionAsGallery;
-

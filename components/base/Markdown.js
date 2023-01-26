@@ -8,7 +8,7 @@ const Markdown = ({ className, src, fontSize = '' }) => (
   <div
     className={cx('Markdown', className, {
       'Markdown--medium': fontSize === 'medium',
-      'Markdown--small': fontSize === 'small'
+      'Markdown--small': fontSize === 'small',
     })}
   >
     <Remarkable source={src} />
@@ -18,7 +18,7 @@ const Markdown = ({ className, src, fontSize = '' }) => (
 Markdown.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
-  fontSize: PropTypes.string
+  fontSize: PropTypes.string,
 };
 
 export default Markdown;

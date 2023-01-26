@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import NextImage from 'next/image'
+import NextImage from 'next/image';
 
 class Image extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Image extends Component {
     this.state = {
       loaded: false,
       classes: cx('Image preload', props.className),
-      styles: cx('Image', props.styleName)
+      styles: cx('Image', props.styleName),
     };
   }
 
@@ -23,39 +23,53 @@ class Image extends Component {
 
     this.props.onImgLoad();
     this.setState({ classes, loaded });
-  }
+  };
 
   render() {
-    const { src, alt, style, bg, children, width, height, quality, layout, loading, sizes } = this.props;
+    const {
+      src,
+      alt,
+      style,
+      bg,
+      children,
+      width,
+      height,
+      quality,
+      layout,
+      loading,
+      sizes,
+    } = this.props;
     const { classes } = this.state;
 
     let bgStyle = {
       ...style,
       backgroundColor: 'whitesmoke',
-      backgroundImage: `url(${src})`
+      backgroundImage: `url(${src})`,
     };
 
     if (!bg) {
       if (Object.keys(style).length > 0) {
-        console.error('You cannot use style on next/image')
+        console.error('You cannot use style on next/image');
       }
 
-      if (layout !== 'fill' && (!width && !height)) {
-        console.error('width and height must supplied for next/image')
+      if (layout !== 'fill' && !width && !height) {
+        console.error('width and height must supplied for next/image');
       }
     }
 
     const styleNames = cx('Image', {
-      'Image--active': this.state.loaded
+      'Image--active': this.state.loaded,
     });
 
     if (!bg) {
       return (
         <>
-          <div className={cx("absolute", {
-            'Image__selecting-div': !this.state.loaded,
-            'Image__selecting-div--loaded': this.state.loaded
-          })}></div>
+          <div
+            className={cx('absolute', {
+              'Image__selecting-div': !this.state.loaded,
+              'Image__selecting-div--loaded': this.state.loaded,
+            })}
+          ></div>
           <NextImage
             className={`${classes} ${styleNames}`}
             src={src}

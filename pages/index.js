@@ -18,19 +18,26 @@ let timerID = null;
 
 const MainView = (props) => {
   const getShouldShowOverlay = () => {
-    if (!get(model, 'fields.disableNightMode', '') && typeof window !== 'undefined') {
+    if (
+      !get(model, 'fields.disableNightMode', '') &&
+      typeof window !== 'undefined'
+    ) {
       const now = new Date();
       const currentTimeInHours = now.getHours();
 
-      return currentTimeInHours < dayStartTimeInHours || currentTimeInHours >= dayEndTimeInHours;
+      return (
+        currentTimeInHours < dayStartTimeInHours ||
+        currentTimeInHours >= dayEndTimeInHours
+      );
     } else {
       return false;
     }
   };
 
-  const [shouldShowOverlay, setShouldShowOverlay] = useState(false)
-  const [windowAndHackerDojoIsAvailable, setWindowAndHackerDojoIsAvailable] = useState(false)
-  const [renderContent, setRenderContent] = useState(false)
+  const [shouldShowOverlay, setShouldShowOverlay] = useState(false);
+  const [windowAndHackerDojoIsAvailable, setWindowAndHackerDojoIsAvailable] =
+    useState(false);
+  const [renderContent, setRenderContent] = useState(false);
 
   const toggleDocumentClass = () => {
     const html = document.documentElement;
@@ -43,37 +50,41 @@ const MainView = (props) => {
   };
 
   const addToggleNightmode = () => {
-    if (typeof window !== "undefined" && !!window.HackerDojo) {
+    if (typeof window !== 'undefined' && !!window.HackerDojo) {
       window.HackerDojo.on('enableNightmode', () => {
-        setShouldShowOverlay(true)
+        setShouldShowOverlay(true);
         clearInterval(timerID);
       });
 
       window.HackerDojo.on('disableNightmode', () => {
-        setShouldShowOverlay(false)
+        setShouldShowOverlay(false);
         clearInterval(timerID);
       });
     }
-  }
+  };
 
   const getWindowAndHackerDojoIsAvailable = () => {
-    if (!windowAndHackerDojoIsAvailable && typeof window !== "undefined" && !!window.HackerDojo) {
-      setWindowAndHackerDojoIsAvailable(true)
+    if (
+      !windowAndHackerDojoIsAvailable &&
+      typeof window !== 'undefined' &&
+      !!window.HackerDojo
+    ) {
+      setWindowAndHackerDojoIsAvailable(true);
     }
-  }
+  };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setShouldShowOverlay(getShouldShowOverlay())
-      getWindowAndHackerDojoIsAvailable()
+    if (typeof window !== 'undefined') {
+      setShouldShowOverlay(getShouldShowOverlay());
+      getWindowAndHackerDojoIsAvailable();
 
       timerID = setInterval(() => {
-        setShouldShowOverlay(getShouldShowOverlay())
-        getWindowAndHackerDojoIsAvailable()
+        setShouldShowOverlay(getShouldShowOverlay());
+        getWindowAndHackerDojoIsAvailable();
       }, 1000);
 
       toggleDocumentClass();
-      setRenderContent(true)
+      setRenderContent(true);
     }
 
     return () => {
@@ -81,17 +92,16 @@ const MainView = (props) => {
 
       const html = document.documentElement;
       html && html.classList.remove('overlay-is-active');
-    }
+    };
   }, []);
 
-
   useEffect(() => {
-    addToggleNightmode()
-  }, [windowAndHackerDojoIsAvailable])
+    addToggleNightmode();
+  }, [windowAndHackerDojoIsAvailable]);
 
   useEffect(() => {
     toggleDocumentClass();
-  }, [shouldShowOverlay])
+  }, [shouldShowOverlay]);
 
   const model = props.model;
 
@@ -111,7 +121,9 @@ const MainView = (props) => {
             className="flex md:flex-row flex-col"
           >
             <div className="col-8 flex flex-col sticky-spacer">
-              <IntroSectionImages images={get(model, 'fields.introImages', {})} /> 
+              <IntroSectionImages
+                images={get(model, 'fields.introImages', {})}
+              />
               <AboutSection
                 whatWeDo={get(model, 'fields.whatWeDo.simpleFragments', {})}
                 selectedClients={get(
@@ -139,9 +151,9 @@ const MainView = (props) => {
             </div>
           </div>
           <div aria-hidden={shouldShowOverlay}>
-             <WorkSectionAsGallery
-                workGallery={get(model, 'fields.workGallery', {})}
-             />
+            <WorkSectionAsGallery
+              workGallery={get(model, 'fields.workGallery', {})}
+            />
           </div>
           <div aria-hidden={shouldShowOverlay}>
             <Gallery
@@ -170,21 +182,23 @@ const MainView = (props) => {
       )}
     </Fragment>
   );
-}
+};
 
 export const getStaticProps = async () => {
   const contentful = ContentfulClient();
 
-  const model = await contentful.getEntries({
-    content_type: 'sanctuary',
-    include: 4,
-  }).then(res => res.items[0]);
+  const model = await contentful
+    .getEntries({
+      content_type: 'sanctuary',
+      include: 4,
+    })
+    .then((res) => res.items[0]);
 
   return {
     props: {
-      model
-    }
-  }
+      model,
+    },
+  };
 };
 
 export default MainView;

@@ -16,8 +16,8 @@ class Gallery extends PureComponent {
     );
   };
   renderGalleryRow = (imageGroup, index, imageMatrix) => {
-    const imageOne = flattenImageData(imageGroup[0])
-    const imageTwo = flattenImageData(imageGroup[1])
+    const imageOne = flattenImageData(imageGroup[0]);
+    const imageTwo = flattenImageData(imageGroup[1]);
     const imageOneUrl = imageOne.url;
     const imageTwoUrl = imageTwo.url;
 
@@ -34,7 +34,7 @@ class Gallery extends PureComponent {
               src={imageOneUrl}
               width={imageOne.width}
               height={imageOne.height}
-              sizes='50vw'
+              sizes="50vw"
             />
             <StudioDetailsSection
               recentArticles={get(this, 'props.recentArticles', {})}
@@ -64,7 +64,7 @@ class Gallery extends PureComponent {
             width={imageOne.width}
             height={imageOne.height}
             alt={imageOne.description}
-            sizes='50vw'
+            sizes="50vw"
           />
         </div>
         <div className="block col-4 pl_25 md:pl_5">
@@ -73,7 +73,7 @@ class Gallery extends PureComponent {
             width={imageTwo.width}
             height={imageTwo.height}
             alt={imageTwo.description}
-            sizes='50vw'
+            sizes="50vw"
           />
         </div>
       </div>
@@ -106,11 +106,11 @@ Gallery.propTypes = {
     PropTypes.shape({
       fields: PropTypes.shape({
         file: PropTypes.shape({
-          url: PropTypes.string
-        })
-      })
+          url: PropTypes.string,
+        }),
+      }),
     })
-  )
+  ),
 };
 
 export default Gallery;

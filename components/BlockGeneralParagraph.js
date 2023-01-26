@@ -5,7 +5,7 @@ import get from 'utils/get';
 
 import { Markdown } from 'components/base';
 
-const BlockGeneralParagraph = props => {
+const BlockGeneralParagraph = (props) => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
@@ -16,7 +16,7 @@ const BlockGeneralParagraph = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockGeneralParagraph flex flex-col md:flex-row col-8 md:col-5 mxauto px1 md:px0 pb3 md:pb12"
     >
@@ -44,9 +44,9 @@ BlockGeneralParagraph.propTypes = {
       header: PropTypes.string,
       description: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockGeneralParagraph;

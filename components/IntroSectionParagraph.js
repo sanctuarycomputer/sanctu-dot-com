@@ -22,7 +22,7 @@ class IntroSectionParagraph extends PureComponent {
 }
 
 IntroSectionParagraph.propTypes = {
-  introParagraph: PropTypes.string
+  introParagraph: PropTypes.string,
 };
 
 export default IntroSectionParagraph;

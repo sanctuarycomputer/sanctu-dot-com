@@ -1,3 +1,3 @@
 export const Aspects = {
-  LANDSCAPE: 16 / 9
+  LANDSCAPE: 16 / 9,
 };

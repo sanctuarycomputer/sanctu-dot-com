@@ -64,7 +64,7 @@ AboutSection.propTypes = {
   selectedClients: SimpleFragment,
   technologyStack: SimpleFragment,
   software: SimpleFragment,
-  collaborators: SimpleFragment
+  collaborators: SimpleFragment,
 };
 
 export default AboutSection;

@@ -9,7 +9,7 @@ import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 import { ContentfulMedia } from 'models';
 import { Image } from 'components/base';
 
-const BlockVideo = props => {
+const BlockVideo = (props) => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const video = get(fields, 'video', '');
@@ -21,13 +21,18 @@ const BlockVideo = props => {
     videoSize === 'two' && image.url && video.fields.file.url;
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
+  const selectedSizes = [
+    Breakpoints.EXTRA_SMALL.label,
+    Breakpoints.SMALL.label,
+  ].includes(currentBreakpoint)
+    ? '100vw'
+    : '50vw';
 
   return (
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className={cx('BlockVideo pb3 md:pb7', {
         'md:col-8 mxauto': videoSize === 'full',
@@ -36,14 +41,14 @@ const BlockVideo = props => {
         'md:col-8 px1 md:px0 flex sm:justify-start':
           videoSize === 'half-left-align',
         'md:col-8 px1 md:px0 flex sm:justify-end':
-          videoSize === 'half-right-align'
+          videoSize === 'half-right-align',
       })}
     >
       {!hasTwoElements && (
         <div
           className={cx({
             'sm:col-4 sm:pl1': videoSize === 'half-left-align',
-            'sm:col-4 sm:pr1': videoSize === 'half-right-align'
+            'sm:col-4 sm:pr1': videoSize === 'half-right-align',
           })}
         >
           <video
@@ -60,7 +65,7 @@ const BlockVideo = props => {
       {hasTwoElements && (
         <div
           className={cx({
-            'flex flex-col md:flex-row px1': videoSize === 'two'
+            'flex flex-col md:flex-row px1': videoSize === 'two',
           })}
         >
           <div className="pb1 md:pb0 md:pr1 md:col-4">
@@ -99,9 +104,9 @@ BlockVideo.propTypes = {
       autoPlay: PropTypes.bool,
       loop: PropTypes.bool,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default withBreakpoints(BlockVideo);

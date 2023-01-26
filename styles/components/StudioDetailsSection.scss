@@ -1,5 +1,5 @@
 .StudioDetailsSection {
-  @include media("md") {
+  @include media('md') {
     height: calc(100vh - 135px);
     min-height: 500px;
   }

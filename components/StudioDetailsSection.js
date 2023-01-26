@@ -15,7 +15,7 @@ class StudioDetailsSection extends PureComponent {
     return (
       <div
         className={cx('StudioDetailsSection col-8 pt1', {
-          [this.props.className]: !!this.props.className
+          [this.props.className]: !!this.props.className,
         })}
       >
         <div className="flex flex-col md:flex-row mb2">
@@ -66,7 +66,7 @@ StudioDetailsSection.propTypes = {
   recentArticles: SimpleFragment,
   socialMedia: SimpleFragment,
   workSpaces: SimpleFragment,
-  availablePositions: SimpleFragment
+  availablePositions: SimpleFragment,
 };
 
 export default StudioDetailsSection;
