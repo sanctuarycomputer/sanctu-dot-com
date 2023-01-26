@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
 const PAUSE_VIDEO = '(Pause)';
@@ -51,6 +52,7 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
+  const hoveredStateTheme = get(work, 'fields.hoveredStateTheme', 'Dark').toLowerCase();
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
