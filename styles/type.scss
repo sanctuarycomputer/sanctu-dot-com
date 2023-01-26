@@ -23,7 +23,7 @@ $p-xl-line-height: 3.6rem;
     line-height: $p-md-line-height;
   }
 
-  @include media('lg-up') {
+  @include media('xl') {
     font-size: 3rem;
     line-height: $p-xl-line-height;
   }
@@ -42,19 +42,13 @@ $p-xl-line-height: 3.6rem;
   font-weight: 400;
 
   margin: 0 2px;
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.4px;
 
   @include media('md') {
     margin: 0 2px;
     font-size: 0.9375rem;
     letter-spacing: 0.4px;
-  }
-
-  @include media('lg-up') {
-    margin: 0 2px;
-    font-size: 1.25rem;
-    letter-spacing: 0.5px;
   }
 }
 

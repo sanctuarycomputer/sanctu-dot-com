@@ -25,10 +25,6 @@
       line-height: 1.5rem;
     }
 
-    @include media('lg-up') {
-      line-height: 2rem;
-    }
-
     &--title {
       font-weight: bold;
     }
