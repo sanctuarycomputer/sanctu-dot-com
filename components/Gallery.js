@@ -27,7 +27,7 @@ class Gallery extends PureComponent {
           className="flex flex-col md:flex-row col-8 pb_5 md:pb1"
           key={index}
         >
-          <div className="col-8 md:col-4 pr_25 md:pr_5">
+          <div className="col-8 md:col-4">
             <Image
               className="col-4 md:col-8"
               alt={imageOne.description}
@@ -43,7 +43,7 @@ class Gallery extends PureComponent {
               availablePositions={get(this, 'props.availablePositions', {})}
             />
           </div>
-          <div className="col-8 md:col-4 p_25 md:p_5">
+          <div className="col-8 md:col-4 md:ml1 md:mt1 md:mb1">
             <div className="sticky">
               <Markdown
                 src={get(this, 'props.settingExpectations')}
@@ -57,7 +57,7 @@ class Gallery extends PureComponent {
 
     return (
       <div className="flex col-8 pb_5 md:pb1 items-end" key={index}>
-        <div className="block col-4 pr_25 md:pr_5">
+        <div className="block col-4">
           {index === 0 ? this.renderAttribution() : null}
           <Image
             src={imageOneUrl}
@@ -67,7 +67,7 @@ class Gallery extends PureComponent {
             sizes="50vw"
           />
         </div>
-        <div className="block col-4 pl_25 md:pl_5">
+        <div className="block col-4 ml_5 md:ml1">
           <Image
             src={imageTwoUrl}
             width={imageTwo.width}
@@ -92,7 +92,7 @@ class Gallery extends PureComponent {
     );
 
     return (
-      <div className="col-8 p1 flex flex-wrap">
+      <div className="col-8 p1 flex flex-wrap overflow-hidden">
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}

@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
 const PAUSE_VIDEO = '(Pause)';
@@ -51,6 +52,11 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
+  const hoveredStateTheme = get(
+    work,
+    'fields.hoveredStateTheme',
+    'Dark'
+  ).toLowerCase();
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
@@ -59,55 +65,57 @@ const Work = ({ work, width = '100vw' }) => {
 
   return (
     <>
-      <div
-        className={`WorkSectionAsGallery__work-hover-overlay ${
-          workIsImage
-            ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-            : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-        } flex justify-between items-end color-white absolute`}
-      >
-        <div className="WorkSectionAsGallery__work-hover-overlay--info flex flex-col justify-evenly mb_5 ml_5">
-          <div className="WorkSectionAsGallery__work-hover-overlay--title">
-            {title}
-          </div>
-          {caseStudySlug ? (
-            <Link href={caseStudySlug}>
-              <a
-                className="decoration-none color-white"
-                aria-label={`read the case study for ${title}`}
-                rel="noopener noreferrer"
-              >
-                (read case study)
-              </a>
-            </Link>
-          ) : (
-            <Link href={link}>
-              <a
-                className="decoration-none color-white"
-                aria-label={`visit the site for ${title}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                → visit the site
-              </a>
-            </Link>
-          )}
-        </div>
-        {!workIsImage && (
-          <button
-            className="WorkSectionAsGallery__work-hover-overlay--video-button"
-            aria-label={`pause video for ${title}`}
-            ref={buttonRef}
-            onClick={() => {
-              videoStatus === PAUSE_VIDEO
-                ? setVideoStatus(PLAY_VIDEO)
-                : setVideoStatus(PAUSE_VIDEO);
-            }}
+      <Link href={caseStudySlug || link}>
+        <a
+          aria-label={
+            caseStudySlug
+              ? `read the case study for ${title}`
+              : `visit the site for ${title}`
+          }
+          rel="noopener noreferrer"
+          target={caseStudySlug ? '_self' : '_blank'}
+        >
+          <div
+            className={cx(
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
+                workIsImage
+                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
+                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
+              } flex justify-between items-end absolute`,
+              {
+                'WorkSectionAsGallery__work-hover-overlay--dark':
+                  hoveredStateTheme === 'dark',
+                'WorkSectionAsGallery__work-hover-overlay--light':
+                  hoveredStateTheme === 'light',
+              }
+            )}
           >
-            (Pause)
-          </button>
-        )}
-      </div>
+            <div className="flex flex-col">
+              <div className="WorkSectionAsGallery__work-hover-overlay--title">
+                {title}
+              </div>
+              <div className="decoration-none">
+                {caseStudySlug ? '(read case study)' : '→ visit the site'}
+              </div>
+            </div>
+            {!workIsImage && (
+              <button
+                className="WorkSectionAsGallery__work-hover-overlay--video-button"
+                aria-label={`pause video for ${title}`}
+                ref={buttonRef}
+                onClick={(e) => {
+                  e.preventDefault();
+                  videoStatus === PAUSE_VIDEO
+                    ? setVideoStatus(PLAY_VIDEO)
+                    : setVideoStatus(PAUSE_VIDEO);
+                }}
+              >
+                (Pause)
+              </button>
+            )}
+          </div>
+        </a>
+      </Link>
       {workIsImage ? (
         <Image
           alt={workImage.alt}
@@ -120,7 +128,7 @@ const Work = ({ work, width = '100vw' }) => {
         <video
           id={id}
           key={id}
-          className="w100 h100"
+          className="block w100 h100"
           autoPlay
           loop
           muted
