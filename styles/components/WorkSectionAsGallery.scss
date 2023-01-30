@@ -15,7 +15,26 @@
     @include media('lg-up') {
       opacity: 0;
     }
-    background: linear-gradient(to bottom, transparent 0%, black 200%);
+
+    &--light {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        color('white') 200%
+      );
+      color: black;
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &--dark {
+      background: linear-gradient(to bottom, transparent 0%, black 200%);
+      color: white;
+      &:hover {
+        opacity: 1;
+      }
+    }
 
     @extend .tiny;
     line-height: 1.125rem;
@@ -24,7 +43,6 @@
     @include media('md') {
       line-height: 1.5rem;
     }
-
     &--title {
       font-weight: bold;
     }
@@ -35,10 +53,5 @@
       all: unset;
       cursor: pointer;
     }
-  }
-
-  &__work-hover-overlay:hover {
-    opacity: 1;
-    background: linear-gradient(to bottom, transparent 0%, black 200%);
   }
 }

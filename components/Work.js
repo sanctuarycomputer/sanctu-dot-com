@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
 const PAUSE_VIDEO = '(Pause)';
@@ -51,6 +52,11 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
+  const hoveredStateTheme = get(
+    work,
+    'fields.hoveredStateTheme',
+    'Dark'
+  ).toLowerCase();
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
@@ -70,17 +76,25 @@ const Work = ({ work, width = '100vw' }) => {
           target={caseStudySlug ? '_self' : '_blank'}
         >
           <div
-            className={`WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
-              workIsImage
-                ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-                : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-            } flex justify-between items-end color-white absolute`}
+            className={cx(
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
+                workIsImage
+                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
+                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
+              } flex justify-between items-end absolute`,
+              {
+                'WorkSectionAsGallery__work-hover-overlay--dark':
+                  hoveredStateTheme === 'dark',
+                'WorkSectionAsGallery__work-hover-overlay--light':
+                  hoveredStateTheme === 'light',
+              }
+            )}
           >
             <div className="flex flex-col">
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
                 {title}
               </div>
-              <div className="decoration-none color-white">
+              <div className="decoration-none">
                 {caseStudySlug ? '(read case study)' : '→ visit the site'}
               </div>
             </div>
