@@ -8,7 +8,7 @@ import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
 
-const BlockHero = props => {
+const BlockHero = (props) => {
   const fields = get(props, 'block.fields', {});
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
@@ -30,14 +30,14 @@ const BlockHero = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockHero flex flex-col px1 pt1 pb2 md:pb7"
     >
       <div
         className={cx('col-8 flex flex-col md:flex-row', {
           'md:items-start': textAlign === 'top',
-          'md:items-end': textAlign === 'bottom'
+          'md:items-end': textAlign === 'bottom',
         })}
       >
         {header && <h1 className="paragraph col-8 md:col-4">{header}</h1>}
@@ -128,9 +128,9 @@ BlockHero.propTypes = {
       linkText: PropTypes.string,
       textAlign: PropTypes.string,
       marginTop: PropTypes.number,
-      marginBottom: PropTypes.number
-    })
-  })
+      marginBottom: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockHero;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
 import get from 'lodash/get';
 
 const DEFAULT_TITLE = 'SANCTU COMPU - The Safest Place on Earth.';

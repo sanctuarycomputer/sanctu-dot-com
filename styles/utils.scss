@@ -8,15 +8,15 @@
 
 input,
 .link {
-  color: color("black");
+  color: color('black');
 
   &:hover {
-    color: color("gray");
+    color: color('gray');
     cursor: pointer;
   }
 }
 
-[data-whatintent="mouse"] input:focus {
+[data-whatintent='mouse'] input:focus {
   outline: none;
 }
 
@@ -28,7 +28,7 @@ input,
 .sticky-spacer {
   padding-bottom: 0;
 
-  @include media("md") {
+  @include media('md') {
     padding-bottom: 120px;
   }
 }

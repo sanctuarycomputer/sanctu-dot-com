@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 import 'styles/index.scss';
 import HackerDojo from 'lib/HackerDojo';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       window.HackerDojo = HackerDojo;
 
       console.log(`
@@ -16,9 +16,9 @@ function MyApp({ Component, pageProps }) {
 
       console.log('Explore window.HackerDojo for more info', window.HackerDojo);
     }
-  }, [])
+  }, []);
 
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;

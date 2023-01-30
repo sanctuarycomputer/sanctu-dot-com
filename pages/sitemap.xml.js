@@ -9,25 +9,29 @@ class Sitemap extends Component {}
 
 export async function getServerSideProps(ctx) {
   const res = ctx.res;
-  
+
   if (res) {
     const contentful = ContentfulClient();
-  
+
     const [caseStudyPages, homepage] = await Promise.all([
-      contentful.getEntries({
-        content_type: 'caseStudy',
-        select: 'sys.createdAt,sys.updatedAt,fields.slug'
-      }).then((res) => res.items),
-      contentful.getEntries({
-        content_type: 'sanctuary',
-        select: 'sys.createdAt,sys.updatedAt'
-      }).then((res) => {
-        const homepageData = res.items[0];
-        homepageData.fields = { slug: '/' };
-        
-        return [homepageData]
-      })
-    ])
+      contentful
+        .getEntries({
+          content_type: 'caseStudy',
+          select: 'sys.createdAt,sys.updatedAt,fields.slug',
+        })
+        .then((res) => res.items),
+      contentful
+        .getEntries({
+          content_type: 'sanctuary',
+          select: 'sys.createdAt,sys.updatedAt',
+        })
+        .then((res) => {
+          const homepageData = res.items[0];
+          homepageData.fields = { slug: '/' };
+
+          return [homepageData];
+        }),
+    ]);
 
     const pages = caseStudyPages.concat(homepage);
 
@@ -37,8 +41,8 @@ export async function getServerSideProps(ctx) {
   }
 
   return {
-    props:{}
-  }
+    props: {},
+  };
 }
 
 export default Sitemap;

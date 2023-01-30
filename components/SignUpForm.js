@@ -8,15 +8,15 @@ class SignUpForm extends PureComponent {
     super(...arguments);
 
     this.state = {
-      value: ''
+      value: '',
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
   };
 
@@ -38,7 +38,7 @@ class SignUpForm extends PureComponent {
                 'SignUpForm__input small ml1_25 p0 w100 inline-block',
                 {
                   'SignUpForm--overlay-mode__input': overlayMode,
-                  'SignUpForm--day-mode__input': !overlayMode
+                  'SignUpForm--day-mode__input': !overlayMode,
                 }
               )}
               type="email"
@@ -49,7 +49,7 @@ class SignUpForm extends PureComponent {
             <input
               className={cx('SignUpForm__button ml1_25 p0 small', {
                 'SignUpForm--overlay-mode__button': overlayMode,
-                'SignUpForm--day-mode__buton': overlayMode
+                'SignUpForm--day-mode__buton': overlayMode,
               })}
               type="submit"
               value="Submit"

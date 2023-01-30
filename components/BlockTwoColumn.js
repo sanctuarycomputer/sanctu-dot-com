@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { Markdown } from 'components/base';
 
-const BlockTwoColumn = props => {
+const BlockTwoColumn = (props) => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const sectionOneTitle = get(fields, 'sectionOneTitle', '');
@@ -25,13 +25,13 @@ const BlockTwoColumn = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className={cx(
         'BlockTwoColumn flex flex-col md:flex-row xl:col-6 px1 xl:px0 md:pb12 mxauto',
         {
           pb3: !hideSectionTextOnMobile,
-          'pt1 pb4 md:pt0 md:pb3': hideSectionTextOnMobile
+          'pt1 pb4 md:pt0 md:pb3': hideSectionTextOnMobile,
         }
       )}
     >
@@ -46,14 +46,15 @@ const BlockTwoColumn = props => {
             className={cx(
               'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
-                pb2: sectionTwoText && !hideSectionTextOnMobile
+                pb2: sectionTwoText && !hideSectionTextOnMobile,
               }
             )}
           >
             {sectionOneTitle && (
               <p
                 className={cx('pb_5 underline', {
-                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                  'BlockTwoColumn__section-title--style-none':
+                    hideSectionTextOnMobile,
                 })}
               >
                 {sectionOneTitle}
@@ -61,7 +62,7 @@ const BlockTwoColumn = props => {
             )}
             <Markdown
               className={cx('BlockTwoColumn__section-text', {
-                'none sm:flex': hideSectionTextOnMobile
+                'none sm:flex': hideSectionTextOnMobile,
               })}
               src={sectionOneText}
               font="small"
@@ -73,14 +74,15 @@ const BlockTwoColumn = props => {
             className={cx(
               'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
-                pb2: sectionThreeText && !hideSectionTextOnMobile
+                pb2: sectionThreeText && !hideSectionTextOnMobile,
               }
             )}
           >
             {sectionTwoTitle && (
               <p
                 className={cx('pb_5 underline', {
-                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                  'BlockTwoColumn__section-title--style-none':
+                    hideSectionTextOnMobile,
                 })}
               >
                 {sectionTwoTitle}
@@ -88,7 +90,7 @@ const BlockTwoColumn = props => {
             )}
             <Markdown
               className={cx('BlockTwoColumn__section-text', {
-                'none sm:flex': hideSectionTextOnMobile
+                'none sm:flex': hideSectionTextOnMobile,
               })}
               src={sectionTwoText}
               font="small"
@@ -100,14 +102,15 @@ const BlockTwoColumn = props => {
             className={cx(
               'BlockTwoColumn__paragraph Markdown--small flex flex-col sm:pb3',
               {
-                pb2: !hideSectionTextOnMobile
+                pb2: !hideSectionTextOnMobile,
               }
             )}
           >
             {sectionThreeTitle && (
               <p
                 className={cx('pb_5 underline', {
-                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                  'BlockTwoColumn__section-title--style-none':
+                    hideSectionTextOnMobile,
                 })}
               >
                 {sectionThreeTitle}
@@ -115,7 +118,7 @@ const BlockTwoColumn = props => {
             )}
             <Markdown
               className={cx('BlockTwoColumn__section-text', {
-                'none sm:flex': hideSectionTextOnMobile
+                'none sm:flex': hideSectionTextOnMobile,
               })}
               src={sectionThreeText}
               font="small"
@@ -127,7 +130,8 @@ const BlockTwoColumn = props => {
             {sectionFourTitle && (
               <p
                 className={cx('pb_5 underline', {
-                  'BlockTwoColumn__section-title--style-none': hideSectionTextOnMobile
+                  'BlockTwoColumn__section-title--style-none':
+                    hideSectionTextOnMobile,
                 })}
               >
                 {sectionFourTitle}
@@ -135,7 +139,7 @@ const BlockTwoColumn = props => {
             )}
             <Markdown
               className={cx('BlockTwoColumn__section-text', {
-                'none sm:flex': hideSectionTextOnMobile
+                'none sm:flex': hideSectionTextOnMobile,
               })}
               src={sectionFourText}
               font="small"
@@ -160,9 +164,9 @@ BlockTwoColumn.propTypes = {
       sectionThreeText: PropTypes.string,
       sectionFourText: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockTwoColumn;

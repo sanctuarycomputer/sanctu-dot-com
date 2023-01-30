@@ -5,7 +5,7 @@ import get from 'utils/get';
 
 import { Markdown } from 'components/base';
 
-const BlockThreeColumnList = props => {
+const BlockThreeColumnList = (props) => {
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
   const columnOne = get(fields, 'columnOne', '');
@@ -21,7 +21,7 @@ const BlockThreeColumnList = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockThreeColumnList flex flex-col col-8 md:col-5 mxauto px1 md:px0 pb3 md:pb7"
     >
@@ -89,9 +89,9 @@ BlockThreeColumnList.propTypes = {
       columnTwoNumber: PropTypes.string,
       columnThreeNumber: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockThreeColumnList;

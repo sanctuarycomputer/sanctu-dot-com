@@ -9,7 +9,7 @@ import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
 
-const BlockFooterWithLists = props => {
+const BlockFooterWithLists = (props) => {
   const fields = get(props, 'block.fields');
   const listOne = get(
     props,
@@ -24,7 +24,7 @@ const BlockFooterWithLists = props => {
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockFooterWithLists flex flex-col px1 pb1"
     >
@@ -48,18 +48,15 @@ const BlockFooterWithLists = props => {
         <div>
           <Image
             className="BlockFooterWithLists__icon"
-            src='/assets/sanctu_logo_black.svg'
+            src="/assets/sanctu_logo_black.svg"
             alt="Sanctuary Computer logo"
-            width='80'
-            height='75'
+            width="80"
+            height="75"
           />
         </div>
         <div className="flex justify-end items-end">
-          <Link
-            href="/"
-            passHref
-          >
-            <a 
+          <Link href="/" passHref>
+            <a
               className="small link decoration-none"
               aria-label="Visit Sanctuary Computer"
               rel="noopener noreferrer"
@@ -81,9 +78,9 @@ BlockFooterWithLists.propTypes = {
       listOneTitle: PropTypes.string,
       listTwoTitle: PropTypes.string,
       marginTop: PropTypes.number,
-      marginBottom: PropTypes.number
-    })
-  })
+      marginBottom: PropTypes.number,
+    }),
+  }),
 };
 
 export default BlockFooterWithLists;

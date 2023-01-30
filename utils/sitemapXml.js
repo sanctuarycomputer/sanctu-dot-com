@@ -1,7 +1,6 @@
 import get from 'lodash/get';
 
 export default (data, originUrl = 'https://www.sanctuary.computer') => {
-
   const projectsXML = data.reduce((xml, page) => {
     const pageSlug = get(page, 'fields.slug', '');
 
@@ -10,7 +9,7 @@ export default (data, originUrl = 'https://www.sanctuary.computer') => {
     }
 
     const projectURL = `${originUrl}${pageSlug}`;
-    const lastModified = page.sys.updatedAt.split('T')[0]
+    const lastModified = page.sys.updatedAt.split('T')[0];
 
     if (pageSlug === '/') {
       return (

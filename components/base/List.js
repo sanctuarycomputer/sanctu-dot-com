@@ -8,16 +8,16 @@ const List = ({ title, listItems, className }) => {
   const hasListItems = !!(listItems && listItems.length);
   if (!hasListItems) return null;
   return (
-    <div className={cx('List', {[className]: !!className})}>
+    <div className={cx('List', { [className]: !!className })}>
       <h3 className="small">{title}</h3>
       <ul className="ml1_25">
-        {(listItems).map(listItem => (
+        {listItems.map((listItem) => (
           <li key={get(listItem, 'uuid')} className="small">
             {listItem.hasLink ? (
-              <a 
-                className="link decoration-none" 
-                href={listItem.url} 
-                target="_blank" 
+              <a
+                className="link decoration-none"
+                href={listItem.url}
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 {get(listItem, 'title')}
@@ -30,7 +30,7 @@ const List = ({ title, listItems, className }) => {
       </ul>
     </div>
   );
-}
+};
 
 List.defaultProps = {
   className: null,
@@ -47,7 +47,7 @@ List.propTypes = {
       url: PropTypes.string,
       hasLink: PropTypes.bool,
     })
-  )
+  ),
 };
 
 export default List;

@@ -1,5 +1,4 @@
 .SignUpForm {
-
   &__input,
   &__button {
     border: 0;
@@ -11,36 +10,35 @@
   &--overlay-mode {
     &__input,
     &__button {
-      color: color("white");
+      color: color('white');
       background-color: transparent;
 
       &:hover {
-        color: color("gray");
+        color: color('gray');
       }
     }
 
     &__input {
       &::placeholder {
-        color: color("white");
+        color: color('white');
       }
     }
   }
 
   &--day-mode {
     &__input {
-      color: color("black");
+      color: color('black');
       background-color: transparent;
 
       &:hover {
-        color: color("black");
+        color: color('black');
       }
     }
 
     &__input {
       &::placeholder {
-        color: color("gray");
+        color: color('gray');
       }
     }
   }
-
 }

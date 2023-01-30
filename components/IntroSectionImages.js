@@ -7,7 +7,7 @@ import flattenImageData from 'utils/flattenImageData';
 
 import { Image } from 'components/base';
 
-const getRandomImage = imagesArray =>
+const getRandomImage = (imagesArray) =>
   imagesArray[Math.floor(Math.random() * imagesArray.length)];
 
 class IntroSectionImages extends PureComponent {
@@ -15,11 +15,11 @@ class IntroSectionImages extends PureComponent {
     super(...arguments);
 
     this.state = {
-      activeImage: getRandomImage(get(props, 'images', []))
+      activeImage: getRandomImage(get(props, 'images', [])),
     };
   }
   render() {
-    const selectedImage = flattenImageData(this.state.activeImage)
+    const selectedImage = flattenImageData(this.state.activeImage);
 
     return (
       <div className={cx('IntroSectionImages p1 flex flex-col md:flex-row')}>
@@ -27,9 +27,9 @@ class IntroSectionImages extends PureComponent {
           <div className="aspect-portrait">
             <Image
               src={selectedImage.url}
-              layout='fill'
+              layout="fill"
               alt={selectedImage.description}
-              sizes='50vw'
+              sizes="50vw"
             />
           </div>
         </div>
@@ -43,11 +43,11 @@ IntroSectionImages.propTypes = {
     PropTypes.shape({
       fields: PropTypes.shape({
         file: PropTypes.shape({
-          url: PropTypes.string
-        })
-      })
+          url: PropTypes.string,
+        }),
+      }),
     })
-  )
+  ),
 };
 
 export default IntroSectionImages;

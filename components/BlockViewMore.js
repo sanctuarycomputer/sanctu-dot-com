@@ -9,7 +9,7 @@ import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { Image } from 'components/base';
 
-const BlockViewMore = props => {
+const BlockViewMore = (props) => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
   const fields = get(props, 'block.fields');
   const header = get(fields, 'header', '');
@@ -23,13 +23,18 @@ const BlockViewMore = props => {
   const linkTwoImageCaption = get(fields, 'linkTwoImageCaption', '');
   const marginBottom = get(fields, 'marginBottom', 0);
   const marginTop = get(fields, 'marginTop', 0);
-  const selectedSizes = [Breakpoints.EXTRA_SMALL.label, Breakpoints.SMALL.label].includes(currentBreakpoint) ? '100vw' : '50vw';
+  const selectedSizes = [
+    Breakpoints.EXTRA_SMALL.label,
+    Breakpoints.SMALL.label,
+  ].includes(currentBreakpoint)
+    ? '100vw'
+    : '50vw';
 
   return (
     <div
       style={{
         marginBottom: `${marginBottom}rem`,
-        marginTop: `${marginTop}rem`
+        marginTop: `${marginTop}rem`,
       }}
       className="BlockViewMore flex flex-col px1 pb3 md:pb7"
     >
@@ -38,10 +43,7 @@ const BlockViewMore = props => {
         <div className="flex flex-col md:flex-row">
           <div className="md:col-4 flex flex-col pb2 md:pb0">
             {linkOneText && linkOne && (
-              <Link
-                href={linkOne}
-                passHref
-              >
+              <Link href={linkOne} passHref>
                 <a
                   className="BlockViewMore__left-side small link decoration-none"
                   aria-label={linkOneText}
@@ -61,9 +63,7 @@ const BlockViewMore = props => {
                         {linkOneImageCaption}
                       </p>
                     )}
-                    <p className="pt1">
-                    → {linkOneText}
-                    </p>
+                    <p className="pt1">→ {linkOneText}</p>
                   </div>
                 </a>
               </Link>
@@ -71,10 +71,7 @@ const BlockViewMore = props => {
           </div>
           <div className="md:col-4 flex flex-col">
             {linkTwoText && linkTwo && (
-              <Link
-                href={linkTwo}
-                passHref
-              >
+              <Link href={linkTwo} passHref>
                 <a
                   className="BlockViewMore__right-side small link decoration-none"
                   aria-label={linkTwoText}
@@ -94,9 +91,7 @@ const BlockViewMore = props => {
                         {linkTwoImageCaption}
                       </p>
                     )}
-                    <p className="pt1">
-                    → {linkTwoText}
-                    </p>
+                    <p className="pt1">→ {linkTwoText}</p>
                   </div>
                 </a>
               </Link>
@@ -121,9 +116,9 @@ BlockViewMore.propTypes = {
       linkTwoImage: ContentfulMedia,
       linkTwoImageCaption: PropTypes.string,
       marginBottom: PropTypes.number,
-      marginTop: PropTypes.number
-    })
-  })
+      marginTop: PropTypes.number,
+    }),
+  }),
 };
 
 export default withBreakpoints(BlockViewMore);
