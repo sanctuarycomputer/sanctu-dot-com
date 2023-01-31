@@ -19,7 +19,11 @@
     transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
 
     &--light {
-      background: linear-gradient(180deg, transparent 50%, hsla(0, 0%, 70%, 0.3) 120%);
+      background: linear-gradient(
+        180deg,
+        transparent 50%,
+        hsla(0, 0%, 70%, 0.3) 120%
+      );
       color: black;
       &:hover {
         opacity: 1;
