@@ -20,9 +20,9 @@
 
     &--light {
       background: linear-gradient(
-        to bottom,
+        180deg,
         transparent 50%,
-        rgba(255, 255, 255, 0.6) 120%
+        hsla(0, 0%, 70%, 0.3) 120%
       );
       color: black;
       &:hover {
