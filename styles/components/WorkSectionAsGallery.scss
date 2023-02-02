@@ -18,17 +18,20 @@
 
     transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
 
-    &--black {
+    &--light {
       color: black;
       &:hover {
         opacity: 1;
       }
     }
 
-    &--white {
-      color: white;
+    &--dark {
+      color: black;
       &:hover {
         opacity: 1;
+      }
+      @include media('md') {
+        color: white;
       }
     }
 
@@ -39,6 +42,7 @@
     @include media('md') {
       line-height: 1.5rem;
     }
+
     &--title {
       font-weight: bold;
     }
