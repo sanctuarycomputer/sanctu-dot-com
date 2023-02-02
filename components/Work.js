@@ -85,9 +85,9 @@ const Work = ({ work, width = '100vw' }) => {
                   : 'WorkSectionAsGallery__work-hover-overlay--for-video'
               } flex justify-between items-end md:absolute relative`,
               {
-                'md:WorkSectionAsGallery__work-hover-overlay--dark WorkSectionAsGallery__work-hover-overlay--light':
+                'md:WorkSectionAsGallery__work-hover-overlay--white WorkSectionAsGallery__work-hover--black':
                   hoveredStateTheme === 'dark',
-                'WorkSectionAsGallery__work-hover-overlay--light':
+                'WorkSectionAsGallery__work-hover-overlay--black':
                   hoveredStateTheme === 'light',
               }
             )}
