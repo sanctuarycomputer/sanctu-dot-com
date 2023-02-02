@@ -28,13 +28,13 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
           <div className="block col-8 mb_5 md:mb1 relative">
             <Work work={works[0]} />
           </div>
-          <div className="flex col-8 pb_5 md:pb1 items-end">
-            <div className="block col-4">
+          <div className="flex col-8 pb_5 md:pb1 items-end md:flex-row flex-col">
+            <div className="block md:col-4 col-8">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
               </div>
             </div>
-            <div className="block col-4 ml_5 md:ml1">
+            <div className="block md:col-4 col-8 mt_5 md:ml_5 md:ml1">
               <div className="relative">
                 <Work work={works[2]} width="50vw" />
               </div>
@@ -44,13 +44,13 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
       )}
       {!displayFirstAssetAsFullWidth && (
         <>
-          <div className="flex col-8 pb_5 md:pb1 items-end">
-            <div className="block col-4">
+          <div className="flex col-8 pb_5 md:pb1 items-end md:flex-row flex-col">
+            <div className="block md:col-4 col-8">
               <div className="relative">
                 <Work work={works[0]} width="50vw" />
               </div>
             </div>
-            <div className="block col-4 ml_5 md:ml1">
+            <div className="block md:col-4 col-8 mt_5 md:ml_5 md:ml1">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
               </div>

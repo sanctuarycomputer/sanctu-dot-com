@@ -65,7 +65,7 @@ const Work = ({ work, width = '100vw' }) => {
   const id = get(work, 'sys.id', '');
 
   return (
-    <>
+    <div className='flex flex-col-reverse md:block'>
       <Link href={caseStudySlug || link}>
         <a
           aria-label={
@@ -75,6 +75,7 @@ const Work = ({ work, width = '100vw' }) => {
           }
           rel="noopener noreferrer"
           target={caseStudySlug ? '_self' : '_blank'}
+          className="decoration-none"
         >
           <div
             className={cx(
@@ -82,9 +83,9 @@ const Work = ({ work, width = '100vw' }) => {
                 workIsImage
                   ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
                   : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-              } flex justify-between items-end absolute`,
+              } flex justify-between items-end md:absolute relative`,
               {
-                'WorkSectionAsGallery__work-hover-overlay--dark':
+                'md:WorkSectionAsGallery__work-hover-overlay--dark WorkSectionAsGallery__work-hover-overlay--light':
                   hoveredStateTheme === 'dark',
                 'WorkSectionAsGallery__work-hover-overlay--light':
                   hoveredStateTheme === 'light',
@@ -139,7 +140,7 @@ const Work = ({ work, width = '100vw' }) => {
           <source src={src}></source>
         </video>
       )}
-    </>
+    </div>
   );
 };
 
