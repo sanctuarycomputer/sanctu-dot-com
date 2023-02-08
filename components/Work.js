@@ -79,7 +79,7 @@ const Work = ({ work, width = '100vw' }) => {
         <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 ${
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb2 px0 ${
                 workIsImage
                   ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
                   : 'WorkSectionAsGallery__work-hover-overlay--for-video'
