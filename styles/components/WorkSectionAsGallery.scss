@@ -32,6 +32,7 @@
       }
       @include media('md') {
         color: white;
+        background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5) 150%);
       }
     }
 
