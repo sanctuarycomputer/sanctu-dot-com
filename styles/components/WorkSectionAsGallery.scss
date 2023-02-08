@@ -16,12 +16,9 @@
       opacity: 0;
     }
 
+    transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+
     &--light {
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        color('white') 200%
-      );
       color: black;
       &:hover {
         opacity: 1;
@@ -29,10 +26,13 @@
     }
 
     &--dark {
-      background: linear-gradient(to bottom, transparent 0%, black 200%);
-      color: white;
+      color: black;
       &:hover {
         opacity: 1;
+      }
+      @include media('md') {
+        color: white;
+        background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5) 150%);
       }
     }
 
@@ -43,6 +43,7 @@
     @include media('md') {
       line-height: 1.5rem;
     }
+
     &--title {
       font-weight: bold;
     }

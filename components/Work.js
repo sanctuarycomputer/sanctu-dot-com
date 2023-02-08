@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+
 import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
@@ -64,24 +65,25 @@ const Work = ({ work, width = '100vw' }) => {
   const id = get(work, 'sys.id', '');
 
   return (
-    <>
-      <Link href={caseStudySlug || link}>
-        <a
-          aria-label={
-            caseStudySlug
-              ? `read the case study for ${title}`
-              : `visit the site for ${title}`
-          }
-          rel="noopener noreferrer"
-          target={caseStudySlug ? '_self' : '_blank'}
-        >
+    <Link href={caseStudySlug || link}>
+      <a
+        aria-label={
+          caseStudySlug
+            ? `read the case study for ${title}`
+            : `visit the site for ${title}`
+        }
+        rel="noopener noreferrer"
+        target={caseStudySlug ? '_self' : '_blank'}
+        className="decoration-none"
+      >
+        <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 ${
                 workIsImage
                   ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
                   : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-              } flex justify-between items-end absolute`,
+              } flex justify-between items-end md:absolute relative`,
               {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
@@ -94,7 +96,7 @@ const Work = ({ work, width = '100vw' }) => {
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
                 {title}
               </div>
-              <div className="decoration-none">
+              <div className="WorkSectionAsGallery__work-hover-overlay--caption">
                 {caseStudySlug ? '(read case study)' : '→ visit the site'}
               </div>
             </div>
@@ -114,31 +116,31 @@ const Work = ({ work, width = '100vw' }) => {
               </button>
             )}
           </div>
-        </a>
-      </Link>
-      {workIsImage ? (
-        <Image
-          alt={workImage.alt}
-          src={workImage.url}
-          width={workImage.width}
-          height={workImage.height}
-          sizes={width}
-        />
-      ) : (
-        <video
-          id={id}
-          key={id}
-          className="block w100 h100"
-          autoPlay
-          loop
-          muted
-          playsInline
-          ref={videoRef}
-        >
-          <source src={src}></source>
-        </video>
-      )}
-    </>
+          {workIsImage ? (
+            <Image
+              alt={workImage.alt}
+              src={workImage.url}
+              width={workImage.width}
+              height={workImage.height}
+              sizes={width}
+            />
+          ) : (
+            <video
+              id={id}
+              key={id}
+              className="block w100 h100"
+              autoPlay
+              loop
+              muted
+              playsInline
+              ref={videoRef}
+            >
+              <source src={src}></source>
+            </video>
+          )}
+        </div>
+      </a>
+    </Link>
   );
 };
 
