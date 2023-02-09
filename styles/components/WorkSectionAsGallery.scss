@@ -44,10 +44,6 @@
     line-height: 1.125rem;
     margin: 0;
 
-    @include media('md') {
-      line-height: 1.5rem;
-    }
-
     &--title {
       font-weight: 500;
     }
