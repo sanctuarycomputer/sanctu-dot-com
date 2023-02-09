@@ -94,10 +94,12 @@ const Work = ({ work, width = '100vw' }) => {
           >
             <div className="flex flex-col">
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
-                {title}
+                <p>{title}</p>
               </div>
               <div className="WorkSectionAsGallery__work-hover-overlay--caption">
-                {caseStudySlug ? '(read case study)' : '→ visit the site'}
+                <p>
+                  {caseStudySlug ? '(read case study)' : '→ visit the site'}
+                </p>
               </div>
             </div>
             {!workIsImage && (
