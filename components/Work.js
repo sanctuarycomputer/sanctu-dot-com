@@ -58,6 +58,11 @@ const Work = ({ work, width = '100vw' }) => {
     'fields.hoveredStateTheme',
     'Dark'
   ).toLowerCase();
+  const disableOverlayOnDarkTheme = get(
+    work,
+    'fields.disableOverlayOnDarkTheme',
+    'false'
+  );
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
@@ -79,16 +84,19 @@ const Work = ({ work, width = '100vw' }) => {
         <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 ${
-                workIsImage
-                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-              } flex justify-between items-end md:absolute relative`,
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 flex justify-between items-end md:absolute relative`,
               {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
+                'WorkSectionAsGallery__work-hover-overlay--dark-gradient':
+                  hoveredStateTheme === 'dark' &&
+                  disableOverlayOnDarkTheme === 'false',
                 'WorkSectionAsGallery__work-hover-overlay--light':
                   hoveredStateTheme === 'light',
+                'WorkSectionAsGallery__work-hover-overlay--for-image':
+                  workIsImage,
+                'WorkSectionAsGallery__work-hover-overlay--for-video':
+                  !workIsImage,
               }
             )}
           >
