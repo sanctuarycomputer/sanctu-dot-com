@@ -33,9 +33,9 @@
       @include media('md') {
         color: white;
         background: linear-gradient(
-          180deg,
-          transparent 80%,
-          rgba(0, 0, 0, 0.5) 130%
+          0deg,
+          rgba(0, 0, 0, 0.32) -3.5rem,
+          transparent 5.5rem
         );
       }
     }
