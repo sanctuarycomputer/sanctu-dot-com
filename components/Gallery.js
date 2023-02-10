@@ -92,7 +92,7 @@ class Gallery extends PureComponent {
     );
 
     return (
-      <div className="Gallery col-8 p1 flex flex-wrap">
+      <div className="overflow-x-hidden md:overflow-x-visible col-8 p1 flex flex-wrap">
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}

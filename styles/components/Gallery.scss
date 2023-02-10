@@ -1,6 +1,0 @@
-.Gallery {
-  overflow-x: hidden;
-  @include media('md') {
-    overflow-x: visible;
-  }
-}
