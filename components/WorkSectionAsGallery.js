@@ -28,10 +28,11 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
   );
 
   return (
-    <div className="flex-col pt_5 md:pt1 pr1 pl1">
+    <div className="flex-col pt1 pr1 pl1">
       {displayFirstAssetAsFullWidth && (
         <>
-          <div className="block col-8 mb0 md:mb1 relative">
+          <div className="block col-8 md:mb1 relative mb_9">
+            {/* we use .9rem instead of 1rem to make the spacing between the bottom of caption and top of the image visually look same as the L/R gutter(1rem) of entire page. */}
             <Work work={works[0]} />
           </div>
           <div
@@ -40,12 +41,12 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
               'items-end': doubleColumnVerticalAlignment === 'bottom',
             })}
           >
-            <div className="block md:col-4 col-8">
+            <div className="block md:col-4 col-8 md:mb0 mb_9">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
               </div>
             </div>
-            <div className="block md:col-4 col-8 md:ml_5 md:ml1">
+            <div className="block md:col-4 col-8 md:ml1">
               <div className="relative">
                 <Work work={works[2]} width="50vw" />
               </div>
@@ -61,12 +62,12 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
               'items-end': doubleColumnVerticalAlignment === 'bottom',
             })}
           >
-            <div className="block md:col-4 col-8">
+            <div className="block md:col-4 col-8 md:mb0 mb_9">
               <div className="relative">
                 <Work work={works[0]} width="50vw" />
               </div>
             </div>
-            <div className="block md:col-4 col-8 md:ml_5 md:ml1">
+            <div className="block md:col-4 col-8 md:ml1 md:mb0 mb_9">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
               </div>
@@ -91,7 +92,7 @@ const WorkGalleryTextBlock = ({ textBlock }) => {
     <div>
       {text && (
         <Markdown
-          className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:p13 Markdown--medium"
+          className="WorkSectionAsGallery__work-gallery-text px1_25 py5 md:p13 md:mt1 mt0 Markdown--medium"
           src={text}
         />
       )}
