@@ -26,6 +26,7 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
       {displayFirstAssetAsFullWidth && (
         <>
           <div className="block col-8 md:mb1 relative mb_9">
+            {/* we use .9rem instead of 1rem to make the spacing between the bottom of caption and top of the image visually look same as the L/R gutter(1rem) of entire page. */}
             <Work work={works[0]} />
           </div>
           <div className="flex col-8 pb_5 md:pb1 items-end md:flex-row flex-col">
