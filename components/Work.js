@@ -79,11 +79,7 @@ const Work = ({ work, width = '100vw' }) => {
         <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 ${
-                workIsImage
-                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-              } flex justify-between items-end md:absolute relative`,
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_625 pb1 px0 w100 h100 flex justify-between items-end md:absolute relative`,
               {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
@@ -96,7 +92,7 @@ const Work = ({ work, width = '100vw' }) => {
               <div className="WorkSectionAsGallery__work-hover-overlay--title">
                 <p>{title}</p>
               </div>
-              <div className="WorkSectionAsGallery__work-hover-overlay--caption">
+              <div>
                 <p>
                   {caseStudySlug ? '(read case study)' : '→ visit the site'}
                 </p>
