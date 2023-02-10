@@ -32,7 +32,16 @@
       }
       @include media('md') {
         color: white;
-        background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5) 150%);
+      }
+    }
+
+    &--dark-gradient {
+      @include media('md') {
+        background: linear-gradient(
+          180deg,
+          transparent 80%,
+          rgba(0, 0, 0, 0.5) 130%
+        );
       }
     }
 
@@ -45,7 +54,7 @@
     }
 
     &--title {
-      font-weight: bold;
+      font-weight: 500;
     }
 
     z-index: 99;
