@@ -19,3 +19,11 @@ $spacing-units: 0rem, 0.25rem, 0.325rem, 0.5rem, 0.625rem, 0.75rem, 0.9rem, 1rem
   13rem, 14rem, 15rem;
 
 $grid-columns: 8;
+
+$additional-class-definitions: (
+  'overflow-x-visible': (
+    overflow-x: visible,
+  ),
+);
+
+$additional-responsive-classes: (overflow-x-visible);
