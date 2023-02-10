@@ -22,6 +22,11 @@
       }
       @include media('md') {
         color: white;
+      }
+    }
+
+    &--dark-gradient {
+      @include media('md') {
         background: linear-gradient(
           0deg,
           rgba(0, 0, 0, 0.32) -3.5rem,

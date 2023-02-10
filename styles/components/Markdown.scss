@@ -9,6 +9,10 @@
     @include media('xl') {
       margin-bottom: $p-xl-line-height;
     }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     > em {
       @extend .tiny;
