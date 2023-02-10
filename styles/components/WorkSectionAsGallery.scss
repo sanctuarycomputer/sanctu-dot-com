@@ -37,13 +37,13 @@
 
     line-height: 1.125rem;
 
-    &--title {
+    &__title {
       font-weight: 500;
     }
 
     z-index: 99;
 
-    &--video-button {
+    &__video-button {
       all: unset;
       cursor: pointer;
     }
