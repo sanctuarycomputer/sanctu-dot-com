@@ -1,4 +1,8 @@
 .BlockImageText {
+  &__description.small > div > span > p {
+    line-height: 1.5rem;
+  }
+
   &__description > div > span > p {
     padding-bottom: 2rem;
     line-height: 1.5rem;
