@@ -32,6 +32,11 @@
       }
       @include media('md') {
         color: white;
+      }
+    }
+
+    &--dark-gradient {
+      @include media('md') {
         background: linear-gradient(
           180deg,
           transparent 80%,

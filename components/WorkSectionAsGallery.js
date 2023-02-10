@@ -8,6 +8,7 @@ import { Markdown } from 'components/base';
 import Work from 'components/Work';
 
 import get from 'utils/get';
+import cx from 'classnames';
 
 const WorkGalleryAssetBlock = ({ assetBlock }) => {
   if (!assetBlock) {
@@ -20,6 +21,11 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
     true
   );
   const works = get(assetBlock, 'fields.works', []);
+  const doubleColumnVerticalAlignment = get(
+    assetBlock,
+    'fields.doubleColumnVerticalAlignment',
+    'bottom'
+  );
 
   return (
     <div className="flex-col pt_5 md:pt1 pr1 pl1">
@@ -28,7 +34,12 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
           <div className="block col-8 mb0 md:mb1 relative">
             <Work work={works[0]} />
           </div>
-          <div className="flex col-8 pb_5 md:pb1 items-end md:flex-row flex-col">
+          <div
+            className={cx('flex col-8 pb_5 md:pb1 md:flex-row flex-col', {
+              'items-start': doubleColumnVerticalAlignment === 'top',
+              'items-end': doubleColumnVerticalAlignment === 'bottom',
+            })}
+          >
             <div className="block md:col-4 col-8">
               <div className="relative">
                 <Work work={works[1]} width="50vw" />
@@ -44,7 +55,12 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
       )}
       {!displayFirstAssetAsFullWidth && (
         <>
-          <div className="flex col-8 pb0 md:pb1 items-end md:flex-row flex-col">
+          <div
+            className={cx('flex col-8 pb0 md:pb1 md:flex-row flex-col', {
+              'items-start': doubleColumnVerticalAlignment === 'top',
+              'items-end': doubleColumnVerticalAlignment === 'bottom',
+            })}
+          >
             <div className="block md:col-4 col-8">
               <div className="relative">
                 <Work work={works[0]} width="50vw" />
