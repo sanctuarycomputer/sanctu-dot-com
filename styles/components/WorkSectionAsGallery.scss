@@ -34,13 +34,13 @@
     line-height: 1.125rem;
     margin: 0;
 
-    &--title {
+    &__title {
       font-weight: 500;
     }
 
     z-index: 99;
 
-    &--video-button {
+    &__video-button {
       all: unset;
       cursor: pointer;
     }

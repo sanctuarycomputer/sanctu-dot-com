@@ -89,18 +89,14 @@ const Work = ({ work, width = '100vw' }) => {
             )}
           >
             <div className="flex flex-col">
-              <div className="WorkSectionAsGallery__work-hover-overlay--title">
-                <p>{title}</p>
-              </div>
-              <div>
-                <p>
-                  {caseStudySlug ? '(read case study)' : '→ visit the site'}
-                </p>
-              </div>
+              <p className="WorkSectionAsGallery__work-hover-overlay__title">
+                {title}
+              </p>
+              <p>{caseStudySlug ? '(read case study)' : '→ visit the site'}</p>
             </div>
             {!workIsImage && (
               <button
-                className="WorkSectionAsGallery__work-hover-overlay--video-button"
+                className="WorkSectionAsGallery__work-hover-overlay__video-button"
                 aria-label={`pause video for ${title}`}
                 ref={buttonRef}
                 onClick={(e) => {
