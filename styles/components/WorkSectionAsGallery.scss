@@ -36,6 +36,10 @@
 
     &__title {
       font-weight: 500;
+      letter-spacing: 0;
+      @include media('md') {
+        letter-spacing: 0.4px;
+      }
     }
 
     z-index: 99;
