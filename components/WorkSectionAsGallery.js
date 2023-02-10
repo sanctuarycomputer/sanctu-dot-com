@@ -21,9 +21,9 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
     true
   );
   const works = get(assetBlock, 'fields.works', []);
-  const doubleColumnRowAlignment = get(
+  const doubleColumnVerticalAlignment = get(
     assetBlock,
-    'fields.doubleColumnRowAlignment',
+    'fields.doubleColumnVerticalAlignment',
     'bottom'
   );
 
@@ -36,8 +36,8 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
           </div>
           <div
             className={cx('flex col-8 pb_5 md:pb1 md:flex-row flex-col', {
-              'items-start': doubleColumnRowAlignment === 'top',
-              'items-end': doubleColumnRowAlignment === 'bottom',
+              'items-start': doubleColumnVerticalAlignment === 'top',
+              'items-end': doubleColumnVerticalAlignment === 'bottom',
             })}
           >
             <div className="block md:col-4 col-8">
@@ -57,8 +57,8 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
         <>
           <div
             className={cx('flex col-8 pb0 md:pb1 md:flex-row flex-col', {
-              'items-start': doubleColumnRowAlignment === 'top',
-              'items-end': doubleColumnRowAlignment === 'bottom',
+              'items-start': doubleColumnVerticalAlignment === 'top',
+              'items-end': doubleColumnVerticalAlignment === 'bottom',
             })}
           >
             <div className="block md:col-4 col-8">

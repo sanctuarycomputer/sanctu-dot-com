@@ -53,15 +53,11 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
-  const hoveredStateTheme = get(
-    work,
-    'fields.hoveredStateTheme',
-    'Dark'
-  ).toLowerCase();
+  const hoveredStateTheme = get(work, 'fields.hoveredStateTheme', 'dark');
   const disableOverlayOnDarkTheme = get(
     work,
     'fields.disableOverlayOnDarkTheme',
-    'false'
+    false
   );
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
@@ -89,8 +85,7 @@ const Work = ({ work, width = '100vw' }) => {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
                 'WorkSectionAsGallery__work-hover-overlay--dark-gradient':
-                  hoveredStateTheme === 'dark' &&
-                  disableOverlayOnDarkTheme === 'false',
+                  hoveredStateTheme === 'dark' && !disableOverlayOnDarkTheme,
                 'WorkSectionAsGallery__work-hover-overlay--light':
                   hoveredStateTheme === 'light',
                 'WorkSectionAsGallery__work-hover-overlay--for-image':
