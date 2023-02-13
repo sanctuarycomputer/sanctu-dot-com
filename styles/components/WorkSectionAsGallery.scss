@@ -37,6 +37,19 @@
 
     line-height: 1.125rem;
 
+    font-family: $sans-serif-stack;
+    font-weight: 400;
+
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.4px;
+
+    @include media('md') {
+      margin: 0 2px;
+      font-size: 0.9375rem;
+      letter-spacing: 0.4px;
+    }
+
     &__title {
       font-weight: 500;
       letter-spacing: 0;
