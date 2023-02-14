@@ -1,15 +1,5 @@
 .WorkSectionAsGallery {
   &__work-hover-overlay {
-    &--for-image {
-      width: 100%;
-      height: 100%;
-    }
-
-    &--for-video {
-      width: 100%;
-      height: 100%;
-    }
-
     opacity: 1;
 
     @include media('lg-up') {
@@ -38,28 +28,30 @@
     &--dark-gradient {
       @include media('md') {
         background: linear-gradient(
-          180deg,
-          transparent 80%,
-          rgba(0, 0, 0, 0.5) 130%
+          0deg,
+          rgba(0, 0, 0, 0.32) -3.5rem,
+          transparent 5.5rem
         );
       }
     }
 
-    @extend .tiny;
-    line-height: 1.125rem;
+    @extend .small;
+
     margin: 0;
+    letter-spacing: 0.4px;
 
-    @include media('md') {
-      line-height: 1.5rem;
-    }
-
-    &--title {
+    &__title {
       font-weight: 500;
+      letter-spacing: 0;
+
+      @include media('md') {
+        letter-spacing: 0.4px;
+      }
     }
 
     z-index: 99;
 
-    &--video-button {
+    &__video-button {
       all: unset;
       cursor: pointer;
     }

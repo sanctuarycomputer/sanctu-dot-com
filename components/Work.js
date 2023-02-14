@@ -80,7 +80,7 @@ const Work = ({ work, width = '100vw' }) => {
         <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_325 px0 flex justify-between items-end md:absolute relative`,
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_325 px0 w100 h100 flex justify-between items-end md:absolute relative`,
               {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
@@ -96,16 +96,14 @@ const Work = ({ work, width = '100vw' }) => {
             )}
           >
             <div className="flex flex-col">
-              <div className="WorkSectionAsGallery__work-hover-overlay--title">
+              <p className="WorkSectionAsGallery__work-hover-overlay__title">
                 {title}
-              </div>
-              <div className="WorkSectionAsGallery__work-hover-overlay--caption">
-                {caseStudySlug ? '(read case study)' : '→ visit the site'}
-              </div>
+              </p>
+              <p>{caseStudySlug ? '(read case study)' : '→ visit the site'}</p>
             </div>
             {!workIsImage && (
               <button
-                className="WorkSectionAsGallery__work-hover-overlay--video-button"
+                className="WorkSectionAsGallery__work-hover-overlay__video-button"
                 aria-label={`pause video for ${title}`}
                 ref={buttonRef}
                 onClick={(e) => {
