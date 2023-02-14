@@ -1,10 +1,6 @@
 name: Deploys & Previews
 on: push
-permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
-  contents: write
+permissions: write-all
 jobs:
   deploy-preview:
     if: github.ref != 'refs/heads/production'
