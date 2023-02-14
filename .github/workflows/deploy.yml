@@ -3,6 +3,8 @@ on: push
 jobs:
   deploy-preview:
     if: github.ref != 'refs/heads/production'
+    permissions:
+      issues: 'write'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
