@@ -4,7 +4,9 @@ jobs:
   deploy-preview:
     if: github.ref != 'refs/heads/production'
     permissions:
-      issues: 'write'
+      issues: write
+      pull-requests: write
+      repository-projects: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
