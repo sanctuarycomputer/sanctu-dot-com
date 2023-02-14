@@ -35,27 +35,16 @@
       }
     }
 
-    line-height: 1.125rem;
-
-    font-family: $sans-serif-stack;
-    font-weight: 400;
+    @extend .small;
 
     margin: 0;
-    font-size: 0.75rem;
     letter-spacing: 0.4px;
-
-    @include media('md') {
-      font-size: 0.9375rem;
-      letter-spacing: 0.4px;
-    }
 
     &__title {
       font-weight: 500;
       letter-spacing: 0;
-      line-height: 0.9375rem;
 
       @include media('md') {
-        line-height: 1.125rem;
         letter-spacing: 0.4px;
       }
     }
