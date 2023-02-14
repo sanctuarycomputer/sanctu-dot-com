@@ -1,23 +1,15 @@
 name: Deploys & Previews
 on: 
   push:
-  pull_request_target:
-   types: [opened, synchronize, reopened, ready_for_review]
 jobs:
-  dependabot:
-    runs-on: ubuntu-latest
-    permissions: write-all
-    if: (github.ref != 'refs/heads/production' && (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'))
-    steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
   deploy-preview:
     if: github.ref != 'refs/heads/production'
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      pull-requests: write
+      issues: write
+      repository-projects: write
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - uses: amondnet/vercel-action@v20
