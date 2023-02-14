@@ -1,9 +1,14 @@
 name: Deploys & Previews
-on: push
+on: 
+  push:
 jobs:
   deploy-preview:
     if: github.ref != 'refs/heads/production'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+      repository-projects: write
     steps:
       - uses: actions/checkout@v2
       - uses: amondnet/vercel-action@v20
