@@ -36,7 +36,7 @@ const WorkGalleryAssetBlock = ({ assetBlock }) => {
             <Work work={works[0]} />
           </div>
           <div
-            className={cx('flex col-8 pb_5 md:pb1 md:flex-row flex-col', {
+            className={cx('flex col-8 pb_5 md:pb0 md:flex-row flex-col', {
               'items-start': doubleColumnVerticalAlignment === 'top',
               'items-end': doubleColumnVerticalAlignment === 'bottom',
             })}
