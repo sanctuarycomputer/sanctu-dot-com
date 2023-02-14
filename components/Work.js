@@ -10,6 +10,7 @@ import { Image } from 'components/base';
 
 import get from 'utils/get';
 import flattenImageData from 'utils/flattenImageData';
+
 import cx from 'classnames';
 
 const PLAY_VIDEO = '(Play)';
@@ -52,11 +53,12 @@ const Work = ({ work, width = '100vw' }) => {
     ''
   ).startsWith('image/');
   const workImage = flattenImageData(get(work, 'fields.asset', {}));
-  const hoveredStateTheme = get(
+  const hoveredStateTheme = get(work, 'fields.hoveredStateTheme', 'dark');
+  const disableOverlayOnDarkTheme = get(
     work,
-    'fields.hoveredStateTheme',
-    'Dark'
-  ).toLowerCase();
+    'fields.disableOverlayOnDarkTheme',
+    false
+  );
   const title = get(work, 'fields.title', '');
   const caseStudySlug = get(work, 'fields.caseStudySlug', '');
   const link = get(work, 'fields.link', '');
@@ -64,43 +66,44 @@ const Work = ({ work, width = '100vw' }) => {
   const id = get(work, 'sys.id', '');
 
   return (
-    <>
-      <Link href={caseStudySlug || link}>
-        <a
-          aria-label={
-            caseStudySlug
-              ? `read the case study for ${title}`
-              : `visit the site for ${title}`
-          }
-          rel="noopener noreferrer"
-          target={caseStudySlug ? '_self' : '_blank'}
-        >
+    <Link href={caseStudySlug || link}>
+      <a
+        aria-label={
+          caseStudySlug
+            ? `read the case study for ${title}`
+            : `visit the site for ${title}`
+        }
+        rel="noopener noreferrer"
+        target={caseStudySlug ? '_self' : '_blank'}
+        className="decoration-none"
+      >
+        <div className="flex flex-col-reverse md:block">
           <div
             className={cx(
-              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 p_625 ${
-                workIsImage
-                  ? 'WorkSectionAsGallery__work-hover-overlay--for-image'
-                  : 'WorkSectionAsGallery__work-hover-overlay--for-video'
-              } flex justify-between items-end absolute`,
+              `WorkSectionAsGallery__work-hover-overlay pointer md:p1 pt_325 px0 w100 h100 flex justify-between items-end md:absolute relative`,
               {
                 'WorkSectionAsGallery__work-hover-overlay--dark':
                   hoveredStateTheme === 'dark',
+                'WorkSectionAsGallery__work-hover-overlay--dark-gradient':
+                  hoveredStateTheme === 'dark' && !disableOverlayOnDarkTheme,
                 'WorkSectionAsGallery__work-hover-overlay--light':
                   hoveredStateTheme === 'light',
+                'WorkSectionAsGallery__work-hover-overlay--for-image':
+                  workIsImage,
+                'WorkSectionAsGallery__work-hover-overlay--for-video':
+                  !workIsImage,
               }
             )}
           >
             <div className="flex flex-col">
-              <div className="WorkSectionAsGallery__work-hover-overlay--title">
+              <p className="WorkSectionAsGallery__work-hover-overlay__title">
                 {title}
-              </div>
-              <div className="decoration-none">
-                {caseStudySlug ? '(read case study)' : '→ visit the site'}
-              </div>
+              </p>
+              <p>{caseStudySlug ? '(read case study)' : '→ visit the site'}</p>
             </div>
             {!workIsImage && (
               <button
-                className="WorkSectionAsGallery__work-hover-overlay--video-button"
+                className="WorkSectionAsGallery__work-hover-overlay__video-button"
                 aria-label={`pause video for ${title}`}
                 ref={buttonRef}
                 onClick={(e) => {
@@ -114,31 +117,31 @@ const Work = ({ work, width = '100vw' }) => {
               </button>
             )}
           </div>
-        </a>
-      </Link>
-      {workIsImage ? (
-        <Image
-          alt={workImage.alt}
-          src={workImage.url}
-          width={workImage.width}
-          height={workImage.height}
-          sizes={width}
-        />
-      ) : (
-        <video
-          id={id}
-          key={id}
-          className="block w100 h100"
-          autoPlay
-          loop
-          muted
-          playsInline
-          ref={videoRef}
-        >
-          <source src={src}></source>
-        </video>
-      )}
-    </>
+          {workIsImage ? (
+            <Image
+              alt={workImage.alt}
+              src={workImage.url}
+              width={workImage.width}
+              height={workImage.height}
+              sizes={width}
+            />
+          ) : (
+            <video
+              id={id}
+              key={id}
+              className="block w100 h100"
+              autoPlay
+              loop
+              muted
+              playsInline
+              ref={videoRef}
+            >
+              <source src={src}></source>
+            </video>
+          )}
+        </div>
+      </a>
+    </Link>
   );
 };
 
