@@ -20,6 +20,7 @@
       &:hover {
         opacity: 1;
       }
+
       @include media('md') {
         color: white;
       }
