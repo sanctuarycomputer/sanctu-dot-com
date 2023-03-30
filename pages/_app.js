@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
             window.gtag('event', 'conversion', {
               send_to: 'AW-557434647/ZQWfCIOv-ZQYEJeO54kC',
             });
-          window.lintrk && window.lintrk('track', { conversion_id: 12933745 });
+          window.lintrk && window.lintrk('track', { conversion_id: 12933769 });
         }
         return true;
       });
