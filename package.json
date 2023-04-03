@@ -30,7 +30,7 @@
     "lint-staged": "^12.1.7",
     "next-purgecss": "^4.0.0",
     "prettier": "^2.5.1",
-    "vercel": "^23.1.2"
+    "vercel": "^28.18.3"
   },
   "prettier": {
     "singleQuote": true
