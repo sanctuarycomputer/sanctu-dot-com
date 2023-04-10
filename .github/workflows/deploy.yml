@@ -1,5 +1,5 @@
 name: Deploys & Previews
-on: 
+on:
   push:
 jobs:
   deploy-preview:

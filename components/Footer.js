@@ -7,7 +7,7 @@ import Link from 'next/link';
 const Footer = ({ hidden, hideCapabilitiesLink }) => (
   <footer
     aria-hidden={hidden}
-    className="Footer col-8 p1 flex md:flex-row justify-between"
+    className="Footer col-8 p1 flex md:flex-row mb2 md:mb0"
   >
     <div>
       <Image
@@ -24,7 +24,7 @@ const Footer = ({ hidden, hideCapabilitiesLink }) => (
     </div>
 
     {!hideCapabilitiesLink && (
-      <div className="flex justify-end items-end">
+      <div className="flex pl1 justify-end items-end">
         <Link href="/capabilities" passHref>
           <a
             className={cx('small link decoration-none', {
@@ -34,7 +34,7 @@ const Footer = ({ hidden, hideCapabilitiesLink }) => (
             aria-label="View our capabilities"
             rel="noopener noreferrer"
           >
-            Working with us →
+            View our capabilities →
           </a>
         </Link>
       </div>
