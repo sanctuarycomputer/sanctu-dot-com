@@ -7,8 +7,12 @@ import get from 'utils/get';
 import { SimpleFragment } from 'models';
 
 import { List } from 'components/base';
+import { PopupButton } from 'react-calendly';
+import { ModalContext } from 'lib/ModalContext';
 
 const BlockHero = (props) => {
+  const { setCurrentModal } = React.useContext(ModalContext);
+
   const fields = get(props, 'block.fields', {});
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
@@ -19,6 +23,8 @@ const BlockHero = (props) => {
   const columnTwoTitle = get(fields, 'columnTwoTitle', '');
   const columnThreeTitle = get(fields, 'columnThreeTitle', '');
   const link = get(fields, 'link', '');
+  const requestPricingInfoCTA = get(fields, 'requestPricingInfoCta', true);
+  const contactUsCTA = get(fields, 'contactUsCta', true);
   const linkText = get(fields, 'linkText', '');
   const textAlign = get(fields, 'textAlign', 'Bottom').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
@@ -93,10 +99,32 @@ const BlockHero = (props) => {
           )}
         </div>
       </div>
-      {linkText && link && (
-        <div className="flex flex-row">
-          <span className="none md:flex md:col-4"></span>
-          <span className="flex flex-row col-4">
+
+      <div className="flex flex-row">
+        <span className="none md:flex md:col-4"></span>
+        <span className="flex flex-row col-12 md:col-4">
+          {requestPricingInfoCTA && (
+            <a
+              className="small link underline mr1"
+              alt={linkText || 'Request Pricing Info'}
+              onClick={() => setCurrentModal('requestPricingInfo')}
+            >
+              Request Pricing Info
+            </a>
+          )}
+          {contactUsCTA && (
+            <PopupButton
+              className="small link underline mr1 ml0 mt0 mb0 p0 border-none bg-transparent"
+              url="https://calendly.com/sanctu-compu/hello"
+              rootElement={
+                typeof window !== 'undefined'
+                  ? document.getElementById('__next')
+                  : null
+              }
+              text="Contact Us"
+            />
+          )}
+          {linkText && link && (
             <a
               className="small link underline"
               alt={linkText || 'Visit project'}
@@ -106,9 +134,9 @@ const BlockHero = (props) => {
             >
               {linkText}
             </a>
-          </span>
-        </div>
-      )}
+          )}
+        </span>
+      </div>
     </div>
   );
 };

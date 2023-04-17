@@ -5,6 +5,8 @@ import 'styles/index.scss';
 import HackerDojo from 'lib/HackerDojo';
 import { PopupButton, useCalendlyEventListener } from 'react-calendly';
 import { useRouter } from 'next/router';
+import Modal from 'react-modal';
+import ModalProvider from 'lib/ModalContext';
 
 function recordConversion() {
   console.log('Will fire conversion events');
@@ -14,6 +16,8 @@ function recordConversion() {
     });
   window.lintrk && window.lintrk('track', { conversion_id: 12933769 });
 }
+
+Modal.setAppElement('#Modal');
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -89,7 +93,11 @@ function MyApp({ Component, pageProps }) {
         }
         text="👋 Contact Us"
       />
-      <Component {...pageProps} />
+
+      <ModalProvider>
+        <Component {...pageProps} />
+      </ModalProvider>
+      <div id="Modal" />
     </>
   );
 }

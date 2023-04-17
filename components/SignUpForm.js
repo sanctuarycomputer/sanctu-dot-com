@@ -26,7 +26,7 @@ class SignUpForm extends PureComponent {
     return (
       <div className="SignUpForm">
         <form
-          action={'https://sanctucompu.substack.com/api/v1/free?nojs=true'}
+          action={'https://garden3d.substack.com/api/v1/free?nojs=true'}
           target="_blank"
           method="post"
         >
