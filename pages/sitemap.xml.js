@@ -13,17 +13,23 @@ export async function getServerSideProps(ctx) {
   if (res) {
     const contentful = ContentfulClient();
 
-    const [caseStudyPages, homepage] = await Promise.all([
+    const [caseStudyPages, capabilityPages, homepage] = await Promise.all([
       contentful
         .getEntries({
           content_type: 'caseStudy',
-          select: 'sys.createdAt,sys.updatedAt,fields.slug',
+          select: 'sys.createdAt,sys.updatedAt,fields.slug,sys.contentType',
+        })
+        .then((res) => res.items),
+      contentful
+        .getEntries({
+          content_type: 'capability',
+          select: 'sys.createdAt,sys.updatedAt,fields.slug,sys.contentType',
         })
         .then((res) => res.items),
       contentful
         .getEntries({
           content_type: 'sanctuary',
-          select: 'sys.createdAt,sys.updatedAt',
+          select: 'sys.createdAt,sys.updatedAt,sys.contentType',
         })
         .then((res) => {
           const homepageData = res.items[0];
@@ -33,7 +39,7 @@ export async function getServerSideProps(ctx) {
         }),
     ]);
 
-    const pages = caseStudyPages.concat(homepage);
+    const pages = caseStudyPages.concat(capabilityPages).concat(homepage);
 
     res.setHeader('Content-Type', 'text/xml');
     res.write(sitemapXml(pages, `https://${get(ctx, 'req.headers.host', '')}`));

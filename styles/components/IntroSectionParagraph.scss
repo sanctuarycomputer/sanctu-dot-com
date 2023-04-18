@@ -1,14 +1,14 @@
 .IntroSectionParagraph {
   &__content {
     @include media('md') {
-      top: 0;
+      top: 50px;
       position: sticky;
     }
 
     /*
       First paragraph
       containing acronym
-      should never wrap to the next line
+      should never wrap to the next line 
     */
 
     & p:first-of-type {

@@ -4,11 +4,20 @@ export default (data, originUrl = 'https://www.sanctuary.computer') => {
   const projectsXML = data.reduce((xml, page) => {
     const pageSlug = get(page, 'fields.slug', '');
 
+    const contentType = page.sys.contentType.sys.id; //caseStudy or capability
+
     if (!pageSlug || pageSlug === '/style-guide') {
       return xml;
     }
 
-    const projectURL = `${originUrl}${pageSlug}`;
+    let projectURL = `${originUrl}${pageSlug}`;
+    if (contentType === 'capability') {
+      projectURL = `${originUrl}/capability${pageSlug}`;
+    }
+    let priority = 0.5;
+    if (contentType === 'capability') priority = 0.8;
+    if (pageSlug === '/capabilities') priority = 0.9;
+
     const lastModified = page.sys.updatedAt.split('T')[0];
 
     if (pageSlug === '/') {
@@ -28,7 +37,7 @@ export default (data, originUrl = 'https://www.sanctuary.computer') => {
           <url>
             <loc>${projectURL}</loc>
             <lastmod>${lastModified}</lastmod>
-            <priority>0.50</priority>
+            <priority>${priority}</priority>
           </url>
         `
       );

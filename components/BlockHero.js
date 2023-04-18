@@ -106,7 +106,7 @@ const BlockHero = (props) => {
           {requestPricingInfoCTA && (
             <a
               className="small link underline mr1"
-              alt={linkText || 'Request Pricing Info'}
+              alt={'Request Pricing Info'}
               onClick={() => setCurrentModal('requestPricingInfo')}
             >
               Request Pricing Info

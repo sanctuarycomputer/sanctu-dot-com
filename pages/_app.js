@@ -3,19 +3,12 @@ import Script from 'next/script';
 
 import 'styles/index.scss';
 import HackerDojo from 'lib/HackerDojo';
-import { PopupButton, useCalendlyEventListener } from 'react-calendly';
+import { useCalendlyEventListener } from 'react-calendly';
 import { useRouter } from 'next/router';
 import Modal from 'react-modal';
 import ModalProvider from 'lib/ModalContext';
-
-function recordConversion() {
-  console.log('Will fire conversion events');
-  window.gtag &&
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-557434647/ZQWfCIOv-ZQYEJeO54kC',
-    });
-  window.lintrk && window.lintrk('track', { conversion_id: 12933769 });
-}
+import Nav from 'components/Nav';
+import recordConversion from 'utils/recordConversion';
 
 Modal.setAppElement('#Modal');
 
@@ -25,8 +18,8 @@ function MyApp({ Component, pageProps }) {
   useCalendlyEventListener({
     onProfilePageViewed: () => console.log('onProfilePageViewed'),
     onDateAndTimeSelected: () => console.log('onDateAndTimeSelected'),
-    onEventTypeViewed: () => recordConversion(),
-    onEventScheduled: (e) => console.log(e.data.payload),
+    onEventTypeViewed: () => console.log('onEventTypeViewed'),
+    onEventScheduled: (e) => recordConversion(),
   });
 
   useEffect(() => {
@@ -78,23 +71,13 @@ function MyApp({ Component, pageProps }) {
       </Script>
 
       {router.query && router.query.note && (
-        <p className="Note">
-          😌 Thank you! We&apos;re looking forward to meeting.
+        <p className="Note p1">
+          Thank you! We&apos;re looking forward to meeting.
         </p>
       )}
 
-      <PopupButton
-        className="ContactCTA"
-        url="https://calendly.com/sanctu-compu/hello"
-        rootElement={
-          typeof window !== 'undefined'
-            ? document.getElementById('__next')
-            : null
-        }
-        text="👋 Contact Us"
-      />
-
       <ModalProvider>
+        <Nav />
         <Component {...pageProps} />
       </ModalProvider>
       <div id="Modal" />

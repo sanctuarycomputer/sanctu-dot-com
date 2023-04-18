@@ -22,7 +22,11 @@ class IntroSectionImages extends PureComponent {
     const selectedImage = flattenImageData(this.state.activeImage);
 
     return (
-      <div className={cx('IntroSectionImages p1 flex flex-col md:flex-row')}>
+      <div
+        className={cx(
+          'IntroSectionImages pr1 pl1 pb1 pt0 flex flex-col md:flex-row'
+        )}
+      >
         <div className="col-8">
           <div className="aspect-portrait">
             <Image

@@ -4,7 +4,6 @@ import get from 'utils/get';
 import ContentfulClient from 'lib/ContentfulClient';
 
 import Meta from 'components/Meta';
-import CaseStudyTopNav from 'components/CaseStudyTopNav';
 import CaseStudyBlockSwitch from 'components/CaseStudyBlockSwitch';
 
 const CapabilityView = ({ model }) => {
@@ -20,8 +19,6 @@ const CapabilityView = ({ model }) => {
   return (
     <Fragment>
       <Meta model={capability} />
-      <CaseStudyTopNav />
-
       {get(capability, 'fields.contentBlocks', []).map((block, i) => (
         <CaseStudyBlockSwitch
           key={get(block, 'sys.id', i)}
