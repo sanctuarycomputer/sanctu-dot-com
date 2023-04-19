@@ -72,10 +72,10 @@ class Image extends Component {
           ></div>
           <NextImage
             className={`${classes} ${styleNames}`}
-            src={src}
+            src={src || 'https://placehold.co/600x600'}
             alt={alt}
-            width={width}
-            height={height}
+            width={width || 600}
+            height={height || 600}
             quality={quality}
             layout={layout}
             loading={loading}

@@ -15,7 +15,7 @@ module.exports = {
       '2a9914f1877f6376b17edacff808455173922e80c2b9c63895407209b46c8b10',
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['images.ctfassets.net', 'placehold.co'],
     deviceSizes: [375, 414, 520, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [
       16, 32, 48, 64, 96, 128, 256, 320, 384, 416, 512, 576, 620, 700, 760, 800,

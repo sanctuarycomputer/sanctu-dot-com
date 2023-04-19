@@ -34,6 +34,7 @@ const BlockLargeParagraph = (props) => {
           <Markdown
             className="BlockLargeParagraph__description paragraph"
             src={description}
+            fontSize="medium"
           />
         )}
       </div>

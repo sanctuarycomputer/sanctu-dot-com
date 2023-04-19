@@ -12,7 +12,7 @@ export default (data, originUrl = 'https://www.sanctuary.computer') => {
 
     let projectURL = `${originUrl}${pageSlug}`;
     if (contentType === 'capability') {
-      projectURL = `${originUrl}/capability${pageSlug}`;
+      projectURL = `${originUrl}/capabilities${pageSlug}`;
     }
     let priority = 0.5;
     if (contentType === 'capability') priority = 0.8;
