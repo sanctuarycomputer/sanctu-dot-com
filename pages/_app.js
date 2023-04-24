@@ -48,6 +48,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Script src="https://tag.clearbitscripts.com/v1/pk_ab1702274a6f351a3571a21c87844bec/tags.js" />
       <Script src="https://www.google-analytics.com/analytics.js" />
       <Script src="https://www.googletagmanager.com/gtag/js?id=UA-88778470-4" />
       <Script id="linkedin-pixel">
