@@ -8,7 +8,7 @@ import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
 import { ContentfulMedia } from 'models';
 
-import { Image, Markdown } from 'components/base';
+import { Asset, Markdown } from 'components/base';
 
 const BlockImageText = (props) => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
@@ -91,13 +91,7 @@ const BlockImageText = (props) => {
             'mb1 md:mb0': imageTextAlignOnMobile === 'image:text',
           })}
         >
-          <Image
-            alt={image.description}
-            src={image.url}
-            width={image.width}
-            height={image.height}
-            sizes={selectedSizes}
-          />
+          <Asset asset={image} className="w100" sizes={selectedSizes} />
         </div>
         <div
           className={cx('col-8 flex flex-col', {

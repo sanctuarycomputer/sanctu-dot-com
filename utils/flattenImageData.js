@@ -21,5 +21,6 @@ export default (imageFile, query) => {
     description: get(imageFile, 'fields.description', ''),
     width: get(imageFile, 'fields.file.details.image.width', undefined),
     height: get(imageFile, 'fields.file.details.image.height', undefined),
+    contentType: get(imageFile, 'fields.file.contentType', undefined),
   };
 };

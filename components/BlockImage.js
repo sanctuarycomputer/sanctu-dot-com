@@ -8,7 +8,7 @@ import cx from 'classnames';
 
 import { ContentfulMedia } from 'models';
 
-import { Image } from 'components/base';
+import { Asset } from 'components/base';
 
 const BlockImage = (props) => {
   const fields = get(props, 'block.fields');
@@ -72,13 +72,10 @@ const BlockImage = (props) => {
             'md:col-4': imageVariant === 'small',
           })}
         >
-          <Image
-            className="BlockImage__image h100 w100 hauto fit-cover"
-            src={imageOneUrl}
-            height={imageOne.height}
-            width={imageOne.width}
-            alt={imageOne.description}
-            sizes="100vw"
+          <Asset
+            className="w100 hauto fit-cover"
+            asset={imageOne}
+            sizes={selectedSizes}
           />
           {imageOneCaption && (
             <p className="image-caption small color-gray-darkest mt_5">
@@ -98,12 +95,9 @@ const BlockImage = (props) => {
           )}
         >
           <div className="flex flex-col col-8 sm:col-4 pb3 sm:pb0 sm:mr1">
-            <Image
+            <Asset
               className="BlockTwoImages__image w100"
-              src={imageOneUrl}
-              height={imageOne.height}
-              width={imageOne.width}
-              alt={imageOne.description}
+              asset={imageOne}
               sizes={selectedSizes}
             />
             {imageOneCaption && (
@@ -113,12 +107,9 @@ const BlockImage = (props) => {
             )}
           </div>
           <div className="flex flex-col col-8 sm:col-4">
-            <Image
+            <Asset
               className="BlockTwoImages__image w100"
-              src={imageTwoUrl}
-              height={imageTwo.height}
-              width={imageTwo.width}
-              alt={imageTwo.description}
+              asset={imageTwo}
               sizes={selectedSizes}
             />
             {imageTwoCaption && (
