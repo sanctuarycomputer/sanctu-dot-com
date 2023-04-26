@@ -7,7 +7,7 @@ import { ContentfulMedia } from 'models';
 import flattenImageData from 'utils/flattenImageData';
 import withBreakpoints, { Breakpoints } from 'lib/withBreakpoints';
 
-import { Image } from 'components/base';
+import { Asset } from 'components/base';
 
 const BlockViewMore = (props) => {
   const currentBreakpoint = get(props, 'currentBreakpoint', '');
@@ -50,12 +50,9 @@ const BlockViewMore = (props) => {
                   rel="noopener noreferrer"
                 >
                   <div className="flex flex-col">
-                    <Image
+                    <Asset
                       className="h100 w100 hauto fit-cover"
-                      alt={linkOneImage.description}
-                      src={linkOneImage.url}
-                      width={linkOneImage.width}
-                      height={linkOneImage.height}
+                      asset={linkOneImage}
                       sizes={selectedSizes}
                     />
                     {linkOneImageCaption && (
@@ -78,12 +75,9 @@ const BlockViewMore = (props) => {
                   rel="noopener noreferrer"
                 >
                   <div className="flex flex-col">
-                    <Image
+                    <Asset
                       className="right-side h100 w100 hauto fit-cover"
-                      alt={linkTwoImage.description}
-                      src={linkTwoImage.url}
-                      width={linkTwoImage.width}
-                      height={linkTwoImage.height}
+                      asset={linkTwoImage}
                       sizes={selectedSizes}
                     />
                     {linkTwoImageCaption && (
