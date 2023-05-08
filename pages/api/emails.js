@@ -29,5 +29,5 @@ export default async function handler(req, res) {
     });
   }
 
-  res.redirect(302, `${returnTo.split('?')[0]}?note=thankyou`);
+  res.status(200).json({ status: 'ok' });
 }
