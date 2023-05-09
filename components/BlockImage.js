@@ -75,7 +75,7 @@ const BlockImage = (props) => {
           <Asset
             className="w100 hauto fit-cover"
             asset={imageOne}
-            sizes={selectedSizes}
+            sizes="100vw"
           />
           {imageOneCaption && (
             <p className="image-caption small color-gray-darkest mt_5">

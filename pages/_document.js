@@ -11,8 +11,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <link rel="shortcut icon" href="favicon-16x16.png" />
-          <link rel="shortcut icon" href="favicon-32x32.png" />
+          <link rel="shortcut icon" href="/favicon-16x16.png" />
+          <link rel="shortcut icon" href="/favicon-32x32.png" />
           <meta name="theme-color" content="#000000" />
         </Head>
         <body>

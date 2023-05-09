@@ -120,7 +120,7 @@ Image.defaultProps = {
   className: 'w100',
   onImgLoad: () => {},
   layout: 'responsive',
-  quality: 85,
+  quality: 90,
   loading: 'lazy',
   sizes: '100vw',
 };
