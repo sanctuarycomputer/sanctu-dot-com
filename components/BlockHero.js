@@ -12,7 +12,6 @@ import { ModalContext } from 'lib/ModalContext';
 
 const BlockHero = (props) => {
   const { setCurrentModal } = React.useContext(ModalContext);
-
   const fields = get(props, 'block.fields', {});
   const header = get(fields, 'header', '');
   const description = get(fields, 'description', '');
@@ -24,7 +23,7 @@ const BlockHero = (props) => {
   const columnThreeTitle = get(fields, 'columnThreeTitle', '');
   const link = get(fields, 'link', '');
   const requestPricingInfoCTA = get(fields, 'requestPricingInfoCta', true);
-  const contactUsCTA = get(fields, 'contactUsCta', true);
+  const contactUsCTA = get(fields, 'contactUsCta', false);
   const linkText = get(fields, 'linkText', '');
   const textAlign = get(fields, 'textAlign', 'Bottom').toLowerCase();
   const marginBottom = get(fields, 'marginBottom', 0);
