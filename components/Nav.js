@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import { ModalContext } from 'lib/ModalContext';
-import { PopupButton } from 'react-calendly';
 import { useRouter } from 'next/router';
 
 const Nav = () => {
@@ -32,7 +31,7 @@ const Nav = () => {
             </Link>
           )}
 
-          <div>
+          <div className="flex flex-wrap">
             <Link href="/capabilities" passHref>
               <a
                 className="small link decoration-none mr_5 md:mr1"
@@ -45,22 +44,20 @@ const Nav = () => {
 
             <a
               className="small link decoration-none mr_5 md:mr1"
-              alt={'Request Pricing Info'}
+              aria-label="Request Pricing Info"
               onClick={() => setCurrentModal('requestPricingInfo')}
             >
               Get Pricing Info
             </a>
 
-            <PopupButton
-              className="small link decoration-none ml0 mt0 mb0 p0 border-none bg-transparent"
-              url="https://calendly.com/sanctu-compu/hello"
-              rootElement={
-                typeof window !== 'undefined'
-                  ? document.getElementById('__next')
-                  : null
-              }
-              text="Contact"
-            />
+            <a
+              className="small link decoration-none"
+              aria-label="Email us at hello@sanctuary.computer"
+              href="mailto:hello@sanctuary.computer"
+            >
+              <span className="none sm:block">hello@sanctuary.computer</span>
+              <span className="block sm:none">Contact</span>
+            </a>
           </div>
         </div>
       </div>
