@@ -7,6 +7,24 @@
     background-color: transparent;
   }
 
+  &__button:disabled {
+    color: color('gray');
+    cursor: not-allowed;
+  }
+
+  &__error {
+    color: color('error');
+  }
+
+  &__button--close {
+    color: color('black');
+  }
+
+  &__reCaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+  }
+
   &--overlay-mode {
     &__input,
     &__button {
