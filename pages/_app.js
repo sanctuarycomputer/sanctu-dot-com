@@ -70,6 +70,16 @@ function MyApp({ Component, pageProps }) {
           gtag('js', new Date());
           gtag('config', 'UA-88778470-4');`}
       </Script>
+      <Script id="hotjar">
+        {`(function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:3833190,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
+      </Script>
 
       {router.query && router.query.note && (
         <p className="Note p1">
