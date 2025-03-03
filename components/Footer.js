@@ -52,7 +52,7 @@ const Footer = ({ hidden, hideCapabilitiesLink }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            garden3D
+            garden3d
           </a>
         </Link>
       </p>
