@@ -13,4 +13,11 @@
       color: color('black');
     }
   }
+
+  &__g3d-link {
+    width: 100%;
+    @include media('md-up') {
+      width: 50%;
+    }
+  }
 }
